@@ -1,16 +1,155 @@
+_model: frontpage
+---
 title: Welcome to getdns!
 ---
 body:
 
-This is a basic demo website that shows how to use Lektor for a basic
-website with some pages and a blog.
+#### highlight ####
+title: Stubby
+----
+text:
 
-## En dit is markdown
+Stubby is an experimental implementation of a DNS Privacy enabled stub resolver. It is currently suitable for advanced/technical users - all feedback is welcome! Also see [dnsprivacy.org](https://dnsprivacy.org/DNS+Privacy+daemon+-+Stubby) for more information on DNS Privacy and stubby. 
 
-Hoe voeg je een plaatje toe?
+![Stubby](stubby.png)
+----
+button_text:
 
-![getdns logo](getdns-logo.png "GetDNS Logo")
----
-_discoverable: yes
----
-_hidden: no
+ <span class="glyphicon glyphicon-share"></span> Stubby branch »
+----
+button_link: https://github.com/getdnsapi/getdns/tree/release/1.1.0-alpha3
+#### highlight ####
+title: Fork me on github
+----
+text:
+
+The code repository for getdns is available at <https://github.com/getdnsapi/getdns>. You can fork from the repository.
+
+![Github](octocat.png)
+----
+button_text:
+
+ <span class="glyphicon glyphicon-share"></span> Fork me »
+----
+button_link: https://github.com/getdnsapi/getdns/fork
+#### highlight ####
+title: Download source
+----
+text: The latest source code tarball is available for download below, with checksum [here](releases/).
+----
+button_text:
+
+ <span class="glyphicon glyphicon-download"></span> Download »
+----
+button_link: https://getdnsapi.net/getdns-latest.tar.gz
+#### highlight ####
+title: Do a Query
+----
+text:
+
+Perform DNS queries using the web application that is built using getdns and examine the results displayed.
+
+![Query](globeblue.png)![Query](questionmarkblue.png)
+----
+button_text:
+
+ <span class="glyphicon glyphicon-search"></span> Do Query »
+----
+button_link: query/
+#### highlight ####
+title: Python Bindings
+----
+text:
+
+pygetdns is an implementation of Python language bindings for the getdns API. pygetdns is built on top of the getdns implementation. Documentation is available [here](http://getdns.readthedocs.org/en/latest/).
+
+Python bindings are developed by Melinda Shore
+
+![Python logo](python-logo.png)!
+----
+button_text:
+
+ <span class="glyphicon glyphicon-download"></span> Download »
+----
+button_link: https://github.com/getdnsapi/getdns-python-bindings
+#### highlight ####
+title: nodejs Bindings
+----
+text:
+
+nodejs getdns bindings is an implementation of nodejs language bindings for the getdns API. nodejs getdns is built on top of the getdns implementation.
+
+nodejs bindings were developed by Neil Goyal and are currently maintained by Joel Purra
+
+![nodejs logo](nodejs.png)!
+----
+button_text:
+
+ <span class="glyphicon glyphicon-download"></span> Download »
+----
+button_link: https://github.com/getdnsapi/getdns-node
+#### highlight ####
+title: Perl Bindings
+----
+text:
+
+Perl getdns bindings is an implementation of Perl language bindings for the getdns API. Perl getdns is built on top of the getdns implementation.
+
+Perl bindings are contributed by Jerry Lundström
+
+![perl logo](perl-camel.png)!
+----
+button_text:
+
+ <span class="glyphicon glyphicon-download"></span> Download »
+----
+button_link: https://github.com/DNS-OARC/p5-Net-GetDNS
+#### highlight ####
+title: Go Bindings
+----
+text:
+
+This was written during the IETF 96 Hackathon, largely as an excuse for a novice Go programmer to learn more Go.
+
+Go bindings are contributed by Jim Hague
+
+![Go logo](go-logo.png)!
+----
+button_text:
+
+ <span class="glyphicon glyphicon-download"></span> Download »
+----
+button_link: https://github.com/Sinodun/getdns-go
+#### highlight ####
+title: Java Bindings
+----
+text:
+
+Java getdns bindings is an implementation of Java language bindings for the getdns API. Java getdns is built on top of the getdns implementation. Documentation is available [here](http://getdns-java.github.io/).
+
+Java bindings were contributed by Prihvi Ranganath
+
+![java logo](java-logo.jpg)!
+----
+button_text:
+
+ <span class="glyphicon glyphicon-download"></span> Download »
+----
+button_link: https://github.com/getdnsapi/getdns-java-bindings
+#### highlight ####
+title: PHP Bindings
+----
+text:
+
+PHP getdns bindings is an implementation of PHP language bindings for the getdns API. PHP getdns is built on top of the getdns implementation. Documentation is available [here](http://phpdoc.wip.getdnsapi.net/).
+
+PHP bindings were contributed by Scott Hollenbeck
+
+![PHP logo](elephpant.png)!
+----
+button_text:
+
+ <span class="glyphicon glyphicon-download"></span> Download »
+----
+button_link: https://github.com/getdnsapi/getdns-php-bindings
+

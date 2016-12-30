@@ -1,6 +1,21 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "offcanvas.css";
 
 .navbar-brand {
 	margin-top: -15px;
+}
+.highlight {
+	min-height: 365px;
+	text-align: center;
+}
+.highlight p img {
+//position: absolute;
+//	bottom: 4em;
+	max-width: 145px;
+	max-height: 145px;
+}
+.highlight .btn-primary {
+//	position: absolute;
+//	bottom: 0;
 }
