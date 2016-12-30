@@ -39,6 +39,10 @@ var options = {
     ]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     new ExtractTextPlugin('styles.css', {
       allChunks: true
     }),

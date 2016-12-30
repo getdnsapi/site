@@ -1,3 +1,3 @@
-var $ = window.jQuery = require('jquery');
+require('jquery');
 require('bootstrap');
 require('offcanvas');
