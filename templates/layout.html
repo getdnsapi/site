@@ -12,57 +12,73 @@
   <title>{% block title %}Welcome{% endblock %} — getdns</title>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ '/'|url }}"><img height=50 src="{{ '/static/logo.svg'|url }}" alt="getdns API"></a>
-          </div><!-- class="navbar-header" -->
-          <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+  <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ '/'|url }}"><img height=50 src="{{ '/static/logo.svg'|url }}" alt="getdns API"></a>
+      </div><!-- class="navbar-header" -->
+      <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
 	    {% for page in site.get('/').children %}
 	      {% if page.children and page._model != 'blog' %}
-                <li class="nav-item dropdown {% if this.is_child_of(page) or this == page %}active{% endif %}">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.title}}</a>
-                  <ul class="dropdown-menu" role="menu">
-                  {% for subpage in page.children.order_by('order', 'name') %}
-                    <li class="nav-item {% if this.is_child_of(subpage) or this == subpage %}active{% endif %}">
+            <li class="nav-item dropdown {% if this.is_child_of(page) or this == page %}active{% endif %}">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.title}}</a>
+              <ul class="dropdown-menu" role="menu">
+              {% for subpage in page.children.order_by('order', 'name') %}
+                <li class="nav-item {% if this.is_child_of(subpage) or this == subpage %}active{% endif %}">
 		      {% if subpage._model == 'link' %}
-                        <a class="nav-link" href="{{ subpage.link }}">{{ subpage.title}}</a>
-                      {% else %}
-                        <a class="nav-link" href="{{ subpage|url }}">{{ subpage.title}}</a>
-                      {% endif %}
-                    </li>
-                  {% endfor %}
+                    <a class="nav-link" href="{{ subpage.link }}">{{ subpage.title}}</a>
+                  {% else %}
+                    <a class="nav-link" href="{{ subpage|url }}">{{ subpage.title}}</a>
+                  {% endif %}
+                </li>
+              {% endfor %}
 		  </ul>
-                </li>
-              {% else %}
-                <li class="nav-item {% if this.is_child_of(page) or this == page %}active{% endif %}">
-                  <a class="nav-link" href="{{ page|url }}">{{ page.title}}</a>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-          </div><!-- class="navbar-collapse collapse" -->
-        </div><!-- class="container" -->
-      </div><!-- class="navbar navbar-fixed-top navbar-inverse" role="navigation" -->
-    </nav>
-  </header>
+            </li>
+          {% else %}
+            <li class="nav-item {% if this.is_child_of(page) or this == page %}active{% endif %}">
+              <a class="nav-link" href="{{ page|url }}">{{ page.title}}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      </div><!-- class="navbar-collapse collapse" -->
+    </div><!-- class="container" -->
+  </nav><!-- class="navbar navbar-fixed-top navbar-inverse" role="navigation" -->
+
   <div class="container">
-  <div class="page">
-    {% block body %}{% endblock %}
-  </div>
-  <footer>
-    &copy; Copyright 2016 by getdns team.
-  </footer>
-  </div>
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+      <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+    
+        {% block body %}{% endblock %}
+
+      </div><!-- class="col-xs-12 col-sm-9" -->
+
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+
+        {% block sidebar %}{% endblock %}
+
+      </div><!-- class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" -->
+
+    </div><!-- class="row row-offcanvas row-offcanvas-right" -->
+
+    <hr>
+
+    <footer>
+      &copy; Copyright 2016 by getdns team.
+    </footer>
+  </div><!-- class="container" -->
   <script type=text/javascript src="{{ '/static/gen/app.js'|asseturl }}" charset="utf-8"></script>
 </body>
 </html>

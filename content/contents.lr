@@ -65,7 +65,7 @@ pygetdns is an implementation of Python language bindings for the getdns API. py
 
 Python bindings are developed by Melinda Shore
 
-![Python logo](python-logo.png)!
+![Python logo](python-logo.png)
 ----
 button_text:
 
@@ -152,4 +152,3 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://github.com/getdnsapi/getdns-php-bindings
-

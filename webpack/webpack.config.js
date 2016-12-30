@@ -14,8 +14,8 @@ var options = {
   },
   devtool: '#cheap-module-source-map',
   resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js']
+    modulesDirectories: ['node_modules', 'js'],
+    extensions: ['', '.js'],
   },
   module: {
     loaders: [
