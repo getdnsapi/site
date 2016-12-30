@@ -5,3 +5,5 @@ title: Blog
 _hidden: no
 ---
 _discoverable: yes
+---
+order: 20

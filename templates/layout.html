@@ -25,10 +25,10 @@
       </div><!-- class="navbar-header" -->
       <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-	    {% for page in site.get('/').children %}
+	    {% for page in site.get('/').children.order_by('order', 'name') %}
 	      {% if page.children and page._model != 'blog' %}
             <li class="nav-item dropdown {% if this.is_child_of(page) or this == page %}active{% endif %}">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.title}}</a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.title}}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
               {% for subpage in page.children.order_by('order', 'name') %}
                 <li class="nav-item {% if this.is_child_of(subpage) or this == subpage %}active{% endif %}">

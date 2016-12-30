@@ -5,3 +5,5 @@ body: Documentation
 _hidden: no
 ---
 _discoverable: yes
+---
+order: 10
