@@ -1,0 +1,33 @@
+title: JSON pointers
+---
+author: Melinda Shore
+---
+body:
+
+People have suggested that it is cumbersome to access elements in data structures, because you need to dive deep in getdns data.  Well... what about JSON pointers
+
+```C
+
+getdns_dict *dict = getdns_dict_create();
+
+if ((r = getdns_dict_set_int(dict, "/answer/-/type", GETDNS_RR_TYPE_A))
+||  (r = getdns_dict_set_string(dict, "/answer/0/rdata/address", "\x12\x23\x45\x67")) 
+	fprintf(stderr, "An error occurred while creating the dict: %s", getdns_get_errorstr_by_id(r));
+else {
+	char *str = getdns_pretty_print_dict(dict);
+	fprintf(stdout, "%s\n", str);
+	free(str);
+}
+```
+
+Now just hope it knows about the C language and how to hightlight it's syntax.  Python should work:
+
+```python
+def bla(hopsa):
+	print hopsa.lower()
+
+bla('QWE')
+```
+
+---
+pub_date: 2016-09-08

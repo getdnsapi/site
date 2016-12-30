@@ -1,0 +1,16 @@
+title: Welcome to getdns!
+---
+body:
+
+This is a basic demo website that shows how to use Lektor for a basic
+website with some pages and a blog.
+
+## En dit is markdown
+
+Hoe voeg je een plaatje toe?
+
+![getdns logo](getdns-logo.png "GetDNS Logo")
+---
+_discoverable: yes
+---
+_hidden: no
