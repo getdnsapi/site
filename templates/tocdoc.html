@@ -1,0 +1,12 @@
+{% extends "page.html" %}
+{% block sidebar %}
+  <div class="list-group affix" color="blue">
+    <span class="list-group-item list-group-item-info">{{ this.title }}</span>
+    {% for item in this.body.toc %}
+      <a class="list-group-item" href="#{{ item.anchor }}">{{ item.title }}</a>
+      {#%- if item.children -%}
+          <div class="list-group-indent">{{ loop(item.children) }}</div>
+      {%- endif -%#}
+    {% endfor %}
+  </div>
+{% endblock %}
