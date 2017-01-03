@@ -7,3 +7,5 @@ archive: yes
 date: 2015-12-31
 ---
 link: /releases/getdns-0-9-0/
+---
+tags: release

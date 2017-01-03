@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% from "macros/tags.html" import render_tag_nav %}
+{% block title %}{{ this.title }}{% endblock %}
+{% block body %}
+  <h2>{{ this.title }}</h2>
+  {{ render_tag_nav(active=this._id) }}
+  <ul>
+    {% for child in this.children %}
+      <li><a href="{{ child|url }}">{{ child.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

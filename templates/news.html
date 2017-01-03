@@ -9,6 +9,7 @@
         <th>Date</th>
         <th>Link</th>
         <th>Archive</th>
+        <th>Tags</th>
         <th>Abstract</th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
           <th>{{ child.date }}</th>
           <th><a href="{{ child.link }}">{{ child.link }}</a></th>
           <th>{{ child.archive }}</th>
+          <th>{{ child.tags|join(' ') }}</th>
           <th>{{ child.abstract }}</th>
 	</tr>
       {% endfor %}

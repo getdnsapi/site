@@ -7,3 +7,5 @@ archive: yes
 date: 2015-08-26
 ---
 link: https://github.com/getdnsapi/getdns-python-bindings/releases/tag/v0.4.0
+---
+tags: release

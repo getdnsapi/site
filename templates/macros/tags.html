@@ -1,0 +1,8 @@
+{% macro render_tag_nav(active=none) %}
+  <ul>
+    {% for tag in site.query('/tags') %}
+      <li{% if tag._id == active %} class="active"{% endif -%}>
+        <a href="{{ tag|url }}">{{ tag.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
