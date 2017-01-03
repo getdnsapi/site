@@ -1,0 +1,9 @@
+name: API mailing-list move
+---
+abstract: The API mailing-list moved from vpnc.org to getdnsapi.net
+---
+archive: yes
+---
+date: 2015-07-23
+---
+link: mailman/listinfo/spec

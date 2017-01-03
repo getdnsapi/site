@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}{{ this.title }}{% endblock %}
+{% block body %}
+  <h2>{{ this.title }}</h2>
+  <table class="table">
+    <tbody>
+      <tr><th>Name</th><td>{{ this.name }}</tr>
+      <tr><th>Date</th><td>{{ this.date }}</tr>
+      <tr><th>Link</th><td>{{ this.link }}</tr>
+      <tr><th>Abstract</th><td>{{ this.abstract }}</tr>
+      <tr><th>Archive</th><td>{{ this.archive }}</tr>
+      <tr><td colspan="2">{{ this.body }}</tr>
+    </tbody>
+  </table>
+{% endblock body %}

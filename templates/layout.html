@@ -25,21 +25,21 @@
       </div><!-- class="navbar-header" -->
       <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-	    {% for page in site.get('/').children.order_by('order', 'name') %}
-	      {% if page.children and page._model != 'blog' %}
+            {% for page in site.get('/').children if page._model != 'news' %}
+              {% if page.children and page._model != 'blog' %}
             <li class="nav-item dropdown {% if this.is_child_of(page) or this == page %}active{% endif %}">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.title}}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-              {% for subpage in page.children.order_by('order', 'name') %}
+              {% for subpage in page.children %}
                 <li class="nav-item {% if this.is_child_of(subpage) or this == subpage %}active{% endif %}">
-		      {% if subpage._model == 'link' %}
+                      {% if subpage._model == 'link' %}
                     <a class="nav-link" href="{{ subpage.link }}">{{ subpage.title}}</a>
                   {% else %}
                     <a class="nav-link" href="{{ subpage|url }}">{{ subpage.title}}</a>
                   {% endif %}
                 </li>
               {% endfor %}
-		  </ul>
+                  </ul>
             </li>
           {% else %}
             <li class="nav-item {% if this.is_child_of(page) or this == page %}active{% endif %}">
@@ -53,6 +53,7 @@
   </nav><!-- class="navbar navbar-fixed-top navbar-inverse" role="navigation" -->
 
   <div class="container">
+    {% block container %}
 
     <div class="row row-offcanvas row-offcanvas-right">
 
@@ -65,13 +66,33 @@
 
       </div><!-- class="col-xs-12 col-sm-9" -->
 
-      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 
-        {% block sidebar %}{% endblock %}
+        {% block sidebar %}
+           <div class="list-group" color="blue">
+             <h2>News</h2>
+             {% for item in site.get('/news').children if not item.archive %}
+	       <a href="{{ item.link }}" class="list-group-item news-list-item">
+	         <b>{{ item.name }}</b> {{ item.date }}. 
+                 {{ item.abstract }}
+	       </a>
+             {% endfor %}
+	     <a class="list-group-item news-list-item" data-parent="#news" data-toggle="collapse" href="#collapseNews" style="text-align: center">more...</a>
+	     <div class="collapse out" id="collapseNews">
+               {% for item in site.get('/news').children if item.archive %}
+  	       <a href="{{ item.link }}" class="list-group-item news-list-item">
+  	         <b>{{ item.name }}</b> {{ item.date }} <br />
+                   {{ item.abstract }}
+  	       </a>
+               {% endfor %}
+	     </div>
+           </div>
+        {% endblock sidebar %}
 
       </div><!-- class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" -->
 
     </div><!-- class="row row-offcanvas row-offcanvas-right" -->
+    {% endblock container %}
 
     <hr>
 

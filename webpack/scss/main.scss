@@ -10,7 +10,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 	height: 400px;
 }
 .highlight p img {
-//position: absolute;
+//	position: absolute;
 //	bottom: 4em;
 	max-width: 145px;
 	max-height: 145px;
@@ -19,3 +19,8 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 //	position: absolute;
 //	bottom: 0;
 }
+
+.news-list-item p {
+	display: inline;
+}
+

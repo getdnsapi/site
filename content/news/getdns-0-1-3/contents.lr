@@ -1,0 +1,9 @@
+name: getdns 0.1.3
+---
+abstract: Spec update, libtool -release chg to --version-info
+---
+archive: yes
+---
+date: 2014-06-25
+---
+link: /releases/getdns-0-1-3/

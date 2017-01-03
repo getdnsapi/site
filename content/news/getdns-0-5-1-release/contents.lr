@@ -1,0 +1,9 @@
+name: getdns 0.5.1 release
+---
+abstract: EDNS(0) padding, EDNS client subnet privacy, call debugging and roadblock avoidance
+---
+archive: yes
+---
+date: 2015-11-18
+---
+link: /releases/getdns-0-5-1/

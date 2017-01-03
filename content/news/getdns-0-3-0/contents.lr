@@ -1,0 +1,9 @@
+name: getdns 0.3.0
+---
+abstract: Setting a list of transports, much improved DNSSEC support
+---
+archive: yes
+---
+date: 2015-07-17
+---
+link: /releases/getdns-0-3-0/
