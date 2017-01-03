@@ -1,12 +1,15 @@
 {% extends "page.html" %}
+{% block bodyattrs %} data-spy="scroll" data-target="#tocdoc" data-offset="20"{% endblock %}
 {% block sidebar %}
-  <div class="list-group affix" color="blue">
-    <span class="list-group-item list-group-item-info">{{ this.title }}</span>
-    {% for item in this.body.toc %}
-      <a class="list-group-item" href="#{{ item.anchor }}">{{ item.title }}</a>
-      {#%- if item.children -%}
-          <div class="list-group-indent">{{ loop(item.children) }}</div>
-      {%- endif -%#}
-    {% endfor %}
-  </div>
+  <nav id="tocdoc" role="navigation">
+    <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="0">
+      {% for item in this.body.toc recursive %}
+        <li class="nav-item"><a class="nav-link" href="#{{ item.anchor }}">{{ item.title }}</a>
+          {%- if item.children -%}
+            <ul class="nav nav-pills nav-stacked">{{ loop(item.children) }}</ul>
+          {%- endif -%}
+	</li>
+      {% endfor %}
+    </ul>
+  </nav>
 {% endblock %}
