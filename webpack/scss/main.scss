@@ -23,7 +23,10 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 .news-list-item p {
 	display: inline;
 }
-
+h1, h2, h3 {
+	padding-top: 70px;
+	margin-top: -50px;
+}
 #tocdoc > ul li ul {
 	display: none;
 }
