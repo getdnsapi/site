@@ -4,7 +4,7 @@ title: Welcome to getdns!
 ---
 body:
 
-#### highlight ####
+#### feature ####
 title: Stubby
 ----
 text:
@@ -18,7 +18,7 @@ button_text:
  <span class="glyphicon glyphicon-share"></span> Stubby branch »
 ----
 button_link: https://github.com/getdnsapi/getdns/tree/release/1.1.0-alpha3
-#### highlight ####
+#### feature ####
 title: Fork me on github
 ----
 text:
@@ -32,7 +32,7 @@ button_text:
  <span class="glyphicon glyphicon-share"></span> Fork me »
 ----
 button_link: https://github.com/getdnsapi/getdns/fork
-#### highlight ####
+#### feature ####
 title: Download source
 ----
 text: The latest source code tarball is available for download below, with checksum [here](releases/).
@@ -42,7 +42,7 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://getdnsapi.net/getdns-latest.tar.gz
-#### highlight ####
+#### feature ####
 title: Do a Query
 ----
 text:
@@ -56,7 +56,7 @@ button_text:
  <span class="glyphicon glyphicon-search"></span> Do Query »
 ----
 button_link: query/
-#### highlight ####
+#### feature ####
 title: Python Bindings
 ----
 text:
@@ -72,7 +72,7 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://github.com/getdnsapi/getdns-python-bindings
-#### highlight ####
+#### feature ####
 title: nodejs Bindings
 ----
 text:
@@ -88,7 +88,7 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://github.com/getdnsapi/getdns-node
-#### highlight ####
+#### feature ####
 title: Perl Bindings
 ----
 text:
@@ -104,7 +104,7 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://github.com/DNS-OARC/p5-Net-GetDNS
-#### highlight ####
+#### feature ####
 title: Go Bindings
 ----
 text:
@@ -120,7 +120,7 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://github.com/Sinodun/getdns-go
-#### highlight ####
+#### feature ####
 title: Java Bindings
 ----
 text:
@@ -136,7 +136,7 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://github.com/getdnsapi/getdns-java-bindings
-#### highlight ####
+#### feature ####
 title: PHP Bindings
 ----
 text:
