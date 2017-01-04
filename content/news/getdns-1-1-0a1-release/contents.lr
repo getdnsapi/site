@@ -2,7 +2,7 @@ name: getdns 1.1.0a1 release
 ---
 abstract: str 2 getdns type conversion functions.  Configure a context by dict.  Functions for creating simple servers.
 ---
-archive: no
+archive: yes
 ---
 date: 2016-07-14
 ---
