@@ -6,12 +6,13 @@ order: 10
 ---
 body:
 
-<div style="text-align: center">
+<div style="text-align: center; padding-bottom: 1em; font-size: 110%">
 	Description of the `getdns` API<br>
 	Originally edited by Paul Hoffman<br>
 	Currently maintained by the <a href="mailto:team@getdnsapi.net">getdns team</a><br>
 	Document version: "getdns December 2015"<br>
 </div>
+
 
 This document describes a modern asynchronous DNS API. This new API is intended to be useful to application developers and operating system distributors as a way of making all types of DNS information easily available in many types of programs. The major features of this new API are:
 
@@ -26,21 +27,16 @@ This document was discussed on the [getdns-api mailing list](/mailman/listinfo/s
 
 # 1 The `getdns` Async Functions
 
-<p>The API has four async functions:</p>
+The API has four async functions:
 
-<ul>
 
-<li>`getdns_address` for doing `getaddrinfo()`-like address lookups</li>
-
-<li>`getdns_hostname` for doing `getnameinfo()`-like name lookups</li>
-
-<li>`getdns_service` for getting results from SRV lookups</li>
-
-<li>`getdns_general` for looking up any type of DNS record</li>
-
-</ul>
+* `getdns_address` for doing `getaddrinfo()`-like address lookups
+* `getdns_hostname` for doing `getnameinfo()`-like name lookups
+* `getdns_service` for getting results from SRV lookups
+* `getdns_general` for looking up any type of DNS record
 
 ## 1,1 `getdns_general()`
+
 
 ```c
 getdns_return_t
@@ -175,15 +171,12 @@ relevant SRV information for the name.</p>
 
 ## 1,5 Callback Functions for `getdns`
 
-<p>A call to the async `getdns` functions typically returns before any network or file I/O occurs. After
-the API marshalls all the needed information, it calls the callback function that was passed by the
-application. The callback function might be called at any time, even before the calling function
-has returned. The API guarantees that the callback will be called exactly once unless the calling function
-returned an error, in which case the callback function is never called.<p>
+A call to the async `getdns` functions typically returns before any network or file I/O occurs. After the API marshalls all the needed information, it calls the callback function that was passed by the application. The callback function might be called at any time, even before the calling function has returned. The API guarantees that the callback will be called exactly once unless the calling function returned an error, in which case the callback function is never called.
 
-<p>The `getdns` calling function calls the callback with the parameters defined
-as follows:</p>
+The `getdns` calling function calls the callback with the parameters defined
+as follows:
 <a id="getdns_callback_t"></a>
+
 ```c
 typedef void (*getdns_callback_t)(
                                   getdns_context         *context,
@@ -192,6 +185,14 @@ typedef void (*getdns_callback_t)(
                                   void                   *userarg,
                                   getdns_transaction_t   transaction_id);
 ```
+
+**`context`**
+:   The DNS context that was used in the calling function. See [below](#ContextInitial) for a description of the basic use of contexts, and [later](#Contexts) for more advanced use.
+
+**`callback_type`**
+:   Supplies the reason for the callback. See below for the codes and reasons.
+
+
 
 <p class="define">`<b>context</b>`</p>
 <p class="descrip">The DNS context that was used in the calling function. See <a
