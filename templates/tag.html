@@ -4,9 +4,10 @@
 {% block body %}
   <h2>{{ this.title }}</h2>
   {{ render_tag_nav(active=this._id) }}
+  <hr>
   <ul>
     {% for child in this.children %}
-      <li><a href="{{ child|url }}">{{ child.name }}</a></li>
+      <li><a href="{{ child|url }}">{{ child.record_label }}</a></li>
     {% endfor %}
   </ul>
 {% endblock %}
