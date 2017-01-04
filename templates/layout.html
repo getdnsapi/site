@@ -26,17 +26,17 @@
       </div><!-- class="navbar-header" -->
       <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-            {% for page in site.get('/').children if page._model not in ('news', 'tags') %}
+            {% for page in site.get('/').children if page._model not in ('authors', 'news', 'tags') %}
               {% if page.children and page._model != 'blog' %}
             <li class="nav-item dropdown {% if this.is_child_of(page) or this == page %}active{% endif %}">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.title}}<span class="caret"></span></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.record_label }}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
               {% for subpage in page.children %}
                 <li class="nav-item {% if this.is_child_of(subpage) or this == subpage %}active{% endif %}">
                       {% if subpage._model == 'link' %}
-                    <a class="nav-link" href="{{ subpage.link }}">{{ subpage.title}}</a>
+                    <a class="nav-link" href="{{ subpage.link }}">{{ subpage.record_label }}</a>
                   {% else %}
-                    <a class="nav-link" href="{{ subpage|url }}">{{ subpage.title}}</a>
+                    <a class="nav-link" href="{{ subpage|url }}">{{ subpage.record_label }}</a>
                   {% endif %}
                 </li>
               {% endfor %}
@@ -44,7 +44,7 @@
             </li>
           {% else %}
             <li class="nav-item {% if this.is_child_of(page) or this == page %}active{% endif %}">
-              <a class="nav-link" href="{{ page|url }}">{{ page.title}}</a>
+              <a class="nav-link" href="{{ page|url }}">{{ page.record_label }}</a>
             </li>
           {% endif %}
         {% endfor %}

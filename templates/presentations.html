@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}{{ this.title }}{% endblock %}
+{% block container %}
+<div class="row">
+  <table class="table table-striped">
+    <thead>
+      <th>Date</th>
+      <th>Event</th>
+      <th>Presenter(s)</th>
+      <th>Title</th>
+      <th>&nbsp;</th>
+    </thead>
+    <tbody>
+      {{ this.body }}
+    </tbody>
+  </table>
+</div>
+{% endblock container %}

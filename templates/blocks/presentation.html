@@ -1,0 +1,12 @@
+<tr>
+  <td>{{ this.date }}</td>
+  <td><a href="{{ this.event_url }}">{{ this.event }}</a></td>
+  <td>
+    {% for p in this.presenters %}
+      {% set presenter = site.get('/authors/'+p) %}
+      <span style="white-space: nowrap">{{ presenter.name }}</span>{% if not loop.last %}, {% endif %}
+    {% endfor %}
+  </td>
+  <td>{% if this.slides_url|string|length > 0 %}<a href="{{ this.slides_url }}">{{ this.title }}</a>{% else %}{{ this.title }}{% endif %}</td>
+  <td>{% if this.video_url|string|length > 0 %}<a href="{{ this.video_url }}"><span class="glyphicon glyphicon-film"></span></a>{% else %}&nbsp;{% endif %}</td>
+</tr>
