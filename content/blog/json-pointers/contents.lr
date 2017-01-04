@@ -1,33 +1,41 @@
-title: JSON pointers
+title: Enhanced getdns data access
 ---
-author: Melinda Shore
+author: melinda-shore
 ---
 body:
 
-People have suggested that it is cumbersome to access elements in data structures, because you need to dive deep in getdns data.  Well... what about JSON pointers
+[getdns](https://getdnsapi.net/) is a modern, improved DNS API which provides ease of access to advanced DNS features, including flexible transport options, roadblock (firewall and NAT) avoidance, one-step DNSSEC validation, and a host of other features either not available elsewhere or available through a complicated programming interface that often requires detailed knowledge of DNS internals.  The API was originally specified by Paul Hoffman and is being implemented by a team from NLNet Labs, Verisign Labs, Sinodun Internet Technologies, and No Mountain software. In addition to the [C API](https://github.com/getdnsapi/getdns), language bindings are also available for [Python](https://github.com/getdnsapi/getdns-python-bindings), [PHP](https://github.com/getdnsapi/getdns-php-bindings), and [Node.js](https://github.com/getdnsapi/getdns-node).
 
-```C
+While the query interface is extremely easy-to-use for the programmer, up until the newest release the returned data could be onerous to process, with the data being represented as dictionaries, lists, and (often) bindatas, none of which are native to C, and which can require a lot of repetitive code to drill down into deeply-nested data structures.  Because of this, we've specified and implemented a new interface in which data elements can be accessed directly using a syntax similar to [JSON pointers](https://tools.ietf.org/html/rfc6901) and to Unix filesystem pathnames.
 
-getdns_dict *dict = getdns_dict_create();
-
-if ((r = getdns_dict_set_int(dict, "/answer/-/type", GETDNS_RR_TYPE_A))
-||  (r = getdns_dict_set_string(dict, "/answer/0/rdata/address", "\x12\x23\x45\x67")) 
-	fprintf(stderr, "An error occurred while creating the dict: %s", getdns_get_errorstr_by_id(r));
-else {
-	char *str = getdns_pretty_print_dict(dict);
-	fprintf(stdout, "%s\n", str);
-	free(str);
-}
+For example, rather than getting individual answer records by pulling out `replies_tree` then looping through each reply in the list and for each of those pull out the `answer` and then go through that list to pull out answer data, getting the answer data is now as simple as
+```c
+getdns_dict_get_int(response, "/replies_tree/0/answer/0/type", &type);  
 ```
 
-Now just hope it knows about the C language and how to hightlight it's syntax.  Python should work:
+(to retrieve the record type). The reduction in programmer effort and code size becomes particularly apparent when looping through lists, which you'd do by getting the list length and using snprintf to format the string containing the element to retrieve:
 
-```python
-def bla(hopsa):
-	print hopsa.lower()
-
-bla('QWE')
+```c
+(void)getdns_list_get_length(replies_tree, &nanswers);  
+for ( i = 0 ; i < (int)nanswers ; i++ ) {  
+  snprintf(element, MAXELEM, "/replies_tree/%d/answer/0/type", i);  
+  (void)getdns_dict_get_int(response, element, &type);  
+       /* do something with the data */  
+}  
 ```
 
+I've put up a demo program with complete code on Github, [here](https://github.com/MelindaShore/getdns-sample/blob/master/parsedemo.c).
+
+By the way, another extremely handy new feature is pretty-printers for both getdns dicts and getdns lists. If you ever find yourself scratching your head over the structure of getdns returned data, using these functions to dump the contents to your screen or to a file can be a terrific time-saver. the functions are `getdns_pretty_print_dict()` and `getdns_pretty_print_list()`. For example, I sometimes like to use it as follows:
+
+```c
+printf("%s\n", getdns_pretty_print_dict(response));  
+```
+
+which will print a well-formatted and easy-to-read representation of the data to my screen.
+
+We've added a number of other features not in the original specification. Some of these provide improvements to the API itself, while others implement new DNS features and transport options. All of these contribute to the API's appeal to those who need or want access to advanced DNS services to implement application features or as a platform for other DNS-related services. I'll be posting more about those in the coming weeks.
 ---
-pub_date: 2016-09-08
+pub_date: 2016-02-03
+---
+tags: example

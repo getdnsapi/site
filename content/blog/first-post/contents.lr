@@ -2,8 +2,6 @@ title: Hello Website
 ---
 pub_date: 2016-11-23
 ---
-author: getdns team
+author: willem-toorop
 ---
-body:
-
-This is an example blog post.  Not much here but that's not the point :)
+body: This is an example blog post.  Not much here but that's not the point :)

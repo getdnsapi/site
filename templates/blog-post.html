@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
-{% from "macros/blog.html" import render_blog_post %}
+{% from "macros/blog.html" import render_blog_post, render_blog_sidebar %}
+{% from "macros/pagination.html" import render_pagination %}
 {% block title %}{{ this.title }}{% endblock %}
 {% block body %}
   {{ render_blog_post(this) }}
+{% endblock %}
+{% block sidebar %}
+  {{ render_blog_sidebar(this) }}
 {% endblock %}

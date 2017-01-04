@@ -11,10 +11,22 @@
       <a href="https://twitter.com/{{ post.twitter_handle
         }}">{{ post.author or post.twitter_handle }}</a>
     {% else %}
-      {{ post.author }}
+      {{ site.get('/authors/'+post.author).name }}
     {% endif %}
     on {{ post.pub_date }}
   </p>
   {{ post.body }}
   </div>
+{% endmacro %}
+{% macro render_blog_sidebar(active) %}
+  <div class="list-group" color="blue">
+    <h2>Examples</h2>
+      {% for post in site.get('/blog').pagination.items %}
+        <a href="{{ post|url }}" class="list-group-item
+            {%- if post._id == active._id %} active{% endif %}">
+          <b>{{ post.title }}</b>
+          by <span style="white-space: nowrap">{{ site.get('/authors/'+post.author).name }}</span> on {{ post.pub_date }}
+        </a>
+      {% endfor %}
+   </div>
 {% endmacro %}
