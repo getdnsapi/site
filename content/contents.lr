@@ -156,7 +156,7 @@ button_link: https://github.com/getdnsapi/getdns-php-bindings
 carousel:
 
 #### slide ####
-text: getdns is a modern asynchronous DNS API. It implements DNS entry points from a design developed and vetted by application developers, in an API specification originally edited by Paul Hoffman.
+text: 
 ----
 image: getdns-logo.png
 #### slide ####
