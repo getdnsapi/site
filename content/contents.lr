@@ -152,3 +152,14 @@ button_text:
  <span class="glyphicon glyphicon-download"></span> Download »
 ----
 button_link: https://github.com/getdnsapi/getdns-php-bindings
+---
+carousel:
+
+#### slide ####
+text: getdns is a modern asynchronous DNS API. It implements DNS entry points from a design developed and vetted by application developers, in an API specification originally edited by Paul Hoffman.
+----
+image: getdns-logo.png
+#### slide ####
+text: Stubby is the name given to a mode of using getdns which enables it to act as a local DNS Privacy stub resolver (using DNS-over-TLS).
+----
+image: stubby-wide.jpg
