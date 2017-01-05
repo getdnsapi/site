@@ -5,6 +5,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 .navbar-brand {
 	margin-top: -15px;
 }
+
 .feature {
 	text-align: center;
 	height: 400px;
@@ -23,14 +24,16 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 .news-list-item p {
 	display: inline;
 }
+
+/* Tocdoc scroll spying anchor positioning fix */
 h1, h2, h3 {
 	padding-top: 70px;
 	margin-top: -50px;
 }
+/* Tocdoc scroll spying navigation sidebar styling (and hiding) */
 #tocdoc > ul li ul {
 	display: none;
 }
-
 #tocdoc > ul li.active ul {
 	display: block;
 }
@@ -44,11 +47,12 @@ h1, h2, h3 {
 	padding-left: 3em;
 }
 
+/* Things for styling the spec */
 div.forh { white-space: pre; font-family: monospace; margin-top: 0; margin-bottom: 0 }
 p.define { font-family: monospace; font-weight: bold; margin-bottom: 0; margin-left: 2em; }
 p.descrip { margin-left: 4em; margin-top: 0; }
 p.cont { margin-top: 0 }
-
+/* Markdown replacements for p.define and p.descrip */
 blockquote {
 	font-size: inherit;
 	border-left: inherit;
@@ -63,6 +67,15 @@ blockquote blockquote p, blockquote blockquote p:last-child {
 	margin-bottom: 10px;
 }
 
+/* Do a Query */
 .hidequeryresult {
 	display: none;
+}
+.dnssec_secure {
+	font-weight: bold;
+	color: green;
+}
+.dnssec_bogus {
+	font-weight: bold;
+	color: red;
 }
