@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{ get_pygments_stylesheet()|url }}">
   <title>{% block title %}Welcome{% endblock %} — getdns</title>
 </head>
-<body{% block bodyattrs %}{% endblock %}>
+<body{% block body_attrs %}{% endblock %}>
   <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -49,6 +49,8 @@
           {% endif %}
         {% endfor %}
       </ul>
+      {% block navbar_xtras %}
+      {% endblock %}
       </div><!-- class="navbar-collapse collapse" -->
     </div><!-- class="container" -->
   </nav><!-- class="navbar navbar-fixed-top navbar-inverse" role="navigation" -->
