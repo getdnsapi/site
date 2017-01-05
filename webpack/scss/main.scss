@@ -49,3 +49,17 @@ p.define { font-family: monospace; font-weight: bold; margin-bottom: 0; margin-l
 p.descrip { margin-left: 4em; margin-top: 0; }
 p.cont { margin-top: 0 }
 
+blockquote {
+	font-size: inherit;
+	border-left: inherit;
+	padding: 0;
+	margin-left: 2em;
+	margin-bottom: 0;
+}
+blockquote p {
+	margin-bottom: 0;
+}
+blockquote blockquote p, blockquote blockquote p:last-child {
+	margin-bottom: 10px;
+}
+
