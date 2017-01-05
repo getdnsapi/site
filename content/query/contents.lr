@@ -1,0 +1,13 @@
+_model: nosidebar
+---
+body: QUERY
+---
+order: 30
+---
+title: Do a Query
+---
+_template: nosidebar.html
+---
+_hidden: no
+---
+_discoverable: no
