@@ -1,7 +1,21 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+
+$nlnetlabs-green: #00715a;
+$getdns-dark-grey: #707070;
+$getdns-light-grey: #b3b3b3;
+$getdns-red: #be131a;
+
+$brand-primary: $getdns-red;
+$carousel-control-color: $getdns-red;
+$carousel-indicator-active-bg: $getdns-light-grey;
+
+
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "offcanvas.css";
 
+.carousel-control.right, .carousel-control.left {
+	background-image: none;
+}
 .navbar-brand {
 	margin-top: -15px;
 }
