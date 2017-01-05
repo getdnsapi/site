@@ -160,6 +160,12 @@ text:
 ----
 image: getdns-logo.png
 #### slide ####
+text:
+
+ With the development of this API, we intend to offer application developers a modernized and flexible way to access DNS security (DNSSEC) and other powerful new DNS features; a particular hope is to inspire application developers towards innovative security solutions in their applications.
+----
+image: allison-gowri-sara-jad.png
+#### slide ####
 text: Stubby is the name given to a mode of using getdns which enables it to act as a local DNS Privacy stub resolver (using DNS-over-TLS).
 ----
-image: stubby-wide.jpg
+image: stubby-600x230.png
