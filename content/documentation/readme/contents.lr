@@ -6,9 +6,6 @@ order: 20
 ---
 body:
 
-getdns
-======
-
 # Overview of getdns
 
 * GitHub:  <https://github.com/getdnsapi/getdns>

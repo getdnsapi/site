@@ -1,5 +1,6 @@
-{% extends "page.html" %}
-{% block body_attrs %} data-spy="scroll" data-target="#tocdoc" data-offset="20"{% endblock %}
+{% extends "layout.html" %}
+{% block body_attrs %} data-spy="scroll" data-target="#tocdoc" data-offset="20"{% endblock body_attrs %}
+{% block body %}<div id="tocdoc-body">{{ super() }}</div>{% endblock body %}
 {% block sidebar %}
   <nav id="tocdoc" role="navigation">
     <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="0">
@@ -12,4 +13,4 @@
       {% endfor %}
     </ul>
   </nav>
-{% endblock %}
+{% endblock sidebar %}

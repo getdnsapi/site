@@ -7,19 +7,44 @@ $getdns-red: #be131a;
 
 $brand-primary: $getdns-red;
 $carousel-control-color: $getdns-red;
-$carousel-indicator-active-bg: $getdns-light-grey;
+$carousel-indicator-active-bg: $getdns-red;
 
 
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "offcanvas.css";
 
-.carousel-control.right, .carousel-control.left {
-	background-image: none;
-}
+/* Brand logo placement */
 .navbar-brand {
 	margin-top: -15px;
 }
 
+/* Generic sidebar styling */
+#sidebar .panel-title {
+	font-weight: bold;
+}
+.news-list-item p {
+	display: inline;
+}
+
+/* Carousel styling */
+.carousel-control.right, .carousel-control.left {
+	background-image: none;
+}
+.carousel-inner {
+	min-height: 250px;
+}
+.carousel-inner div.item {
+	margin: 10px 100px;
+}
+.carousel-inner div.item img {
+	margin-left: auto;
+	margin-right: auto;
+}
+.carousel-inner div.item1 div.carousel-caption {
+	color: #060;
+}
+
+/* Front page features */
 .feature {
 	text-align: center;
 	height: 400px;
@@ -33,7 +58,7 @@ a.feature-img-link {
 }
 
 a.feature-img-link:hover {
-	color: $nlnetlabs-green;
+	color: black;
 	background-color: #f0f0f0;
 	text-decoration: none;
 }
@@ -49,18 +74,11 @@ a.feature-img-link div h2 {
 	padding-top: 0;
 }
 
-.news-list-item p {
-	display: inline;
-}
 
 /* Tocdoc scroll spying anchor positioning fix */
-h1, h2, h3 {
+#tocdoc-body h1, #tocdoc-body h2, #tocdoc-body h3 {
 	padding-top: 70px;
 	margin-top: -50px;
-}
-#sidebar h2 {
-	padding-top: 0;
-	margin-top: 0;
 }
 
 /* Tocdoc scroll spying navigation sidebar styling (and hiding) */
@@ -112,22 +130,3 @@ blockquote blockquote p, blockquote blockquote p:last-child {
 	font-weight: bold;
 	color: red;
 }
-
-.navbar-form {
-	width: 240px;
-}
-
-.carousel-inner {
-	min-height: 250px;
-}
-.carousel-inner div.item {
-	margin: 10px 100px;
-}
-.carousel-inner div.item img {
-	margin-left: auto;
-	margin-right: auto;
-}
-.carousel-inner div.item1 div.carousel-caption {
-	color: #060;
-}
-

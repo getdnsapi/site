@@ -5,8 +5,9 @@ title: API Specification
 order: 10
 ---
 body:
+
 <div style="text-align: center; padding-bottom: 1em; font-size: 115%">
-	Description of the `getdns` API<br>
+	<span style="font-size: 36px; font-weight: blod">Description of the <code>getdns</code>API</span><br>
 	Originally edited by Paul Hoffman<br>
 	Currently maintained by the <a href="mailto:team@getdnsapi.net">getdns team</a><br>
 	Document version: "getdns December 2015"<br>
