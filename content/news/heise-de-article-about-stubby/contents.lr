@@ -1,6 +1,8 @@
-name: heise.de article about Stubby
+_model: news-item
 ---
-abstract: The popular German online computer magazine Heise.de published an article about Stubby
+title: heise.de article about Stubby
+---
+teaser: The popular German online computer magazine Heise.de published an article about Stubby
 ---
 archive: no
 ---

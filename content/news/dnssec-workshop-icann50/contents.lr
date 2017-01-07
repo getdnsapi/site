@@ -1,6 +1,8 @@
-name: DNSSEC Workshop @ ICANN50
+_model: news-item
 ---
-abstract: Presentation at the DNSSEC Workshop at ICANN50 in London
+title: DNSSEC Workshop @ ICANN50
+---
+teaser: Presentation at the DNSSEC Workshop at ICANN50 in London
 ---
 archive: yes
 ---

@@ -1,6 +1,8 @@
-name: getdns 0.1.6
+_model: news-item
 ---
-abstract: Build system bugfixes, cleanup and increased portability.
+title: getdns 0.1.6
+---
+teaser: Build system bugfixes, cleanup and increased portability.
 ---
 archive: yes
 ---

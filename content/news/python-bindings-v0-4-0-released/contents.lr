@@ -1,6 +1,8 @@
-name: Python bindings v0.4.0 released
+_model: news-item
 ---
-abstract: Python3 support, ordered transport lists, bugfixes
+title: Python bindings v0.4.0 released
+---
+teaser: Python3 support, ordered transport lists, bugfixes
 ---
 archive: yes
 ---

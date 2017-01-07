@@ -13,7 +13,7 @@
     {% else %}
       {{ site.get('/authors/'+post.author).name }}
     {% endif %}
-    on {{ post.pub_date }}
+    on {{ post.date }}
   </p>
   {{ post.body }}
   </div>
@@ -25,7 +25,7 @@
         <a href="{{ post|url }}" class="list-group-item
             {%- if post._id == active._id %} active{% endif %}">
           <b>{{ post.title }}</b>
-          by <span style="white-space: nowrap">{{ site.get('/authors/'+post.author).name }}</span> on {{ post.pub_date }}
+          by <span style="white-space: nowrap">{{ site.get('/authors/'+post.author).name }}</span> on {{ post.date }}
         </a>
       {% endfor %}
    </div>

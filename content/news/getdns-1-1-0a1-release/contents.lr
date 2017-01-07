@@ -1,6 +1,8 @@
-name: getdns 1.1.0a1 release
+_model: news-item
 ---
-abstract: str 2 getdns type conversion functions.  Configure a context by dict.  Functions for creating simple servers.
+title: getdns 1.1.0a1 release
+---
+teaser: str 2 getdns type conversion functions.  Configure a context by dict.  Functions for creating simple servers.
 ---
 archive: yes
 ---

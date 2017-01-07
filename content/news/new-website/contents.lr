@@ -1,6 +1,8 @@
-name: New website
+_model: news-item
 ---
-abstract: Our webpages have been refashioned with a new "responsive" look.
+title: New website
+---
+teaser: Our webpages have been refashioned with a new "responsive" look.
 ---
 archive: yes
 ---

@@ -11,7 +11,20 @@
       <th>&nbsp;</th>
     </thead>
     <tbody>
-      {{ this.body }}
+      {% for presentation in this.children %}
+        <tr>
+          <td>{{ presentation.date }}</td>
+          <td><a href="{{ presentation.event_url }}">{{ presentation.event }}</a></td>
+          <td>
+            {% for p in presentation.presenters %}
+              {% set presenter = site.get('/authors/'+p) %}
+              <span style="white-space: nowrap">{{ presenter.name }}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          </td>
+          <td>{% if presentation.slides_url|string|length > 0 %}<a href="{{ presentation.slides_url }}">{{ presentation.record_label }}</a>{% else %}{{ presentation.title }}{% endif %}</td>
+          <td>{% if presentation.video_url|string|length > 0 %}<a href="{{ presentation.video_url }}"><span class="glyphicon glyphicon-film"></span></a>{% else %}&nbsp;{% endif %}</td>
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>

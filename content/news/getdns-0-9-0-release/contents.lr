@@ -1,6 +1,8 @@
-name: getdns 0.9.0 release
+_model: news-item
 ---
-abstract: Almost completely feature complete, TLS cert pinning, Initial Windows support, wire- and zone-format conversion functions.
+title: getdns 0.9.0 release
+---
+teaser: Almost completely feature complete, TLS cert pinning, Initial Windows support, wire- and zone-format conversion functions.
 ---
 archive: yes
 ---

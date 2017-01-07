@@ -1,6 +1,8 @@
-name: Presentation @ NANOG OARC68 in Dallas
+_model: news-item
 ---
-abstract: Stubby: DNS Privacy and Security in a Daemon for Everyone
+title: Presentation @ NANOG OARC68 in Dallas
+---
+teaser: Stubby: DNS Privacy and Security in a Daemon for Everyone
 ---
 archive: no
 ---

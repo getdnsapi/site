@@ -1,6 +1,8 @@
-name: TNW 2015
+_model: news-item
 ---
-abstract: getdns at the TNW Hack Battle.
+title: TNW 2015
+---
+teaser: getdns at the TNW Hack Battle.
 ---
 archive: yes
 ---

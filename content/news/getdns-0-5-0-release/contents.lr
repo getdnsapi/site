@@ -1,6 +1,8 @@
-name: getdns 0.5.0 release
+_model: news-item
 ---
-abstract: No ldns dependency anymore, JSON pointers with dicts and experimental TLS hostname authentication
+title: getdns 0.5.0 release
+---
+teaser: No ldns dependency anymore, JSON pointers with dicts and experimental TLS hostname authentication
 ---
 archive: yes
 ---

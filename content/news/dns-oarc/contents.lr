@@ -1,6 +1,8 @@
-name: DNS-OARC
+_model: news-item
 ---
-abstract: Presentation at the DNS-OARC Spring Workshop in Warsaw
+title: DNS-OARC
+---
+teaser: Presentation at the DNS-OARC Spring Workshop in Warsaw
 ---
 archive: yes
 ---

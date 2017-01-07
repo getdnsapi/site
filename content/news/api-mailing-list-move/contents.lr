@@ -1,6 +1,8 @@
-name: API mailing-list move
+_model: news-item
 ---
-abstract: The API mailing-list moved from vpnc.org to getdnsapi.net
+title: API mailing-list move
+---
+teaser: The API mailing-list moved from vpnc.org to getdnsapi.net
 ---
 archive: yes
 ---

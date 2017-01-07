@@ -1,6 +1,8 @@
-name: Another mention of Stubby in the register
+_model: news-item
 ---
-abstract: Stubby in The Register again in an article about IETF pervasive monitoring work
+title: Another mention of Stubby in the register
+---
+teaser: Stubby in The Register again in an article about IETF pervasive monitoring work
 ---
 archive: no
 ---

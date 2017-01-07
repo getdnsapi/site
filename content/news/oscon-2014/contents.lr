@@ -1,6 +1,8 @@
-name: OSCON 2014
+_model: news-item
 ---
-abstract: Presentation at the OSCON 2014 in Portland
+title: OSCON 2014
+---
+teaser: Presentation at the OSCON 2014 in Portland
 ---
 archive: yes
 ---

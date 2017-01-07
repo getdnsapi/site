@@ -1,6 +1,8 @@
-name: INTAREA-WG @ IETF89
+_model: news-item
 ---
-abstract: Presentation at IETF 89 INTAREA WG meeting in London
+title: INTAREA-WG @ IETF89
+---
+teaser: Presentation at IETF 89 INTAREA WG meeting in London
 ---
 archive: yes
 ---

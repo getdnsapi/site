@@ -1,6 +1,8 @@
-name: Beer BoF @ IETF93
+_model: news-item
 ---
-abstract: Beer BoF at the IETF93 in Prague
+title: Beer BoF @ IETF93
+---
+teaser: Beer BoF at the IETF93 in Prague
 ---
 archive: yes
 ---

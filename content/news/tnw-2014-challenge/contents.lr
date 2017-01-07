@@ -1,6 +1,8 @@
-name: TNW 2014 Challenge
+_model: news-item
 ---
-abstract: Hack battle in Amsterdam
+title: TNW 2014 Challenge
+---
+teaser: Hack battle in Amsterdam
 ---
 archive: yes
 ---

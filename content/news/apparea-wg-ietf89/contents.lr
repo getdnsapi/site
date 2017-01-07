@@ -1,6 +1,8 @@
-name: APPAREA-WG @ IETF89
+_model: news-item
 ---
-abstract: Presentation at IETF 89 APPAREA WG meeting in London
+title: APPAREA-WG @ IETF89
+---
+teaser: Presentation at IETF 89 APPAREA WG meeting in London
 ---
 archive: yes
 ---

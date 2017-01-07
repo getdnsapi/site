@@ -1,6 +1,8 @@
-name: getdns 0.3.2
+_model: news-item
 ---
-abstract: Bugfixes & stub only configure option
+title: getdns 0.3.2
+---
+teaser: Bugfixes & stub only configure option
 ---
 archive: yes
 ---

@@ -1,6 +1,8 @@
-name: Presentation @ ICANN56 in Dublin
+_model: news-item
 ---
-abstract: DNSSEC for Legacy Applications
+title: Presentation @ ICANN56 in Dublin
+---
+teaser: DNSSEC for Legacy Applications
 ---
 archive: yes
 ---

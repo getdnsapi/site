@@ -1,6 +1,8 @@
-name: Beer BoF @ IETF91
+_model: news-item
 ---
-abstract: Beer BoF held at the IETF91 in Honolulu
+title: Beer BoF @ IETF91
+---
+teaser: Beer BoF held at the IETF91 in Honolulu
 ---
 archive: yes
 ---

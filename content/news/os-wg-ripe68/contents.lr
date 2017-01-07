@@ -1,6 +1,8 @@
-name: OS-WG @ RIPE68
+_model: news-item
 ---
-abstract: Lightning talk at the Open Source Working Group at RIPE 68 in Warsaw
+title: OS-WG @ RIPE68
+---
+teaser: Lightning talk at the Open Source Working Group at RIPE 68 in Warsaw
 ---
 archive: yes
 ---

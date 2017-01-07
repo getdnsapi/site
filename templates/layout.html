@@ -79,8 +79,8 @@
 	    <div class="list-group list-group-default">
              {% for item in site.get('/news').children if not item.archive %}
 	       <a href="{{ item.link }}" class="list-group-item news-list-item">
-	         <b>{{ item.name }}</b> {{ item.date }}. 
-                 {{ item.abstract }}
+	         <b>{{ item.title }}</b> {{ item.date }}. 
+                 {{ item.teaser }}
 	       </a>
              {% endfor %}
 	     <a class="list-group-item news-list-item" data-parent="#news" data-toggle="collapse" href="#collapseNews" style="text-align: center">more...</a>
@@ -88,7 +88,7 @@
                {% for item in site.get('/news').children if item.archive %}
   	       <a href="{{ item.link }}" class="list-group-item news-list-item">
   	         <b>{{ item.name }}</b> {{ item.date }} <br />
-                   {{ item.abstract }}
+                   {{ item.teaser }}
   	       </a>
                {% endfor %}
 	     </div>

@@ -1,6 +1,8 @@
-name: IETF94 Hackathon prize
+_model: news-item
 ---
-abstract: Prize won with getdns used in IETF94 Hackathon
+title: IETF94 Hackathon prize
+---
+teaser: Prize won with getdns used in IETF94 Hackathon
 ---
 archive: yes
 ---

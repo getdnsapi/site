@@ -1,6 +1,8 @@
-name: Presentation @ RIPE71 in Bucharest
+_model: news-item
 ---
-abstract: DNSSEC for Legacy Applications
+title: Presentation @ RIPE71 in Bucharest
+---
+teaser: DNSSEC for Legacy Applications
 ---
 archive: yes
 ---

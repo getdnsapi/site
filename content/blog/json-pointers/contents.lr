@@ -36,6 +36,6 @@ which will print a well-formatted and easy-to-read representation of the data to
 
 We've added a number of other features not in the original specification. Some of these provide improvements to the API itself, while others implement new DNS features and transport options. All of these contribute to the API's appeal to those who need or want access to advanced DNS services to implement application features or as a platform for other DNS-related services. I'll be posting more about those in the coming weeks.
 ---
-pub_date: 2016-02-03
+date: 2016-02-03
 ---
-tags: example
+tags: example, json-pointers

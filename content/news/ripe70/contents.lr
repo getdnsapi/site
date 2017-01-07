@@ -1,6 +1,8 @@
-name: RIPE70
+_model: news-item
 ---
-abstract: Presentation in the Open Source Working Group at RIPE70 in Amsterdam
+title: RIPE70
+---
+teaser: Presentation in the Open Source Working Group at RIPE70 in Amsterdam
 ---
 archive: yes
 ---

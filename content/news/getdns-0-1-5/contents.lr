@@ -1,6 +1,8 @@
-name: getdns 0.1.5
+_model: news-item
 ---
-abstract: Hop-by-hop features for stub resolution & TCP connection reuse
+title: getdns 0.1.5
+---
+teaser: Hop-by-hop features for stub resolution & TCP connection reuse
 ---
 archive: yes
 ---

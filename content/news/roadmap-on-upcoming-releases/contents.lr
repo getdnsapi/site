@@ -1,6 +1,8 @@
-name: Roadmap on upcoming releases
+_model: news-item
 ---
-abstract: Update on the upcoming releases
+title: Roadmap on upcoming releases
+---
+teaser: Update on the upcoming releases
 ---
 archive: yes
 ---

@@ -1,6 +1,8 @@
-name: vBSDcon 2015
+_model: news-item
 ---
-abstract: One hour overview presentation at the vBSDcon 2015 in Reston
+title: vBSDcon 2015
+---
+teaser: One hour overview presentation at the vBSDcon 2015 in Reston
 ---
 archive: yes
 ---

@@ -1,6 +1,8 @@
-name: Bits-n-Bites poster @ IETF92
+_model: news-item
 ---
-abstract: Poster presented at the Bits-n-Bites of the IETF92 in Dalas
+title: Bits-n-Bites poster @ IETF92
+---
+teaser: Poster presented at the Bits-n-Bites of the IETF92 in Dalas
 ---
 archive: yes
 ---

@@ -1,6 +1,8 @@
-name: vBSDcon 2015 video online
+_model: news-item
 ---
-abstract: Video of the presentation at vBSDcon 2015 in Reston
+title: vBSDcon 2015 video online
+---
+teaser: Video of the presentation at vBSDcon 2015 in Reston
 ---
 archive: yes
 ---

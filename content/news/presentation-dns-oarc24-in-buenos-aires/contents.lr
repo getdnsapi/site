@@ -1,6 +1,8 @@
-name: Presentation @ DNS-OARC24 in Buenos Aires
+_model: news-item
 ---
-abstract: How we are developing a next generation DNS API for applications
+title: Presentation @ DNS-OARC24 in Buenos Aires
+---
+teaser: How we are developing a next generation DNS API for applications
 ---
 archive: yes
 ---

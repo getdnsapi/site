@@ -1,6 +1,8 @@
-name: getdns 0.1.7
+_model: news-item
 ---
-abstract: Bugfixes, internal rework and printing of JSON dicts.
+title: getdns 0.1.7
+---
+teaser: Bugfixes, internal rework and printing of JSON dicts.
 ---
 archive: yes
 ---

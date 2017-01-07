@@ -1,6 +1,8 @@
-name: October 2015 getdns API spec release
+_model: news-item
 ---
-abstract: json-pointer access to dicts and NOT_IMPLEMENTED return code
+title: October 2015 getdns API spec release
+---
+teaser: json-pointer access to dicts and NOT_IMPLEMENTED return code
 ---
 archive: yes
 ---

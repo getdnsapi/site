@@ -1,6 +1,8 @@
-name: Beer BoF @ IETF90
+_model: news-item
 ---
-abstract: Beer BoF held at the IETF90 in Toronto
+title: Beer BoF @ IETF90
+---
+teaser: Beer BoF held at the IETF90 in Toronto
 ---
 archive: yes
 ---

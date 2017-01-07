@@ -1,6 +1,8 @@
-name: getdns 0.5.1 release
+_model: news-item
 ---
-abstract: EDNS(0) padding, EDNS client subnet privacy, call debugging and roadblock avoidance
+title: getdns 0.5.1 release
+---
+teaser: EDNS(0) padding, EDNS client subnet privacy, call debugging and roadblock avoidance
 ---
 archive: yes
 ---

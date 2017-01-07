@@ -1,6 +1,8 @@
-name: getdns 0.1.8
+_model: news-item
 ---
-abstract: The Special TNW 2015 release with "happy path" implementation of DNS over TLS
+title: getdns 0.1.8
+---
+teaser: The Special TNW 2015 release with "happy path" implementation of DNS over TLS
 ---
 archive: yes
 ---

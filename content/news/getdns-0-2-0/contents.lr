@@ -1,6 +1,8 @@
-name: getdns 0.2.0
+_model: news-item
 ---
-abstract: Bug fixes, mature native stub and STARTTLS
+title: getdns 0.2.0
+---
+teaser: Bug fixes, mature native stub and STARTTLS
 ---
 archive: yes
 ---

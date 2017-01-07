@@ -1,6 +1,8 @@
-name: getdns @ hackathon table @ Bits-n-Bites @ IETF93
+_model: news-item
 ---
-abstract: Prize winners demo at the hackathon table of IETF93
+title: getdns @ hackathon table @ Bits-n-Bites @ IETF93
+---
+teaser: Prize winners demo at the hackathon table of IETF93
 ---
 archive: yes
 ---

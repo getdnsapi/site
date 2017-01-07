@@ -1,6 +1,8 @@
-name: getdns 0.3.3
+_model: news-item
 ---
-abstract: CNAME validation quickfix release
+title: getdns 0.3.3
+---
+teaser: CNAME validation quickfix release
 ---
 archive: yes
 ---

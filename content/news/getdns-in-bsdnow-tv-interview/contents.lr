@@ -1,6 +1,8 @@
-name: getdns in bsdnow.tv interview
+_model: news-item
 ---
-abstract: Willem talks about getdns in a bsdnow.tv podcast
+title: getdns in bsdnow.tv interview
+---
+teaser: Willem talks about getdns in a bsdnow.tv podcast
 ---
 archive: yes
 ---

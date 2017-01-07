@@ -1,6 +1,8 @@
-name: RIPE69
+_model: news-item
 ---
-abstract: Presentation at the RIPE69 in London
+title: RIPE69
+---
+teaser: Presentation at the RIPE69 in London
 ---
 archive: yes
 ---

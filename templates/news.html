@@ -5,23 +5,23 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Title</th>
         <th>Date</th>
         <th>Link</th>
         <th>Archive</th>
         <th>Tags</th>
-        <th>Abstract</th>
+        <th>Teaser</th>
       </tr>
     </thead>
     <tbody>
       {% for child in this.children %}
         <tr>
-          <th><a href="{{ child|url }}">{{ child.name }}</a></th>
+          <th><a href="{{ child|url }}">{{ child.title }}</a></th>
           <th>{{ child.date }}</th>
           <th><a href="{{ child.link }}">{{ child.link }}</a></th>
           <th>{{ child.archive }}</th>
           <th>{{ child.tags|join(' ') }}</th>
-          <th>{{ child.abstract }}</th>
+          <th>{{ child.teaser }}</th>
 	</tr>
       {% endfor %}
     </tbody>

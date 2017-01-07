@@ -1,4 +1,6 @@
-name: Tutorial @ IETF97
+_model: news-item
+---
+title: Tutorial @ IETF97
 ---
 body: 
 ---
@@ -8,4 +10,4 @@ link: https://ietf.org/meeting/97/tutorials/dns-privacy.html
 ---
 tags: presentation
 ---
-abstract: DNS Privacy tutorial mentioning stubby at the IETF97 in Seoul
+teaser: DNS Privacy tutorial mentioning stubby at the IETF97 in Seoul

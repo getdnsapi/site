@@ -1,6 +1,8 @@
-name: getdns 0.3.0
+_model: news-item
 ---
-abstract: Setting a list of transports, much improved DNSSEC support
+title: getdns 0.3.0
+---
+teaser: Setting a list of transports, much improved DNSSEC support
 ---
 archive: yes
 ---
