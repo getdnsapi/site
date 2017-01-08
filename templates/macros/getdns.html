@@ -112,7 +112,11 @@
 
     {% if thing._model == 'release' %}
     {% elif thing._model == 'presentation' %}
-      <a href="{{ thing.event_url }}"><span class="glyphicon glyphicon-map-marker"></span>&nbsp;&nbsp;{{ thing.event }}</a><br>
+      <a href="{{ thing.event_url }}"><span class="glyphicon glyphicon-map-marker"></span>&nbsp;&nbsp;{{ thing.event }}</a>
+      {% if thing.video_url %}
+        <a style="float: right" href="{{ thing.video_url }}"><span class="glyphicon glyphicon-film"></span></a>
+      {% endif %}
+      <br>
     {% elif thing._model == 'blog-post' %}
     {% elif thing._model == 'news-item' %}
     {% else %}
@@ -163,6 +167,20 @@
         </div>
       {% endfor %}
 {% endmacro %}{# render_3col(things, title, prefix = none) #}
+
+
+{% macro render_4col(things, title, prefix = none, icon = none) %}
+      {{ render_title(title, prefix, icon = icon) }}
+      {% for row in things|batch(4) %}
+        <div class="row thing-row">
+          {% for other in row %}
+            <div class="col-sm-3 small-thing">
+              {{ render_small(other) }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+{% endmacro %}{# render_4col(things, title, prefix = none) #}
 
 
 {% macro render_full_page(thing) %}

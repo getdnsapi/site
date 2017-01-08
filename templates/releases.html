@@ -1,25 +1,8 @@
 {% extends "layout.html" %}
-{% block title %}{{ this.title }}{% endblock %}
-{% block container %}
-  <h2>{{ this.title }}</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Date</th>
-        <th>Teaser</th>
-        <th>Tags</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for child in this.children %}
-        <tr>
-          <th><a href="{{ child|url }}">{{ child.record_label }}</a></th>
-          <th>{{ child.date }}</th>
-          <th>{{ child.teaser }}</th>
-          <th>{{ child.tags|join(' ') }}</th>
-	</tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% endblock container %}
+{% import "macros/getdns.html" as g %}
+{% block body %}
+  {{ g.render_full_page(this.children.first()) }}
+{% endblock body %}
+{% block sidebar %}
+  {{ g.render_thing_sidebar('Releases', this.children) }}
+{% endblock sidebar %}
