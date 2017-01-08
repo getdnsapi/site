@@ -1,10 +1,6 @@
 {% extends "layout.html" %}
-{% block title %}{{ this.title }}{% endblock %}
-{% block container %}
-  <h1>{{ this.title }}</h1>
-  <ul>
-    {% for child in this.children %}
-      <li><a href="{{ child|url }}">{{ child.name }}</a></li>
-    {% endfor %}
-  </ul>
-{% endblock container %}
+{% import "macros/getdns.html" as g %}
+{% block body %}
+  <h1>{{ this.record_label }}</h1>
+  {{ g.render_author_nav() }}
+{% endblock %}

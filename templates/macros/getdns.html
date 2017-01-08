@@ -13,10 +13,9 @@
 
 
 {% macro get_things_by_author(author) %}
-  {% set (PF, BF) = ( F.presenters.contains(author), F.author == author) %}
   {% set things = 
-     ( site.get('/documentation/presentations').children.filter(PF)|list
-     + site.get('/blog').children.filter(BF)|list
+     ( site.get('/documentation/presentations').children.filter(F.presenters.contains(author))|list
+     + site.get('/blog').children.filter(F.author == author)|list
      ) | sort(attribute = 'date', reverse = True)
   %}
   {{ caller(things) }}
@@ -84,6 +83,14 @@
 {% macro render_tag_nav(active=none, stacked=False) %}
   {% for tag in site.query('/tags') %}
     {{ render_tag(tag, tag == active) }}
+    {% if stacked %}<br>{% endif %}
+  {% endfor %}
+{% endmacro %}
+
+
+{% macro render_author_nav(active=none, stacked=False) %}
+  {% for author in site.query('/authors') %}
+    {{ render_author(author, author == active) }}
     {% if stacked %}<br>{% endif %}
   {% endfor %}
 {% endmacro %}
