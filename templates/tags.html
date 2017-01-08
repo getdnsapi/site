@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
-{% from "macros/tags.html" import render_tag_nav %}
-{% block title %}{{ this.title }}{% endblock %}
+{% import "macros/getdns.html" as g %}
 {% block body %}
-  <h2>{{ this.title }}</h2>
-  {{ render_tag_nav(active=none) }}
+  <h1>{{ this.record_label }}</h1>
+  {{ g.render_tag_nav(active=none) }}
 {% endblock %}

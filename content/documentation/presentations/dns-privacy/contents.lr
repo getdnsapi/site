@@ -1,6 +1,8 @@
 date: 2016-11-13
 ---
-event: Tutorial @ IETF97 
+event:
+
+Tutorial @ IETF97 
 ---
 event_url: https://www.ietf.org/meeting/97/tutorials/dns-privacy.html
 ---
@@ -11,3 +13,5 @@ title: DNS Privacy
 slides_url: https://www.ietf.org/proceedings/97/slides/slides-97-edu-sessc-dns-privacy-01.pdf
 ---
 video_url: https://www.youtube.com/watch?v=2JeYIecfwdc
+---
+tags: stubby

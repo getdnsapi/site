@@ -1,13 +1,27 @@
 {% extends "layout.html" %}
-{% from "macros/tags.html" import render_tag_nav %}
-{% block title %}{{ this.title }}{% endblock %}
+{% import "macros/getdns.html" as g %}
 {% block body %}
   <h2>{{ this.title }}</h2>
-  {{ render_tag_nav(active=this._id) }}
+      {{ g.render_tag_nav(this) }}
+
+  
   <hr>
   <ul>
     {% for child in this.children %}
       <li><a href="{{ child|url }}">{{ child.record_label }}</a></li>
     {% endfor %}
   </ul>
+  {% set (PF, RF, BF, NF) = ( F.tags.contains(this)
+                            , F.tags.contains(this)
+			    , F.tags.contains(this)
+			    , F.tags.contains(this))
+  %}
+  {% set things =
+	 ( (site.get('/documentation/presentations').children.filter(PF)|list )
+         + (site.get('/releases').children.filter(RF)|list)
+	 + (site.get('/blog').children.filter(BF)|list)
+	 + (site.get('/news').children.filter(NF)|list)
+	 )|sort(attribute='date', reverse=True)
+  %}
+  {{ things|list|pprint }}
 {% endblock %}

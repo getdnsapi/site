@@ -13,6 +13,47 @@ $carousel-indicator-active-bg: $getdns-red;
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "offcanvas.css";
 
+@font-face {
+	font-family: 'Nunito Sans';
+	font-style: italic;
+	font-weight: 400;
+	src: local('Nunito Sans Italic'), local('NunitoSans-Italic'), url(/static/nunito-sans-400i.ttf) format('truetype');
+}
+
+/* tags */
+a.tag {
+	border-radius: 20px;
+}
+
+.thing-label {
+	text-align: right;
+}
+.thing-header {
+	position: relative;
+	text-align: right;
+}
+
+.thing-header h1 {
+	font-style: italic;
+	font-weight: 400;
+	font-size: 40px;
+	margin-right: 25px;
+	color: $getdns-dark-grey;
+	font-family: 'Nunito Sans', sans-serif;
+	-moz-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(-5deg, 0deg);
+	-webkit-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(-5deg, 0deg);
+	-o-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(-5deg, 0deg);
+	-ms-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(-5deg, 0deg);
+	transform: scale(1) rotate(0deg) translate(0px, 0px) skew(-5deg, 0deg);
+}
+.thing-header img {
+        position: absolute;
+	width: 200px;
+	height: 64px;
+	right: 0;
+	bottom: 0;
+}
+
 /* Brand logo placement */
 .navbar-brand {
 	margin-top: -15px;
