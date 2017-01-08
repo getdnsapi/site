@@ -1,0 +1,105 @@
+{% macro get_tag_list(tag) %}
+  {% set (PF, RF, BF, NF) = ( F.tags.contains(tag), F.tags.contains(tag)
+                            , F.tags.contains(tag), F.tags.contains(tag)) %}
+  {% set things = 
+     ( site.get('/documentation/presentations').children.filter(PF)|list
+     + site.get('/releases').children.filter(RF)|list
+     + site.get('/blog').children.filter(BF)|list
+     + site.get('/news').children.filter(NF)|list
+     ) | sort(attribute = 'date', reverse = True)
+  %}
+  {{ caller(things) }}
+{% endmacro %}
+{% macro render_tag(tag, active=False) %}
+    <a href="{{ tag|url }}" class="btn btn-{%- if active -%}primary{%- else -%}default{%- endif %} tag btn-xs">
+      <span class="glyphicon glyphicon-tag"></span> {{ tag.name }}&nbsp;
+      <span class="badge">{% call(things) get_tag_list(tag) %}{{ things|length }}{% endcall %}</span>
+    </a>
+{% endmacro %}
+{% macro render_tags(thing) %}
+  {% for tag_id in thing.tags %}
+    {{ render_tag(site.get('/tags/' + tag_id)) }}
+  {% endfor %}
+{% endmacro %}
+{% macro render_tag_nav(active=none, stacked=False) %}
+  {% for tag in site.query('/tags') %}
+    {{ render_tag(tag, tag == active) }}
+    {% if stacked %}<br>{% endif %}
+  {% endfor %}
+{% endmacro %}
+{% macro render_full_page(thing) %}
+  <div class="row">
+    <div class="col-sm-3 thing-label">
+        <h1 style="white-space: nowrap">
+        <small style="font-size: 14px; color: #333">
+        {% if thing.has_next() %}
+	  <a href="{{ thing.get_siblings().next_page|url }}"><span class="glyphicon glyphicon-arrow-left"></span></a> &nbsp;
+        {% endif %}
+        <span class="glyphicon glyphicon-calendar"></span>
+        {{ thing.date|dateformat('EEE dd MMM YYYY') }}
+        {% if thing.has_prev() %}
+	&nbsp; <a href="{{ thing.get_siblings().prev_page|url }}"><span class="glyphicon glyphicon-arrow-right"></a>
+        {% endif %}
+	</small>
+	</h1>
+    </div>
+    <div class="col-sm-9 thing-header">
+      <h1>{{ thing.record_label}}</h1>
+      <img src="/static/gd-underline.svg">
+    </div>
+  </div>
+  {% if thing._model == 'release' %}
+    {% for attachement in thing.attachments %}
+      {% if attachement.record_label == 'getdns-' + thing.version + '.tar.gz' %}
+        <div class="row">
+          <div class="col-sm-3 thing-label">
+	    <p style="margin-top: 1em"><b>Download:</b></p>
+	  </div>
+          <div class="col-sm-9">
+	    <div class="btn-group btn-group btn-group-lg">
+              <a href="{{ attachement|url }}" class="btn btn-default"><span class="glyphicon glyphicon-download-alt"></span> &nbsp; {{ attachement.record_label }}</a>
+              {% for signature in thing.attachments %}
+                {% if signature.record_label == 'getdns-' + thing.version + '.tar.gz.asc' %}
+
+                  <a href="{{ signature|url }}" class="btn btn-default"><span class="glyphicon glyphicon-certificate"></span></a>
+                {% endif %}
+	      {% endfor %}
+              {#
+              <span class="btn btn-default"> sha256:</span>
+	      <code class="btn btn-default">{{ thing.sha256 }}</code>
+              #}
+	    </div>
+          </div>
+	</div>
+	<div class="row">
+          <div class="col-sm-3 thing-label">
+	    <b>SHA256:</b>
+	  </div>
+          <div class="col-sm-9">
+	    <code id="sha256-code">{{ thing.sha256 }}</code>
+          </div>
+        </div>
+	</br>
+      {% endif %}
+    {% endfor %}
+
+    <div class="row">
+      <div class="col-sm-3 thing-label">
+        <b>Announcement:</b><br><br>
+        {{ render_tags(thing) }}
+      </div>
+      <div class="col-sm-9">
+        {{ thing.announcement }}
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-3 thing-label">
+        <b>ChangeLog:</b>
+      </div>
+      <div class="col-sm-9">
+        <pre>{{ thing.changelog }}</pre>
+      </div>
+    </div>
+  {% endif %}
+{% endmacro %}

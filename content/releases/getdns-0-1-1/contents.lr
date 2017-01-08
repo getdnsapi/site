@@ -1,0 +1,33 @@
+version: 0.1.1
+---
+date: 2014-03-24
+---
+teaser: Patch release
+---
+archive: yes
+---
+sha256: abb46178de79600c826a438db7e31b2741f7bc9b0bad3707e4323e92a5f37022
+---
+announcement:
+<p>On behalf of the getdns API core team</p>
+<p>release 0.1.1 of our getdns API implementation is now available at:<br />
+<br />
+<a href="https://github.com/getdnsapi/getdns/tree/v0.1.1">https://github.com/getdnsapi/getdns/tree/v0.1.1</a>
+</p>
+<p>Binaries built from these sources will be posted to the project website over the next few days.
+</p>
+<p>A detailed list of changes can be read in the github commit logs, a brief summary is in the ChangeLog file in the source tree.
+</p>
+---
+changelog:
+* 2014-03-24 : Version 0.1.1
+  * default to NOT build extensions (libev, libuv, libevent), handle
+    --with/--without options to configure for them
+  * Fixed some build/make nits
+  * respect configure --docdir=X
+  * Documentation/man page updates
+  * Fix install and cpp guards in getdns_extra.h
+  * Add method to switch between threads and fork mode for unbound
+  * Fixes for libuv integration (saghul)
+  * Fixes for calling getdns_destroy_context within a callback
+  * Fixed signal related defines/decls

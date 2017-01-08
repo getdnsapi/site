@@ -1,0 +1,56 @@
+version: 1.1.0-a2
+---
+date: 2016-10-19
+---
+teaser: Introducting Stubby, a Privacy and Security local end-point stub resolver
+---
+archive: yes
+---
+sha256: b805a30753a8c7cd3d6c5363a74a3e45e19043a92d33bc1062ff561d81d1e210
+---
+announcement:
+
+We have a special NANOG68 second alpha release of getdns 1.1.0 available for early testing of a subset of features planned for this release.
+
+This release introduces **Stubby**, a version of `getdns_query` that listens on  the loopback interface and acts as a local stub resolver daemon.  Stubby reads configuration files from `/etc/stubby.conf` and `$HOME/.stubby.conf`.  Here is an example stubby configuration that configures Stubby to use the DNS-OARC TLS resolvers as its upstream:
+
+```
+{ dns_transport_list: [ GETDNS_TRANSPORT_TLS ]
+, upstream_recursive_servers: [ 184.105.193.78, 2620:ff:c000:0:1::64:25 ]
+}
+````
+
+For more information, see the NANOG68 presentation: <https://getdnsapi.net/presentations/stubby-nanog68.pdf>
+
+Documentation is available at:
+
+* getdns API documentation: <https://getdnsapi.net/spec.html>
+* getdns doxygen: <https://getdnsapi.net/doxygen-1.0/>
+* getdns as a DNS-over-TLS local stub resolver:<https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon>
+
+**Beware** that this documentation is not on par with Stubby operation yet.
+Expect an updated announcement on the website as soon as we have updated the documentation.
+---
+changelog:
+
+* 2016-10-19: Version 1.1.0-a2
+  * Improved TLS connection management
+  * OpenSSL 1.1 support
+  * Stubby, Server version of getdns_query that by default listens
+    on 127.0.0.1 and ::1 and reads config from /etc/stubby.conf
+    and $HOME/.stubby.conf
+
+* 2016-07-14: Version 1.1.0a1
+  * Conversion functions from text strings to getdns native types:
+    getdns_str2dict(), getdns_str2list(), getdns_str2bindata() and
+    getdns_str2int()
+  * A getdns_context_config() function that configures a context
+    with settings given in a getdns_dict
+  * A a getdns_context_set_listen_addresses() function and companion
+    getdns_reply() function to construct simple name servers.
+  * Relocate getdns_query to src/tools and build by default
+  * Enhancements to the logic used to select connection based upstream
+    transports (TCP, TLS) to improve robustness and re-use of
+    connections/upstreams.
+---
+tags: stubby, json-pointers

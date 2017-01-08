@@ -1,0 +1,40 @@
+version: 0.1.6
+---
+date: 2015-01-16
+---
+teaser: Build system bugfixes, cleanup and increased portability
+---
+archive: yes
+---
+sha256: 2024d1a2e68f752b5b197adf6fbd537fc1484d6def33c6122921e3838008a038
+---
+announcement:
+<p>Dear all,</p>
+<p>We have a new release, version 0.1.6 of our getdns API implementation.
+</p>
+<p>This implementation follows the "January 2015" version of the API specification which can be found here: <a href="https://getdnsapi.net/spec/">https://getdnsapi.net/spec/</a>
+</p>
+<p>This release is a bug fix and clean up release only.
+Several build problems of different nature and for different systems have been resolved.
+Most notably the compile failure on OS X introduced in the 0.1.5 release.
+The unit tests can now be built and run on OS X too.
+</p>
+<p>It is now possible to build against all the event libraries on FreeBSD, however because of symbol leakage not all combinations are possible.
+The general rule is that if libunbound is built with libevent, then getdns may be built with libevent and libuv.
+When libunbound is built without libevent, then getdns may be built with libev and libuv.
+</p>
+<p>Furthermore, the manual pages have been updated to be in a format that pleases Debian's Lintian.
+</p>
+<p>Besides this we have a new look for our website: <a href="https://getdnsapi.net/">https://getdnsapi.net/</a>
+The new look has been built with the bootstrap framework to create "responsive" pages that are suitable to be viewed on many different devices with many different and smaller screen sizes.
+</p>
+---
+changelog:
+* 2015-01-16: Version 0.1.6
+  * Fix: linking against libev on FreeBSD
+  * Fix: Let configure report problem on FreeBSD when configuring with
+    libevent and libunbound <= 1.4.22 is not compiled with libevent.
+  * Fix: Build on Mac OS-X
+  * Fix: Lintian errors in manpages
+  * Better libcheck detection
+  * Better portability with UNIX systems

@@ -1,0 +1,44 @@
+version: 0.3.0
+---
+date: 2015-07-17
+---
+teaser: Setting a list of transports, much improved DNSSEC support
+---
+archive: yes
+---
+sha256: b81df685bac9ce1b110199859400f15de2d5d7f377a16d5d194b389d526f3f3c
+---
+announcement:
+<p>Dear All,</p>
+<p>I am pleased to announce the special IETF93 edition release: version 0.3.0 of our getdns API implementation.</p>
+<p>Besides bugfixes and DNS parameter updates, this release follows the July 2015 version of the API specification, which has a new function to set a list of transports:  <tt>getdns_context_set_dns_transport_list()</tt>.</p>
+<p>If only one transport value is specified, it will be the only transport used.  Should it not be available, basic resolution will fail.  Fallback transport options are specified by including multiple values in the list.  The values are <tt>GETDNS_TRANSPORT_UDP</tt>, <tt>GETDNS_TRANSPORT_TCP</tt>, <tt>GETDNS_TRANSPORT_TLS</tt>, or <tt>GETDNS_TRANSPORT_STARTTLS</tt>.  The default is a list containing <tt>GETDNS_TRANSPORT_UDP</tt> then <tt>GETDNS_TRANSPORT_TCP</tt>.</p>
+<p>Connections for transport options <tt>TCP</tt>, <tt>TLS</tt> and <tt>STARTTLS</tt> will now always be kept open and multiple queries will be pipelined over them.  We have a new API function, <tt>getdns_context_set_idle_timeout()</tt>, with which you can specify how long a connection is kept open when there are no pending queries.  The default is 0 milliseconds.</p>
+<p>Besides the transports list, this release has improved DNSSEC support.  Before, with stub resolution, libunbound was still used (in forwarding mode) when one of the DNSSEC extensions was set.  This release has native stub DNSSEC validation on board, so all DNSSEC extensions can now be combined with all features available with stub resolution mode, such as the new transport options, cookies and fine grained control over EDNS0 options.</p>
+<p>In the process to realise native stub validation, both the <tt>dnssec_return_validation_chain</tt> extension and the <tt>getdns_validate_dnssec()</tt> function have been thoroughly improved.</p>
+<p>Before the <tt>dnssec_return_validation_chain</tt> extension only returned the chain of <tt>DS</tt>/<tt>DNSKEY</tt>'s starting at the signers name of signatures.  Now, the extension will return support records needed to assess all DNSSEC statuses.  For example, it will also include the proof of non-existance of a parent <tt>DS</tt> for <tt>INSECURE</tt> answers.  But also for <tt>BOGUS</tt> answers, just like with all DNSSEC statuses, everything needed to reassess that DNSSEC status will be included.</p>
+<p>The <tt>dnssec_return_validation_chain</tt> extension will now also try to return a single <tt>RRSIG</tt> RR per RRset;  The one that was used to validate that RRset.  This to maximally assist in reassessing the DNSSEC status with the <tt>"validation_chain"</tt> as support records.</p>
+<p>The latest improved behaviour can be viewed live on the "Do a query" page of our website: <a href="https://getdnsapi.net/query.html">https://getdnsapi.net/query.html</a></p>
+<p>Complementary to this improvement, the <tt>getdns_validate_dnssec()</tt> function can now also assess DNSSEC status for RRsets without signatures and even empty replies when given such <tt>"validation_chain"</tt> as the <tt>support_records</tt>.  The function can now also validate complete replies, taking into account everything that affects the validation process, such as (but not limited to) <tt>NSEC3</tt> opt-out evaluation and handling of by <tt>DNAME</tt> synthesized <tt>CNAME</tt>s.</p>
+---
+changelog:
+* 2015-07-17: Version 0.3.0
+  * Unit test for spurious execute bits.  Thanks Paul Wouters.
+  * Added new transport list options in API. The option is now an ordered
+    list of GETDNS_TRANSPORT_UDP, GETDNS_TRANSPORT_TCP,
+    GETDNS_TRANSPORT_TLS, GETDNS_TRANSPORT_STARTTLS.
+  * Added new context setting for idle_timeout
+  * CSYNC RR type
+  * EDNS0 COOKIE option code set to 10
+  * dnssec_return_validation_chain for negative and insecure responses.
+  * dnssec_return_validation_chain return a single RRSIG on each RRSET
+    (whenever possible)
+  * getdns_validate_dnssec() accept replies from the replies_tree
+  * getdns_validate_dnssec() asses negative and insecure responses.
+  * Native stub dnssec validation
+  * Implemented getdns_context_set_dnssec_trust_anchors()
+  * Switch freely between stub and recursive mode
+  * getdns_query -k shows default trust anchors
+  * functions and defines to get library and API versions in string
+    and numeric values: getdns_get_version(), getdns_get_version_number(),
+    getdns_get_api_version() and getdns_get_api_version_number()

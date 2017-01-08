@@ -1,0 +1,69 @@
+version: 0.1.5
+---
+date: 2014-10-31
+---
+teaser: Hop-by-hop features for stub resolution & TCP connection reuse
+---
+archive: yes
+---
+sha256: e85d414913008f2a89c0099c8ba29d674abb26828d1d710e42cee9304455461b
+---
+announcement:
+<p>Dear all,</p>
+<p>We have a new release, version 0.1.5 of our getdns API implementation.
+</p>
+<p>This release includes the features from the API that affect hop-by-hop communication and apply to stub resolution mode.
+The "<tt>add_opt_parameters</tt>" extension from <a href="spec.html#3.3">section 3.3</a> of the spec and all <tt>getdns_context_set_edns_*</tt> functions from <a href="spec.html#8.8">section 8.8</a> are now implemented.
+The <tt>GETDNS_TRANSPORT_TCP_ONLY_KEEP_CONNECTIONS_OPEN</tt> transport mode is also implemented with this release.
+IPv6 link-local with <tt>scope_id</tt> upstreams are now supported, both in <tt>/etc/resolv.conf</tt> as via <tt>getdns_context_set_upstream_recursive_servers()</tt>.
+</p>
+<p>In addition, TCP Fast open is available as an optional feature (linux only).  This mechanism enables data exchange during TCP's initial handshake and in doing so it decreases application network latency by one full round-trip time.
+</p>
+<p>To enable these features we have done a major internal rework.
+Before, we used libunbound for both stub and recursive mode, but to get the amount of control needed for the hop-by-hop communication features we had to implement stub resolution independently.
+For this task we also needed to review and refine our extensible event loop mechanism so it is able to handle events for multiple simultaneous connections.
+(This was handled internally by libunbound before)
+</p>
+<p>As a consequence, this release is binary incompatible with respect to the extensible event loop mechanism.
+The <tt>getdns_context_fd()</tt> function that facilitated asynchronous processing based on select is no longer available.
+Instead, <tt>getdns_context_run()</tt> should be used to perform blocking asynchronous processing.
+The <tt>getdns_context_process_async()i</tt> and <tt>getdns_context_get_num_pending_requests()</tt> functions remain for asynchronous processing in non-blocking fashion.
+</p>
+<p>Besides our own three event loop extensions shipped alongside the library (for libevent, libev and libuv) we are aware of only one software package affected by this: the nodejs bindings.
+A new release of the nodejs bindings fitting this release will follow shortly.
+</p>
+<p>The internal rework has many improvements as a consequence.
+Many implementation details that previously had specific code paths for the different modus operandi (i.e. sync/recursive, sync/stub, async/recursive and async stub) could be merged, resulting in a more consistent and easier to maintain code base.
+Consequences can already be seen in the simultaneous querying for IPv4 and IPv6 addresses and the more consistent handling of name spaces, plus the possibility to alter name space evaluation order even after a context has been used to sent out a query.
+</p>
+<p>Note that stub resolution will still use libunbound if any of the DNSSEC extensions are into play.
+Performing stub validation independently from libunbound is on the road map for the next release.
+</p>
+<p>Besides these features, many bugs have been fixed with this release.</p>
+---
+changelog:
+* 2014-10-31: Version 0.1.5
+  * Unit tests for transport settings
+  * Fix: adhere to set maximum UDP payload size
+  * API change: when no maximum UDP payload size is set, outgoing
+    values will adhere to the suggestions in RFC 6891 and may follow
+    a scheme that uses multiple values to maximize receptivity.
+  * Stub mode use 1232 maximum UDP payload size when connecting to an
+    IPv6 upstreams and 1432 with an IPv4 upstream.
+  * Evaluate namespaces (or not) on a per query basis
+  * GETDNS_NAMESPACE_LOCALNAMES namespace now gives just_address_answers
+    only and does not mimic a DNS packet answer anymore
+  * The add_opt_parameters extension
+  * IPv6 scope_id support with link-local addresses.  Both with parsing
+    /etc/resolv.conf and by providing them explicitly via
+    getdns_context_set_upstream_recursive_servers
+  * Query for A and AAAA simultaneously with return_both_v4_and_v6
+  * GETDNS_TRANSPORT_TCP_ONLY_KEEP_CONNECTIONS_OPEN DNS transport
+  * Fix: Answers without RRs in query secion (i.e. REFUSED)
+  * Fix: Return empty response dict on timeout in async mode too
+  * Move spec examples to spec subdirectory
+  * Fix issue#76: Setting UDP Payload size below 512 should not error
+  * Fix: Include OPT RR in response dict always (even without options)
+  * TCP Fast open support (linux only).
+    Enable with the --enable-tcp-fastopen configure option
+  * Bump library version because of binary API change

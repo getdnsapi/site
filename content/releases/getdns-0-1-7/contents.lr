@@ -1,0 +1,70 @@
+version: 0.1.7
+---
+date: 2015-04-08
+---
+teaser: Bugfixes, internal rework and printing of JSON dicts
+---
+archive: yes
+---
+sha256: 72f03bf5d0892b7b0c3093df5c30e694ad21202ea36e122efda9ec56b424b37b
+---
+announcement:
+<p>Dear all,</p>
+<p>We have a new release, version 0.1.7 of our getdns API implementation.</p>
+<p>This release contains bug fixes.
+A notable fix is that <tt>getdns_address()</tt> now schedules <tt>AAAA</tt> query before the A query.
+They were and are queried for simultaneously, but before, the request for the <tt>A</tt> was put on the wire before the request for the <tt>AAAA</tt>.
+Now this order is flipped.</p>
+<p>Besides bug fixes, this release contains the results of a rework shortening the path from wire format to the response dictionary, dramatically decreasing the number of memory allocations and deallocations with each request.</p>
+<p>The release also has some improvement functions that are not part of the official API (yet), such as:
+<ul><li>getter functions for all the context properties
+        (the API has only setter functions for these properties)</li>
+    <li>output to JSON printer functions: 
+        <tt>getdns_print_json_dict()</tt> and <tt>getdns_print_json_list()</tt></li>
+    <li><tt>snprintf</tt> style printer functions:
+        <tt>getdns_pretty_snprint_dict()</tt>, <tt>getdns_pretty_snprint_list()</tt>,
+        <tt>getdns_snprint_json_dict(</tt>) and <tt>getdns_snprint_json_list()</tt></li>
+    <li>a function to register a context update callback function including a user defined argument:
+        <tt>getdns_context_set_update_callback()</tt></li>
+    <li>better method to get the associated text with an getdns error or response code: <tt>getdns_get_errorstr_by_id()</tt></li>
+</ul>
+These new non-API functions are all documented in doxygen style comments in the <tt>getdns_extra.h</tt> header file.</p>
+<p>Besides these improvement functions, the release also includes a draft implementation of the section 6 and 7 version of <a href="http://datatracker.ietf.org/doc/draft-ietf-dnsop-cookies/"><tt>draft-ietf-dnsop-cookies-01.txt</tt></a>.
+This implementation is compatible with (uses the same opcode as) bind's 9.10's implementation.
+You need to specify the <tt>--enable-draft-edns-cookies</tt> option to compile with this feature.
+Using it involves setting a "<tt>edns_cookies</tt>" extension.</p>
+---
+changelog:
+* 2015-04-08: Version 0.1.7
+  * Individual getter functions for context settings
+  * Fix: --with-current-date function to make build deterministically
+    reproducible (i.e. the GETDNS_COMPILATION_COMMENT define from
+    getdns.h contains a date value).  Thanks Ondřej Surý
+  * Fix: Include m4 dir in distribution tarball
+  * Fix: Link build requirements in tests too.  Thanks Ondřej Surý
+  * Fix: Remove executable flags on source files.  Thanks Paul Wouters
+  * Fix: Return "just_address_answers" only when queried for addresses
+  * Eliminate ldns intermediate wireformat parsing
+  * The CSYNC RR type
+  * Fix: canonical_name in response dict returns the canonical name
+    found after following all CNAMEs
+  * Implementation of the section 6 and 7 version of 
+    draft-ietf-dnsop-cookies-01.txt for stub resolution.  Enable with the
+    --enable-draft-edns-cookies option to configure.  Use it by setting the
+    edns_cookies extension to GETDNS_EXTENSION_TRUE.
+  * Pretty printing of lists with:
+    char *getdns_pretty_print_list(getdns_list *list)
+  * Output to json format with:
+    char * getdns_print_json_dict(const getdns_dict *some_dict, int pretty);
+    char * getdns_print_json_list(const getdns_list *some_list, int pretty);
+  * snprintf style versions of the dict, list and json print functions.
+  * Better random number generation with OpenBSD's arc4random
+  * Let getdns_address schedule the AAAA query first.  This results in AAAA
+    being the first in the just_address_answers sections of the response dict.
+  * New context update callback function to also return a user given argument
+    along with the context and which item was changed.
+    Thanks Scott Hollenbeck.
+  * Demotivate use of getdns_strerror and expose getdns_get_errorstr_by_id.
+    Thanks Scott Hollenbeck.
+  * A getter for context update callback, to allow for chaining update
+    callbacks.

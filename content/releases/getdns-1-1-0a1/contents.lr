@@ -1,0 +1,47 @@
+version: 1.1.0a1
+---
+date: 2016-07-14
+---
+teaser: str 2 getdns type conversion functions.  Configure a context by dict.  Functions for creating simple servers.
+---
+archive: yes
+---
+sha256: dce41ecfef9097c9d33384fbaf1d594fb174a94ccf1e04c1718e26d9fc9e279a
+---
+announcement:
+We are please to announce an alpha release of getdns 1.1.0 is being made available for early testing of a subset of features planned for this release.
+
+Updates:
+
+* `getdns_query` is promoted to be a a first class citizen of the getdns suite and it is relocated to `src/tools` and built by default.
+* The 1.1 release exposes several function prototypes (prototyped in getdns_query) to the library user.  Details can be found in the [1.1 doxygen documentation](/doxygen-1.1/) for:
+  * functions to convert text strings to the getdns native types:
+`getdns_str2dict()`, `getdns_str2dict()`, `getdns_str2bindata()` and `getdns_str2int()`
+(Note that the expected input is similar, but not precisely JSON)
+  * a `getdns_context_config()` function that configures a context with settings provided in a getdns_dict.
+This can reduce the amount of code needed to setup a context in a C program dramatically.
+It also provides default values for extensions and allows the trust anchor files to be directly specified.
+  * a `getdns_context_set_listen_addresses()` function, that allows the user to register a request handler function and list of addresses that will be listened on when the eventloop is run.
+The request handler function will be called when a DNS requests arrives, with the request in getdns reply dict format.
+The request handler may construct a response to the request and eventually has to call `getdns_reply()` with that response (or `NULL` to cancel) to answer the request.
+  * Enhancements to the logic used to select connection based upstream transports (TCP, TLS) to improve robustness and re-use of connections/upstreams.  This facilitates using getdns locally as a DNS-over-TLS stub resolver.
+
+Documentation is available at:
+
+* getdns API documentation: <https://getdnsapi.net/spec.html>
+* getdns doxygen: <https://getdnsapi.net/doxygen-1.0/>
+* getdns as a DNS-over-TLS local stub resolver: <https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon>
+---
+changelog:
+* 2016-07-14: Version 1.1.0a1
+  * Conversion functions from text strings to getdns native types:
+    getdns_str2dict(), getdns_str2list(), getdns_str2bindata() and
+    getdns_str2int()
+  * A getdns_context_config() function that configures a context
+    with settings given in a getdns_dict
+  * A a getdns_context_set_listen_addresses() function and companion
+    getdns_reply() function to construct simple name servers.
+  * Relocate getdns_query to src/tools and build by default
+  * Enhancements to the logic used to select connection based upstream
+    transports (TCP, TLS) to improve robustness and re-use of
+    connections/upstreams.

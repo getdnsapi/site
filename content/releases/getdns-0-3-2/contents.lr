@@ -1,0 +1,28 @@
+version: 0.3.2
+---
+date: 2015-09-04
+---
+teaser: Bugfixes & stub only configure option
+---
+archive: yes
+---
+sha256: 6944b0d9fd3fd33ee2fcd8e2dc123a3097ac95255092b4a3b8ee36400f85dba7
+---
+announcement:
+<p>Dear All,</p>
+<p>We have a bugfix release of getdns: version 0.3.2.  The most prominent fix is fallback handling of statefull transports.</p>
+<p>Besides bugfixes, we have two new configure options.  With <tt>--enable-stub-only</tt> getdns will be compiled without <tt>libunbound</tt>.  You can then only use getdns in stub resolution mode and this is also the default resolution mode.</p>
+<p>The<tt>--with-getdns_query</tt> option will build and install the <tt>getdns_query</tt> tool that is part of the getdns test suite, but might have use cases outside that setting too</p>
+---
+changelog:
+* 2015-09-04: Version 0.3.2
+  * Fix returned upstreams list by getdns_context_get_api_information()
+  * Fix some autoconf issues when srcdir != builddir
+  * Fix remove build date from manpage version for reproducable builds
+  * Fix transport fallback issues plus transport fallback unit test script
+  * Fix string bindata's need not contain trailing zero byte
+  * --enable-stub-only configure option for stub only operation.
+    Stub mode will be the default.  Removes the dependency on libunbound
+  * --with-getdns_query compiles and installs the getdns_query tool too
+  * Fix assert on context destruction from a callback in stub mode too
+  * Use a thread instead of a process for running the unbound event loop

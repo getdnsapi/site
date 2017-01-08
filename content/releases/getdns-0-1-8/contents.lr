@@ -1,0 +1,32 @@
+version: 0.1.8
+---
+date: 2015-04-19
+---
+teaser: The Special TNW 2015 release with "happy path" implementation of DNS over TLS
+---
+archive: yes
+---
+sha256: bdd672e59a59070941f853b350ac57a17e9cf6a79c8ed0024d82c77dda703879
+---
+announcement:
+<p>Dear all,</p>
+<p>We have a special The Next Web 2015 Hack Battle feature release of our getdns API implementation</p>
+<p>This release adds a single feature: DNS over TLS on port 1021.
+The feature is offered through two values for use with the <tt>getdns_context_set_dns_transport()</tt> function: <tt>GETDNS_TRANSPORT_TLS_ONLY_KEEP_CONNECTIONS_OPEN</tt> and <tt>GETDNS_TRANSPORT_TLS_FIRST_AND_FALL_BACK_TO_TCP_KEEP_CONNECTIONS_OPEN</tt>.
+</p>
+<p>Coming Wednesday and Thursday, the 22th and 23rd of April, the getdns API will be one of the API's available to use in a Hack Battle at The Next Web Conference in Amsterdam.
+With this feature release we wish to facilitate and inspire the participants of the Hack Batle with this privacy enhanced way to use the DNS.</p>
+<p>Note however that this implementation of DNS over TLS is very much a happy path implementation;
+The new transports only work in stub mode.
+It is not yet possible to change the port for TLS communication and the TLS handshake currently blocks other outstanding callbacks.
+A release that will resolve these issues will follow shortly.
+All other transports remain fully asynchronous with no blocking.
+</p>
+<p>Also note that the transport options in the API are under review and are likely to be modified to provide greater flexibility in the near future.</p>
+<p>Because of the relative smallness and isolation of the new feature, we deemed it safe to do an immediate release.</p>
+---
+changelog:
+* 2015-04-19: Version 0.1.8
+  * The GETDNS_TRANSPORT_TLS_ONLY_KEEP_CONNECTIONS_OPEN and
+    GETDNS_TRANSPORT_TLS_FIRST_AND_FALL_BACK_TO_TCP_KEEP_CONNECTIONS_OPEN
+    DNS over TLS transport options. 

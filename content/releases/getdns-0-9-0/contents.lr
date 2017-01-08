@@ -1,0 +1,145 @@
+version: 0.9.0
+---
+date: 2015-12-31
+---
+teaser: Almost completely feature complete, TLS cert pinning, Initial Windo
+ws support, wire- and zone-format conversion functions
+---
+archive: yes
+---
+sha256: b6b73a501ee79c0fafb0721023eb3a5d0e1bfa047fbe65302db278cb956bd1fe
+---
+announcement:
+<p>Dear All,</p>
+<p>We have a special New Year's Eve release, version 0.9.0 of getdns.</p>
+<p>This release brings the implementation on par with the December 2015 version of the specification and has (almost) all of the still remaining functionality from the specification implemented.  These include:</p>
+<dl><dt>Respecting the given dns root servers in recursive resolution modus</dt>
+    <dd>See this in action with <tt>getdns_query</tt>, for example with the root servers of the Yeti DNS Project (<a href="https://yeti-dns.org/">https://yeti-dns.org/</a>):<br />
+    <blockquote><tt>getdns_query -f yeti.key -R yeti.hints getdnsapi.net A +dnssec_return_status</tt>
+    </blockquote>
+    Where <tt>yeti.key</tt> came from:<br />
+    <a href="https://github.com/BII-Lab/Yeti-Project/raw/master/domain/KSK.pub">https://github.com/BII-Lab/Yeti-Project/raw/master/domain/KSK.pub</a><br />
+    and <tt>yeti.hints</tt> came from:<br />
+    <a href="https://github.com/BII-Lab/Yeti-Project/raw/master/domain/named.cache">https://github.com/BII-Lab/Yeti-Project/raw/master/domain/named.cache</a>
+    </dd>
+
+    <dt>TSIG authentication.</dt>
+    <dd>Specification of upstreams with <tt>getdns_query</tt> has been extended to configure a TSIG name and secret.  From the <tt>getdns_query</tt> help text:
+    <blockquote>
+	<tt>getdns_query [&lt;option&gt; ...] [@&lt;upstream&gt; ...] [+&lt;extension&gt; ...] [&lt;name&gt;] [&lt;type&gt;]</tt><br />
+	<tt>upstreams: @&lt;ip&gt;[%&lt;scope_id&gt;][@&lt;port&gt;][#&lt;tls port&gt;][~&lt;tls name&gt;][^&lt;tsig spec&gt;]</tt><br />
+	<tt>tsig spec: [&lt;algorithm&gt;:]&lt;name&gt;:&lt;secret in Base64&gt;</tt>
+    </blockquote>
+    For example:
+    <blockquote>
+    <tt>getdns_query -s @185.49.141.37^hmac-md5.tsigs.getdnsapi.net:16G69OTeXW6xSQ== getdnsapi.net SOA</tt>
+    </blockquote>
+    You can check the query was <tt>TSIG</tt> authenticated by looking for the <tt>tsig_status</tt> key in the replies in the <tt>replies_tree</tt>.
+    </dd>
+    <dt>Operation of suffixes and the "<tt>append_name</tt>" setting.</dt>
+    <dd>Options have been added to <tt>getdns_query</tt> to try this out too.  A list of suffixes to be tried can be given with the <tt>-Z</tt> option, so that this query:
+    <blockquote><tt>
+    getdns_query -Z getdnsapi.net,com -A www.verisignlabs
+    </tt></blockquote>
+    Will first try to get the addresses for <tt>www.verisignlabs.getdnsapi.net</tt> and will then try and return the successfull lookup of the addresses for <tt>www.verisignlabs.com</tt></dd>
+    <dt>The <tt>add_warning_for_bad_dns</tt> extension.</dt>
+    <dd>For example, this query:
+    <blockquote><tt>
+    	getdns_query +add_warning_for_bad_dns _443._tcp.www.nlnetlabs.nl TXT
+    </tt></blockquote>
+    will result in having the following <tt>"bad dns"</tt> list in the reply in the <tt>replies_tree</tt>:
+    <blockquote><tt>
+    "bad_dns": [ GETDNS_BAD_DNS_CNAME_RETURNED_FOR_OTHER_TYPE<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;, GETDNS_BAD_DNS_ALL_NUMERIC_LABEL ]
+    </tt></blockquote>
+    <dt>
+</dl>
+<p>Other new features and noteworthy improvements are:
+<dl><dt>Functions to convert <tt>getdns_dict</tt>s representing resource records to and from wire- and zone file format.</dt>
+    <dd>Also zone files can be read into a <tt>getdns_list</tt> of <tt>getdns_dict</tt>s representing the resource records in that zone file.  These lists can then conveniently be used with (for example) <tt>getdns_context_set_dns_root_servers()</tt> and <tt>getdns_context_set_dnssec_trust_anchors()</tt>.
+    <p>There is brief doxygen documentation for the conversion functions here:<br />
+    <a href="https://getdnsapi.net/rr_dict2wire">https://getdnsapi.net/rr_dict2wire</a>.</p>
+    <p>Example usage can be found in the unit test package for these functions:<br />
+    <a href="https://getdnsapi.net/260-conversion-functions.c">https://getdnsapi.net/260-conversion-functions.c</a><br />
+    The output produced by this example program:<br />
+<a href="https://getdnsapi.net/260-conversion-functions.good">https://getdnsapi.net/260-conversion-functions.good</a>
+    </p></dd>
+    <dt>TCP Fast Open support whenever available on the platform (including Mac-OS X (new)).</dt>
+    <dt>Client side <tt>edns-tcp-keepalive</tt> support</dt>
+    <dt>Pinning of upstream certificate's public keys with pinsets (with TLS transport)</dt>
+    <dd>Configuration is done per-upstream, with an additional member of the upstream object, <tt>tls_pubkey_pinset</tt>.  This is a list of dicts,  each of which describes a public key pin, which looks like this:
+<blockquote><tt>
+{<br />
+&nbsp;&nbsp;"address_data": &lt;bindata for 185.49.141.38&gt;,<br />
+&nbsp;&nbsp;"address_type": &lt;bindata of "IPv4"&gt;,<br />
+&nbsp;&nbsp;"tls_pubkey_pinset":<br />
+&nbsp;&nbsp;[<br />
+&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"digest": &lt;bindata of "sha256"&gt;,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": &lt;bindata of 0x17d099f483436ddfb6791428cd8aaa6d...&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;},<br />
+&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"digest": &lt;bindata of "sha256"&gt;,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": &lt;bindata of 0x7e8c59467221f606695a797ecc488a6b...&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;]<br />
+}
+</tt></blockquote>
+There is a new argument for <tt>getdns_query</tt>, <tt>-K</tt>, to specify pins.
+All pins are applied to all upstreams.  For example:
+<blockquote><tt>
+getdns_query -s -K 'pin-sha256="foxZRnIh9gZpWnl+zEiKa0EJ2rdCGroMWm02gaxSc9S="' @185.49.141.38~getdnsapi.net -L -m
+</tt></blockquote>
+    </dd>
+    <dt>Initial support for Windows</dt>
+</dl>
+<p>Besides these new functionalities, a few bugs have been fixed.  For a complete overview see the ChangeLog below.</p>
+---
+changelog:
+* 2015-12-31: Version 0.9.0
+  * Update of unofficial extension to the API that supports stub mode 
+    TLS verification. GETDNS_AUTHENTICATION_HOSTNAME is replaced by 
+    GETDNS_AUTHENTICATION_REQUIRED (but remains available as an alias). 
+    Upstreams can now be configured with either a hostname or a SPKI pinset 
+    for TLS authentication (or both). If the GETDNS_AUTHENTICATION_REQUIRED
+    option is used at least one piece of authentication information must be 
+    configured for each upstream, and all the configured authentication 
+    information for an upstream must validate.
+  * Remove STARTTLS implementation (no change to SPEC)
+  * Enable TCP Fast Open when possible. Add OSX support for TFO.
+  * Rename return_call_debugging to return_call_reporting
+  * Bugfix: configure problem with getdns-0.5.1 on OpenBSD
+    Thanks Claus Assmann.
+  * pkg-config support.  Thanks Neil Cook.
+  * Functions to convert from RR dicts to wireformat and text format
+    and vice versa.  Including a function that builds a getdns_list
+    of RR dicts from a zonefile.
+  * Use the with the getdns_context_set_dns_root_servers() function
+    provided root servers in recursing resolution modus.
+  * getdns_query option (-f) to read a DNSSEC trust anchor from file.
+  * getdns_query option (-R) to read a "root hints" file.
+  * Bugfix: Detect and prevent duplicate NSEC(3)s to be returned with
+    dnssec_return_validation_chain.
+  * Bugfix: Remove duplicate RRs from RRsets when DNSSEC verifying
+  * Client side edns-tcp-keepalive support
+  * TSIG support + getdns_query syntax to specify TSIG parameters
+    per upstream: @<ip>[^[<algorithm>:]<name>:<secret in Base64>]
+  * Bugfix: Allow truncated answers to be returned in case of missing
+    fallback transport.
+  * Verify upstream TLS pubkeys with pinsets; A getdns_query option
+    (-K) to attach pinsets to getdns_contexts.
+    Thanks Daniel Kahn Gillmor
+  * Initial support for Windows.  Thanks Gowri Visweswaran
+  * add_warning_for_bad_dns extension
+  * Try and retry with suffixes giving with getdns_context_set_suffix()
+    following directions given by getdns_context_set_append_name()
+    getdns_query options to set suffixes and append_name directions:
+    '-W' to append suffix always (default)
+    '-1' to append suffix only to single label after failure
+    '-M' to append suffix only to multi label name after failure
+    '-N' to never append a suffix
+    '-Z <suffixes>' to set suffixes with the given comma separed list
+  * Better help text for getdns_query (printed with the '-h' option)
+  * Setting the +specify_class extension with getdns_query
+  * Return NOT_IMPLEMENTED for not implemented namespaces, and the
+    not implemented getdns_context_set_follow_redirects() function.

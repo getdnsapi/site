@@ -1,0 +1,37 @@
+version: 0.1.0
+---
+date: 2014-02-26
+---
+teaser: Initial public release
+---
+archive: yes
+---
+sha256: 23ddcdaa3e48ef794bf8695bbb6d51b30cdabc2915e5c448757d4e6baa32bfe8
+---
+announcement:
+<p>getdns 0.1.0 release announcement</p>
+<p>Verisign and NLnet Labs are pleased to announce the first beta release (0.1.0) of an open source implementation of the getdns API specification.
+The project's home page is at <a href="https://getdnsapi.net">https://getdnsapi.net</a>.
+</p>
+<p>getdns is a modern asynchronous DNS API.
+It implements DNS entry points from a design developed and vetted by application developers, in the specification at <a href="http://www.vpnc.org/getdns-api/">http://www.vpnc.org/getdns-api/</a> edited by Paul Hoffman.
+With the development of this API, we intend to offer application developers a modernized and flexible way to access DNS security (DNSSEC) and other powerful new DNS features; a particular hope is to inspire application developers towards innovative security solutions in their applications.
+</p>
+<p>We invite everyone to take a look at the project and to provide feedback to us and even contribute back to the project!
+We expect to have successive releases over the next few months that move us toward a more complete implementation and includes ports to even more platforms.
+</p>
+<p>Signed... the getdns core team:<br />
+<br />
+Craig Despeaux, Verisign, Inc.<br />
+Neel Goyal, Verisign, Inc.<br />
+Olaf Kolkman, NLnet Labs<br />
+Allison Mankin, Verisign Labs.<br />
+Melinda Shore, No Mountain Software LLC<br />
+Willem Toorop, NLnet Labs<br />
+Wouter Wijngaards, NLnet Labs<br />
+Glen Wiley, Verisign, Inc.<br />
+</p>
+---
+changelog:
+* 2014-02-25 : Version 0.1.0
+  * Initial public release of the getdns API
