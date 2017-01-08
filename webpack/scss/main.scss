@@ -54,6 +54,27 @@ a.tag {
 	bottom: 0;
 }
 
+.thing-row {
+	margin-bottom: 2em;
+}
+
+.thing-row .feature-img-link{
+	height: 5em;
+}
+.small-thing-header {
+	position: absolute;
+	bottom: 0;
+	font-size: 16px;
+	text-align: center;
+}
+.small-thing-title {
+	height: 3em;
+	border-bottom: 1px solid $getdns-dark-grey;
+}
+.small-teaser {
+	border-top: 1px solid $getdns-light-grey;
+	margin-top: 1ex;
+}
 /* Brand logo placement */
 .navbar-brand {
 	margin-top: -15px;

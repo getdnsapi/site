@@ -11,3 +11,15 @@ title: Hands on getdns
 slides_url: /slides/getdns-tutorial-RIPE69.pdf
 ---
 video_url: 
+---
+teaser: Tutorial at the RIPE69 in London
+---
+abstract:
+
+his tutorial gives an overview of the getdns API: a modern, application-friendly interface that can be used by app developers to more easily query arbitrary data in the DNS without the need to be DNS protocol experts.
+
+The getdns library has sensible defaults that allow it to be used out of the box with minimal knowledge of DNS configuration parameters, but is also highly configurable as needed by more DNS savvy programmers.
+
+The library can run in full validating resolver mode or in validating stub mode, so it can address the DNSSEC last mile protection problem. It is well suited to more application-oriented uses of DNSSEC, such as DANE.
+
+We will show concrete programming examples using getdns, including an open-source library implementation of the API in several languages: C, python, and Javascript.

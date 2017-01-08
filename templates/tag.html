@@ -1,27 +1,17 @@
 {% extends "layout.html" %}
 {% import "macros/getdns.html" as g %}
 {% block body %}
-  <h2>{{ this.title }}</h2>
+  {% call(things) g.get_things_by_tag(this) %}
+  {{ g.render_3col(things, this.record_label, icon = 'tag') }}
+  {% endcall %}
+{% endblock %}
+{% block sidebar %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="panel-title"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Tags</h1>
+    </div>
+    <div class="panel-body">
       {{ g.render_tag_nav(this) }}
-
-  
-  <hr>
-  <ul>
-    {% for child in this.children %}
-      <li><a href="{{ child|url }}">{{ child.record_label }}</a></li>
-    {% endfor %}
-  </ul>
-  {% set (PF, RF, BF, NF) = ( F.tags.contains(this)
-                            , F.tags.contains(this)
-			    , F.tags.contains(this)
-			    , F.tags.contains(this))
-  %}
-  {% set things =
-	 ( (site.get('/documentation/presentations').children.filter(PF)|list )
-         + (site.get('/releases').children.filter(RF)|list)
-	 + (site.get('/blog').children.filter(BF)|list)
-	 + (site.get('/news').children.filter(NF)|list)
-	 )|sort(attribute='date', reverse=True)
-  %}
-  {{ things|list|pprint }}
+    </div>
+  </div>
 {% endblock %}

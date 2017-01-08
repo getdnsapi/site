@@ -11,3 +11,23 @@ title: getdns API implementation
 slides_url: https://indico.dns-oarc.net/event/19/contribution/4/material/slides/0.pdf
 ---
 video_url: https://indico.dns-oarc.net//getFile.py/access?resId=2&materialId=1&confId=19
+---
+teaser: Presentation at the DNS-OARC Spring Workshop in Warsaw
+---
+abstract:
+
+Verisign and NLnet Labs have recently announced the first beta release (0.1.0) of an open source implementation of the getdns API specification. The project's home page is at <https://getdnsapi.net>.
+
+getdns is a modern asynchronous DNS API. It implements DNS entry points from a design developed and vetted by application developers, in the specification at <http://www.vpnc.org/getdns-api/> edited by Paul Hoffman.
+
+With the implementation of this API, we intend to offer application developers a modernized and flexible way to access DNS security (DNSSEC) and other powerful new DNS features; a particular hope is to inspire application developers towards innovative security solutions in their applications.
+
+In this presentation I will give an application developers view of DNSSEC and describe the independently written getDNS API specification. I will showcase the open source implementation of the specification built by our team of developers from NLNet Labs and Verisign.
+
+The presentation will cover how to
+
+* perform resolution in all the different forms
+* the different ways to perform DNSSEC and the different levels of security assurances applications can get
+* the asynchronous support and how our implementation can integrate in the application developers event base of choice
+* the extensibility of the library the limits of our current implementation and 
+* the roadmap for near-future development

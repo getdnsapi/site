@@ -1,4 +1,4 @@
-{% macro get_tag_list(tag) %}
+{% macro get_things_by_tag(tag) %}
   {% set (PF, RF, BF, NF) = ( F.tags.contains(tag), F.tags.contains(tag)
                             , F.tags.contains(tag), F.tags.contains(tag)) %}
   {% set things = 
@@ -10,23 +10,161 @@
   %}
   {{ caller(things) }}
 {% endmacro %}
+
+
+{% macro get_things_by_author(author) %}
+  {% set (PF, BF) = ( F.presenters.contains(author), F.author == author) %}
+  {% set things = 
+     ( site.get('/documentation/presentations').children.filter(PF)|list
+     + site.get('/blog').children.filter(BF)|list
+     ) | sort(attribute = 'date', reverse = True)
+  %}
+  {{ caller(things) }}
+{% endmacro %}
+
+
+{% macro get_related(thing) %}
+  {% if thing.tags and thing.tags|length > 0 %}
+    {% set tag = site.get('/tags/' + thing.tags[0]) %}
+    {% set Fs = { 'PF': F.tags.contains(tag)
+		, 'RF': F.tags.contains(tag)
+		, 'BF': F.tags.contains(tag)
+		, 'NF': F.tags.contains(tag)} %}
+    {% for tag_id in thing.tags[1:] %}
+      {% set tag = site.get('/tags/' + tag_id) %}
+      {% if Fs.update({'PF': Fs['PF'].or(F.tags.contains(tag))}) %}{% endif %}
+      {% if Fs.update({'RF': Fs['RF'].or(F.tags.contains(tag))}) %}{% endif %}
+      {% if Fs.update({'BF': Fs['BF'].or(F.tags.contains(tag))}) %}{% endif %}
+      {% if Fs.update({'NF': Fs['NF'].or(F.tags.contains(tag))}) %}{% endif %}
+    {% endfor %}
+    {% set things = 
+       ( site.get('/documentation/presentations').children.filter(Fs['PF'])|list
+       + site.get('/releases').children.filter(Fs['RF'])|list
+       + site.get('/blog').children.filter(Fs['BF'])|list
+       + site.get('/news').children.filter(Fs['NF'])|list
+       ) | reject('equalto', thing)| sort(attribute = 'date', reverse = True)
+    %}
+    {{ caller(things) }}
+  {% else %}
+    {{ caller(none) }}
+  {% endif %}
+{% endmacro %}
+
+
 {% macro render_tag(tag, active=False) %}
     <a href="{{ tag|url }}" class="btn btn-{%- if active -%}primary{%- else -%}default{%- endif %} tag btn-xs">
       <span class="glyphicon glyphicon-tag"></span> {{ tag.name }}&nbsp;
-      <span class="badge">{% call(things) get_tag_list(tag) %}{{ things|length }}{% endcall %}</span>
+      <span class="badge">{% call(things) get_things_by_tag(tag) %}{{ things|length }}{% endcall %}</span>
     </a>
 {% endmacro %}
+
+
+{% macro render_author(author, active=False) %}
+    <a href="{{ author|url }}" class="btn btn-{%- if active -%}primary{%- else -%}default{%- endif %} tag btn-xs">
+      <span class="glyphicon glyphicon-user"></span> {{ author.record_label }}&nbsp;
+      <span class="badge">{% call(things) get_things_by_author(author) %}{{ things|length }}{% endcall %}</span>
+    </a>
+{% endmacro %}
+
+
 {% macro render_tags(thing) %}
   {% for tag_id in thing.tags %}
     {{ render_tag(site.get('/tags/' + tag_id)) }}
   {% endfor %}
 {% endmacro %}
+
+
+{% macro render_authors(authors) %}
+  {% for author_id in authors %}
+    {{ render_author(site.get('/authors/' + author_id)) }}
+  {% endfor %}
+{% endmacro %}
+
+
 {% macro render_tag_nav(active=none, stacked=False) %}
   {% for tag in site.query('/tags') %}
     {{ render_tag(tag, tag == active) }}
     {% if stacked %}<br>{% endif %}
   {% endfor %}
 {% endmacro %}
+
+
+{% macro thing_link(thing) %}
+  {% if thing.link %}{{ thing.link }}{% else %}{{ thing|url }}{% endif %}
+{% endmacro %}{# thing_link(thing) #}
+
+
+
+{% macro render_small(thing) %}
+  {% set icon = 'download-alt' if thing._model == 'release'
+           else 'blackboard'   if thing._model == 'presentation'
+           else 'pencil'       if thing._model == 'blog-post'
+           else 'star'         if thing._model == 'news-item'
+           else 'question-sign' %}
+      <a class="feature-img-link" href="{{ thing_link(thing) }}">
+      <div class="small-thing-header">
+        <div class="small-thing-title">
+          <span class="glyphicon glyphicon-{{ icon }}"></span>&nbsp;&nbsp;{{ thing.record_label }}
+        </div>
+      </div>
+      </a>
+      <span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;{{ thing.date|dateformat('EEE dd MMM YYYY') }}<br>
+
+    {% if thing._model == 'release' %}
+    {% elif thing._model == 'presentation' %}
+      <a href="{{ thing.event_url }}"><span class="glyphicon glyphicon-map-marker"></span>&nbsp;&nbsp;{{ thing.event }}</a><br>
+    {% elif thing._model == 'blog-post' %}
+    {% elif thing._model == 'news-item' %}
+    {% else %}
+    {% endif %}
+    {% if thing.author %}
+      {% set author = site.get('/authors/' + thing.author) %}
+      <a class="btn btn-default btn-xs tag" href="{{ author|url }}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ author.record_label }}</a>
+    {% endif %}
+    {% if thing.presenters %}
+      {% for author_id in thing.presenters %}
+        {% set author = site.get('/authors/' + author_id) %}
+        <a class="btn btn-default btn-xs tag" href="{{ author|url }}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ author.record_label }}</a>
+      {% endfor %}
+    {% endif %}
+    {% if thing.tags %}
+      {% for tag_id in thing.tags %}
+        {% set tag = site.get('/tags/' + tag_id) %}
+        <a class="btn btn-default btn-xs tag" href="{{ tag|url }}"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;{{ tag.record_label }}</a>
+      {% endfor %}
+    {% endif %}
+
+    {% if thing.teaser %}
+      <div class="small-teaser">
+        {{ thing.teaser }}
+      </div>
+    {% endif %}
+{% endmacro %}{# render_small(thing) #}
+
+{% macro render_title(title, prefix = none, ncols = 12, icon = none) %}
+  {% if ncols == 12 %}<div class="row">{% endif %}
+  <div class="col-sm-{{ ncols }} thing-header">
+    <h1>{% if prefix %}<span class="thing-header-prefix">{{ prefix }}</span> {% endif %}{% if icon %}<span class="glyphicon glyphicon-{{ icon }}"></span> {% endif %}{{ title }}</h1>
+    <img src="/static/gd-underline.svg">
+  </div>
+  {% if ncols == 12 %}</div>{% endif %}
+{% endmacro %}
+
+
+{% macro render_3col(things, title, prefix = none, icon = none) %}
+      {{ render_title(title, prefix, icon = icon) }}
+      {% for row in things|batch(3) %}
+        <div class="row thing-row">
+          {% for other in row %}
+            <div class="col-sm-4 small-thing">
+              {{ render_small(other) }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+{% endmacro %}{# render_3col(things, title, prefix = none) #}
+
+
 {% macro render_full_page(thing) %}
   <div class="row">
     <div class="col-sm-3 thing-label">
@@ -101,5 +239,76 @@
         <pre>{{ thing.changelog }}</pre>
       </div>
     </div>
-  {% endif %}
-{% endmacro %}
+  {% elif thing._model == 'presentation' %}{# if thing._model == 'release' #}
+    {% if thing.slides_url %}
+      <div class="row">
+        <div class="col-sm-3 thing-label">
+          <p style="margin-top: 1em"><b>Slides:</b></p>
+	</div>
+        <div class="col-sm-9">
+          <a href="{{ thing.slides_url }}" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download-alt"></span> &nbsp; {{ (thing.slides_url|string).split('/')|last|replace('%20', ' ') }}</a>
+        </div>
+      </div>
+    {% endif %}
+    {% if thing.event %}
+      <div class="row">
+        <div class="col-sm-3 thing-label">
+          <b>Event:</b>
+	</div>
+        <div class="col-sm-9">
+	  {% if thing.event_url %}
+            <a href="{{ thing.event_url }}"><span class="glyphicon glyphicon-map-marker"></span> &nbsp; {{ thing.event }}</a>
+	  {% else %}
+            <span class="glyphicon glyphicon-map-marker"></span> &nbsp; {{ thing.event }}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    <br>
+    <div class="row">
+      <div class="col-sm-3 thing-label">
+        {% if thing.presenters %}
+          {{ render_authors(thing.presenters) }}
+	  <br><br>
+	{% endif %}
+        {{ render_tags(thing) }}
+      </div>
+      <div class="col-sm-9">
+        {% if thing.embedded_video_url %}
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{{ thing.embedded_video_url }}" allowfullscreen></iframe>
+          </div>
+	{% elif thing.video_url %}
+            <a href="{{ thing.video_url }}"><span class="glyphicon glyphicon-film"></span> &nbsp; Video</a>
+        {% endif %}
+        {% if thing.abstract %}
+	  {{ thing.abstract }}
+        {% else %}
+	  {{ thing.teaser }}
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}{# if thing._model == 'release' #}
+  {% call(related) get_related(thing) %}
+    {% if related %}
+      {{ render_3col(related, 'Related') }}
+    {% endif %}
+  {% endcall %}
+{% endmacro %}{# macro render_full_page(thing) #}
+
+
+{% macro render_thing_sidebar(title, things, active = none) %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="panel-title">{{ title }}</h1>
+    </div>
+    <div class="list-group list-group-default">
+      {% for thing in things %}
+        <a href="{{ thing_link(thing) }}" class="list-group-item{% if thing is sameas active %} active{% endif %}">
+	  <b>{{ thing.record_label }}</b> {{ thing.date }}<br>
+          {{ thing.teaser }}
+	</a>
+      {% endfor %}
+    </div>
+  </div>
+{% endmacro %}{# render_thing_sidebar(title, things, active = none) #}

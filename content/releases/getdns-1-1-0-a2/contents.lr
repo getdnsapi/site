@@ -53,4 +53,4 @@ changelog:
     transports (TCP, TLS) to improve robustness and re-use of
     connections/upstreams.
 ---
-tags: stubby, json-pointers
+tags: stubby

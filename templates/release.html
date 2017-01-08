@@ -3,3 +3,6 @@
 {% block body %}
   {{ g.render_full_page(this) }}
 {% endblock body %}
+{% block sidebar %}
+  {{ g.render_thing_sidebar('Releases', site.get('/releases').children, this) }}
+{% endblock sidebar %}

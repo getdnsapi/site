@@ -11,3 +11,7 @@ title: getdns API implementation
 slides_url: https://ripe68.ripe.net/presentations/268-getdns-API-Implementation.pdf
 ---
 video_url: https://ripe68.ripe.net/archives/video/156/
+---
+teaser: Lightning talk at the Open Source Working Group at RIPE 68 in Warsaw
+---
+First a talk explaining why a validating stub resolver is needed for DANE.  Then a report on the hack battle we organized at The Next Web conference in Amsterdam last April where four teams used the library to build applications.  See also this blog post about that:

@@ -1,8 +1,6 @@
 date: 2016-11-13
 ---
-event:
-
-Tutorial @ IETF97 
+event: Tutorial @ IETF97 
 ---
 event_url: https://www.ietf.org/meeting/97/tutorials/dns-privacy.html
 ---
@@ -14,4 +12,12 @@ slides_url: https://www.ietf.org/proceedings/97/slides/slides-97-edu-sessc-dns-p
 ---
 video_url: https://www.youtube.com/watch?v=2JeYIecfwdc
 ---
+embedded_video_url: https://www.youtube.com/embed/2JeYIecfwdc
+---
 tags: stubby
+---
+teaser: DNS Privacy tutorial mentioning stubby at the IETF97 in Seoul
+---
+abstract:
+
+DNS is one of the oldest pieces of protocol "Infrastructure" used in the Internet, and the most widely used. Confidentiality or privacy of users' DNS queries and responses was not included in its design. The DPRIVE working group was created to design a mechanism to add a layer of confidentiality to DNS queries, without adversely impacting the existing DNS protocol or the user base. This talk will discuss the various ways DNS queries are exposed to leakage and surveillance, what has been designed and implemented, and where we are going next.

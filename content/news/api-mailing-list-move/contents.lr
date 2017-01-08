@@ -9,3 +9,5 @@ archive: yes
 date: 2015-07-23
 ---
 link: mailman/listinfo/spec
+---
+tags: announcement

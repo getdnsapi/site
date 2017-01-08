@@ -11,3 +11,9 @@ title: DNSSEC via a New Stub Resolver
 slides_url: http://cdn.oreillystatic.com/en/assets/1/event/115/DNSSEC%20Via%20a%20New%20Stub%20Resolver%20Presentation.pdf
 ---
 video_url: /videos/353_dnssec_via_a_new_stub_resolver_allison_mankin_willem_toorop_neel_goyal_and_glen_wiley.mp4
+---
+teaser: Presentation at the OSCON 2014 in Portland
+---
+abstract:
+
+Many developers don’t realize how much they rely on the DNS and how important some of the modern improvements to the DNS are to building reliable and secure applications. We first take a few minutes to explain how the DNS works from an application’s perspective and provide context by explaining the most essential uses of DNSSEC. The need for a more modern interface to the DNS (beyond the libc entry points) is obvious, however so far there isn’t a commonly accepted standard. We explore the origins of the independently commissioned specification documented as the getDNS API and then dig into the most important features of the specification. The balance of the talk covers the Open Source implementation of that specification whose first public release is scheduled for February 25, 2014. The core team is comprised of developers at Verisign and NLNet Labs and is spread from Alaska to the mid-Atlantic US to the Netherlands. Our team has leveraged some simple tools to make collaboration effective and we will share our techniques for managing geographic diversity. We spend some time to explore how we chose the BSD license for the project and how we are leveraging hackathons and other means of gaining feedback from developers outside the team as we build the implementation.

@@ -11,3 +11,20 @@ title: How we are developing a next generation DNS API for applications
 slides_url: https://indico.dns-oarc.net/event/22/session/8/contribution/19/material/slides/0.pdf
 ---
 video_url: https://www.youtube.com/watch?v=lKFctDUFY0U
+---
+embedded_video_url: https://www.youtube.com/embed/lKFctDUFY0U
+---
+teaser: Presentation at the DNS-OARC24 in Buenos Aires
+---
+abstract:
+
+Many new and developing DNS features have emerged in recent years to improve both the security and privacy of DNS ( e.g. DNSSEC/DANE and DNS-over-TCP/TLS). A major reason for the lack of uptake and deployment of these features by applications is that existing DNS APIs either do not support the features or do not provide an application friendly interface. To solve this problem the getdns API was developed with the main goals of:
+
+* Ease of use by application developers across a variety of languages
+* DNS capabilities that most application developers might want now or in the next few years
+
+We present an implementation of the getdns API (verging on production release) and discuss how it has evolved through close involvement with application developers and standards developments. This collaborative development model has also helped to identify practical and implementation specific roadblocks to real-world deployment particularly for DANE and DNSSEC. As a result the API has been refined and the implementation provides easy access to DNS data both directly in C and via a range of bindings including Python, nodejs and Java.
+
+Participation by the development team in multiple international hackathons has also demonstrated how the API enables rapid development of prototype implementations (including many DNS privacy related IETF drafts) with getdns proving a powerful research tool in these areas.
+
+Integration of getdns into operating systems is also discussed, as it the fact that by enabling new DNS features for client applications the API will create demand for upstream services which is of consideration to operators.

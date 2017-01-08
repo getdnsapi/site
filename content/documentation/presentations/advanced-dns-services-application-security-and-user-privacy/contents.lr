@@ -2,7 +2,7 @@ date: 2016-05-31
 ---
 event: PyCon 2016
 ---
-event_url: https://indico.dns-oarc.net/event/22/session/8/contribution/19
+event_url: https://us.pycon.org/2016/schedule/presentation/2004/
 ---
 presenters: melinda-shore
 ---
@@ -11,3 +11,17 @@ title: Advanced DNS Services: Application Security and User Privacy
 slides_url: http://www.slideshare.net/MelindaShore/getdns-pycon-presentation
 ---
 video_url: https://www.youtube.com/watch?v=404-wV3FK_k
+---
+embedded_video_url: https://www.youtube.com/embed/404-wV3FK_k
+---
+teaser: Talk at PycCon 2016 about how to use new DNS features from python with getdns
+---
+abstract:
+
+Network application security often depends on the security of the Public Key Infrastructure (PKI), which contains the cryptographic information that applications need to be able to confirm that the server or peer with which they're exchanging data really is who it says it is. However, there have been a number of high-profile instances of certificate "misissuance" over the past few years, in which a certificate used to identify a server is cryptographically valid but was issued to an entity other than the one it claims to be.
+
+There have been a number of responses to the misissuance problem. One of these is the DANE (DNS-based Authentication of Named Entities) protocol, which is based on the notion that with DNSSEC being available to provide a cryptographic binding between a domain name and its addresses, the DNS can now be leveraged to create a binding between a domain name and its public key certificates.
+
+DANE introduces some new DNS record types containing certificates, and a new trust model which is not based in trust roots defined by certification authorities but rather in a domain making assertions about itself. The initial focus in DANE was on supporting TLS server certificates but has expanded to include support for keying material for individual users, such as PGP and S/MIME.
+
+In this talk we provide an introduction to DANE and to some user privacy enhancements, explain their applicability to application security problems, and show how to implement these in Python using the getdns module. getdns won "Best Internet Security Improvement" at the November 2015 IETF Hackathon.
