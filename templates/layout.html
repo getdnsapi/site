@@ -26,8 +26,8 @@
       </div><!-- class="navbar-header" -->
       <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-            {% for page in site.get('/').children if page._model not in ('authors', 'news', 'tags') %}
-              {% if page.children and page._model != 'blog' %}
+            {% for page in site.get('/').children if page.in_menu  %}
+              {% if page.children and not page.no_submenu %}
             <li class="nav-item dropdown {% if this.is_child_of(page) or this == page %}active{% endif %}">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.record_label }}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

@@ -2,7 +2,7 @@
   {% set (PF, RF, BF, NF) = ( F.tags.contains(tag), F.tags.contains(tag)
                             , F.tags.contains(tag), F.tags.contains(tag)) %}
   {% set things = 
-     ( site.get('/documentation/presentations').children.filter(PF)|list
+     ( site.get('/presentations').children.filter(PF)|list
      + site.get('/releases').children.filter(RF)|list
      + site.get('/blog').children.filter(BF)|list
      + site.get('/news').children.filter(NF)|list
@@ -14,7 +14,7 @@
 
 {% macro get_things_by_author(author) %}
   {% set things = 
-     ( site.get('/documentation/presentations').children.filter(F.presenters.contains(author))|list
+     ( site.get('/presentations').children.filter(F.presenters.contains(author))|list
      + site.get('/blog').children.filter(F.author == author)|list
      ) | sort(attribute = 'date', reverse = True)
   %}
@@ -37,7 +37,7 @@
       {% if Fs.update({'NF': Fs['NF'].or(F.tags.contains(tag))}) %}{% endif %}
     {% endfor %}
     {% set things = 
-       ( site.get('/documentation/presentations').children.filter(Fs['PF'])|list
+       ( site.get('/presentations').children.filter(Fs['PF'])|list
        + site.get('/releases').children.filter(Fs['RF'])|list
        + site.get('/blog').children.filter(Fs['BF'])|list
        + site.get('/news').children.filter(Fs['NF'])|list

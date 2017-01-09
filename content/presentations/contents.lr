@@ -1,0 +1,233 @@
+_model: presentations
+---
+title: Presentations
+---
+order: 60
+---
+body:
+
+#### presentation ####
+date: 2016-11-13
+----
+event: Tutorial @ IETF97 
+----
+event_url: https://www.ietf.org/meeting/97/tutorials/dns-privacy.html
+----
+presenters: sara-dickinson
+----
+title: DNS Privacy
+----
+slides_url: https://www.ietf.org/proceedings/97/slides/slides-97-edu-sessc-dns-privacy-01.pdf
+----
+video_url: https://www.youtube.com/watch?v=2JeYIecfwdc
+#### presentation ####
+date: 2016-10-19
+----
+event: NANOG68
+----
+event_url: https://www.nanog.org/meetings/nanog68/home
+----
+presenters: willem-toorop
+----
+title: Stubby
+----
+slides_url: https://www.nanog.org/sites/default/files/3_stubby-nanog68.pdf
+----
+video_url: https://www.youtube.com/watch?v=lSgmoYDpyMI&t=12m45s
+
+#### presentation ####
+date: 2016-07-17
+----
+event: Hackathon @ IETF96
+----
+event_url: https://ietf.org/hackathon/96-hackathon.html
+----
+presenters: allison-mankin
+----
+title: DNS/DNSSEC/DPRIVE
+----
+slides_url: /slides/IETF-Hackathon-96-DNS-Team-Results.pdf
+----
+video_url: 
+#### presentation ####
+date: 2016-05-31
+----
+event: PyCon 2016
+----
+event_url: https://indico.dns-oarc.net/event/22/session/8/contribution/19
+----
+presenters: melinda-shore
+----
+title: Advanced DNS Services: Application Security and User Privacy
+----
+slides_url: http://www.slideshare.net/MelindaShore/getdns-pycon-presentation
+----
+video_url: https://www.youtube.com/watch?v=404-wV3FK_k
+#### presentation ####
+date: 2016-03-31
+----
+event: DNS-OARC24
+----
+event_url: https://indico.dns-oarc.net/event/22/session/8/contribution/19
+----
+presenters: sara-dickinson, willem-toorop
+----
+title: How we are developing a next generation DNS API for applications
+----
+slides_url: https://indico.dns-oarc.net/event/22/session/8/contribution/19/material/slides/0.pdf
+----
+video_url: https://www.youtube.com/watch?v=lKFctDUFY0U
+#### presentation ####
+date: 2016-02-03
+----
+event: Interview @ BSD Now
+----
+event_url: http://www.bsdnow.tv/episodes/2016_02_04-dns_blackholes_and_willem
+----
+presenters: willem-toorop
+----
+title: DNS, Black Holes & Willem
+----
+slides_url:
+----
+video_url: http://www.bsdnow.tv/episodes/2016_02_04-dns_blackholes_and_willem
+#### presentation ####
+date: 2015-11-19
+----
+event: DNS-WG @ RIPE71
+----
+event_url: https://ripe71.ripe.net/programme/meeting-plan/dns-wg/#thu2
+----
+presenters: willem-toorop
+----
+title: DNSSEC for Legacy Applications
+----
+slides_url: https://ripe71.ripe.net/presentations/180-DNSSEC-for-Legacy-Applications.pdf
+----
+video_url: https://ripe71.ripe.net/archives/video/1221
+#### presentation ####
+date: 2015-10-21
+----
+event: DNSSEC-WS @ ICANN54
+----
+event_url: https://meetings.icann.org/en/dublin54/schedule/wed-dnssec
+----
+presenters: sara-dickinson
+----
+title: DNSSEC for Legacy Applications
+----
+slides_url: https://meetings.icann.org/en/dublin54/schedule/wed-dnssec/presentation-legacy-applications-21oct15-en.pdf
+----
+video_url: https://www.youtube.com/watch?v=gZyF_blIYX0&t=6m26s
+#### presentation ####
+date: 2015-09-13
+----
+event: vBSDcon 2015
+----
+event_url: https://www.verisign.com/en_US/internet-technology-news/verisign-events/vbsdcon/index.xhtml
+----
+presenters: willem-toorop
+----
+title: getdns - A new stub resolver
+----
+slides_url: /slides/getdns-a-new-stub-resolver-vbsdcon-2015-expanded.pdf
+----
+video_url: https://www.youtube.com/watch?v=73M7h56Dsas
+#### presentation ####
+date: 2015-05-14
+----
+event: OS-WG @ RIPE70
+----
+event_url: https://ripe70.ripe.net/programme/meeting-plan/os-wg/
+----
+presenters: willem-toorop
+----
+title: getdns API implementation
+----
+slides_url: https://ripe70.ripe.net/presentations/135-getdns-oswg-lt-ripe70.pdf
+----
+video_url: https://ripe70.ripe.net/archives/video/98/
+#### presentation ####
+date: 2015-03-26
+----
+event: Bits-n-Bites @ IETF92
+----
+event_url: http://www.ietf.org/meeting/92/index.html
+----
+presenters: sara-dickinson, gowri-visweswaran, willem-toorop
+----
+title: getdns API
+----
+slides_url: /slides/getdns-poster-IETF92.pdf
+----
+video_url:
+#### presentation ####
+date: 2014-11-03
+----
+event: Tutorial @ RIPE69
+----
+event_url: https://ripe69.ripe.net/programme/meeting-plan/tutorials/
+----
+presenters: sara-dickinson, shumon-huque, glen-wiley
+----
+title: Hands on getdns
+----
+slides_url: /slides/getdns-tutorial-RIPE69.pdf
+----
+video_url: 
+#### presentation ####
+date: 2014-07-24
+----
+event: OSCON2014
+----
+event_url: http://conferences.oreilly.com/oscon/oscon2014/public/schedule/detail/34610
+----
+presenters: allison-mankin, willem-toorop, neel-goyal, glen-wiley
+----
+title: DNSSEC via a New Stub Resolver
+----
+slides_url: http://cdn.oreillystatic.com/en/assets/1/event/115/DNSSEC%20Via%20a%20New%20Stub%20Resolver%20Presentation.pdf
+----
+video_url: /videos/353_dnssec_via_a_new_stub_resolver_allison_mankin_willem_toorop_neel_goyal_and_glen_wiley.mp4
+#### presentation ####
+date: 2014-06-25
+----
+event: DNSSEC-WS @ ICANN50
+----
+event_url: https://london50.icann.org/en/schedule/wed-dnssec
+----
+presenters: willem-toorop
+----
+title: getdns API implementation
+----
+slides_url: https://london50.icann.org/en/schedule/wed-dnssec/presentation-dnssec-getdns-api-25jun14-en.pdf
+----
+video_url: https://london50.icann.org/en/schedule/wed-dnssec/ac-dnssec-25jun14-en
+#### presentation ####
+date: 2014-05-14
+----
+event: OS-WG @ RIPE68
+----
+event_url: https://ripe68.ripe.net/programme/meeting-plan/os-wg/
+----
+presenters: willem-toorop
+----
+title: getdns API implementation
+----
+slides_url: https://ripe68.ripe.net/presentations/268-getdns-API-Implementation.pdf
+----
+video_url: https://ripe68.ripe.net/archives/video/156/
+#### presentation ####
+date: 2014-05-11
+----
+event: DNS-OARC 2014 Spring-WS
+----
+event_url: https://indico.dns-oarc.net//conferenceDisplay.py?confId=19
+----
+presenters: willem-toorop
+----
+title: getdns API implementation
+----
+slides_url: https://indico.dns-oarc.net/event/19/contribution/4/material/slides/0.pdf
+----
+video_url: https://indico.dns-oarc.net//getFile.py/access?resId=2&materialId=1&confId=19
