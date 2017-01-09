@@ -155,6 +155,7 @@
 {% macro render_title(title, prefix = none, ncols = 12, icon = none) %}
   {% if ncols == 12 %}<div class="row">{% endif %}
   <div class="col-sm-{{ ncols }} thing-header">
+    <hr style="position: absolute; right: 0;  bottom: -7px; border: 0; width: 70%; height: 0; border-top: 1px solid red;">
     <h1>{% if prefix %}<span class="thing-header-prefix">{{ prefix }}</span> {% endif %}{% if icon %}<span class="glyphicon glyphicon-{{ icon }}"></span> {% endif %}{{ title }}</h1>
     <img src="/static/gd-underline.svg">
   </div>
@@ -206,10 +207,7 @@
 	</small>
 	</h1>
     </div>
-    <div class="col-sm-9 thing-header">
-      <h1>{{ thing.record_label}}</h1>
-      <img src="/static/gd-underline.svg">
-    </div>
+    {{ render_title(thing.record_label, ncols =  9) }}
   </div>
   {% if thing._model == 'release' %}
     {% for attachement in thing.attachments %}
