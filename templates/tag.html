@@ -8,7 +8,7 @@
 {% block sidebar %}
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h1 class="panel-title"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Tags</h1>
+      <h1 class="panel-title"><a href="{{ site.get('/tags')|url }}"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Tags</a></h1>
     </div>
     <div class="panel-body">
       {{ g.render_tag_nav(this) }}

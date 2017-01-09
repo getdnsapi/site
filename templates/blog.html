@@ -1,15 +1,8 @@
 {% extends "layout.html" %}
-{% from "macros/blog.html" import render_blog_post, render_blog_sidebar %}
-{% from "macros/pagination.html" import render_pagination %}
-{% block title %}{{ this.title }}{% endblock %}
+{% import "macros/getdns.html" as g %}
 {% block body %}
-  {% for child in this.pagination.items %}
-    {{ render_blog_post(child, from_index=true) }}
-  {% endfor %}
-
-  {{ render_pagination(this.pagination) }}
-{% endblock %}
+  {{ g.render_full_page(this.children.first()) }}
+{% endblock body %}
 {% block sidebar %}
-  {{ render_blog_sidebar(none) }}
-  {{ render_pagination(this.pagination) }}
-{% endblock %}
+  {{ g.render_thing_sidebar('Examples', this.children, link = this ) }}
+{% endblock sidebar %}

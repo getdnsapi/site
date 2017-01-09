@@ -322,10 +322,10 @@
 {% endmacro %}{# macro render_full_page(thing) #}
 
 
-{% macro render_thing_sidebar(title, things, active = none) %}
+{% macro render_thing_sidebar(title, things, active = none, link = none) %}
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h1 class="panel-title">{{ title }}</h1>
+      <h1 class="panel-title">{% if link %}<a href="{{ link|url }}">{% endif %}{{ title }}{% if link %}</a>{% endif %}</h1>
     </div>
     <div class="list-group list-group-default">
       {% for thing in things %}

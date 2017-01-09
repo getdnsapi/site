@@ -1,10 +1,8 @@
 {% extends "layout.html" %}
-{% from "macros/blog.html" import render_blog_post, render_blog_sidebar %}
-{% from "macros/pagination.html" import render_pagination %}
-{% block title %}{{ this.title }}{% endblock %}
+{% import "macros/getdns.html" as g %}
 {% block body %}
-  {{ render_blog_post(this) }}
-{% endblock %}
+  {{ g.render_full_page(this) }}
+{% endblock body %}
 {% block sidebar %}
-  {{ render_blog_sidebar(this) }}
-{% endblock %}
+  {{ g.render_thing_sidebar('Examples', site.get('/blog').children, this, link = site.get('/blog')) }}
+{% endblock sidebar %}

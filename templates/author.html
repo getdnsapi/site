@@ -8,7 +8,7 @@
 {% block sidebar %}
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h1 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Authors</h1>
+      <h1 class="panel-title"><a href="{{ site.get('/authors')|url }}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Authors</a></h1>
     </div>
     <div class="panel-body">
       {{ g.render_author_nav(this) }}

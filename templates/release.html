@@ -4,5 +4,5 @@
   {{ g.render_full_page(this) }}
 {% endblock body %}
 {% block sidebar %}
-  {{ g.render_thing_sidebar('Releases', site.get('/releases').children, this) }}
+  {{ g.render_thing_sidebar('Releases', site.get('/releases').children, this, link = site.get('/releases')) }}
 {% endblock sidebar %}
