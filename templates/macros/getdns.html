@@ -15,7 +15,7 @@
 {% macro get_things_by_author(author) %}
   {% set things = 
      ( site.get('/presentations').children.filter(F.presenters.contains(author))|list
-     + site.get('/blog').children.filter(F.author == author)|list
+     + site.get('/blog').children.filter(F.author == author._id)|list
      ) | sort(attribute = 'date', reverse = True)
   %}
   {{ caller(things) }}
@@ -313,7 +313,20 @@
         {% endif %}
       </div>
     </div>
-  {% endif %}{# if thing._model == 'release' #}
+  {% elif thing._model == 'blog-post' %}{# if thing._model == 'presentation' #}
+    <div class="row">
+      <div class="col-sm-3 thing-label">
+        {% if thing.author %}
+          {{ render_author(site.get('/authors/'+thing.author)) }}
+	  <br><br>
+	{% endif %}
+        {{ render_tags(thing) }}
+      </div>
+      <div class="col-sm-9">
+        {{ thing.body }}
+      </div>
+    </div>
+  {% endif %}{# elif thing._model == 'blog-post' #}
   {% call(related) get_related(thing) %}
     {% if related %}
       {{ render_3col(related, 'Related') }}

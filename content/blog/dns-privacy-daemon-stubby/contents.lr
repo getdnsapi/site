@@ -1,0 +1,190 @@
+title: DNS Privacy daemon - Stubby
+---
+author: sara-dickinson
+---
+date: 2016-11-30
+---
+tags: stubby
+---
+teaser: A reference  page on how to get up and running with Stubby!
+---
+body:
+
+# Stubby
+
+Stubby is the name given to a mode of using [getdns](https://getdnsapi.net/) which enables it to act as a local **DNS Privacy stub resolver** (using DNS-over-TLS). Stubby encrypts DNS queries sent from a client machine (desktop or laptop) to a DNS Privacy resolver increasing end user privacy. Stubby is in the early stages of development but is suitable for technical/advanced users. A more generally user-friendly version is on the way!
+
+It is recommended to use the latest release of the 1.1 version of getdns to have the most up to date version of Stubby.
+
+In this mode Stubby (getdns) does several things
+
+* Runs as a daemon
+* By default obtains its configuration information from the configuration file at `/etc/stubby.conf`
+* Can be configured to listen on the loopback address and send all outgoing DNS queries received on that address out over TLS to a DNS Privacy server
+* Can be configured with authentication information for DNS Privacy servers and instructed to use either a 'Strict' or an 'Opportunistic' Profile as described in [Authentication and (D)TLS Profile for DNS-over-(D)TLS](https://datatracker.ietf.org/doc/draft-ietf-dprive-dtls-and-tls-profiles/)
+
+
+# Building Stubby
+
+## Dependencies
+
+In this mode, the only dependency is OpenSSL (version 1.0.2 or later is required for hostname authentication to be supported). If this is installed in a non-standard location on your system use the `--with-ssl` option to `configure` below to specify where it is.
+
+### Linux
+
+It may be necessary to install [1.0.2 from source](https://openssl.org/source/openssl-1.0.2h.tar.gz) for most Linux distros.
+
+### OS X
+
+It is recommended to [install OpenSSL using homebrew](http://brewformulas.org/Openssl), in which case use the following in the `configure` line in step 1.3 below:
+
+```sh
+--with-ssl=/usr/local/opt/openssl/
+```
+
+## Download the getdns source
+
+Either clone the code:
+
+```sh
+> git clone https://github.com/getdnsapi/getdns.git
+> cd getdns
+> git checkout release/1.1.0-alpha3
+```
+
+or grab a tarball from this page: [Latest getdns releases](https://getdnsapi.net/releases/)
+
+## Build the code
+
+Note that on Mac OS X you will need the developer tools from Xcode to compile the code. And you may need to use brew to install glibtool (and then use glibtoolize below), autoconf and automake.
+
+```sh
+> git submodule update --init
+> libtoolize -ci
+> autoreconf -fi
+> mkdir build
+> cd build
+> ../configure --prefix=<install_location> --without-libidn --enable-stub-only
+> make
+> sudo make install]]></ac:plain-text-body></ac:structured-macro>
+```
+
+Logging/debugging
+
+> **`--enable-debug-daemon`**
+>> If you just want to see the connection statistics then use the `--enable-debug-daemon` option instead to the `configure` line above.
+> **`--enable-debug-stub`**
+>> If you want to see very detailed debug information as messages are processed (including connection statistics) then add the `--enable-debug-stub` option to the `configure` line above.
+
+## Create a config file
+
+Stubby will use the config file at `/etc/stubby.conf` by default if it exists, or the config file location can be specified on the command line using the `-C` flag.
+(Note: With no config file stubby will use UDP to the default nameservers for queries).
+
+Changes to the config file require a restart of Stubby.
+
+The config file below is an example that will configure Stubby to:
+
+* listen on IPv4 and IPv6 on port 53 on the loopback address
+* use TLS over IPv4 to the NLnet labs test DNS Privacy Server for outgoing queries
+* enforce a 'Strict' Usage Profile based authentication of both a domain name and a SPKI pinset (Note the hex representation of the SPKI pin is required here, not the base64 encoded form)
+* (If Opportunistic mode is desired, simply remove the `tls_authentication: GETDNS_AUTHENTICATION_REQUIRED` field)
+* use an EDNS0 Keepalive timeout of 10s unless overridden by the server
+* use EDNS0 Client subnet privacy and enable Padding of DNS requests to hide the message size
+
+```
+{ resolution_type: GETDNS_RESOLUTION_STUB
+, dns_transport_list: [ GETDNS_TRANSPORT_TLS ]
+, upstream_recursive_servers:
+  [ { address_data: 185.49.141.38
+    , tls_auth_name: "getdnsapi.net"
+    , tls_pubkey_pinset:
+      [ { digest: "sha256"
+        , value: 0x7e8c59467221f606695a797ecc488a6b4109dab7421aba0c5a6d3681ac5273d4
+      } ]
+   } ]
+, tls_authentication: GETDNS_AUTHENTICATION_REQUIRED
+, tls_query_padding_blocksize: 256
+, edns_client_subnet_private : 1
+, listen_addresses: [ 127.0.0.1, 0::1 ]
+, idle_timeout: 10000
+}
+```
+
+Additional privacy servers can be specified by adding more entries to the `upstream_recursive_servers` list above (note a separate entry must be made for the IPv4 and IPv6 addresses of a given server. More DNS Privacy test servers are listed [here](https://portal.sinodun.com/wiki/display/TDNS/DNS-over-TLS+test+servers).
+
+A custom port can be specified by adding the `tls_port:` attribute to the `upstream_recursive_server` in the config file. 
+
+
+<div class="alert alert-info">
+<p><span class="glyphicon glyphicon-info-sign"></span> It is recommended to use more than one upstream for increased performance and reliability. This config files uses Strict Privacy to all the current test servers that support this over both IPv4 and IPv6: <a href="https://raw.githubusercontent.com/getdnsapi/getdns/release/1.1.0-alpha3/src/tools/stubby.conf"><tt>stubby.conf</tt></a></p>
+</div>
+
+ 
+## Run Stubby
+
+
+Simply invoke Stubby on the command line. By default it runs in the foreground, the `-g` flag runs it in the background. The pid file is `/var/run/stubby.pid`
+
+```sh
+> sudo stubby
+```
+
+## Test Stubby
+
+A quick test can be done by using dig (or your favourite DNS tool) on the loopback address
+
+```sh
+> dig @127.0.0.1 www.example.com
+```
+
+## Modify your upstream resolvers
+
+<div class="alert alert-warning">
+<p><span class="glyphicon glyphicon-warning-sign"></span> Once this change is made your DNS queries will be re-directed to Stubby and sent over TLS! (</span>You may need to restart some applications to have them pick up the network settings).</p>
+<p>You can monitor the traffic using Wireshark watching on port 853.</p>
+</div>
+
+For Stubby to re-send outgoing DNS queries over TLS the recursive resolvers configured on your machine must be changed to send all the local queries to the loopback interface on which Stubby is listening. This depends on the operating system being run. It is useful to note your existing default nameservers before making this change!
+
+
+**Linux/Unix systems**
+
+* Edit the /etc/resolv.conf file
+* Comment out the existing *nameserver* entries
+* Add the following (only add the IPv4 address if you don't have IPv6)
+  ```sh
+  nameserver 127.0.0.1
+  nameserver ::1
+  ```
+
+**OS X**
+
+From the command line you can do the following to set the local DNS servers on, for example, your 'Wi-Fi' interface (first line clears all servers, second line adds localhost):
+
+```sh
+sudo networksetup -setdnsservers Wi-Fi Empty
+sudo networksetup -setdnsservers Wi-Fi 127.0.0.1 ::1
+```
+
+If you want to reset, just use:
+
+```sh
+sudo networksetup -setdnsservers Wi-Fi Empty
+```
+
+which should pick up the default DHCP nameservers. Or use something similar to the first set of instructions if you want to specify particular namerservers.
+
+
+Or via the GUI:
+
+* Open *System Preferences &rarr; Network &rarr; Advanced &rarr; DNS*
+* Use the '-' button to remove the existing nameservers
+* Use the '+' button to add `127.0.0.1` and `::1` (only add the IPv4 address if you don't have IPv6)
+* Hit 'OK' in the *DNS* pane and then 'Apply' on the *Network* pane
+
+
+Notes:
+
+* If you are using a DNS Privacy server that does not support concurrent processing of TLS queries, you may experience some issues due to timeouts causing subsequent queries on the same connection to fail.
+* Stubby currently backs-off for 1 hour from using servers that provide poor service - the next version will make this time configurable. Or this can be reset by restarting Stubby.

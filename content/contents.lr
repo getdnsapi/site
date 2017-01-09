@@ -13,7 +13,7 @@ Stubby is an experimental implementation of a DNS Privacy enabled stub resolver.
 ----
 image: stubby.png
 ----
-link: https://github.com/getdnsapi/getdns/tree/release/1.1.0-alpha3
+link: /tags/stubby
 #### feature ####
 title: Fork me on github
 ----
