@@ -1,10 +1,9 @@
 {% extends "layout.html" %}
-{% block title %}{{ this.title }}{% endblock %}
 {% block body %}
-  <h2>{{ this.title }}</h2>
+  <h1>{{ this.record_label }}</h1>
   <table class="table">
     <tbody>
-      <tr><th>Title</th><td>{{ this.title }}</tr>
+      <tr><th>Title</th><td>{{ this.record_label }}</tr>
       <tr><th>Date</th><td>{{ this.date }}</tr>
       <tr><th>Link</th><td>{{ this.link }}</tr>
       <tr><th>Teaser</th><td>{{ this.teaser }}</tr>

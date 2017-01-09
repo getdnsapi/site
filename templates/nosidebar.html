@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
-{% block title %}{{ this.title }}{% endblock %}
+{% block navbar_xtras %}{% endblock %}
+{% block query_results %}{% endblock %}
 {% block container %}
-  <h1>{{ this.title }}</h1>
+{% block body %}
+  <h1>{{ this.record_label }}</h1>
   {{ this.body }}
+{% endblock %}
 {% endblock %}

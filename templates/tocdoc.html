@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
+{% block navbar_xtras %}{% endblock %}
+{% block query_result %}{% endblock %}
 {% block body_attrs %} data-spy="scroll" data-target="#tocdoc" data-offset="20"{% endblock body_attrs %}
 {% block body %}<div id="tocdoc-body">{{ super() }}</div>{% endblock body %}
 {% block sidebar %}

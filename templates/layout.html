@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{ '/static/gen/styles.css'|asseturl }}">
   <!-- Other things -->
   <link rel="stylesheet" href="{{ get_pygments_stylesheet()|url }}">
-  <title>{% block title %}{% if this.title %}{{ this.title }}{% else %}{{ this.record_label }} - getdns{% endif %}{% endblock %}</title>
+  <title>{% block title %}{{ this.record_label }}{% endblock %}</title>
 </head>
 <body{% block body_attrs %}{% endblock %}>
   <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
@@ -51,6 +51,16 @@
         {% endfor %}
       </ul>
       {% block navbar_xtras %}
+	<div class="col-xs-6 col-sm-3 navbar-right">
+	  <form class="navbar-form hidequeryform" method="POST">
+	    <div class="input-group">
+	      <input type="text" name="hostname" class="form-control" placeholder="Do a Query">
+	    <span class="input-group-btn">
+	      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+	    </span>
+	    </div>
+	  </form>
+	</div>
       {% endblock %}
       </div><!-- class="navbar-collapse collapse" -->
     </div><!-- class="container" -->
@@ -71,7 +81,14 @@
       </div><!-- class="col-xs-12 col-sm-9" -->
 
       <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-
+	{% block query_results %}
+	<div class="panel panel-query hidequeryresult">
+	  <div class="panel-heading"><b>Query result</b></div>
+	  <div class="panel-body">
+	    QUERYSMALL
+	  </div>
+	</div>
+	{% endblock %}
         {% block sidebar %}
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
