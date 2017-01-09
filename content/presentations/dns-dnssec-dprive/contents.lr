@@ -1,5 +1,7 @@
 date: 2016-07-17
 ---
+archive: yes
+---
 event: Hackathon @ IETF96
 ---
 event_url: https://ietf.org/hackathon/96-hackathon.html
@@ -13,3 +15,5 @@ slides_url: /slides/IETF-Hackathon-96-DNS-Team-Results.pdf
 video_url: 
 ---
 teaser: Overview of the DNS hackthon projects at the IETF96
+---
+archive: yes

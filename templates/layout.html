@@ -1,3 +1,4 @@
+{% import "macros/getdns.html" as g %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,17 +78,22 @@
 	      <h1 class="panel-title">News</h1>
 	    </div>
 	    <div class="list-group list-group-default">
-             {% for item in site.get('/news').children if not item.archive %}
-	       <a href="{{ item.link }}" class="list-group-item news-list-item">
-	         <b>{{ item.title }}</b> {{ item.date }}. 
+	     {% set items = ( site.get('/presentations').children|list
+		          + site.get('/releases').children|list
+		          + site.get('/blog').children|list
+			  + site.get('/news').children|list
+			  ) | sort(attribute = 'date', reverse = True)|list %}
+             {% for item in items if not item.archive %}
+	       <a href="{{ g.thing_link(item) }}" class="list-group-item news-list-item">
+	         <b>{{ item.record_label }}</b> {{ item.date }}. 
                  {{ item.teaser }}
 	       </a>
              {% endfor %}
 	     <a class="list-group-item news-list-item" data-parent="#news" data-toggle="collapse" href="#collapseNews" style="text-align: center">more...</a>
 	     <div class="collapse out" id="collapseNews">
-               {% for item in site.get('/news').children if item.archive %}
-  	       <a href="{{ item.link }}" class="list-group-item news-list-item">
-  	         <b>{{ item.name }}</b> {{ item.date }} <br />
+               {% for item in items if item.archive %}
+  	       <a href="{{ g.thing_link(item) }}" class="list-group-item news-list-item">
+  	         <b>{{ item.record_label }}</b> {{ item.date }} <br />
                    {{ item.teaser }}
   	       </a>
                {% endfor %}
