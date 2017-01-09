@@ -1,0 +1,100 @@
+title: getdns_display_ip_address.3
+---
+body:
+
+
+<h1 align="center">getdns_display_ip_address</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_display_ip_address</b>
+-- convert an getdns ip address to string</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+<p style="margin-left:11%; margin-top: 1em">char * <b><br>
+getdns_display_ip_address</b> (const getdns_bindata
+*ipv4_or_ipv6_addr)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">This helper
+function returns a nicely formatted string representation of
+the IPv4 or IPv6 address. The length of the bindata is used
+to determine whether the address is IPv4 or IPv6.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="26%">
+
+
+<p style="margin-top: 1em"><i>ipv4_or_ipv6_addr</i></p></td>
+<td width="1%"></td>
+<td width="48%">
+
+
+<p style="margin-top: 1em">bindata of the address to
+print</p> </td>
+<td width="14%">
+</td></tr>
+</table>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Returns a
+string representation of the IP address (allocated using the
+system allocator - malloc), the caller is responsible for
+freeing the storage using free().</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3)</p>
+<hr>

@@ -1,0 +1,100 @@
+title: getdns_pretty_print_dict.3
+---
+body:
+
+
+<h1 align="center">getdns_pretty_print_dict</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_pretty_print_dict</b>
+-- return a string representation of a getdns dict</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+<p style="margin-left:11%; margin-top: 1em">char * <b><br>
+getdns_pretty_print_dict</b> (const getdns_dict
+*this_dict)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Helper function
+that returns a string of nicely formatted data including all
+of the elements in the dict.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="14%">
+
+
+<p style="margin-top: 1em"><i>this_dict</i></p></td>
+<td width="1%"></td>
+<td width="56%">
+
+
+<p style="margin-top: 1em">the dictionary to render as a
+string</p> </td>
+<td width="18%">
+</td></tr>
+</table>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Returns a
+string that the calling function must free (it is allocated
+using the system allocator not the user defined allocator).
+Returns NULL if there is an error.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_dict</b>(3)
+<b>libgetdns</b>(3)</p>
+<hr>

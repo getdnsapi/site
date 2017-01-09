@@ -1,0 +1,139 @@
+title: getdns_dict_set.3
+---
+body:
+
+
+<h1 align="center">getdns_dict_set</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_dict_set,
+getdns_dict_set_bindata, getdns_dict_set_dict,
+getdns_dict_set_int, getdns_dict_set_list,</b> -- set a
+value by name in a getdns dict</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_set_bindata</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+getdns_bindata *child_bindata)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_set_dict</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+getdns_dict *child_dict)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_set_int</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+uint32_t child_uint32_t)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_set_list</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+getdns_list *child_list)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The getdns_dict
+type is used to manage name/value pairs in which the names
+are strings and the data types of the values are
+heterogeneous and include</p>
+
+<p style="margin-left:15%;">getdns_bindata <br>
+getdns_dict <br>
+getdns_list <br>
+uint32_t</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>this_dict</i>
+the dictionary in which to add/update the name/value
+pair</p>
+
+<p style="margin-left:11%; margin-top: 1em"><i>name</i> the
+name whose associated value is to be set. If the name exists
+in the dictionary the value associated with that name is
+replaced, if the name does not exist in the dictionary a new
+item is added to the dictionary.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>child_bindata
+child_dict child_list child_uint32</i> value to assign the
+name</p>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion the functions return <b>GETDNS_RETURN_GOOD</b> ,
+otherwise the following error values are returned:</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_GENERIC_ERROR</b>
+if this_dict is not a valid dictionary</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_address</b>(3), <b>getdns_dict</b>(3),
+<b>getdns_dict_get</b>(3), <b>getdns_general</b>(3),
+<b>getdns_hostname</b>(3), <b>getdns_service</b>(3)</p>
+<hr>

@@ -1,0 +1,143 @@
+title: getdns_cancel_callback.3
+---
+body:
+
+
+<h1 align="center">getdns_cancel_callback</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_cancel_callback</b>
+-- cancel an outstanding asyn getdns request</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_cancel_callback</b> (getdns_context_t context,</p>
+
+<p style="margin-left:15%;">getdns_transaction_t
+*transaction_id)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">To cancel an
+outstanding callback, use getdns_cancel_callback. This
+causes the API to call the callback with a callback_type of
+GETDNS_CALLBACK_CANCEL if the callback for this
+transaction_id has not already been called. The callback
+code for cancellation should clean up any memory related to
+the identified call, such as to deallocate the memory for
+the userarg. getdns_cancel_callback() may return
+immediately, even before the callback finishes its work and
+returns.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>context</i></p></td>
+<td width="1%"></td>
+<td width="34%">
+
+
+<p style="margin-top: 1em">see getdns_context (3)</p></td>
+<td width="43%">
+</td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p style="margin-top: 1em"><i>transaction_id</i></p><td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">populated by the API and used to
+identify the callback (for example to
+getdns_cancel_callback), can be NULL, set to 0 if the
+function fails</p></td></tr>
+</table>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion the functions return <b>GETDNS_RETURN_GOOD</b> ,
+otherwise the following error values are returned:</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_INVALID_PARAMETER</b>
+if context == NULL</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_UNKNOWN_TRANSACTION</b>
+if the transaction_id that is unknown or belongs to a
+callback that has already been called</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">/etc/hosts <br>
+/etc/resolv.conf</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_context</b>(3), <b>getdns_general</b>(3),
+<b>getdns_hostname</b>(3), <b>getdns_service</b>(3),</p>
+<hr>

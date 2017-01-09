@@ -1,0 +1,600 @@
+title: getdns_context_set.3
+---
+body:
+
+
+<h1 align="center">getdns_context_set</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_append_name,
+getdns_context_set_context_update_callback,
+getdns_context_set_dns_root_servers,
+getdns_context_set_dns_transport,
+getdns_context_set_dnssec_trust_anchors,
+getdns_context_set_dnssec_allowed_skew,
+getdns_context_set_follow_redirects,
+getdns_context_set_limit_outstanding_queries,
+getdns_context_set_namespaces,
+getdns_context_set_resolution_type,
+getdns_context_set_suffix, getdns_context_set_timeout,</b>
+-- getdns context manipulation routines</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_append_name</b> (getdns_context_t
+context,</p>
+
+<p style="margin-left:15%;">getdns_append_name_t
+when_to_append)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_context_update_callback</b>
+(getdns_context_t context,</p>
+
+<p style="margin-left:15%;">(*callback)(struct
+getdns_context *context, uint16_t changed_item))</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_dns_root_servers</b> (getdns_context_t
+context,</p>
+
+<p style="margin-left:15%;">getdns_list
+*root_addresses)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_dns_transport</b> (getdns_context_t
+context,</p>
+
+<p style="margin-left:15%;">uint16_t transport)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_contet_set_dnssec_allowed_skew</b> (getdns_context
+*context,</p>
+
+<p style="margin-left:15%;">uint32_t skew_seconds)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_contet_set_dnssec_trust_anchors</b> (getdns_context
+*context,</p>
+
+<p style="margin-left:15%;">getdns_list *trust_anchors)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_follow_redirects</b> (getdns_context_t
+context,</p>
+
+<p style="margin-left:15%;">getdns_redirects_t
+followredir)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_limit_outstanding_queries</b>
+(getdns_context_t context,</p>
+
+<p style="margin-left:15%;">uint16_t limit)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_namespaces</b> (getdns_context_t
+context,</p>
+
+<p style="margin-left:15%;">size_t namespace_count, <br>
+uint16_t *namespaces)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_resolution_type</b> (getdns_context_t
+context,</p>
+
+<p style="margin-left:15%;">uint16_t restype)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_suffix</b> (getdns_context *context,</p>
+
+<p style="margin-left:15%;">getdns_list *suffixes)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_timeout</b> (getdns_context_t
+context,</p>
+
+<p style="margin-left:15%;">uint16_t timeout)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">These functions
+are used to manipulate a previously allocated and
+initialized context, see getdns_context (3) for more details
+on the functions used to allocate, initialized and destroy
+contexts and for a more detailed discussion of the
+getdns_context in general.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_append_name</b>
+Specifies whether to append a suffix supplied via
+getdns_context_set_suffix (3) to the query string before the
+API starts resolving a name.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_context_update_callback</b>
+sets a function that will be called if changes to the system
+files (for example /etc/resolv.conf and /etc/hosts).</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_dns_transport</b>
+specifies the transport used for DNS lookups, the default is
+to use UDP and fall back to TCP as needed.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_dnssec_trust_anchors</b>
+allows the caller to specify trust anchors as alternatives
+to the default trust anchors</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_dnssec_allowed_skew</b>
+set the number of seconds skew allowed in either direction
+when checking an RRSIGs expiration and inception fields, the
+default is 0.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_limit_outstanding_queries</b>
+specifies the maximum number of outstanding DNS queries, the
+API will queue queries over this limit until current queries
+are answers and will then automatically issue the queries on
+the queue.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_dns_root_servers</b>
+provides an alternate set of addresses to use to look up the
+top level domains. The default (if this function is not
+called) is the list of IANA root servers (think of this as
+the root hints).</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_follow_redirects</b>
+specifies whether or not DNS queries follow redirects (CNAME
+and DNAME), the default behavior is to follow redirects and
+return the eventual target.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_namespaces</b>
+sets the namespaces to be used by the resolver, the default
+is DNS and then local files. Future implementations will
+support netbios, mdns, and nis.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_resolution_type</b>
+specifies whether DNS queries are performed with
+non-recursive lookups or as a stub resolver.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_suffix</b>
+Append suffixes to domain names prior to executing the
+lookup based on getdns_context_set_append_name.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_timeout</b>
+specifies the number of milliseconds the API will wait for a
+response.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="12%">
+
+
+<p style="margin-top: 1em"><i>context</i></p></td>
+<td width="77%">
+
+
+<p style="margin-top: 1em">a previously allocated and
+initialized getdns_context</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="12%">
+
+
+<p><i>callback</i></p></td>
+<td width="77%">
+
+
+<p>a callback function that will be called when changes are
+made</p> </td></tr>
+</table>
+
+<p style="margin-left:11%;">to the system files
+(/etc/resolv.conf and /etc/hosts) for contexts created with
+set_from_os = 1. When this function is called the
+changed_item parameter indicates which item in the context
+has changed.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="21%">
+
+
+<p style="margin-top: 1em"><i>root_addresses</i></p></td>
+<td width="2%"></td>
+<td width="66%">
+
+
+<p style="margin-top: 1em">This is a list of getdns_dict
+types that each identify a</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">single root server to use to
+look up top level domains. Each dictionary includes two
+names, <i>address_type</i> , a bindata containing the string
+&quot;IPv4&quot; or &quot;IPv6&quot; and <i>address_data</i>
+a bindata containing the IP address.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="14%">
+
+
+<p style="margin-top: 1em"><i>transport</i></p></td>
+<td width="1%"></td>
+<td width="74%">
+
+
+<p style="margin-top: 1em">may be one of
+GETDNS_CONTEXT_UDP_FIRST_AND_FALL_BACK_TO_TCP,</p> </td></tr>
+</table>
+
+<p style="margin-left:11%;">GETDNS_CONTEXT_UDP_ONLY,
+GETDNS_CONTEXT_TCP_ONLY,
+GETDNS_CONTEXT_TCP_ONLY_KEEP_CONNECTIONS_OPEN. If you need
+more information on what each of these means reread the
+mnemonic and take a guess ;)</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="17%">
+
+
+<p style="margin-top: 1em"><i>followredir</i></p></td>
+<td width="1%"></td>
+<td width="71%">
+
+
+<p style="margin-top: 1em">If set to
+GETDNS_REDIRECTS_FOLLOW (the default) then the</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">eventual target of the redirect
+is returned. If set to GETDNS_REDIRECTS_DO_NOT_FOLLOW then
+the CNAME or DNAME is returned and NOT the eventual
+target.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+
+
+<p style="margin-top: 1em"><i>limit</i></p></td>
+<td width="4%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">the maximum number of concurrent
+outstanding (unanswered) DNS</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">queries, if exceeded the API
+will queue queries and issue them as the number of
+outstanding queries drops. A value of 0 indicates that there
+is no limit.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="15%">
+
+
+<p style="margin-top: 1em"><i>namespaces</i></p></td>
+<td width="2%"></td>
+<td width="72%">
+
+
+<p style="margin-top: 1em">The namespaces array contains an
+ordered list of namespaces</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">that will be queried.
+Important: this context setting is ignored for the
+getdns_general and getdns_general_sync functions; it is used
+for the other functions. The values are
+GETDNS_CONTEXT_NAMESPACE_DNS,
+GETDNS_CONTEXT_NAMESPACE_LOCALNAMES,
+GETDNS_CONTEXT_NAMESPACE_NETBIOS,
+GETDNS_CONTEXT_NAMESPACE_MDNS, and
+GETDNS_CONTEXT_NAMESPACE_NIS. When a normal lookup is done,
+the API does the lookups in the order given and stops when
+it gets the first result; a different method with the same
+result would be to run the queries in parallel and return
+when it gets the first result. Because lookups might be done
+over different mechanisms because of the different
+namespaces, there can be information leakage that is similar
+to that seen with getaddrinfo(). The default is determined
+by the OS.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>restype</i></p></td>
+<td width="3%"></td>
+<td width="75%">
+
+
+<p style="margin-top: 1em">can be set to either
+GETDNS_CONTEXT_RECURSIVE (the default) or</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">GETDNS_CONTEXT_STUB (requires
+that forwarders be specified by the caller).</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="18%">
+
+
+<p style="margin-top: 1em"><i>seconds_skew</i></p></td>
+<td width="3%"></td>
+<td width="68%">
+
+
+<p style="margin-top: 1em">the number of seconds skew
+allowed in either direction</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">when checking an RRSIGs
+expiration and inception fields.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="12%">
+
+
+<p style="margin-top: 1em"><i>suffixes</i></p></td>
+<td width="2%"></td>
+<td width="75%">
+
+
+<p style="margin-top: 1em">A list of bindatas that are
+strings that are to be appended</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">based on
+getdns_context_set_append_name. The values here follow the
+rules in section 2.1 of RFC 4343 to allow non-ASCII octets
+and special characters in labels.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>timeout</i></p></td>
+<td width="3%"></td>
+<td width="75%">
+
+
+<p style="margin-top: 1em">the number of milliseconds the
+API will wait for a response,</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">after which the callback will
+be invoked (or the synchronous function will return) with a
+timeout error.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="20%">
+
+
+<p style="margin-top: 1em"><i>trust_anchors</i></p></td>
+<td width="3%"></td>
+<td width="66%">
+
+
+<p style="margin-top: 1em">list of bindatas that are the
+DNSSEC trust anchors</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">expressed as RDATA from the
+DNSKEY resource records, the default are supplied by the
+IANA root.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="21%">
+
+
+<p style="margin-top: 1em"><i>when_to_append</i></p></td>
+<td width="2%"></td>
+<td width="18%">
+
+
+<p style="margin-top: 1em">The value is</p></td>
+<td width="48%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="21%">
+
+
+<p>&bull;</p></td>
+<td width="2%"></td>
+<td width="18%"></td>
+<td width="48%">
+</td></tr>
+</table>
+
+
+<p style="margin-left:20%; margin-top: 1em">GETDNS_APPEND_NAME_ALWAYS,</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="3%"></td>
+<td width="80%">
+
+
+
+<p style="margin-top: 1em">GETDNS_APPEND_NAME_ONLY_TO_SINGLE_LABEL_AFTER_FAILURE,</p> </td></tr>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="2%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="80%">
+
+
+
+<p>GETDNS_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE,
+or</p> </td></tr>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="2%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="80%">
+
+
+<p>GETDNS_APPEND_NAME_NEVER.</p></td></tr>
+</table>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion the functions return <b>GETDNS_RETURN_GOOD</b> ,
+otherwise the following error values are returned:</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_BAD_CONTEXT</b>
+if the context pointer is invalid</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_CONTEXT_UPDATE_FAIL</b>
+if there was a problem updating the context</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">/etc/hosts <br>
+/etc/resolv.conf</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_address</b>(3), <b>getdns_address_sync</b>(3),
+<b>getdns_context</b>(3), <b>getdns_general</b>(3),
+<b>getdns_general_sync</b>(3), <b>getdns_hostname</b>(3),
+<b>getdns_hostname_sync</b>(3), <b>getdns_service</b>(3),
+<b>getdns_service_sync</b>(3).</p>
+<hr>

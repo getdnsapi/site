@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}
+  {% set libgetdns = this.children.get('libgetdns') %}
+  {{ libgetdns.record_label }}
+{% endblock title %}
+{% block body %}
+  {% set libgetdns = this.children.get('libgetdns') %}
+  {{ libgetdns.body }}
+{% endblock %}
+{% block sidebar %}
+  {% set active = this.children.get('libgetdns') %}
+  {% set manpages = this %}
+  <div class="list-group manpages affix">
+      <a class="list-group-item list-group-item-info" href="{{ manpages|url }}">{{ manpages.record_label }}</a>
+    {% for page in manpages.children %}
+      <a href="{{ page|url }}" class="list-group-item{% if page is sameas active %} active{% endif %}">{{ page._id }}</a>
+    {% endfor %}
+  </div>
+
+{% endblock %}

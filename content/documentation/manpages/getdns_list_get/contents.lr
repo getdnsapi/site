@@ -1,0 +1,161 @@
+title: getdns_list_get.3
+---
+body:
+
+
+<h1 align="center">getdns_list</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_list_get,
+getdns_list_get_bindata, getdns_list_get_data_type,
+getdns_list_get_dict, getdns_list_get_length,
+getdns_list_get_list, getdns_list_get_int</b> -- get a value
+by index from a getdns list</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_get_bindata</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+getdns_bindata **answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_get_data_type</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+getdns_data_type *answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_get_dict</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+getdns_dict **answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_get_length</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t *answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_get_list</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+getdns_list **answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_get_int</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+uint32_t *answer)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The getdns_list
+type is used to manage heterogeneous lists in which the
+objects are each one of the data types:</p>
+
+<p style="margin-left:15%;">getdns_bindata <br>
+getdns_dict <br>
+getdns_list <br>
+uint32_t</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>this_list</i>
+the list from which to retrieve the object</p>
+
+<p style="margin-left:11%; margin-top: 1em"><i>index</i>
+the numeric index (0 based) of the item in the list you
+would like copied to answer</p>
+
+<p style="margin-left:11%; margin-top: 1em"><i>answer</i> a
+copy of the object in the list is placed in answer, the
+caller is responsible for freeing the storage associated
+with that object by calling the appropriate destroy
+function.</p>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion the functions return <b>GETDNS_RETURN_GOOD</b> ,
+otherwise the following error values are returned:</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_GENERIC_ERROR</b>
+if this_list is not a valid list</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_NO_SUCH_LIST_ITEM</b>
+if index is out of range</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_WRONG_TYPE_REQUESTED</b>
+if the requested data type doesn&rsquo;t match the contents
+of the indexed argument</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_address</b>(3), <b>getdns_dict</b>(3),
+<b>getdns_general</b>(3), <b>getdns_hostname</b>(3),
+<b>getdns_service</b>(3),</p>
+<hr>

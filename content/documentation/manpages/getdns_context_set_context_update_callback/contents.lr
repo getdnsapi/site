@@ -1,0 +1,128 @@
+title: getdns_context_set_context_update_callback.3
+---
+body:
+
+
+<h1 align="center">getdns_context_set_context_update_callback</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context_set_context_update_callback</b>
+-- get informed on getdns context updates</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_context_set_context_update_callback</b>
+(getdns_context ** context,</p>
+
+<p style="margin-left:15%;">void (*cbfun)(getdns_context
+*context, getdns_context_code_t changed_item)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Changes to the
+context such as in response to system files that affect the
+contet (/etc/resolv.conf etc.) trigger a call to the
+callback function specified as <b>cbfun</b></p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>context</i></p></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">a previously initialized
+context</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p><i>cbfun</i></p></td>
+<td width="78%">
+
+
+<p>callback function to invoked when the specified context
+changes.</p> </td></tr>
+</table>
+
+<p style="margin-left:11%;">If this argument is NULL then
+updates to the context will not invoke a callback.</p>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion each of these functions return
+<b>GETDNS_RETURN_GOOD</b> , otherwise the following error
+values are returned:</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_GENERIC_ERROR</b>
+memory allocation failed or some other untoward thing
+happened</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_BAD_CONTEXT</b>
+if the context pointer is invalid</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_context_create</b>(3),
+<b>getdns_context_set</b>(3),
+<b>getdns_context_set_context_update_callback</b>(3),</p>
+<hr>

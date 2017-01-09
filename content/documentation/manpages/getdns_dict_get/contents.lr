@@ -1,0 +1,162 @@
+title: getdns_dict_get.3
+---
+body:
+
+
+<h1 align="center">getdns_dict_get</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_dict_get,
+getdns_dict_get_bindata, getdns_dict_get_data_type,
+getdns_dict_get_dict, getdns_dict_get_int,
+getdns_dict_get_list, getdns_dict_get_names</b> -- get value
+by name from a getdns dict</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_get_bindata</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+getdns_bindata **answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_get_data_type</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+getdns_data_type *answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_get_dict</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+getdns_dict **answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_get_int</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+uint32_t *answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_get_list</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">char *name, <br>
+getdns_list **answer)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_dict_get_names</b> (getdns_dict *this_dict,</p>
+
+<p style="margin-left:15%;">getdns_list **answer)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The getdns_dict
+type is used to manage name/value pairs in which the names
+are strings and the data types of the values are
+heterogeneous and include</p>
+
+<p style="margin-left:15%;">getdns_bindata <br>
+getdns_dict <br>
+getdns_list <br>
+uint32_t</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>this_dict</i>
+the dictionary from which to retrieve the list of names</p>
+
+<p style="margin-left:11%; margin-top: 1em"><i>name</i> the
+name whose associated value is to be returned in answer</p>
+
+<p style="margin-left:11%; margin-top: 1em"><i>answer</i>
+the list of all names in the dictionary, note that the
+caller must free storage allocated to the list via a call to
+<b>getdns_list_destroy(3)</b></p>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion the functions return <b>GETDNS_RETURN_GOOD</b> ,
+otherwise the following error values are returned:</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_GENERIC_ERROR</b>
+if this_dict is not a valid dictionary</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_NO_SUCH_DICT_NAME</b>
+if the name argument doesn&rsquo;t exist in the
+dictionary</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_WRONG_TYPE_REQUESTED</b>
+if the requested data type doesn&rsquo;t match the contents
+of the indexed argument or name</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_address</b>(3), <b>getdns_dict</b>(3),
+<b>getdns_dict_set</b>(3), <b>getdns_general</b>(3),
+<b>getdns_hostname</b>(3), <b>getdns_list</b>(3),
+<b>getdns_service</b>(3),</p>
+<hr>

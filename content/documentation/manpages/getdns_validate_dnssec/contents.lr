@@ -1,0 +1,156 @@
+title: getdns_validate_dnssec.3
+---
+body:
+
+
+<h1 align="center">getdns_validate_dnssec</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_validate_dnssec</b>
+-- DNSSEC validate a given getdns record</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_validate_dnssec</b> (getdns_list
+*record_to_validate,</p>
+
+<p style="margin-left:15%;">getdns_list
+*bundle_of_support_records, <br>
+getdns_list *trust_anchor_records)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If an
+application wants the API to perform DNSSEC validation
+without using the extensions, it can use the
+getdns_validate_dnssec() helper function. The API will use
+the resource records in bundle_of_support_records to
+construct the validation chain and the DNSKEY or DS records
+in trust_anchor_records as trust anchors. The default list
+of trust anchor records that is used by the library to
+validate DNSSEC can be retrieved by using the
+getdns_root_trust_anchor helper function.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="27%">
+
+
+<p style="margin-top: 1em"><i>record_to_validate</i></p></td>
+<td width="2%"></td>
+<td width="54%">
+
+
+<p style="margin-top: 1em">the resource record being
+validated</p> </td>
+<td width="6%">
+</td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+
+<p style="margin-top: 1em"><i>bundle_of_support_records</i></p> <td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">records used to construct the
+validation chain</p></td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p style="margin-top: 1em"><i>trust_anchor_records</i></p><td width="43%"></td>
+<td width="57%">
+
+
+<p style="margin-top: 1em">trust anchor records to use for
+the validation</p></td></tr>
+</table>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_DNSSEC_BOGUS</b>
+the DNSSEC signature is bogus</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_DNSSEC_INDETERMINATE</b>
+validation could not be completed</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_DNSSEC_INSECURE</b>
+one or more pieces of the validation chain are demonstrably
+incorrect</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_DNSSEC_SECURE</b>
+validation succeeded</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_MEMORY_ERROR</b>
+an attempt to allocate memory failed</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_root_trust_anchor</b>(3)
+<b>libgetdns</b>(3)</p>
+<hr>

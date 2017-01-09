@@ -1,0 +1,131 @@
+title: getdns_dict.3
+---
+body:
+
+
+<h1 align="center">getdns_dict</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_dict,
+getdns_dict_create,
+getdns_dict_create_with_extended_memory_functions,
+getdns_dict_create_with_memory_functions,
+getdns_dict_destroy</b> -- getdns dict create and destroy
+routines</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+<p style="margin-left:11%; margin-top: 1em">getdns_dict *
+<b><br>
+getdns_dict_create</b> ()</p>
+
+<p style="margin-left:11%; margin-top: 1em">getdns_dict *
+<b><br>
+getdns_dict_create_with_extended_memory_functions</b></p>
+
+<p style="margin-left:15%;">(void *userarg, <br>
+void *(*malloc)(void *userarg, size_t sz), <br>
+void *(*realloc)(void *userarg, void *buf, size_t sz), <br>
+void (*free)(void *userarg, void *buf)</p>
+
+<p style="margin-top: 1em">getdns_dict * <b><br>
+getdns_dict_create_with_memory_functions</b></p>
+
+<p style="margin-left:5%;">(void *(*malloc)(size_t sz),
+<br>
+void *(*realloc)(void *buf, size_t sz), <br>
+void (*free)(void *buf)</p>
+
+<p style="margin-top: 1em">void <b><br>
+getdns_dict_destroy</b> (getdns_dict *this_dict)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The getdns_dict
+type is used to manage name/value pairs in which the names
+are strings and the data types of the values are
+heterogeneous and include</p>
+
+<p style="margin-left:15%;">getdns_bindata <br>
+getdns_dict <br>
+getdns_list <br>
+uint32_t</p>
+
+<p style="margin-left:11%; margin-top: 1em">The destroy
+function performs a &quot;deep&quot; destroy, freeing
+storage for all of the members of the dictionary before
+destroying the dictionary. There are a number of helper
+functions that provide access to the dictionary object, see
+their respective man pages.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><i>userarg</i>
+pass this argument to the user specified memory management
+functions for operations on lists created using extended
+memory functions</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>this_dict</i>
+the dictionary to destroy</p>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion the getdns_dict_create function returns a valid
+(empty) dictionary structure that should be freed via a call
+to getdns_dict_destroy. If a parameter in invalid or in the
+event of some error getdns_dict_create returns NULL.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_dict_get</b>(3), <b>getdns_dict_set</b>(3),
+<b>getdns_list</b>(3),
+<b>getdns_pretty_print_dict</b>(3).</p>
+<hr>

@@ -1,0 +1,1238 @@
+title: libgetdns.3
+---
+body:
+
+
+<h1 align="center">libgetdns</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#DATA STRUCTURES">DATA STRUCTURES</a><br>
+<a href="#ASYNCHRONOUS USE">ASYNCHRONOUS USE</a><br>
+<a href="#SYNCHRONOUS USE">SYNCHRONOUS USE</a><br>
+<a href="#EXTENSIONS">EXTENSIONS</a><br>
+<a href="#DNSSEC">DNSSEC</a><br>
+<a href="#OPT RESOURCE RECORDS">OPT RESOURCE RECORDS</a><br>
+<a href="#RESPONSE DATA">RESPONSE DATA</a><br>
+<a href="#STRUCTURE OF DNS REPLIES_TREE">STRUCTURE OF DNS REPLIES_TREE</a><br>
+<a href="#CALLBACK FUNCTIONS">CALLBACK FUNCTIONS</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#DIAGNOSTICS">DIAGNOSTICS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#REPORTING PROBLEMS">REPORTING PROBLEMS</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">libgetdns -- an
+implementation of a modern asynchronous DNS API by and for
+application developers</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">This man page
+describes the getdns library, the general concepts behind
+the API and some of the common elements of the public
+interface to the library. Each of the public entry points
+and more complex data types are captured in separate man
+pages.</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns is
+modern asynchronous DNS API intended to be useful to
+application developers and operating system distributors as
+a way of making all types of DNS information easily
+available in many types of programs. The major features of
+this new API are:</p>
+
+<p style="margin-left:15%; margin-top: 1em">Full support
+for event-driven programming <br>
+Supports DNSSEC in multiple ways <br>
+Mirroring of the resolution in getaddrinfo() <br>
+Easily supports all RRtypes, even those yet to be
+defined</p>
+
+<p style="margin-left:11%; margin-top: 1em">Each of the
+entry points is offered with both asynchronous and
+synchronous signatures. The asynchronous functions rely on
+event handling and callback via libevent. Functions are
+thread safe.</p>
+
+<p style="margin-left:11%; margin-top: 1em">A context
+structure maintains DNS query and response data and is used
+to maintain state during calls to the public entry
+points.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The project
+page for this implementation is at</p>
+
+
+<p style="margin-left:22%; margin-top: 1em">http://getdnsapi.net</p>
+
+<p style="margin-left:11%; margin-top: 1em">The
+specification is maintained at</p>
+
+
+<p style="margin-left:22%; margin-top: 1em">http://getdnsapi.net/spec</p>
+
+<p style="margin-left:11%; margin-top: 1em">The git
+repository for this implementation is at</p>
+
+
+<p style="margin-left:22%; margin-top: 1em">http://github.com/getdnsapi/getdns</p>
+
+<h2>DATA STRUCTURES
+<a name="DATA STRUCTURES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The API uses a
+few data structures to pass data into and return data from
+the public entry points.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p>list</p></td>
+<td width="5%"></td>
+<td width="78%">
+
+
+<p>an ordered list, the members of the list can be any of
+the four data types.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p>dict</p></td>
+<td width="5%"></td>
+<td width="78%">
+
+
+<p>a name-value pair. The name is a string literal, and the
+value can be any of the four data types. The order of the
+name-value pairs in a dict is not important.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p>int</p></td>
+<td width="5%"></td>
+<td width="78%">
+
+
+<p>an integer compatible with uint32_t.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">bindata</p>
+
+<p style="margin-left:22%;">a struct used to hold binary
+data defined as { size_t size; uint8_t *binary_stuff; }.</p>
+
+<h2>ASYNCHRONOUS USE
+<a name="ASYNCHRONOUS USE"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The getdns
+specification emphasizes the asynchronous nature of the API
+and allows implementations to define their own approach.
+This page documents this implementation&rsquo;s decisions
+and facilities provided to the developer.</p>
+
+<p style="margin-left:11%; margin-top: 1em">This
+implementation provides asynchronous support via the
+following mechanisms:</p>
+
+<p style="margin-left:15%; margin-top: 1em">File Descriptor
+Polling <br>
+Event Loop Integrations:</p>
+
+<p style="margin-left:20%;">libevent <br>
+libuv <br>
+libev</p>
+
+<p style="margin-left:15%;">Custom Event Loop
+Integrations</p>
+
+<p style="margin-left:11%; margin-top: 1em">All functions
+and types discussed in this page are declared in
+getdns_extra.h</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Build-in
+Event loop</b> <br>
+The library has an built in event loop that can be used if
+none of the extensions for external event loops are used.
+The library will execute requests and dispatch callbacks
+with a call to <i>getdns_context_run().</i> If an event loop
+extension is used, this will run the extension&rsquo;s
+eventloop.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="74%">
+
+
+<p style="margin-top: 1em">void
+getdns_context_run(getdns_context *context)</p></td>
+<td width="15%">
+</td></tr>
+</table>
+
+<p style="margin-left:15%; margin-top: 1em">Run the
+context&rsquo;s event loop until nothing more to do.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+
+
+<p style="margin-top: 1em">uint32_t
+getdns_context_get_num_pending_requests(getdns_context*
+context, struct timeval* next_timeout)</p></td></tr>
+</table>
+
+<p style="margin-left:15%; margin-top: 1em">Get the number
+of outstanding asynchronous requests for a given context as
+well as the the amount of time until the next timeout. The
+next_timeout struct can be NULL. If supplied and the number
+of outstanding requests is &gt; 0, then the timeout
+represents the relative time until the next timeout.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+
+
+<p style="margin-top: 1em">getdns_return_t
+getdns_context_process_async(getdns_context* context)</p></td></tr>
+</table>
+
+<p style="margin-left:15%; margin-top: 1em">Inform the
+context to process its outstanding requests. Users should
+call this when either a timeout has occurred or the file
+descriptor signals that it is ready. User callbacks are
+fired during this call.</p>
+
+<p><b>Included Event Loop Integrations</b></p></table>
+
+<p style="margin-left:11%;">A number of applications
+achieve asynchronous behavior by leveraging event loop
+abstraction libraries. If the build system discovers a
+supported event loop, the event loop extension is built in
+addition to the getdns library. Extensions are built as an
+additional shared library. The following event loop
+libraries are supported:</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>libevent1
+and libevent2</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">The libevent
+extension allows a context to attach to a event_base. The
+event loop is then run like any other application using
+libevent via event_base_dispatch or event_base_loop and
+expect getdns callbacks to fire.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Note that if
+both libevent1 and libevent2 reside on system, the extension
+uses libevent2.</p>
+
+<p style="margin-left:15%; margin-top: 1em">Extension
+library: libgetdns_ext_event.[shared_lib_ext] <br>
+Extension header: getdns/getdns_ext_libevent.h</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libuv</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">The libuv
+extension allows a context to attach to a uv_loop_s. The
+event loop can then be run like any other application using
+libuv via uv_run and expect getdns callbacks to fire.</p>
+
+<p style="margin-left:15%; margin-top: 1em">Extension
+library: libgetdns_ext_uv.[shared_lib_ext] <br>
+Extension header: getdns_ext_libuv.h</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libev</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">The libev
+extension allows a context to attach to a ev_loop. The event
+loop can then be run like any other application using libev
+via ev_run and expect getdns callbacks to fire.</p>
+
+<p style="margin-left:15%; margin-top: 1em">Extension
+library: libgetdns_ext_ev.[shared_lib_ext] <br>
+Extension header: getdns_ext_libev.h</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_context
+event loop extension functions</b> <br>
+The following are functions used by the extension entry
+point to attach to a particular context.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The application
+sets an event loop extension on a context. The
+extension_data is optional data that is passed into the
+extension methods. If an event loop is already set on a
+context then it is cleaned up. All outstanding requests are
+also canceled.</p>
+
+
+<p style="margin-left:22%; margin-top: 1em">getdns_return_t
+getdns_extension_set_eventloop(struct getdns_context*
+context, getdns_eventloop_extension* extension, void*
+extension_data);</p>
+
+<p style="margin-left:11%; margin-top: 1em">The application
+gets the extension data associated with a context.</p>
+
+<p style="margin-left:22%; margin-top: 1em">void*
+getdns_context_get_extension_data(struct getdns_context*
+context);</p>
+
+<p style="margin-left:11%; margin-top: 1em">When no more
+work must be done the application detaches an event loop
+from a context</p>
+
+
+<p style="margin-left:22%; margin-top: 1em">getdns_return_t
+getdns_extension_detach_eventloop(struct getdns_context*
+context);</p>
+
+<h2>SYNCHRONOUS USE
+<a name="SYNCHRONOUS USE"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">There are four
+synchronous functions parallel to the four getdns async
+functions, except that there is no callback parameter. When
+an application calls one of these synchronous functions, the
+API gathers all the required information and then returns
+the result. The value returned is exactly the same as the
+response returned in the callback if you had used the async
+version of the function.</p>
+
+<p style="margin-left:11%; margin-top: 1em">When you are
+done with the data in the response, call
+getdns_free_sync_request_memory so that the API can free the
+memory from its internal pool.</p>
+
+<h2>EXTENSIONS
+<a name="EXTENSIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Applications
+may populate an extension dictionary when making a call to
+the public entry points. To use an extension add it to the
+extension dictionary prior to making the call to the public
+entry point and set the value depending on the behavior you
+expect. These extensions include:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="43%">
+
+
+
+<p style="margin-top: 1em">&quot;dnssec_return_status&quot;
+(int)</p> </td>
+<td width="46%">
+</td></tr>
+</table>
+
+<p style="margin-left:15%; margin-top: 1em">Set to
+GETDNS_EXTENSION_TRUE to include the DNSSEC status for each
+DNS record in the replies_tree</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="51%">
+
+
+
+<p style="margin-top: 1em">&quot;dnssec_return_only_secure&quot;
+(int)</p> </td>
+<td width="38%">
+</td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p>Set to GETDNS_EXTENSION_TRUE to cause only records that
+the API can validate as secure withe DNSSEC to be returned
+in the <i>replies_tree</i></p><td width="15%"></td>
+<td width="34%">
+
+
+<p style="margin-top: 1em">and <i>replies_full
+lists</i></p> </td>
+<td width="51%">
+</td></tr>
+</table>
+
+
+<p style="margin-left:11%; margin-top: 1em">&quot;dnssec_return_validation_chain&quot;
+(int)</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p>Set to GETDNS_EXTENSION_TRUE to cause the set of
+additional DNSSEC-related records needed for validation to
+be returned in the response object as the list named
+<i>additional_dnssec</i></p> <td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">at the top level of the response
+object</p> </td></tr>
+</table>
+
+
+<p style="margin-left:11%; margin-top: 1em">&quot;return_both_v4_and_v6&quot;
+(int)</p>
+
+<p style="margin-left:15%; margin-top: 1em">Set to
+GETDNS_EXTENSION_TRUE to cause the results of both A and
+AAAA records for the queried name to be included in the
+response object.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="41%">
+
+
+<p style="margin-top: 1em">&quot;add_opt_parameters&quot;
+(dict)</p> </td>
+<td width="48%">
+</td></tr>
+</table>
+
+<p style="margin-left:15%; margin-top: 1em">TBD
+(complicated)</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="38%">
+
+
+
+<p style="margin-top: 1em">&quot;add_warning_for_bad_dns&quot;</p> </td>
+<td width="51%">
+</td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p>Set to GETDNS_EXTENSION_TRUE to cause each reply in the
+<i>replies_tree</i></p> <td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">to contain an additional name
+whose data type is a list, <i>bad_dns</i> which contains
+zero or more ints that indicate the types of bad DNS found
+in the reply.</p></td></tr>
+</table>
+
+
+<p style="margin-left:20%;">GETDNS_BAD_DNS_CNAME_IN_TARGET:
+query type does not allow a CNAME pointed to a CNAME <br>
+GETDNS_BAD_DNS_ALL_NUMERIC_LABEL: one or more labels is all
+numeric <br>
+GETDNS_BAD_DNS_CNAME_RETURNED_FOR_OTHER_TYPE: query type for
+other than CNAME returned a CNAME</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="32%">
+
+
+<p style="margin-top: 1em">&quot;specify_class&quot;
+(int)</p> </td>
+<td width="57%">
+</td></tr>
+</table>
+
+<p style="margin-left:15%; margin-top: 1em">Set to the DNS
+class number (other than Internet (IN) class desired in
+query.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="44%">
+
+
+
+<p style="margin-top: 1em">&quot;return_call_reporting&quot;
+(int)</p> </td>
+<td width="45%">
+</td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p>Set to GETDNS_EXTENSION_TRUE to add the name
+<i>call_reporting</i></p> <td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">(list) to the top level of the
+response object that includes a dict for each call made to
+the API. TBD: more detail</p></td></tr>
+</table>
+
+<p style="margin-left:11%; margin-top: 1em">This
+implementation of the getdns API is licensed under the BSD
+license.</p>
+
+<h2>DNSSEC
+<a name="DNSSEC"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If an
+application wants the API to do DNSSEC validation for a
+request, it must set one or more DNSSEC-related extensions.
+Note that the default is for none of these extensions to be
+set and the API will not perform DNSSEC. Note that getting
+DNSSEC results can take longer in a few circumstances.</p>
+
+<p style="margin-left:11%; margin-top: 1em">To return the
+DNSSEC status for each DNS record in the replies_tree list,
+use the dnssec_return_status extension. The
+extension&rsquo;s value (an int) is set to
+GETDNS_EXTENSION_TRUE to cause the returned status to have
+the name dnssec_status (an int) added to the other names in
+the record&rsquo;s dict (&quot;header&quot;,
+&quot;question&quot;, and so on). The values for that name
+are GETDNS_DNSSEC_SECURE, GETDNS_DNSSEC_BOGUS,
+GETDNS_DNSSEC_INDETERMINATE, and GETDNS_DNSSEC_INSECURE.
+Thus, a reply might look like:</p>
+
+<pre style="margin-left:11%; margin-top: 1em">{     # This is the first reply
+      &quot;dnssec_status&quot;: GETDNS_DNSSEC_INDETERMINATE,
+      &quot;header&quot;: { &quot;id&quot;: 23456, &quot;qr&quot;: 1, &quot;opcode&quot;: 0, ... },
+      . . .</pre>
+
+
+<p style="margin-left:11%; margin-top: 1em">If instead of
+returning the status, you want to only see secure results,
+use the dnssec_return_only_secure extension. The
+extension&rsquo;s value (an int) is set to
+GETDNS_EXTENSION_TRUE to cause only records that the API can
+validate as secure with DNSSEC to be returned in the
+replies_tree and replies_full lists. No additional names are
+added to the dict of the record; the change is that some
+records might not appear in the results. When this context
+option is set, if the API receives DNS replies but none are
+determined to be secure, the error code at the top level of
+the response object is
+GETDNS_RESPSTATUS_NO_SECURE_ANSWERS.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Applications
+that want to do their own validation will want to have the
+DNSSEC-related records for a particular response. Use the
+dnssec_return_validation_chain extension. The
+extension&rsquo;s value (an int) is set to
+GETDNS_EXTENSION_TRUE to cause a set of additional
+DNSSEC-related records needed for validation to be returned
+in the response object. This set comes as validation_chain
+(a list) at the top level of the response object. This list
+includes all resource record dicts for all the resource
+records (DS, DNSKEY and their RRSIGs) that are needed to
+perform the validation from the root up. Thus, a reply might
+look like:</p>
+
+<pre style="margin-left:11%; margin-top: 1em">{     # This is the response object
+    &quot;validation_chain&quot;:
+    [ { &quot;name&quot;: &lt;bindata for .&gt;,
+    &quot;type&quot;: GETDNS_RRTYPE_DNSKEY,
+    &quot;rdata&quot;: { &quot;flags&quot;: 256, . . . },
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for .&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_DNSKEY,
+      &quot;rdata&quot;: { &quot;flags&quot;: 257, . . . },
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for .&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_RRSIG,
+      &quot;rdata&quot;: { &quot;signers_name&quot;: &lt;bindata for .&gt;,
+                 &quot;type_covered&quot;: GETDNS_RRTYPE_DNSKEY,
+                 . . .
+               },
+    },
+    { &quot;name&quot;: &lt;bindata for com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_DS,
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_RRSIG
+      &quot;rdata&quot;: { &quot;signers_name&quot;: &lt;bindata for .&gt;,
+                 &quot;type_covered&quot;: GETDNS_RRTYPE_DS,
+                 . . .
+               },
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_DNSKEY
+      &quot;rdata&quot;: { &quot;flags&quot;: 256, . . . },
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_DNSKEY
+      &quot;rdata&quot;: { &quot;flags&quot;: 257, . . . },
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_RRSIG
+      &quot;rdata&quot;: { &quot;signers_name&quot;: &lt;bindata for com.&gt;,
+                 &quot;type_covered&quot;: GETDNS_RRTYPE_DNSKEY,
+                 . . .
+               },
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for example.com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_DS,
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for example.com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_RRSIG
+      &quot;rdata&quot;: { &quot;signers_name&quot;: &lt;bindata for com.&gt;,
+                 &quot;type_covered&quot;: GETDNS_RRTYPE_DS,
+                 . . .
+               },
+      . . .
+    },
+    { &quot;name&quot;: &lt;bindata for example.com.&gt;,
+      &quot;type&quot;: GETDNS_RRTYPE_DNSKEY
+      &quot;rdata&quot;: { &quot;flags&quot;: 257, ... },
+      . . .
+    },
+    . . .
+  ]
+  &quot;replies_tree&quot;:
+  [
+  . . .</pre>
+
+
+<p style="margin-left:11%; margin-top: 1em">If a request is
+using a context in which stub resolution is set, and that
+request also has any of the dnssec_return_status,
+dnssec_return_only_secure, or dnssec_return_validation_chain
+extensions specified, the API will not perform the request
+and will instead return an error of
+GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED.</p>
+
+<h2>OPT RESOURCE RECORDS
+<a name="OPT RESOURCE RECORDS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">For lookups
+that need an OPT resource record in the Additional Data
+section, use the add_opt_parameters extension. The
+extension&rsquo;s value (a dict) contains the parameters;
+these are described in more detail in RFC 2671. They
+are:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="37%">
+
+
+
+<p style="margin-top: 1em"><i>maximum_udp_payload_size</i></p> </td>
+<td width="3%"></td>
+<td width="49%">
+
+
+<p style="margin-top: 1em">(an int) between 512 and 65535;
+if not</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">specified, this defaults to
+those from the DNS context</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="21%">
+
+
+<p style="margin-top: 1em"><i>extended_rcode</i></p></td>
+<td width="3%"></td>
+<td width="65%">
+
+
+<p style="margin-top: 1em">(an int) between 0 and 255; if
+not specified, this</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">defaults to those from the DNS
+context</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>version</i></p></td>
+<td width="1%"></td>
+<td width="77%">
+
+
+<p style="margin-top: 1em">(an int) between 0 and 255; if
+not specified, this defaults to</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">0</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p style="margin-top: 1em"><i>do_bit</i></p></td>
+<td width="3%"></td>
+<td width="77%">
+
+
+<p style="margin-top: 1em">(an int) between 0 and 1; if not
+specified, this defaults to</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">those from the DNS context</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>options</i></p></td>
+<td width="1%"></td>
+<td width="77%">
+
+
+<p style="margin-top: 1em">(a list) contains dicts for each
+option to be specified. Each</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">list time contains two names:
+option_code (an int) and option_data (a bindata). The API
+marshalls the entire set of options into a
+properly-formatted RDATA for the resource record.</p>
+
+<p style="margin-left:11%; margin-top: 1em">It is very
+important to note that the OPT resource record specified in
+the add_opt_parameters extension might not be the same the
+one that the API sends in the query. For example, if the
+application also includes any of the DNSSEC extensions, the
+API will make sure that the OPT resource record sets the
+resource record appropriately, making the needed changes to
+the settings from the add_opt_parameters extension.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The use of this
+extension can conflict with the values in the DNS context.
+For example, the default for an OS might be a maximum
+payload size of 65535, but the extension might specify 1550.
+In such a case, the API will honor the values stated in the
+extension, but will honor the values from the DNS context if
+values are not given in the extension.</p>
+
+<h2>RESPONSE DATA
+<a name="RESPONSE DATA"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The callback
+function contains a pointer to a response object. A response
+object is always a dict. The response object always contains
+at least three names: replies_full (a list) and replies_tree
+(a list), and status (an int). replies_full is a list of DNS
+replies (each is bindata) as they appear on the wire.
+replies_tree is a list of DNS replies (each is a dict) with
+the various part of the reply parsed out. status is a status
+code for the query.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Because the API
+might be extended in the future, a response object might
+also contain names other than replies_full, replies_tree,
+and status. Similarly, any of the dicts described here might
+be extended in later versions of the API. Thus, an
+application using the API must not assume that it knows all
+possible names in a dict.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The following
+lists the status codes for response objects. Note that, if
+the status is that there are no responses for the query, the
+lists in replies_full and replies_tree will have zero
+length.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="34%">
+
+
+
+<p style="margin-top: 1em"><b>GETDNS_RESPSTATUS_GOOD</b></p> </td>
+<td width="1%"></td>
+<td width="52%">
+
+
+<p style="margin-top: 1em">At least one response was
+returned</p> </td>
+<td width="2%">
+</td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+
+<p style="margin-top: 1em"><b>GETDNS_RESPSTATUS_NO_NAME</b></p> <td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">Queries for the name yielded all
+negative responses</p></td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+
+<p style="margin-top: 1em"><b>GETDNS_RESPSTATUS_ALL_TIMEOUT</b></p> <td width="57%"></td>
+<td width="43%">
+
+
+<p style="margin-top: 1em">All queries for the name timed
+out</p> </td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+
+<p style="margin-top: 1em"><b>GETDNS_RESPSTATUS_NO_SECURE_ANSWERS</b></p> <td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">The context setting for getting
+only secure responses was specified, and at least one DNS
+response was received, but no DNS response was determined to
+be secure through DNSSEC.</p></td></tr>
+</table>
+
+<p style="margin-left:11%; margin-top: 1em">The top level
+of replies_tree can optionally have the following names:
+canonical_name (a bindata), intermediate_aliases (a list),
+answer_ipv4_address (a bindata), answer_ipv6_address (a
+bindata), and answer_type (an int).</p>
+
+<p style="margin-left:11%; margin-top: 1em">The value of
+canonical_name is the name that the API used for its lookup.
+It is in FQDN presentation format. The values in the
+intermediate_aliases list are domain names from any CNAME or
+unsynthesized DNAME found when resolving the original query.
+The list might have zero entries if there were no CNAMEs in
+the path. These may be useful, for example, for name
+comparisons when following the rules in RFC 6125. The value
+of answer_ipv4_address and answer_ipv6_address are the
+addresses of the server from which the answer was received.
+The value of answer_type is the type of name service that
+generated the response. The values are:</p>
+
+
+<p style="margin-left:15%; margin-top: 1em">GETDNS_NAMETYPE_DNS
+<br>
+Normal DNS (RFC 1035) <br>
+GETDNS_NAMETYPE_WINS <br>
+The WINS name service (some reference needed)</p>
+
+<p style="margin-left:11%; margin-top: 1em">If the call was
+getdns_address or getdns_address_sync, the top level of
+replies_tree has an additional name, just_address_answers (a
+list). The value of just_address_answers is a list that
+contains all of the A and AAAA records from the answer
+sections of any of the replies, in the order they appear in
+the replies. Each item in the list is a dict with at least
+two names: address_type (whose value is a bindata; it is
+currently either &quot;IPv4&quot; or &quot;IPv6&quot;) and
+address_data (whose value is a bindata). Note that the
+dnssec_return_only_secure extension affects what will appear
+in the just_address_answers list. If the DNS returns other
+address types, those types will appear in this list as
+well.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The API can
+make service discovery through SRV records easier. If the
+call was getdns_service or getdns_service_sync, the top
+level of replies_tree has an additional name, srv_addresses
+(a list). The list is ordered by priority and weight based
+on the weighting algorithm in RFC 2782, lowest priority
+value first. Each element of the list is dict has at least
+two names: port and domain_name. If the API was able to
+determine the address of the target domain name (such as
+from its cache or from the Additional section of responses),
+the dict for an element will also contain address_type
+(whose value is a bindata; it is currently either
+&quot;IPv4&quot; or &quot;IPv6&quot;) and address_data
+(whose value is a bindata). Note that the
+dnssec_return_only_secure extension affects what will appear
+in the srv_addresses list.</p>
+
+<h2>STRUCTURE OF DNS REPLIES_TREE
+<a name="STRUCTURE OF DNS REPLIES_TREE"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The names in
+each entry in the the replies_tree list for DNS responses
+include header (a dict), question (a dict), answer (a list),
+authority (a list), and additional (a list), corresponding
+to the sections in the DNS message format. The answer,
+authority, and additional lists each contain zero or more
+dicts, with each dict in each list representing a resource
+record.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The names in
+the header dict are all the fields from Section 4.1.1. of
+RFC 1035. They are: id, qr, opcode, aa, tc, rd, ra, z,
+rcode, qdcount, ancount, nscount, and arcount. All are
+ints.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The names in
+the question dict are the three fields from Section 4.1.2.
+of RFC 1035: qname (a bindata), qtype (an int), and qclass
+(an int).</p>
+
+<p style="margin-left:11%; margin-top: 1em">Resource
+records are a bit different than headers and question
+sections in that the RDATA portion often has its own
+structure. The other names in the resource record dicts are
+name (a bindata), type (an int), class (an int), ttl (an
+int) and rdata (a dict); there is no name equivalent to the
+RDLENGTH field.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The rdata dict
+has different names for each response type. There is a
+complete list of the types defined in the API. For names
+that end in &quot;-obsolete&quot; or &quot;-unknown&quot;,
+the bindata is the entire RDATA field. For example, the
+rdata for an A record has a name ipv4_address (a bindata);
+the rdata for an SRV record has the names priority (an int),
+weight (an int), port (an int), and target (a bindata).</p>
+
+<p style="margin-left:11%; margin-top: 1em">Each rdata dict
+also has a rdata_raw field (a bindata). This is useful for
+types not defined in this version of the API. It also might
+be of value if a later version of the API allows for
+additional parsers. Thus, doing a query for types not known
+by the API still will return a result: an rdata with just a
+rdata_raw.</p>
+
+<p style="margin-left:11%; margin-top: 1em">It is expected
+that later extensions to the API will give some DNS types
+different names. It is also possible that later extensions
+will change the names for some of the DNS types listed
+above.</p>
+
+<h2>CALLBACK FUNCTIONS
+<a name="CALLBACK FUNCTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">A call to the
+async getdns functions typically returns before any network
+or file I/O occurs. After the API marshalls all the needed
+information, it calls the callback function that was passed
+by the application. The callback function might be called at
+any time, even before the calling function has returned. The
+API guarantees that the callback will be called exactly once
+unless the calling function returned an error, in which case
+the callback function is never called.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The getdns
+calling function calls the callback with the parameters
+defined as follows:</p>
+
+<p style="margin-left:11%; margin-top: 1em">typedef void
+(*getdns_callback_t)(</p>
+
+<p style="margin-left:15%;">getdns_context_t context, <br>
+uint16_t callback_type, <br>
+getdns_dict *response, <br>
+void *userarg, <br>
+getdns_transaction_t transaction_id)</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>context</i></p></td>
+<td width="1%"></td>
+<td width="34%">
+
+
+<p style="margin-top: 1em">see getdns_context (3)</p></td>
+<td width="43%">
+</td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p style="margin-top: 1em"><i>callback_type</i></p><td width="32%"></td>
+<td width="57%">
+
+
+<p style="margin-top: 1em">Supplies the reason for the
+callback.</p> </td>
+<td width="11%">
+</td></tr>
+</table>
+
+
+<p style="margin-left:15%; margin-top: 1em"><b>GETDNS_CALLBACK_COMPLETE</b>
+The response has the requested data in it</p>
+
+
+<p style="margin-left:15%; margin-top: 1em"><b>GETDNS_CALLBACK_CANCEL</b>
+The calling program canceled the callback; response is
+NULL</p>
+
+
+<p style="margin-left:15%; margin-top: 1em"><b>GETDNS_CALLBACK_TIMEOUT</b>
+The requested action timed out; response is NULL</p>
+
+
+<p style="margin-left:15%; margin-top: 1em"><b>GETDNS_CALLBACK_ERROR</b>
+The requested action had an error; response is NULL</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="12%">
+
+
+<p style="margin-top: 1em"><i>response</i></p></td>
+<td width="2%"></td>
+<td width="75%">
+
+
+<p style="margin-top: 1em">A response object with the
+response data. This is described in</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">the section titled
+&quot;RESPONSE DATA&quot; elsewhere in this manual page. The
+response object is part of the API&rsquo;s memory space, and
+will be freed by the API with the callback returns.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="11%">
+
+
+<p style="margin-top: 1em"><i>userarg</i></p></td>
+<td width="1%"></td>
+<td width="77%">
+
+
+<p style="margin-top: 1em">Identical to the userarg passed
+to the calling function.</p></td></tr>
+</table>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+
+<p style="margin-top: 1em"><i>transaction_id</i></p><td width="15%"></td>
+<td width="85%">
+
+
+<p style="margin-top: 1em">The transaction identified
+assigned by the calling function, used to associate a DNS
+response to a specific DNS request.</p></td></tr>
+</table>
+
+<p style="margin-left:11%; margin-top: 1em">To cancel an
+outstanding callback, use the following function.</p>
+
+
+<p style="margin-left:15%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_cancel_callback</b> (getdns_context_t context,
+getdns_transaction_t transaction_id)</p>
+
+<p style="margin-left:11%; margin-top: 1em">This causes the
+API to call the callback with a callback_type of
+GETDNS_CALLBACK_CANCEL if the callback for this
+transaction_id has not already been called. The callback
+code for cancellation should clean up any memory related to
+the identified call, such as to deallocate the memory for
+the userarg. getdns_cancel_callback() may return
+immediately, even before the callback finishes its work and
+returns. Calling getdns_cancel_callback() with a
+transaction_id of a callback that has already been called or
+an unknown transaction_id returns
+GETDNS_RETURN_UNKNOWN_TRANSACTION; otherwise,
+getdns_cancel_callback() returns GETDNS_RETURN_GOOD.</p>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>DIAGNOSTICS
+<a name="DIAGNOSTICS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_address</b>(3),
+<b>getdns_bindata</b>(3), <b>getdns_context</b>(3),
+<b>getdns_convert</b>(3), <b>getdns_dict</b>(3),
+<b>getdns_general</b>(3), <b>getdns_hostname</b>(3),
+<b>getdns_list</b>(3), <b>getdns_root_trust_anchor</b>(3)
+<b>getdns_service</b>(3)
+<b>getdns_validate_dnssec</b>(3)</p>
+
+<h2>REPORTING PROBLEMS
+<a name="REPORTING PROBLEMS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Bug reports
+should be sent to the getdns-bugs@getdns.net</p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The getdns API
+was documented by Paul Hoffman. This implementation of the
+getdns API was written by:</p>
+
+<p style="margin-left:15%; margin-top: 1em">Craig Despeaux,
+Verisign Inc. <br>
+John Dickinson, Sinodun <br>
+Sara Dickinson, Sinodun <br>
+Neel Goyal, Verisign Inc. <br>
+Shumon Huque, Verisign Labs <br>
+Olaf Kolkman, NLnet Labs <br>
+Allison Mankin, Verisign Inc. - Verisign Labs. <br>
+Melinda Shore, No Mountain Software LLC <br>
+Willem Toorop, NLnet Labs <br>
+Gowri Visweswaran, Verisign Labs <br>
+Wouter Wijngaards, NLnet Labs <br>
+Glen Wiley, Verisign Inc.</p>
+<hr>

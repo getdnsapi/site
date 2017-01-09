@@ -1,0 +1,108 @@
+title: getdns_root_trust_anchor.3
+---
+body:
+
+
+<h1 align="center">getdns_root_trust_anchor</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_root_trust_anchor</b>
+-- return the getdns list of default root trust anchors</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+<p style="margin-left:11%; margin-top: 1em">getdns_list *
+<b><br>
+getdns_root_trust_anchor</b> (time_t
+*utc_date_of_anchor)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If an
+application wants the API to perform DNSSEC validation
+without using the extensions, it can use the
+getdns_validate_dnssec() helper function. The API will use
+the resource records in bundle_of_support_records to
+construct the validation chain and the DNSKEY or DS records
+in trust_anchor_records as trust anchors. The default list
+of trust anchor records that is used by the library to
+validate DNSSEC can be retrieved by using the
+getdns_root_trust_anchor helper function.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="27%">
+
+
+<p style="margin-top: 1em"><i>utc_date_of_anchor</i></p></td>
+<td width="4%"></td>
+<td width="58%">
+
+
+<p style="margin-top: 1em">time the trust anchors were
+obtained in epoch</p></td></tr>
+</table>
+
+<p style="margin-left:11%;">seconds (on success)</p>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Returns the
+default list of trust anchor records used by the library to
+validate DNSSEC or NULL if no default trust anchors are
+available.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_validate_dnssec</b>(3)
+<b>libgetdns</b>(3)</p>
+<hr>

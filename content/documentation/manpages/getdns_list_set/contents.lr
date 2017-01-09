@@ -1,0 +1,141 @@
+title: getdns_list_set.3
+---
+body:
+
+
+<h1 align="center">getdns_list_set</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#RETURN VALUES">RETURN VALUES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>getdns_list_set,
+getdns_list_set_bindata, getdns_list_set_dict,
+getdns_list_set_int, getdns_list_set_list,</b> -- set a
+value by index from a getdns list</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">DNS Resolver
+library (libgetdns, -lgetdns)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">#include
+&lt;getdns.h&gt;</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_set_bindata</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+getdns_bindata *child_bindata)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_set_dict</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+getdns_dict *child_dict)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_set_int</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+uint32_t child_uint32_t)</p>
+
+
+<p style="margin-left:11%; margin-top: 1em">getdns_return_t
+<b><br>
+getdns_list_set_list</b> (getdns_list *this_list,</p>
+
+<p style="margin-left:15%;">size_t index, <br>
+getdns_list *child_list)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The getdns_list
+type is used to manage a heterogeneous indexed list of
+values that include:</p>
+
+<p style="margin-left:15%;">getdns_bindata <br>
+getdns_dict <br>
+getdns_list <br>
+uint32_t</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>this_list</i>
+the list in which to add/update the indexed item</p>
+
+<p style="margin-left:11%; margin-top: 1em"><i>index</i>
+the index whose associated value is to be set. If the index
+exists in the list the value associated with that index is
+replaced, if the index does not exist in the list a new item
+is added to the list at the specified index.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>child_bindata
+child_dict child_list child_uint32</i> value to assign the
+indexed element</p>
+
+<h2>RETURN VALUES
+<a name="RETURN VALUES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Upon successful
+completion the functions return <b>GETDNS_RETURN_GOOD</b> ,
+otherwise the following error values are returned:</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_NO_SUCH_LIST_ITEM</b>
+if the index is out of range</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>GETDNS_RETURN_GENERIC_ERROR</b>
+if this_list is not a valid list</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">TBD</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libgetdns</b>(3),
+<b>getdns_address</b>(3), <b>getdns_list</b>(3),
+<b>getdns_list_get</b>(3), <b>getdns_general</b>(3),
+<b>getdns_hostname</b>(3), <b>getdns_service</b>(3),</p>
+<hr>

@@ -53,6 +53,12 @@ footer {
 
   .sidebar-offcanvas {
     position: absolute;
+    top: 1;
+    width: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas.active {
+    position: absolute;
     top: 0;
     width: 50%; /* 6 columns */
   }
