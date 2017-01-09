@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% import "macros/getdns.html" as g %}
+{% block container %}
+  {{ g.render_4col(this.children, this.record_label, icon = 'blackboard') }}
+{% endblock %}
+{#
+{% block sidebar %}
+  {{ g.render_thing_sidebar('Presentations', site.get('/documentation/presentations').children) }}
+{% endblock %}
+#}
