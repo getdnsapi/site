@@ -152,10 +152,10 @@
     {% endif %}
 {% endmacro %}{# render_small(thing) #}
 
-{% macro render_title(title, prefix = none, ncols = 12, icon = none) %}
+{% macro render_title(title, prefix = none, ncols = 12, icon = none, noline = False) %}
   {% if ncols == 12 %}<div class="row">{% endif %}
   <div class="col-sm-{{ ncols }} thing-header">
-    <hr style="position: absolute; right: 0;  bottom: -7px; border: 0; width: 70%; height: 0; border-top: 1px solid red;">
+    {% if not noline %}<hr style="position: absolute; right: 0;  bottom: -7px; border: 0; width: 70%; height: 0; border-top: 1px solid red;">{% endif %}
     <h1>{% if prefix %}<span class="thing-header-prefix">{{ prefix }}</span> {% endif %}{% if icon %}<span class="glyphicon glyphicon-{{ icon }}"></span> {% endif %}{{ title }}</h1>
     <img src="/static/gd-underline.svg">
   </div>
@@ -163,8 +163,8 @@
 {% endmacro %}
 
 
-{% macro render_3col(things, title, prefix = none, icon = none) %}
-      {{ render_title(title, prefix, icon = icon) }}
+{% macro render_3col(things, title, prefix = none, icon = none, noline = False) %}
+      {{ render_title(title, prefix, icon = icon, noline = noline) }}
       {% for row in things|batch(3) %}
         <div class="row thing-row">
           {% for other in row %}
@@ -177,8 +177,8 @@
 {% endmacro %}{# render_3col(things, title, prefix = none) #}
 
 
-{% macro render_4col(things, title, prefix = none, icon = none) %}
-      {{ render_title(title, prefix, icon = icon) }}
+{% macro render_4col(things, title, prefix = none, icon = none, noline = False) %}
+      {{ render_title(title, prefix, icon = icon, noline = noline) }}
       {% for row in things|batch(4) %}
         <div class="row thing-row">
           {% for other in row %}
@@ -207,7 +207,7 @@
 	</small>
 	</h1>
     </div>
-    {{ render_title(thing.record_label, ncols =  9) }}
+    {{ render_title(thing.record_label, ncols =  9, noline = True) }}
   </div>
   {% if thing._model == 'release' %}
     {% for attachement in thing.attachments %}

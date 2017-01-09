@@ -2,7 +2,7 @@
 {% import "macros/getdns.html" as g %}
 {% block body %}
   {% call(things) g.get_things_by_author(this) %}
-  {{ g.render_3col(things, this.record_label, icon = 'user') }}
+  {{ g.render_3col(things, this.record_label, icon = 'user', noline = true) }}
   {% endcall %}
 {% endblock %}
 {% block sidebar %}

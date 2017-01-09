@@ -1,7 +1,7 @@
 {% extends "nosidebar.html" %}
 {% import "macros/getdns.html" as g %}
 {% block body %}
-  {{ g.render_4col(this.children, this.record_label, icon = 'blackboard') }}
+  {{ g.render_4col(this.children, this.record_label) }}
 {% endblock %}
 {#
 {% block sidebar %}
