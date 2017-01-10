@@ -20,6 +20,10 @@ $carousel-indicator-active-bg: $getdns-red;
 	src: local('Nunito Sans Italic'), local('NunitoSans-Italic'), url(/static/nunito-sans-400i.ttf) format('truetype');
 }
 
+.manpages .list-group-item {
+	padding: 1px 5px;
+	border-top: 0;
+}
 /* tags */
 a.tag {
 	border-radius: 20px;
