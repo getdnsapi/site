@@ -1,4 +1,6 @@
+{% extends "navbar.html" %}
 {% import "macros/getdns.html" as g %}
+{% block html %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
   <title>{% block title %}{{ this.record_label }}{% endblock %}</title>
 </head>
 <body{% block body_attrs %}{% endblock %}>
-  {% include 'navbar.html' %}
+  {% block navbar %}{{ super() }}{% endblock %}
 
   <div class="container">
     {% block container %}
@@ -83,3 +85,4 @@
   <script type=text/javascript src="{{ '/static/gen/app.js'|asseturl }}" charset="utf-8"></script>
 </body>
 </html>
+{% endblock html %}
