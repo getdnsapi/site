@@ -13,9 +13,14 @@ $carousel-indicator-active-bg: $getdns-red;
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "offcanvas.css";
 
+.thing-header-prefix {
+	color: $getdns-red;
+}
+
 .tablist > li > a {
 	padding: 1px;
 }
+
 @font-face {
 	font-family: 'Nunito Sans';
 	font-style: italic;

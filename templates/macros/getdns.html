@@ -21,6 +21,27 @@
   {{ caller(things) }}
 {% endmacro %}
 
+{% macro get_things_by_authors(authors) %}
+  {% if authors|length > 0 %}
+    {% set author = site.get('/authors/' + authors[0]) %}
+    {% set Fs = { 'PF': F.presenters.contains(author)
+		, 'BF': F.auhor == author._id} %}
+    {% for author_id in authors[1:] %}
+      {% set author = site.get('/authors/' + author_id) %}
+      {% if Fs.update({'PF': Fs['PF'].or(F.presenters.contains(author))}) %}{% endif %}
+      {% if Fs.update({'BF': Fs['BF'].or(F.author == author._id)}) %}{% endif %}
+    {% endfor %}
+    {% set things = 
+       ( site.get('/presentations').children.filter(Fs['PF'])|list
+       + site.get('/blog').children.filter(Fs['BF'])|list
+       ) | reject('equalto', thing)| sort(attribute = 'date', reverse = True)
+    %}
+    {{ caller(things) }}
+  {% else %}
+    {{ caller(none) }}
+  {% endif %}
+{% endmacro %}
+
 
 {% macro get_related(thing) %}
   {% if thing.tags and thing.tags|length > 0 %}
@@ -325,11 +346,34 @@
       </div>
     </div>
   {% endif %}{# elif thing._model == 'blog-post' #}
+
   {% call(related) get_related(thing) %}
     {% if related %}
-      {{ render_3col(related, 'Related') }}
+      {% if thing.tags|length > 1 %}
+        {{ render_3col(related, 'Related') }}
+      {% else %}
+        {{ render_3col(related, site.get('/tags/'+(thing.tags|first)).record_label, prefix = 'Related by') }}
+      {% endif %}
     {% endif %}
   {% endcall %}
+
+  {% if thing.author %}
+    {% call(other) get_things_by_author(thing.author) %}
+      {% if other %}
+        {{ render_3col(other,  site.get('/authors/'+thing.author).record_label, 'Other by') }}
+      {% endif %}
+    {% endcall %}
+  {% elif thing.presenters %}
+    {% call(other) get_things_by_authors(thing.presenters) %}
+      {% if other %}
+        {% if thing.presenters|length > 1 %}
+          {{ render_3col(other,  'these authors', 'Other by') }}
+	{% else %}
+          {{ render_3col(other,  site.get('/authors/'+(thing.presenters|first)).record_label, 'Other by') }}
+        {% endif %}
+      {% endif %}
+    {% endcall %}
+  {% endif %}
 {% endmacro %}{# macro render_full_page(thing) #}
 
 
