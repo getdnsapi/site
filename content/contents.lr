@@ -29,7 +29,7 @@ text: The latest source code tarball is available for download below, with check
 ----
 image: 
 ----
-link: https://getdnsapi.net/getdns-latest.tar.gz
+link: /getdns-latest.tar.gz
 #### feature ####
 title: Do a Query
 ----

@@ -29,7 +29,19 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div class="row">
-  {{ this.body }}
-</div>
+  {% macro showblock(latest_tarball) %}
+    {{ caller()|string|replace('/getdns-latest.tar.gz', latest_tarball) }}
+  {% endmacro %}
+  {% set RD = {'latest': '/getdns-latest.tar.gz'} %}
+  {% set release = site.get('/releases').children.first() %}
+  {% for attachement in release.attachments %}
+    {% if attachement.path.endswith('.tar.gz') and RD.update({'latest': attachement.path}) %}{% endif %}
+  {% endfor %}
+  {% for row in this.body.blocks|batch(r) %}
+    <div class="row">
+      {% for feature in row %}
+        {% call showblock(RD['latest']|url) %}{{ feature }}{% endcall %}
+      {% endfor %}
+    </div>
+  {% endfor %}
 {% endblock %}
