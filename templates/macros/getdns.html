@@ -207,7 +207,7 @@
 {% macro render_4col(things, title, prefix = none, icon = none, noline = False) %}
       {{ render_title(title, prefix, icon = icon, noline = noline) }}
       {% for row in things|batch(4) %}
-        <div class="row thing-row">
+        <div class="row thing-row{% if row_list|selectattr('image', 'defined')|list|length > 0 %} image-thing-row{% endif %}">
           {% for other in row %}
             <div class="col-sm-3 small-thing">
               {{ render_small(other) }}
