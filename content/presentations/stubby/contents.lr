@@ -25,3 +25,5 @@ with DNS64;  For all these things you need a heroic but friendly
 companion.  Meet Stubby, a stub resolver daemon for your end-host that
 carries you safely through minefields but is as easy to get along with
 as a friendly puppy.
+---
+image: nanog68.png

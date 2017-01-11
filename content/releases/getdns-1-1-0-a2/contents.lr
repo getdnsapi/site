@@ -54,3 +54,5 @@ changelog:
     connections/upstreams.
 ---
 tags: stubby
+---
+image: fireworks.png

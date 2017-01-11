@@ -9,6 +9,7 @@ archive: yes
 sha256: dce41ecfef9097c9d33384fbaf1d594fb174a94ccf1e04c1718e26d9fc9e279a
 ---
 announcement:
+
 We are please to announce an alpha release of getdns 1.1.0 is being made available for early testing of a subset of features planned for this release.
 
 Updates:
@@ -33,6 +34,7 @@ Documentation is available at:
 * getdns as a DNS-over-TLS local stub resolver: <https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon>
 ---
 changelog:
+
 * 2016-07-14: Version 1.1.0a1
   * Conversion functions from text strings to getdns native types:
     getdns_str2dict(), getdns_str2list(), getdns_str2bindata() and
@@ -45,3 +47,5 @@ changelog:
   * Enhancements to the logic used to select connection based upstream
     transports (TCP, TLS) to improve robustness and re-use of
     connections/upstreams.
+---
+image: 

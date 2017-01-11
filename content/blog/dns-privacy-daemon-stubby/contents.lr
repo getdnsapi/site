@@ -188,3 +188,5 @@ Notes:
 
 * If you are using a DNS Privacy server that does not support concurrent processing of TLS queries, you may experience some issues due to timeouts causing subsequent queries on the same connection to fail.
 * Stubby currently backs-off for 1 hour from using servers that provide poor service - the next version will make this time configurable. Or this can be reset by restarting Stubby.
+---
+image: Stubby_in_his_great_coat.jpg

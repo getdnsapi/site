@@ -74,11 +74,21 @@ a.tag {
 	height: 5em;
 	overflow: hidden;
 }
+
+.image-thing-row .feature-img-link {
+	height: 224px;
+	overflow: hidden;
+}
+
 .small-thing-header {
 	position: absolute;
 	bottom: 0;
 	font-size: 16px;
 	text-align: center;
+}
+
+.small-thing-header img {
+	margin-bottom: 3em;
 }
 .small-thing-title {
 	height: 3em;
