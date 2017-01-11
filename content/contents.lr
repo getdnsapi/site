@@ -2,7 +2,7 @@ _model: frontpage
 ---
 title: Welcome to getdns!
 ---
-body:
+features:
 
 #### feature ####
 title: Stubby
@@ -127,3 +127,5 @@ image: allison-gowri-sara-jad.png
 text: Stubby is the name given to a mode of using getdns which enables it to act as a local DNS Privacy stub resolver (using DNS-over-TLS).
 ----
 image: stubby-600x230.png
+---
+body: 

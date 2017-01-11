@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
+  {% if this.body %}
+  <div class="jumbotron">{{ this.body }}</div>
+  {% endif %}
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -37,7 +41,7 @@
   {% for attachement in release.attachments %}
     {% if attachement.path.endswith('.tar.gz') and RD.update({'latest': attachement.path}) %}{% endif %}
   {% endfor %}
-  {% for row in this.body.blocks|batch(r) %}
+  {% for row in this.features.blocks|batch(r) %}
     <div class="row">
       {% for feature in row %}
         {% call showblock(RD['latest']|url) %}{{ feature }}{% endcall %}
