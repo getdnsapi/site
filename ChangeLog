@@ -1,0 +1,14 @@
+* Version of 2017-01-13 
+  * Created models for features, blog-posts, news-items, presentations and
+    releases, and split up the existing aggregated information into pieces
+    of these types.
+  * Miscellaneous graphical improvements (Logo, favicon, headings, etc.)
+  * Front page carousel
+  * Small query from the top navigation bar, can be performed wherever there
+    is a sidebar.
+  * Tocdoc model with spy-scrolling afixed table of contents in the sidebar
+    This model is applied to the API and the README
+  * Bootstrap and menu integration with doxygen generated output.
+  * Tags for all information types and and authors for presentations and
+    blog post, for interrelations.  Show "Related" and "Other by ..." 
+    relations under detail pages.
