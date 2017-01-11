@@ -131,9 +131,11 @@
            else 'question-sign' %}
       <a class="feature-img-link" href="{{ thing_link(thing) }}">
       <div class="small-thing-header">
-        {% if thing.image %}
+        {% if thing.image and thing.image is not none and thing.image != '' %}
 	  {% set img = thing.attachments.images.get(thing.image) %}
-	  <img src="{{ img.thumbnail(224, 144)|url }}">
+	  {% if img is not none %}
+	    <img src="{{ img.thumbnail(224, 144)|url }}">
+	  {% endif %}
         {% endif %}
 
         <div class="small-thing-title">
@@ -193,7 +195,7 @@
       {{ render_title(title, prefix, icon = icon, noline = noline) }}
       {% for row in things|batch(3) %}
         {% set row_list = row|list %}
-        <div class="row thing-row{% if row_list|selectattr('image', 'defined')|list|length > 0 %} image-thing-row{% endif %}">
+        <div class="row thing-row{% if row_list|selectattr('image', 'defined')|rejectattr('image', 'none')|list|length > 0 %} image-thing-row{% endif %}">
           {% for other in row_list %}
             <div class="col-sm-4 small-thing">
               {{ render_small(other) }}
@@ -208,7 +210,7 @@
       {{ render_title(title, prefix, icon = icon, noline = noline) }}
       {% for row in things|batch(4) %}
         {% set row_list = row|list %}
-        <div class="row thing-row{% if row_list|selectattr('image', 'defined')|list|length > 0 %} image-thing-row{% endif %}">
+        <div class="row thing-row{% if row_list|selectattr('image', 'defined')|rejectattr('image', 'none')|list|length > 0 %} image-thing-row{% endif %}">
           {% for other in row %}
             <div class="col-sm-3 small-thing">
               {{ render_small(other) }}
@@ -278,11 +280,13 @@
         {{ render_tags(thing) }}
       </div>
       <div class="col-sm-9">
-        {% if thing.image %}
+        {% if thing.image and thing.image is not none and thing.image != '' %}
+	  {% set img = thing.attachments.images.get(thing.image) %}
+	  {% if img is not none %}
 	  <div class="thumbnail" style="float: right; margin-left: 10px; margin-top: 10px">
-	    {% set img = thing.attachments.images.get(thing.image) %}
 	    <img src="{{ img.thumbnail(180)|url }}">
 	  </div>
+	  {% endif %}
         {% endif %}
 
         {{ thing.announcement }}
@@ -357,10 +361,12 @@
       </div>
       <div class="col-sm-9">
         {% if thing.image %}
+	  {% set img = thing.attachments.images.get(thing.image) %}
+	  {% if img is not none %}
 	  <div class="thumbnail" style="float: right; margin-left: 10px; margin-top: 10px">
-	    {% set img = thing.attachments.images.get(thing.image) %}
 	    <img src="{{ img.thumbnail(180)|url }}">
 	  </div>
+	  {% endif %}
         {% endif %}
 
         {{ thing.body }}
