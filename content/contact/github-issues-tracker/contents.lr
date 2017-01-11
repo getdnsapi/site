@@ -1,0 +1,7 @@
+_model: link
+---
+title: Submit a bug report
+---
+link: https://github.com/getdnsapi/getdns/issues
+---
+order: 10

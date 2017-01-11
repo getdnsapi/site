@@ -1,0 +1,7 @@
+_model: link
+---
+title: Subscribe to the users mailing-list
+---
+link: /mailman/listinfo/users
+---
+order: 30

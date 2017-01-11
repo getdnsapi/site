@@ -21,6 +21,14 @@ $carousel-indicator-active-bg: $getdns-red;
 	padding: 1px;
 }
 
+.navbar-nav > li > a {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.navbar-brand {
+	padding-right: 0;
+}
+
 @font-face {
 	font-family: 'Nunito Sans';
 	font-style: italic;
