@@ -4,6 +4,23 @@
   <div class="jumbotron">{{ this.body }}</div>
   {% endif %}
 
+<div class="row">
+  {% macro showblock(latest_tarball) %}
+    {{ caller()|string|replace('/getdns-latest.tar.gz', latest_tarball) }}
+  {% endmacro %}
+  {% set RD = {'latest': '/getdns-latest.tar.gz'} %}
+  {% set release = site.get('/releases').children.first() %}
+  {% for attachement in release.attachments %}
+    {% if attachement.path.endswith('.tar.gz') and RD.update({'latest': attachement.path}) %}{% endif %}
+  {% endfor %}
+  {% for feature in this.features.blocks %}
+    {% call showblock(RD['latest']|url) %}{{ feature }}{% endcall %}
+  {% endfor %}
+  {% for binding in site.get('/bindings').children if binding.on_frontpage %}
+    {{ g.render_binding(binding) }}
+  {% endfor %}
+</div>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -33,18 +50,4 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-  {% macro showblock(latest_tarball) %}
-    {{ caller()|string|replace('/getdns-latest.tar.gz', latest_tarball) }}
-  {% endmacro %}
-  {% set RD = {'latest': '/getdns-latest.tar.gz'} %}
-  {% set release = site.get('/releases').children.first() %}
-  {% for attachement in release.attachments %}
-    {% if attachement.path.endswith('.tar.gz') and RD.update({'latest': attachement.path}) %}{% endif %}
-  {% endfor %}
-  {% for feature in this.features.blocks %}
-    {% call showblock(RD['latest']|url) %}{{ feature }}{% endcall %}
-  {% endfor %}
-  {% for binding in site.get('/bindings').children if binding.on_frontpage %}
-    {{ g.render_binding(binding) }}
-  {% endfor %}
 {% endblock %}
