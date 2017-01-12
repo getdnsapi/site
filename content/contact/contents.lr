@@ -3,3 +3,5 @@ _model: page
 title: Contact
 ---
 order: 60
+---
+in_bottom_menu: yes

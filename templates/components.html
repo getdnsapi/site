@@ -3,7 +3,7 @@
 <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -11,7 +11,7 @@
       </button>
       <a class="navbar-brand" href="{{ '/'|url }}"><img height="64" src="{{ '/static/logo.svg'|url }}" alt="getdns API"></a>
     </div><!-- class="navbar-header" -->
-    <div class="navbar-collapse collapse">
+    <div id="top-navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
           {% for page in site.get('/').children if page.in_menu  %}
             {% if page.children and not page.no_submenu %}
@@ -37,8 +37,8 @@
       {% endfor %}
     </ul>
     {% block navbar_xtras %}
-      <div class="col-xs-6 col-sm-3 navbar-right">
-        <form class="navbar-form hidequeryform" method="POST">
+      <div class="navbar-right hidequeryform">
+        <form class="navbar-form" method="POST">
           <div class="input-group">
             <input type="text" name="hostname" class="form-control" placeholder="Do a Query">
           <span class="input-group-btn">
@@ -53,9 +53,44 @@
 </nav><!-- class="navbar navbar-fixed-top navbar-inverse" role="navigation" -->
 {% endblock navbar %}
 {% block footer_content %}
-<hr class="footer"/>
-<footer>
-  &copy; Copyright 2017 by getdns team.
-</footer>
+<nav class="navbar navbar-default navbar-static-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bottom-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="bottom-navbar" class="navbar-collapse collapse">
+    <p class="navbar-text navbar-right">&copy; Copyright 2017 by the <a class="navbar-link" style="color: black"  href="mailto:team@getdnsapi.net">getdns team</a>.</p>
+    <ul class="nav navbar-nav navbar-right">
+          {% for page in site.get('/').children if page.in_bottom_menu  %}
+            {% if page.children and not page.no_submenu %}
+          <li class="nav-item dropup{% if this.is_child_of(page) or this == page %}active{% endif %}">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ page|url }}">{{ page.record_label }}<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+            {% for subpage in page.children %}
+              <li class="nav-item {% if this.is_child_of(subpage) or this == subpage %}active{% endif %}">
+                    {% if subpage._model == 'link' %}
+                  <a class="nav-link" href="{{ subpage.link }}">{{ subpage.record_label }}</a>
+                {% else %}
+                  <a class="nav-link" href="{{ subpage|url }}">{{ subpage.record_label }}</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li class="nav-item {% if this.is_child_of(page) or this == page %}active{% endif %}">
+            <a class="nav-link" href="{{ page|url }}">{{ page.record_label }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    </div>
+  </div>
+</nav>
 {% endblock footer_content %}
 {% endblock html %}

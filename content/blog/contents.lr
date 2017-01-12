@@ -1,9 +1,11 @@
 _model: blog
 ---
-title: Examples
+title: All examples
 ---
 _hidden: no
 ---
 _discoverable: yes
 ---
 order: 20
+---
+in_bottom_menu: yes

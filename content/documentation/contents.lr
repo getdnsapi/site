@@ -6,4 +6,6 @@ _hidden: no
 ---
 _discoverable: yes
 ---
-order: 10
+order: 20
+---
+in_menu: yes

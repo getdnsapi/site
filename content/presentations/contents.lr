@@ -2,7 +2,7 @@ _model: presentations
 ---
 title: Presentations
 ---
-order: 10
+order: 30
 ---
 body:
 
@@ -231,3 +231,5 @@ title: getdns API implementation
 slides_url: https://indico.dns-oarc.net/event/19/contribution/4/material/slides/0.pdf
 ----
 video_url: https://indico.dns-oarc.net//getFile.py/access?resId=2&materialId=1&confId=19
+---
+in_menu: yes
