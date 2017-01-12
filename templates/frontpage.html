@@ -41,11 +41,10 @@
   {% for attachement in release.attachments %}
     {% if attachement.path.endswith('.tar.gz') and RD.update({'latest': attachement.path}) %}{% endif %}
   {% endfor %}
-  {% for row in this.features.blocks|batch(r) %}
-    <div class="row">
-      {% for feature in row %}
-        {% call showblock(RD['latest']|url) %}{{ feature }}{% endcall %}
-      {% endfor %}
-    </div>
+  {% for feature in this.features.blocks %}
+    {% call showblock(RD['latest']|url) %}{{ feature }}{% endcall %}
+  {% endfor %}
+  {% for binding in site.get('/bindings').children if binding.on_frontpage %}
+    {{ g.render_binding(binding) }}
   {% endfor %}
 {% endblock %}

@@ -1,0 +1,5 @@
+{% extends "layout.html" %}
+{% import "macros/getdns.html" as g %}
+{% block body %}
+  {{ g.render_binding(this) }}
+{% endblock %}

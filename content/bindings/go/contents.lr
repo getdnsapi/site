@@ -1,0 +1,15 @@
+_model: binding
+---
+title: Go Bindings
+---
+text:
+
+This was written during the IETF 96 Hackathon, largely as an excuse for a novice Go programmer to learn more Go.
+
+Go bindings are contributed by Jim Hague
+---
+image: gopher.png
+---
+link: https://github.com/Sinodun/getdns-go
+---
+image: gopher.png

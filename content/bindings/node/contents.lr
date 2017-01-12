@@ -1,0 +1,18 @@
+_model: binding
+---
+title: nodejs Bindings
+---
+text:
+
+nodejs getdns bindings is an implementation of nodejs language bindings for the getdns API. nodejs getdns is built on top of the getdns implementation.
+
+nodejs bindings were developed by Neil Goyal and are currently maintained by Joel Purra
+---
+image: nodejs.png
+---
+link:
+
+https://github.com/getdnsapi/getdns-node
+
+---
+on_frontpage: yes

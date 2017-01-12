@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% import "macros/getdns.html" as g %}
+{% block body %}
+  {% for binding in this.children if binding.on_frontpage %}
+    {{ g.render_binding(binding) }}
+  {% endfor %}
+  {% for binding in this.children if not binding.on_frontpage %}
+    {{ g.render_binding(binding) }}
+  {% endfor %}
+{% endblock %}

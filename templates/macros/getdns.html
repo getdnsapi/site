@@ -419,3 +419,18 @@
     </div>
   </div>
 {% endmacro %}{# render_thing_sidebar(title, things, active = none) #}
+
+{% macro render_binding(binding) %}
+<div class="col-sm-6 col-lg-4 feature">
+  <a class="feature-img-link" href="{{ binding.link }}">
+    <div>
+      {% if binding.image %}
+      {% set img = binding.attachments.images.get(binding.image) %}
+      <img src="{{ img.thumbnail(245, 145)|url }}"><br>
+      {% endif %}
+      <h2>{{ binding.title }}</h2>
+    </div>
+  </a>
+  <p>{{ binding.text }}</p>
+</div>
+{% endmacro %}{# render_binding(binding) #}

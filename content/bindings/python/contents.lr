@@ -1,0 +1,15 @@
+_model: binding
+---
+title: Python Bindings
+---
+text:
+
+pygetdns is an implementation of Python language bindings for the getdns API. pygetdns is built on top of the getdns implementation. Documentation is available [here](http://getdns.readthedocs.org/en/latest/).
+
+Python bindings are developed by Melinda Shore
+---
+image: python.png
+---
+link: https://github.com/getdnsapi/getdns-python-bindings
+---
+on_frontpage: yes

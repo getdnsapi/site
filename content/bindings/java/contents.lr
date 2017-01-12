@@ -1,0 +1,13 @@
+_model: binding
+---
+title: Java Bindings
+---
+text:
+
+Java getdns bindings is an implementation of Java language bindings for the getdns API. Java getdns is built on top of the getdns implementation. Documentation is available [here](http://getdns-java.github.io/).
+
+Java bindings were contributed by Prihvi Ranganath
+---
+image: java.png
+---
+link: https://github.com/getdnsapi/getdns-java-bindings

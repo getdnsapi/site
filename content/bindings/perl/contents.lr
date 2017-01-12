@@ -1,0 +1,13 @@
+_model: binding
+---
+title: Perl Bindings
+---
+text:
+
+Perl getdns bindings is an implementation of Perl language bindings for the getdns API. Perl getdns is built on top of the getdns implementation.
+
+Perl bindings are contributed by Jerry Lundström
+---
+image: perl-camel.png
+---
+link: https://github.com/DNS-OARC/p5-Net-GetDNS

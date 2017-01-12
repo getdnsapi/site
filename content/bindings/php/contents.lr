@@ -1,0 +1,14 @@
+_model: binding
+---
+title: PHP Bindings
+---
+text:
+
+PHP getdns bindings is an implementation of PHP language bindings for the getdns API. PHP getdns is built on top of the getdns implementation. Documentation is available [here](http://phpdoc.wip.getdnsapi.net/).
+
+PHP bindings were contributed by Scott Hollenbeck
+---
+image: elephpant.png
+---
+link: https://github.com/getdnsapi/getdns-php-bindings
+
