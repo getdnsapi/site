@@ -1,3 +1,5 @@
 _model: bindings
 ---
 in_bottom_menu: yes
+---
+order: 80

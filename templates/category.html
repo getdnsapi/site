@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% import "macros/getdns.html" as g %}
+{% block body %}
+  {% set children = site.query('/blog').filter(F.categories.contains(this._id)) %}
+  {% if children %}
+    {{ g.render_full_page(children.first()) }}
+  {% endif %}
+{% endblock body %}
+{% block sidebar %}
+{% set children = site.query('/blog').filter(F.categories.contains(this)) %}
+{{ g.render_thing_sidebar(this.name + ' examples', children, active = children.first(), link = this ) }} 
+{% endblock sidebar %}

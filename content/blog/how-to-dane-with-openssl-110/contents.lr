@@ -1,9 +1,13 @@
 title: How to DANE with getdns and OpenSSL 1.1.0
 ---
-_discoverable: no
+_discoverable: yes
 ---
 date: 2017-01-13
 ---
 author: willem-toorop
 ---
 tags: dane
+---
+body: Some demonstration of howto do DANE with getdns
+---
+categories: advanced
