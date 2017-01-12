@@ -1,4 +1,4 @@
-{% extends "navbar.html" %}
+{% extends "components.html" %}
 {% import "macros/getdns.html" as g %}
 {% block html %}
 <!DOCTYPE html>
@@ -75,12 +75,7 @@
 
     </div><!-- class="row row-offcanvas row-offcanvas-right" -->
     {% endblock container %}
-
-    <hr>
-
-    <footer>
-      &copy; Copyright 2016 by getdns team.
-    </footer>
+    {% block footer_content %}{{ super() }}{% endblock footer_content %}
   </div><!-- class="container" -->
   <script type=text/javascript src="{{ '/static/gen/app.js'|asseturl }}" charset="utf-8"></script>
 </body>

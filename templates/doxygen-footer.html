@@ -1,3 +1,5 @@
+{% extends "components.html" %}
+{% block html %}
 <!-- HTML footer for doxygen 1.8.11-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->
@@ -14,15 +16,12 @@
 </div>
 </div>
 </div>
-</div>
 <!--BEGIN !GENERATE_TREEVIEW-->
-<hr class="footer"/><address class="footer"><small>
-$generatedby &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="$relpath^doxygen.png" alt="doxygen"/>
-</a> $doxygenversion
-</small></address>
+<!--#if expr="true" --><!--#include virtual="/doxygen-templates/footer-content.html" --><!--#else -->{% block footer_content %}{{ super() }}{% endblock footer_content %}<!--#endif -->
 <!--END !GENERATE_TREEVIEW-->
+</div>
   <script type=text/javascript src="{{ '/static/gen/app.js'|asseturl }}" charset="utf-8"></script>
   <script type="text/javascript" src="$relpath^doxy-boot.js"></script>
 </body>
 </html>
+{% endblock html %}
