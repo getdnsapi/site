@@ -17,8 +17,8 @@
     {% for slide in this.carousel.blocks %}
       <div class="item item{{ loop.index }}{% if loop.first %} active{% endif %}">
         {% set img = this.attachments.images.get(slide.image) %}
-	<div class="carousel-caption">{{ slide.text }}</div>
         <img src="{{ img.thumbnail(600, 230)|url }}">
+	{% if slide.text %}<div class="carousel-caption">{{ slide.text }}</div>{% endif %}
       </div>
     {% endfor %}
   </div>

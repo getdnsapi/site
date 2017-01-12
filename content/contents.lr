@@ -23,9 +23,9 @@ image: octocat.png
 ----
 link: https://github.com/getdnsapi/getdns/fork
 #### feature ####
-title: Download source
+title: Download latest release tarball
 ----
-text: The latest source code tarball is available for download below, with checksum [here](releases/).
+text: The latest source code tarball is available for download  with checksum [here](releases/).
 ----
 image: 
 ----
@@ -128,4 +128,6 @@ text: Stubby is the name given to a mode of using getdns which enables it to act
 ----
 image: stubby-600x230.png
 ---
-body: 
+body:
+
+getdns is a modern asynchronous DNS API. It implements DNS entry points from a design developed and vetted by application developers, in an [API specification](/spec/) originally edited by Paul Hoffman. The open source C implementation of getdns is developed and maintained in collaboration by NLnet Labs, Sinodun and No Mountain Software. This implementation is licensed under the [New BSD License](http://opensource.org/licenses/BSD-3-Clause). 
