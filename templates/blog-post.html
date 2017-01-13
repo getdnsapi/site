@@ -4,5 +4,5 @@
   {{ g.render_full_page(this) }}
 {% endblock body %}
 {% block sidebar %}
-  {{ g.render_thing_sidebar('Examples', site.get('/blog').children, this, link = site.get('/blog')) }}
+  {{ g.render_thing_sidebar(this.parent.record_label, this.parent.children, this, this.parent) }}
 {% endblock sidebar %}
