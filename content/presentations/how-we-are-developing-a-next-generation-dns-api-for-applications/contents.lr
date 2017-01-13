@@ -12,9 +12,9 @@ title: How we are developing a next generation DNS API for applications
 ---
 slides_url: https://indico.dns-oarc.net/event/22/session/8/contribution/19/material/slides/0.pdf
 ---
-video_url: https://www.youtube.com/watch?v=lKFctDUFY0U
+video_url: https://www.youtube.com/watch?v=lKFctDUFY0U&t=1h24m0s
 ---
-embedded_video_url: https://www.youtube.com/embed/lKFctDUFY0U
+embedded_video_url: https://www.youtube.com/embed/lKFctDUFY0U?start=5040
 ---
 teaser: Presentation at the DNS-OARC24 in Buenos Aires
 ---
@@ -30,3 +30,5 @@ We present an implementation of the getdns API (verging on production release) a
 Participation by the development team in multiple international hackathons has also demonstrated how the API enables rapid development of prototype implementations (including many DNS privacy related IETF drafts) with getdns proving a powerful research tool in these areas.
 
 Integration of getdns into operating systems is also discussed, as it the fact that by enabling new DNS features for client applications the API will create demand for upstream services which is of consideration to operators.
+---
+image: oarc24.png

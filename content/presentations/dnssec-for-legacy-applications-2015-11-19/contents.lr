@@ -16,6 +16,6 @@ video_url: https://ripe71.ripe.net/archives/video/1221
 ---
 teaser: Presentation about an experimental nsswitch getdns component.
 ---
-abstract:
-
-Validating stub resolvers are hampered by middle boxes (typically CPE) that corrupt the path from the stub to the recursive resolver. Using the getdns library and the Linux/Unix name resolution framework, libnss_getdns provides (stub-level) DNSSEC validation for legacy applications. This module can work around broken middle boxes by double checking bogus answers. It also offers in-path signalling of DNSSEC failure for http, informing the end-user why validation failed and giving them control of deciding how to deal with that.
+abstract: Validating stub resolvers are hampered by middle boxes (typically CPE) that corrupt the path from the stub to the recursive resolver. Using the getdns library and the Linux/Unix name resolution framework, libnss_getdns provides (stub-level) DNSSEC validation for legacy applications. This module can work around broken middle boxes by double checking bogus answers. It also offers in-path signalling of DNSSEC failure for http, informing the end-user why validation failed and giving them control of deciding how to deal with that.
+---
+image: legacy-01.png

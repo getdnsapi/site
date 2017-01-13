@@ -14,6 +14,8 @@ slides_url: https://meetings.icann.org/en/dublin54/schedule/wed-dnssec/presentat
 ---
 video_url: https://www.youtube.com/watch?v=gZyF_blIYX0&t=6m26s
 ---
-embedded_video_url: https://www.youtube.com/embed/gZyF_blIYX0&t=6m26s?start=386
+embedded_video_url: https://www.youtube.com/embed/gZyF_blIYX0&start=386
 ---
 teaser: Presentation about an experimental nsswitch getdns component
+---
+image: legacy-icann-07.png

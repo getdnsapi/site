@@ -27,3 +27,5 @@ There have been a number of responses to the misissuance problem. One of these i
 DANE introduces some new DNS record types containing certificates, and a new trust model which is not based in trust roots defined by certification authorities but rather in a domain making assertions about itself. The initial focus in DANE was on supporting TLS server certificates but has expanded to include support for keying material for individual users, such as PGP and S/MIME.
 
 In this talk we provide an introduction to DANE and to some user privacy enhancements, explain their applicability to application security problems, and show how to implement these in Python using the getdns module. getdns won "Best Internet Security Improvement" at the November 2015 IETF Hackathon.
+---
+image: pycon.jpg
