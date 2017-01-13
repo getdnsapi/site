@@ -23,11 +23,11 @@ image: octocat.png
 ----
 link: https://github.com/getdnsapi/getdns/fork
 #### feature ####
-title: Download latest release tarball
+title: Download the 1.0.0 release tarball!
 ----
 text: The latest source code tarball is available for download  with checksum [here](releases/).
 ----
-image: 
+image: fireworks.png
 ----
 link: /getdns-latest.tar.gz
 #### feature ####
