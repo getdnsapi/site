@@ -10,7 +10,7 @@ getdns is a modern asynchronous DNS API. It implements DNS entry points from a d
 
 Since the second beta release of 1.0.0, last July, new functionality has not been added in this branch. All efforts for the 1.0.0 release have been focussed towards testing stability and robustness and proper operation on different platforms. 
 
-Alongside this release, we have refactored our website and updated it with a few examples that illustrate how to use getdns for common use cases.
+Alongside this release, we have refactored our website and updated it with a few examples.  It is our intention to add more examples illustrating how to use getdns for common use cases in the coming weeks. 
 
 Note that this does not mean that we have not worked on new features and functionality.  Also in this time we have worked on new features and functionality in the [develop branch](https://github.com/getdnsapi/getdns/tree/develop). A new feature release of getdns will follow shortly (early 2017).  It will also contain all the robustness updates that went into 1.0.0, but will introduce only new functionality not in the API specification, primarily enhancements of our implementation of newer DNS specifications such as RFC 7858. and that perhaps has been less thoroughly tested and covered in our unit tests.
 
@@ -18,10 +18,30 @@ Note: if you are a package maintainer, we recommend that you not pick up release
 
 Happy new year!
 ---
-_discoverable: no
+_discoverable: yes
 ---
 date: 2017-01-13
 ---
 teaser: First spec complete implementation of getdns.
 ---
 image: fireworks.png
+---
+changelog:
+
+* 2017-01-13: Version 1.0.0
+  * edns0_cookies extension enabled by default (per RFC7873)
+  * dnssec_roadblock_avoidance enabled by default (per RFC8027)
+  * bugfix: DSA support with OpenSSL 1.1.0
+  * Initialize OpenSSL just once in a thread safe way
+  * Thread safety with arc4random function
+  * Improvements that came from Visual Studio static analysis
+    Thanks Christian Huitema
+  * Conventional RFC3986 IPv6 [address]:port parsing from getdns_query
+  * bugfix: OpenSSL 1.1.0 style crypto locking
+    Thanks volkommenheit
+  * configure tells *which* dependency is missing
+  * bugfix: Exclude terminating '\0' from bindata's returned by
+    getdns_get_suffix(). Thanks Jim Hague
+  * Better README.md.  Thanks Andrew Sullivan
+---
+sha256: a0460269c6536501a7c0af9bc97f9339e05a012f8191d5c10f79042aa62f9e96
