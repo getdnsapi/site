@@ -183,7 +183,7 @@
 {% macro render_title(title, prefix = none, ncols = 12, icon = none, noline = False) %}
   {% if ncols == 12 %}<div class="row">{% endif %}
   <div class="col-sm-{{ ncols }} thing-header">
-    {% if not noline %}<hr style="position: absolute; right: 0;  bottom: -7px; border: 0; width: 70%; height: 0; border-top: 1px solid red;">{% endif %}
+    {% if not noline %}<hr style="position: absolute; right: 0;  bottom: -7px; border: 0; width: 80%; height: 0; border-top: 1px solid red;">{% endif %}
     <h1>{% if prefix %}<span class="thing-header-prefix">{{ prefix }}</span> {% endif %}{% if icon %}<span class="glyphicon glyphicon-{{ icon }}"></span> {% endif %}{{ title }}</h1>
     <img src="/static/gd-underline.svg">
   </div>
@@ -376,10 +376,11 @@
 
   {% call(related) get_related(thing) %}
     {% if related %}
+    <div class="row"><div class="col-sm-12" style="height: 100px"></div></div>
       {% if thing.tags|length > 1 %}
-        {{ render_3col(related, 'Related') }}
+        {{ render_4col(related, 'Related') }}
       {% else %}
-        {{ render_3col(related, site.get('/tags/'+(thing.tags|first)).record_label, prefix = 'Related by') }}
+        {{ render_4col(related, site.get('/tags/'+(thing.tags|first)).record_label, prefix = 'Related by') }}
       {% endif %}
     {% endif %}
   {% endcall %}
@@ -387,16 +388,18 @@
   {% if thing.author %}
     {% call(other) get_things_by_author(thing.author) %}
       {% if other %}
-        {{ render_3col(other,  site.get('/authors/'+thing.author).record_label, 'Other by') }}
+        <div class="row"><div class="col-sm-12" style="height: 75px"></div></div>
+        {{ render_4col(other,  site.get('/authors/'+thing.author).record_label, 'Other by') }}
       {% endif %}
     {% endcall %}
   {% elif thing.presenters %}
     {% call(other) get_things_by_authors(thing.presenters) %}
       {% if other %}
+        <div class="row"><div class="col-sm-12" style="height: 75px"></div></div>
         {% if thing.presenters|length > 1 %}
-          {{ render_3col(other,  'these authors', 'Other by') }}
+          {{ render_4col(other,  'these authors', 'Other by') }}
 	{% else %}
-          {{ render_3col(other,  site.get('/authors/'+(thing.presenters|first)).record_label, 'Other by') }}
+          {{ render_4col(other,  site.get('/authors/'+(thing.presenters|first)).record_label, 'Other by') }}
         {% endif %}
       {% endif %}
     {% endcall %}
