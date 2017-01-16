@@ -8,6 +8,55 @@ author: willem-toorop
 ---
 tags: dane
 ---
-body: Some demonstration of howto do DANE with getdns
+body:
+
+```c
+getdns_dict *ext, *resp;
+uint32_t usage, selector, mtype;
+getdns_bindata *ca_data;
+
+SSL_CTX *sctx;
+int ssl_ret;
+SSL *ssl;
+
+/* Fetch the TLSA record, but only if it is secure.
+ * Work around problematic middle boxes with roadblock avoidance!
+ */
+if (!(ext = getdns_dict_create()))                                ; /* err */
+else if ((r = getdns_dict_set_int( ext
+                                 , "dnssec_return_only_secure"
+                                 , GETDNS_EXTENSION_TRUE )))      ; /* err */
+else if ((r = getdns_dict_set_int( ext
+                                 , "dnssec_roadblock_avoidance"
+                                 , GETDNS_EXTENSION_TRUE )))      ; /* err */
+else if ((r = getdns_general_sync( gctx
+                                 , "_443._tcp.getdnsapi.net"
+                                 , GETDNS_RRTYPE_TLSA
+                                 , ext, &resp)))                  ; /* err */
+else if ((r = getdns_dict_get_int(resp,
+     "/replies_tree/0/answer/0/rdata/certificate_usage", &usage))) {
+
+	/* Failure to fetch the TLSA RR securely */
+}
+else if ((r = getdns_dict_get_int(resp,
+     "/replies_tree/0/answer/0/rdata/selector", &selector)))      ; /* err */
+else if ((r = getdns_dict_get_int(resp,
+     "/replies_tree/0/answer/0/rdata/matching_type", &mtype)))    ; /* err */
+else if ((r = getdns_dict_get_bindata(resp,
+     "/replies_tree/0/answer/0/rdata/certificate_association_data",
+     &ca_data)))                                                  ; /* err */
+
+/* Setup OpenSSL to use the data from the TLSA record to verify
+ *
+ */
+else if (!(sctx = SSL_CTX_new(TLS_client_method())))              ; /* err */
+else if ((ssl_ret = SSL_CTX_dane_enable(sctx)) <= 0)              ; /* err */
+else if ((ssl = SSL_new(sctx)) == NULL)                           ; /* err */
+else if ((ssl_ret = SSL_dane_enable(ssl, "getdnsapi.net")) <= 0)  ; /* err */
+else if ((ssl_ret = SSL_dane_tlsa_add(ssl, usage, selector, mtype,
+    ca_data->data, ca_data->size)) <= 0)                          ; /* err */
+else {
+}
+```
 ---
 categories: advanced

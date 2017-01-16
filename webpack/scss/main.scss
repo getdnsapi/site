@@ -14,6 +14,21 @@ $carousel-caption-color: $getdns-red;
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "offcanvas.css";
 
+.admonition {
+	@extend .alert;
+}
+.admonition-note {
+	@extend .alert-success;
+}
+.admonition-info {
+	@extend .alert-info;
+}
+.admonition-tip {
+	@extend .alert-warning;
+}
+.admonition-tip {
+	@extend .alert-danger;
+}
 .thing-header-prefix {
 	color: $getdns-red;
 }

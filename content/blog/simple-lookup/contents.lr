@@ -2,8 +2,391 @@ title: How to do a simple query
 ---
 _discoverable: yes
 ---
-date: 2017-01-13
+date: 2017-01-16
 ---
-body: Some demonstration of howto do a simple lookup
+body:
+
+# Setting up a contexts
+
+All things that can be configured in getdns are associated with a [`getdns_context`].
+This includes resolution mode (stub or full recursive), timeout values, root-hints, DNSSEC trust-anchors, search path + how to handle it, namespaces, [etc](/documentation/spec/#83-contexts-for-basic-resolution).
+So to do anything with getdns at all, we first have to create a [`getdns_context`]:
+
+```c
+#include <getdns/getdns_extra.h>
+#include <stdio.h>
+
+int main()
+{
+	getdns_return_t r;
+	getdns_context *ctxt = NULL;
+
+	if ((r = getdns_context_create(&ctxt, 1)))
+		fprintf( stderr, "Could not create context: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	if (ctxt)
+		getdns_context_destroy(ctxt);
+
+	return r ? EXIT_FAILURE : EXIT_SUCCESS;
+}
+```
+Almost all functions in getdns return a status code of type [`getdns_return_t`].
+When the function was able to do its thing without problems, it will return `GETDNS_RETURN_SUCCESS` which is a `#define` for `0`.
+Otherwise `r` will contain a non-zero value.
+
+[`getdns_get_errorstr_by_id()`] can be used to get a textual representation of the returned [`getdns_return_t`] status code.
+This is however a non standard API-spec function, therefore we have to include the [`getdns/getdns_extra.h`] header.
+
+Note that [`getdns_context_create()`] returns a newly allocated `getdns_context *` pointer on the first parameter which is passed by reference.
+If something went wrong, [`getdns_context_create()`] will **not** *touch* the paremeter.
+Therefore, the `ctxt` variable **has** to be assigned `NULL` beforehand to be able to test it's value to determine whether or not it should be destroyed by the program (like we do in the example).
+
+# Doing the query.
+
+Next step; *doing the query*.
+In the example below, we query for the addresses of `getdnsapi.net`.
+
+```c
+#include <getdns/getdns_extra.h>
+#include <stdio.h>
+
+int main()
+{
+	getdns_return_t r;
+	getdns_context *ctxt = NULL;
+	getdns_dict *resp = NULL;
+
+	if ((r = getdns_context_create(&ctxt, 1)))
+		fprintf( stderr, "Could not create context: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_address_sync(ctxt, "getdnsapi.net.", NULL, &resp)))
+		fprintf( stderr, "Unable to do an address lookup: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	if (resp)
+		getdns_dict_destroy(resp);
+	if (ctxt)
+		getdns_context_destroy(ctxt);
+
+	return r ? EXIT_FAILURE : EXIT_SUCCESS;
+}
+```
+
+The [`getdns_address_sync()`] function is the synchronous version of the asynchronous [`getdns_address()`] function.
+In getdns the [synchronous] functions have the longer name, to indicate that the API considers **a**synchronous to be the *default* modus operandi.
+We will illustrate how to do the query asynchronously below.
+
+[`getdns_address_sync()`] returns a pointer to a newly allocated [response dictionary] in the last (passed in by reference) parameter.
+Similar to [`getdns_context_create()`], the parameter will **not** be *touched* when something went wrong, so we **do** have to assign `NULL` to `resp` beforehand, to be able to destroy the [response dict] the way we do it in the example.
+
+The coding style employed in the examples is just a compromise between keeping things readable (by avoiding nesting) and trying to make it the least error prone.
+
+>> Alternatively one could keep track of objects to destroy with control flow:
+>>> ```c
+>>> 	if (!(r = getdns_context_create(&ctxt))) {
+>>> 		if (!(r = getdns_address_sync(ctxt, ..., &resp))) {
+>>> 
+>>> 			getdns_dict_destroy(resp);
+>>> 		}
+>>> 		else
+>>> 			; /* error handling */
+>>>
+>>> 		getdns_context_destroy(ctxt);
+>>> 	} else
+>>> 		; /* error handling */
+>>> ```
+>>
+>> or by `goto`-ing to a precise escape point, i.e.:
+>>
+>>> ```c
+>>> 	if ((r = getdns_context_create(&ctxt, 1)))
+>>> 		goto escape;
+>>> 
+>>> 	if ((r = getdns_address_sync(ctxt, ..., &resp)))
+>>> 		goto escape_destroy_context;
+>>>
+>>> 	if ((r = getdns_something(...)))
+>>> 		goto escape_destroy_resp;
+>>>
+>>> escape_destroy_resp:
+>>> 	getdns_dict_destroy(resp);
+>>>
+>>> escape_destroy_context:
+>>> 	getdns_context_destroy(ctxt);
+>>>
+>>> escape:
+>>> 	return r ? EXIT_FAILURE : EXIT_SUCCESS;
+>>> ```
+>> 
+>> Note that if it is not important to know exactly in which function something went wrong,
+>> it is possible use a much more consice style; e.g.:
+>>
+>>> ```c
+>>> 	if (!(r = getdns_context_create(&ctxt, 1))
+>>> 	&&  !(r = getdns_address_sync(ctxt, ..., &resp))
+>>> 	&&  !(r = getdns_something(...))
+>>> 	&&  !(r = getdns_something_else(...))) { 
+>>> 
+>>> 		/* The happy path */
+>>> 	} else
+>>> 		fprintf( stderr, "Something went wrong somewhere: %s\n"
+>>> 		       , getdns_get_errorstr_by_id(r));
+>>> 
+>>> 	if (resp) getdns_dict_destroy(resp);
+>>> 	if (ctxt) getdns_dict_destroy(ctxt);
+>>> ```
+
+# Getting the data
+
+So now we have a [response dict].
+It contains all sorts of information about the query just performed, amongst which the replies that were received to obtain the requested answer.
+
+The [response dict] is manifested as a ["json"-like structure](/documentation/spec/#2-data-structures-in-the-api), that can contain lists, integers, binary blob (bindata's) or other dictionaries representing the information.
+
+It can be convenient to have an overview of the information contained in the [response dict].
+The [`getdns_query`] tool can be used to print it out for a specific query, in order to  have a look.
+Or [do a query on our website](/query/?hostname=getdnsapi.net&extensions=return_both_v4_and_v6).
+
+The [response dict] contains a "name", `just_address_answers` which is a list of all the addresses that were in the received replies.
+If you need just one address, you could use [JSON-pointers] to get to it quickly:
+
+```c
+#include <getdns/getdns_extra.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+
+int main()
+{
+	getdns_return_t r;
+	getdns_context *ctxt = NULL;
+	getdns_dict *resp = NULL;
+	getdns_bindata *address;
+	char address_str[1024];
+
+	if ((r = getdns_context_create(&ctxt, 1)))
+		fprintf( stderr, "Could not create context: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_address_sync(ctxt, "getdnsapi.net.", NULL, &resp)))
+		fprintf( stderr, "Unable to do an address lookup: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_dict_get_bindata( resp,
+	    "/just_address_answers/0/address_data", &address)))
+		fprintf( stderr, "Unable to get an address from the response: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if (address->size != 4 && address->size != 16)
+		fprintf(stderr, "Unable to determine type of this address\n");
+
+	else if (! inet_ntop( address->size == 4 ? AF_INET : AF_INET6,
+	                    , address->data, address_str, sizeof(address_str)))
+		fprintf(stderr, "Could not convert address to string\n");
+	else
+		printf("An address of getdnsapi.net is: %s\n", address_str);
+
+	if (resp)
+		getdns_dict_destroy(resp);
+	if (ctxt)
+		getdns_context_destroy(ctxt);
+
+	return r ? EXIT_FAILURE : EXIT_SUCCESS;
+}
+```
+
+Note that getdns returns "network" format IPv4 and IPv6 addresses.
+In fact, getdns does not convert the data in the returned DNS replies.
+Addresses in DNS replies are represented by network format (By `A` and `AAAA` resource records).
+The [reponse dict] is merely a mechanism to get to the correct places within the DNS replies.
+
+
+# Asynchronous query
+
+In the asynchronous programming style programs are organized around scheduling and responding to events.
+With getdns this means that scheduling of queries and handling of query responses is decoupled.
+```c
+#include <getdns/getdns_extra.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+
+void callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
+    getdns_dict *resp, void *userarg, getdns_transaction_t trans_id);
+
+int main()
+{
+	getdns_return_t r;
+	getdns_context *ctxt = NULL;
+	getdns_dict *resp = NULL;
+	getdns_bindata *address;
+	char address_str[1024];
+
+	if ((r = getdns_context_create(&ctxt, 1)))
+		fprintf( stderr, "Could not create context: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_address(ctxt, "getdnsapi.net.", NULL,
+					NULL, NULL, callback)))
+		fprintf( stderr, "Unable to schedule an address lookup: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+	else
+		getdns_context_run(ctxt);
+
+	if (ctxt)
+		getdns_context_destroy(ctxt);
+	return r ? EXIT_FAILURE : EXIT_SUCCESS;
+}
+```
+
+In the code fragment above, the [`getdns_address()`] function is used to schedule an address lookup.
+Alongside the information needed to do the lookup (the name), a [callback function] is registered.
+This function will be called as the query has been performed.
+
+After the request was scheduled, the library is asked to execute all outstanding requests, by a call to the [non-spec-API] `getdns_context_run()` function.
+Note that this function is in getdns for convenience only!
+`getdns_context_run()` uses the "default" event loop which is based on [`select()`] and inherits all limitations that [`select()`] has.
+The default event loop will cause problems when many queries will be scheduled simultaneously and the underlying file descriptors will get numbers above [`FD_SETSIZE`].
+
+The code snippet below uses an [libuv] event loop:
+
+```c
+#include <getdns/getdns_extra.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+#include <uv.h>
+#include <getdns/getdns_ext_libuv.h>
+
+void callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
+    getdns_dict *resp, void *userarg, getdns_transaction_t trans_id);
+
+
+int main()
+{
+	getdns_return_t r = GETDNS_RETURN_MEMORY_ERROR;
+	getdns_context *ctxt = NULL;
+	getdns_dict *resp = NULL;
+	getdns_bindata *address;
+	char address_str[1024];
+	uv_loop_t *loop = malloc(sizeof(uv_loop_t));
+
+	if (!loop)
+		fprintf( stderr, "Could not allocate event loop\n");
+
+	else if (uv_loop_init(loop))
+		fprintf( stderr, "Could not initialize event loop\n");
+
+	else if ((r = getdns_context_create(&ctxt, 1)))
+		fprintf( stderr, "Could not create context: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_extension_set_libuv_loop(ctxt, loop)))
+		fprintf( stderr, "Unable to set the event loop: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_address(ctxt, "getdnsapi.net.", NULL,
+					NULL, NULL, callback)))
+		fprintf( stderr, "Unable to schedule an address lookup: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+	else
+		uv_run(loop, UV_RUN_DEFAULT);
+
+	if (ctxt)
+		getdns_context_destroy(ctxt);
+	if (loop) {
+		uv_loop_close(loop);
+		free(loop);
+	}
+	return r ? EXIT_FAILURE : EXIT_SUCCESS;
+}
+```
+
+Note that besides including the `uv.h` header file, you also need to include [`getdns/getdns_ext_libuv.h`](/doxygen/1.0.0/getdns__ext__libuv_8h.html) for the `getdns_extension_set_libuv_loop()` function needed to associate the [`getdns_context`] with the event loop.
+Furthermore, the example needs to be linked against libgetdns_ext_uv.so:
+```sh
+$ cc -o async-example async-example.c -lgetdns -lgetdns_ext_uv -luv
+```
+
+Additionally we provide a header file and extension library for [libev] and [libevent].
+
+> ! <span class="glyphicon glyphicon-exclamation-sign"></span> Note that our library provides functions to [integrate with an existing asynchronous event mechanism](/doxygen/1.0.0/group__Ueventloops.html).
+> A good example are the node.js bindings, that use this mechanism to seamlessly integrate getdns into the node.js execution environment.
+> 
+> ! <span class="glyphicon glyphicon-exclamation-sign"></span> Note that when getdns is linked against libunbound version 1.5.9 or later, full recursive queries will also use the event loop associated with the context.
+> 
+> ! <span class="glyphicon glyphicon-exclamation-sign"></span> It is also possible to create asynchronous programs using the getdns event loop abstraction layer.
+> In this way you can build libraries performing asynchronous network task, while leaving the actual event loop to use to the user of you library.
+>
+> These are all advanced topics though and they deserve their own post in the [Advanced Examples](/blog/categories/advanced/) section.
+
+# Showing all addresses
+
+Finally below an implementation of the callback function, that does not just show the first address returned, but will show all returned addresses by iterating of `"just_address_answers"`:
+
+```c
+void callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
+    getdns_dict *resp, void *userarg, getdns_transaction_t trans_id)
+{
+	getdns_return_t r;
+	getdns_list    *jaa;     /* The just_address_answers list */
+	size_t          i;       /* Variable to iterate over the jaa list */
+	getdns_dict    *ad;      /* A dictionary containing an address */
+
+	if (cb_type != GETDNS_CALLBACK_COMPLETE) 
+		fprintf( stderr, "Something went wrong with this query: %s\n"
+		       , getdns_get_errorstr_by_id(cb_type));
+
+	else if ((r = getdns_dict_get_list(resp, "just_address_answers", &jaa)))
+		fprintf( stderr, "No addresses in the response dict: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else for (i = 0; !getdns_list_get_dict(jaa, i, &ad); i++) {
+
+		getdns_bindata *address;
+		char            address_str[1024];
+
+		if ((r = getdns_dict_get_bindata(ad, "address_data", &address)))
+			fprintf( stderr, "Could not get address_data: %s\n"
+			       , getdns_get_errorstr_by_id(r));
+
+		else if (address->size != 4 && address->size != 16)
+			fprintf(stderr, "Unable to determine address type\n");
+
+		else if (! inet_ntop( address->size == 4 ? AF_INET : AF_INET6,
+		    address->data, address_str, sizeof(address_str)))
+			fprintf(stderr, "Could not convert address to string\n");
+		else 
+			printf("An address of getdnsapi.net is: %s\n", address_str);
+	}
+	getdns_dict_destroy(resp); /* Safe, because resp is NULL on error */
+}
+```
+
+
+[`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
+[`getdns_context_create()`]: /documentation/spec/#16-setting-up-the-dns-context
+[`getdns_return_t`]: /documentation/spec/#52-return-codes
+[`getdns_get_errorstr_by_id()`]: /doxygen/1.0.0/group__Uutilityfunctions.html#gacb4a2592732a45016dfde223a9567286
+[`getdns/getdns_extra.h`]: /doxygen/1.0.0/getdns__extra_8h.html
+[non-spec-API]: /doxygen/1.0.0/getdns__extra_8h.html
+[`getdns_address()`]: /documentation/spec/#12-getdns_address
+[synchronous]: /documentation/spec/#19-calling-the-api-synchronously-without-events
+[`getdns_address_sync()`]: /documentation/spec/#19-calling-the-api-synchronously-without-events
+[response dictionary]: /documentation/spec/#4-response-data-from-queries
+[response dict]: /documentation/spec/#4-response-data-from-queries
+[`getdns_query`]: /blog/getdns_query/
+[JSON-pointers]: /blog/json-pointers
+[callback function]: /documentation/spec/#15-callback-functions-for-getdns
+[`select()`]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_select.h.html#tag_13_57
+[`FD_SETSIZE`]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_select.h.html#tag_13_57
+[libuv]: http://libuv.org/
+[libev]: http://software.schmorp.de/pkg/libev.html
+[libevent]: http://libevent.org/
 ---
 categories: basic
+---
+author: willem-toorop
+---
+tags: json-pointers
+---
+teaser: Demo of doing an address lookup with getdns both synchronous and asynchronous
