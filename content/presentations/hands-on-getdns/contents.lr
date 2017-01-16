@@ -12,13 +12,13 @@ title: Hands on getdns
 ---
 slides_url: /slides/getdns-tutorial-RIPE69.pdf
 ---
-video_url: 
----
 teaser: Tutorial at the RIPE69 in London
+---
+image: DANE-kloot.png
 ---
 abstract:
 
-his tutorial gives an overview of the getdns API: a modern, application-friendly interface that can be used by app developers to more easily query arbitrary data in the DNS without the need to be DNS protocol experts.
+This tutorial gives an overview of the getdns API: a modern, application-friendly interface that can be used by app developers to more easily query arbitrary data in the DNS without the need to be DNS protocol experts.
 
 The getdns library has sensible defaults that allow it to be used out of the box with minimal knowledge of DNS configuration parameters, but is also highly configurable as needed by more DNS savvy programmers.
 

@@ -1,0 +1,23 @@
+date: 2016-04-03
+---
+archive: yes
+---
+event: Hackathon @ IETF95
+---
+event_url: https://ietf.org/hackathon/95-hackathon.html
+---
+presenters: dan-york, allison-mankin, shumon-huque, willem-toorop
+---
+title: IETF95 Hackathon results
+---
+slides_url: https://www.ietf.org/proceedings/95/slides/slides-95-hackathon-13.pdf
+---
+video_url: https://www.youtube.com/watch?v=51jCwJ9M_sw&t=1h04m38s
+---
+embedded_video_url: https://www.youtube.com/embed/51jCwJ9M_sw?start=3878&end=4500
+---
+teaser: Overview of the DNS hackthon projects at the IETF95
+---
+image: tls-ext.png
+---
+tags: hackathon

@@ -10,8 +10,10 @@ presenters: willem-toorop
 ---
 title: getdns API implementation
 ---
-slides_url: https://ripe70.ripe.net/presentations/135-getdns-oswg-lt-ripe70.pdf
+slides_url: 135-getdns-oswg-lt-ripe70.pdf
 ---
 video_url: https://ripe70.ripe.net/archives/video/98/
 ---
 teaser: Presentation in the Open Source Working Group at RIPE70 in Amsterdam
+---
+image: tnw-team.png

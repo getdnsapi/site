@@ -1,0 +1,23 @@
+date: 2016-11-13
+---
+archive: no
+---
+event: Hackathon @ IETF97
+---
+event_url: https://ietf.org/hackathon/97-hackathon.html
+---
+presenters: benno-overeinder
+---
+title: IETF97 Hackathon results
+---
+slides_url: https://www.ietf.org/proceedings/97/slides/slides-97-hackathon-sessb-dns-00.pdf
+---
+video_url: https://www.youtube.com/watch?v=nufMY-SlmQs&t=55m9s
+---
+embedded_video_url: https://www.youtube.com/embed/nufMY-SlmQs?start=3309&end=3730
+---
+teaser: Overview of the DNS hackthon projects at the IETF97
+---
+image: ooop.png
+---
+tags: hackathon

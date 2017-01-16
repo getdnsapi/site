@@ -16,6 +16,8 @@ video_url: https://indico.dns-oarc.net//getFile.py/access?resId=2&materialId=1&c
 ---
 teaser: Presentation at the DNS-OARC Spring Workshop in Warsaw
 ---
+image: access.jpg
+---
 abstract:
 
 Verisign and NLnet Labs have recently announced the first beta release (0.1.0) of an open source implementation of the getdns API specification. The project's home page is at <https://getdnsapi.net>.

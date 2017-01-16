@@ -4,6 +4,8 @@ _discoverable: yes
 ---
 date: 2017-01-16
 ---
+image: telefonbog.jpg
+---
 body:
 
 # Setting up a contexts

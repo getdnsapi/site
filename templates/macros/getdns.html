@@ -12,16 +12,16 @@
 {% endmacro %}
 
 
-{% macro get_things_by_author(author) %}
+{% macro get_things_by_author(author, thing = none) %}
   {% set things = 
      ( site.get('/presentations').children.filter(F.presenters.contains(author))|list
      + site.get('/blog').children.filter(F.author == author._id)|list
-     ) | sort(attribute = 'date', reverse = True)
+     ) | reject('equalto', thing) | sort(attribute = 'date', reverse = True)
   %}
   {{ caller(things) }}
 {% endmacro %}
 
-{% macro get_things_by_authors(authors) %}
+{% macro get_things_by_authors(authors, thing = none) %}
   {% if authors|length > 0 %}
     {% set author = site.get('/authors/' + authors[0]) %}
     {% set Fs = { 'PF': F.presenters.contains(author)
@@ -34,7 +34,7 @@
     {% set things = 
        ( site.get('/presentations').children.filter(Fs['PF'])|list
        + site.get('/blog').children.filter(Fs['BF'])|list
-       ) | reject('equalto', thing)| sort(attribute = 'date', reverse = True)
+       ) | reject('equalto', thing) | sort(attribute = 'date', reverse = True)
     %}
     {{ caller(things) }}
   {% else %}
@@ -386,14 +386,14 @@
   {% endcall %}
 
   {% if thing.author %}
-    {% call(other) get_things_by_author(thing.author) %}
+    {% call(other) get_things_by_author(thing.author, thing) %}
       {% if other %}
         <div class="row"><div class="col-sm-12" style="height: 75px"></div></div>
         {{ render_4col(other,  site.get('/authors/'+thing.author).record_label, 'Other by') }}
       {% endif %}
     {% endcall %}
   {% elif thing.presenters %}
-    {% call(other) get_things_by_authors(thing.presenters) %}
+    {% call(other) get_things_by_authors(thing.presenters, thing) %}
       {% if other %}
         <div class="row"><div class="col-sm-12" style="height: 75px"></div></div>
         {% if thing.presenters|length > 1 %}
