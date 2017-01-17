@@ -73,6 +73,7 @@ Logging/debugging
 
 > **`--enable-debug-daemon`**
 >> If you just want to see the connection statistics then use the `--enable-debug-daemon` option instead to the `configure` line above.
+
 > **`--enable-debug-stub`**
 >> If you want to see very detailed debug information as messages are processed (including connection statistics) then add the `--enable-debug-stub` option to the `configure` line above.
 

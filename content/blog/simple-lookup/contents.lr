@@ -8,11 +8,18 @@ image: telefonbog.jpg
 ---
 body:
 
-# Setting up a contexts
+This example demonstrates the basics of working with getdns, the concepts that play a role and the pieces involved:
+* A **[`getdns_context`]** is introduced as a mainstay for settings, the cache and the event loop
+* Then we illustrate how to do a query **[synchronous]ly** (one at a time).
+* The result of the query is stored in a **[response dictionary]** from which the desired pieces of information can be extracted
+* Then we show how to use the library **asynchronous**ly by **scheduling** a query and registering a **[callback function]** that will process the results.
+* We also show how "external" **event loop** libraries can be used with getdns, 
 
-All things that can be configured in getdns are associated with a [`getdns_context`].
+# Setting up a context
+
+All configurable things in getdns are associated with a [`getdns_context`].
 This includes resolution mode (stub or full recursive), timeout values, root-hints, DNSSEC trust-anchors, search path + how to handle it, namespaces, [etc](/documentation/spec/#83-contexts-for-basic-resolution).
-So to do anything with getdns at all, we first have to create a [`getdns_context`]:
+So to do lookups with getdns, we first have to create a [`getdns_context`]:
 
 ```c
 #include <getdns/getdns_extra.h>
@@ -34,15 +41,15 @@ int main()
 }
 ```
 Almost all functions in getdns return a status code of type [`getdns_return_t`].
-When the function was able to do its thing without problems, it will return `GETDNS_RETURN_SUCCESS` which is a `#define` for `0`.
+When the function was success in its task, it will return `GETDNS_RETURN_SUCCESS` (which is `#define`d to be `0`).
 Otherwise `r` will contain a non-zero value.
 
-[`getdns_get_errorstr_by_id()`] can be used to get a textual representation of the returned [`getdns_return_t`] status code.
-This is however a non standard API-spec function, therefore we have to include the [`getdns/getdns_extra.h`] header.
+[`getdns_get_errorstr_by_id()`] returns a textual representation of the returned [`getdns_return_t`] status code.
+This is however a [non standard API-spec] function, therefore we have to include the [`getdns/getdns_extra.h`] header.
 
-Note that [`getdns_context_create()`] returns a newly allocated `getdns_context *` pointer on the first parameter which is passed by reference.
-If something went wrong, [`getdns_context_create()`] will **not** *touch* the paremeter.
-Therefore, the `ctxt` variable **has** to be assigned `NULL` beforehand to be able to test it's value to determine whether or not it should be destroyed by the program (like we do in the example).
+[`getdns_context_create()`] returns a newly allocated `getdns_context *` pointer on the first parameter (`&ctxt`), which is passed by reference.
+If something went wrong, [`getdns_context_create()`] will **not** *touch* that parameter.
+Therefore, the `ctxt` variable **has** to be assigned `NULL` beforehand to be able to test its value to determine whether or not it should be destroyed (like we do in the example).
 
 # Doing the query.
 
@@ -78,10 +85,10 @@ int main()
 
 The [`getdns_address_sync()`] function is the synchronous version of the asynchronous [`getdns_address()`] function.
 In getdns the [synchronous] functions have the longer name, to indicate that the API considers **a**synchronous to be the *default* modus operandi.
-We will illustrate how to do the query asynchronously below.
+We will illustrate how to do the query asynchronously later on in this example.
 
 [`getdns_address_sync()`] returns a pointer to a newly allocated [response dictionary] in the last (passed in by reference) parameter.
-Similar to [`getdns_context_create()`], the parameter will **not** be *touched* when something went wrong, so we **do** have to assign `NULL` to `resp` beforehand, to be able to destroy the [response dict] the way we do it in the example.
+Similar to [`getdns_context_create()`], the parameter will **not** be *touched* when something went wrong, so we **do** have to assign `NULL` to `resp` beforehand, to be able to destroy the [response dict] in the way we do it in the example.
 
 The coding style employed in the examples is just a compromise between keeping things readable (by avoiding nesting) and trying to make it the least error prone.
 
@@ -123,7 +130,7 @@ The coding style employed in the examples is just a compromise between keeping t
 >>> ```
 >> 
 >> Note that if it is not important to know exactly in which function something went wrong,
->> it is possible use a much more consice style; e.g.:
+>> it is possible use a much more concise style; e.g.:
 >>
 >>> ```c
 >>> 	if (!(r = getdns_context_create(&ctxt, 1))
@@ -147,9 +154,8 @@ It contains all sorts of information about the query just performed, amongst whi
 
 The [response dict] is manifested as a ["json"-like structure](/documentation/spec/#2-data-structures-in-the-api), that can contain lists, integers, binary blob (bindata's) or other dictionaries representing the information.
 
-It can be convenient to have an overview of the information contained in the [response dict].
-The [`getdns_query`] tool can be used to print it out for a specific query, in order to  have a look.
-Or [do a query on our website](/query/?hostname=getdnsapi.net&extensions=return_both_v4_and_v6).
+It can be convenient to have a peek of the information contained in the [response dict].
+The [`getdns_query`] tool can be used to print it out for a specific query,  or you could [do a query](/query/?hostname=getdnsapi.net&extensions=return_both_v4_and_v6)  on our website.
 
 The [response dict] contains a "name", `just_address_answers` which is a list of all the addresses that were in the received replies.
 If you need just one address, you could use [JSON-pointers] to get to it quickly:
@@ -199,7 +205,7 @@ int main()
 ```
 
 Note that getdns returns "network" format IPv4 and IPv6 addresses.
-In fact, getdns does not convert the data in the returned DNS replies.
+In fact, getdns does not convert any data in the returned DNS replies.
 Addresses in DNS replies are represented by network format (By `A` and `AAAA` resource records).
 The [reponse dict] is merely a mechanism to get to the correct places within the DNS replies.
 
@@ -245,10 +251,10 @@ In the code fragment above, the [`getdns_address()`] function is used to schedul
 Alongside the information needed to do the lookup (the name), a [callback function] is registered.
 This function will be called as the query has been performed.
 
-After the request was scheduled, the library is asked to execute all outstanding requests, by a call to the [non-spec-API] `getdns_context_run()` function.
+After the request was scheduled, the library is asked to execute all outstanding requests, by a call to the [non standard API-spec] `getdns_context_run()` function.
 Note that this function is in getdns for convenience only!
-`getdns_context_run()` uses the "default" event loop which is based on [`select()`] and inherits all limitations that [`select()`] has.
-The default event loop will cause problems when many queries will be scheduled simultaneously and the underlying file descriptors will get numbers above [`FD_SETSIZE`].
+`getdns_context_run()` uses the "default" event loop which is based on [`select()`] and inherits its limitations.
+The default event loop will cause problems when many queries will be scheduled simultaneously and the underlying file descriptors will be numbered above [`FD_SETSIZE`].
 
 The code snippet below uses an [libuv] event loop:
 
@@ -323,7 +329,7 @@ Additionally we provide a header file and extension library for [libev] and [lib
 
 # Showing all addresses
 
-Finally below an implementation of the callback function, that does not just show the first address returned, but will show all returned addresses by iterating of `"just_address_answers"`:
+Below an implementation of the callback function, that prints all returned addresses by iterating over the `"just_address_answers"` list:
 
 ```c
 void callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
@@ -364,13 +370,224 @@ void callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
 }
 ```
 
+In this example we process the [response dict] in the [callback] directly, but we don't have to do so immediately.
+From here we could start connecting to the IPv6 addresses (in order) and only schedule a connect to the IPv4 addresses when a IPv6 connection wasn't setup within 25 milliseconds (i.e. [Happy Eyeballs](https://tools.ietf.org/html/rfc6555)).
+For that use case it would be convenient to keep the [response dict] around until a connection was sucessfully made, or until all attempts failed.
+
+# Doing multiple requests asynchronously
+
+Until now we have scheduled only a single request for the addresses of `getdnsapi.net` (although two DNS requests are being made simultaneously; one for the IPv4 addresses and one for the IPv6 addresses).
+This isn't really a good example of where asynchronous processing comes into its own.
+
+As a good asynchronous example we will do the necessary queries to initiate a [DANE] connection.
+The code snippet below schedules a query for the addresses and for the [TLSA] resource records simultaneously.
+
+An application would normally preferably query against the available upstream resolver for this.
+Per API-spec, the library resolves in [full recursion resolution mode by default](/documentation/spec/#83-contexts-for-basic-resolution).
+In the code snippet below we will configure the [`getdns_context`] for **stub** resolution mode before scheduling the queries.
+
+Besides global configuration in [`getdns_context`]s, getdns also has a mechanism to define a specific setting on a per query basis.
+This is done by passing along an [extension dictionary] when scheduling a request.
+
+For the sake of our example, we consider it sufficient to do the address lookup without DNSSEC protection.
+However,  a [TLSA] may not be used unless it is secure.
+It MUST be secure.
+
+In the code snippet below, an [extension dict] is setup that is passed along with the request for the [TLSA] record.
+The [extension dict] has the [`dnssec_return_only_secure`] and the [non standard API-spec] `dnssec_roadblock_avoidance` extensions set.
+The first one makes sure an answer is returned only when it was DNSSEC protected, the `dnssec_roadblock_avoidance` tells the library that it may fallback to full recursion when it could not get a valid DNSSEC answer from the available upstreams in stub resolution mode.
+
+```c
+#include <getdns/getdns_extra.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+#include <uv.h>
+#include <getdns/getdns_ext_libuv.h>
+
+struct dane_query_st {
+	getdns_dict          *addrs_response;
+	getdns_transaction_t  addrs_transaction_id;
+	getdns_dict          *tlsas_response;
+	getdns_transaction_t  tlsas_transaction_id;
+};
+
+void addresses_callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
+    getdns_dict *resp, void *userarg, getdns_transaction_t trans_id);
+
+void tlsas_callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
+    getdns_dict *resp, void *userarg, getdns_transaction_t trans_id);
+
+int main()
+{
+	getdns_return_t r = GETDNS_RETURN_MEMORY_ERROR;
+	getdns_context *ctxt = NULL;
+	getdns_dict *resp = NULL;
+	getdns_bindata *address;
+	char address_str[1024];
+	uv_loop_t *loop = malloc(sizeof(uv_loop_t));
+	getdns_dict *ext = getdns_dict_create();
+	struct dane_query_st state = { NULL, 0, NULL, 0 };
+
+	if (!ext)
+		fprintf( stderr, "Could not allocate extensions dict\n");
+
+	else if (!loop)
+		fprintf( stderr, "Could not allocate event loop\n");
+
+	else if (uv_loop_init(loop))
+		fprintf( stderr, "Could not initialize event loop\n");
+
+	else if ((r = getdns_context_create(&ctxt, 1)))
+		fprintf( stderr, "Could not create context: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_context_set_resolution_type(
+					ctxt, GETDNS_RESOLUTION_STUB)))
+		fprintf( stderr, "Could not set stub resolution modus: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_extension_set_libuv_loop(ctxt, loop)))
+		fprintf( stderr, "Unable to set the event loop: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_address( ctxt, "getdnsapi.net.", NULL
+	                            , &state
+	                            , &state.addrs_transaction_id
+	                            , addresses_callback)))
+		fprintf( stderr, "Unable to schedule an address lookup: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_dict_set_int(ext, "dnssec_return_only_secure"
+	                                     , GETDNS_EXTENSION_TRUE))
+	     ||  (r = getdns_dict_set_int(ext, "dnssec_roadblock_avoidance"
+	                                     , GETDNS_EXTENSION_TRUE)))
+		fprintf( stderr, "Could not popula extensions dict: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+
+	else if ((r = getdns_general( ctxt, "_443._tcp.getdnsapi.net."
+	                            , GETDNS_RRTYPE_TLSA, ext
+	                            , &state
+	                            , &state.tlsas_transaction_id
+	                            , tlsas_callback)))
+		fprintf( stderr, "Unable to schedule an address lookup: %s\n"
+		       , getdns_get_errorstr_by_id(r));
+	else
+		uv_run(loop, UV_RUN_DEFAULT);
+
+	if (ext)
+		getdns_dict_destroy(ext);
+	if (ctxt)
+		getdns_context_destroy(ctxt);
+	if (loop) {
+		uv_loop_close(loop);
+		free(loop);
+	}
+	return r ? EXIT_FAILURE : EXIT_SUCCESS;
+}
+```
+
+We should continue setting up the connection when both lookups succeeded.
+To track this, we need a bit of state that is shared between the callbacks.
+
+getdns scheduling methods accept an "user argument" pointer, which will be passed to the callback function when the request is finished.
+The scheduling methods also return a transaction identifier, which can be used with the [`getdns_cancel_callback()`] function to cancel an outstanding request.
+
+In the code snippet above, we have a variable `state` of type `struct dane_query_st` for which a reference is passed as the user argument to the schedule functions.
+The `state` variable carries both the [response dictionary] as the transaction identifiers of both requests, so it is available from both [callback function]s.
+
+Below the two [callback function]s for the requests.
+Each callback will cancel the other request when it failed itself and then call `abort_connection()`
+Each callback will store its [response dict] in the state variable when it is complete and will then check if the other request has finished yet.
+If the other request was not finished yet, it will wait.
+If it was, it will call `setup_connection()`.
+
+```c
+void abort_connection(struct dane_query_st *state)
+{
+	getdns_dict_destroy(state->addrs_response);
+	getdns_dict_destroy(state->tlsas_response);
+	fprintf(stderr, "DNS failure\n");
+}
+
+void setup_connection(struct dane_query_st *state)
+{
+	uint32_t status;
+
+	if (getdns_dict_get_int(state->tlsas_response, "status", &status)
+	||  status == GETDNS_RESPSTATUS_ALL_BOGUS_ANSWERS) {
+
+		abort_connection(state);
+		return;
+	}
+	printf("DNS lookups were successful!\n");
+
+	/* Schedule opening the TLS connection to the addresses (if any)
+	 * and verification with the received TLSAs (if any)
+	 */
+}
+
+void addresses_callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
+    getdns_dict *resp, void *userarg, getdns_transaction_t trans_id)
+{
+	struct dane_query_st *state = (struct dane_query_st *)userarg;
+
+	if (cb_type != GETDNS_CALLBACK_COMPLETE) {
+		/* Something went wrong,
+		 * Cancel the TLSA query if it hasn't finished yet.
+		 * Then abort the connection.
+		 */
+		if (! state->tlsas_response)
+			(void) getdns_cancel_callback(
+			    ctxt, state->tlsas_transaction_id);
+
+		abort_connection(state);
+		return;
+	}
+	state->addrs_response = resp;
+	if (state->tlsas_response)
+		setup_connection(state);
+	else
+		; /* Wait for TLSA lookup to complete */
+}
+
+void tlsas_callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
+    getdns_dict *resp, void *userarg, getdns_transaction_t trans_id)
+{
+	struct dane_query_st *state = (struct dane_query_st *)userarg;
+
+	if (cb_type != GETDNS_CALLBACK_COMPLETE) {
+		/* Something went wrong,
+		 * Cancel the TLSA query if it hasn't finished yet.
+		 * Then abort the connection.
+		 */
+		if (! state->addrs_response)
+			(void) getdns_cancel_callback(
+			    ctxt, state->addrs_transaction_id);
+
+		abort_connection(state);
+		return;
+	}
+	state->tlsas_response = resp;
+	if (state->addrs_response)
+		setup_connection(state);
+	else
+		; /* Wait for address lookup to complete */
+}
+```
+
+# Upcoming example: DANE
+
+In the next, upcoming, example, I will build upon this example and show how to use getdns to setup a DANE verified TLS connection asynchronously.
+
+**Stay tuned!**
+
 
 [`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
 [`getdns_context_create()`]: /documentation/spec/#16-setting-up-the-dns-context
 [`getdns_return_t`]: /documentation/spec/#52-return-codes
 [`getdns_get_errorstr_by_id()`]: /doxygen/1.0.0/group__Uutilityfunctions.html#gacb4a2592732a45016dfde223a9567286
 [`getdns/getdns_extra.h`]: /doxygen/1.0.0/getdns__extra_8h.html
-[non-spec-API]: /doxygen/1.0.0/getdns__extra_8h.html
+[non standard API-spec]: /doxygen/1.0.0/getdns__extra_8h.html
 [`getdns_address()`]: /documentation/spec/#12-getdns_address
 [synchronous]: /documentation/spec/#19-calling-the-api-synchronously-without-events
 [`getdns_address_sync()`]: /documentation/spec/#19-calling-the-api-synchronously-without-events
@@ -384,6 +601,13 @@ void callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
 [libuv]: http://libuv.org/
 [libev]: http://software.schmorp.de/pkg/libev.html
 [libevent]: http://libevent.org/
+[DANE]: https://tools.ietf.org/html/rfc6698
+[TLSA]: https://tools.ietf.org/html/rfc6698
+[extension dictionary]: /documentation/spec/#3-extensions
+[extension dict]: /documentation/spec/#3-extensions
+[`dnssec_return_only_secure`]: /documentation/spec/#31-extensions-for-dnssec
+[user argument]: /documentation/spec/#15-callback-functions-for-getdns
+[`getdns_cancel_callback()`]: /documentation/spec/#17-canceling-a-callback
 ---
 categories: basic
 ---
