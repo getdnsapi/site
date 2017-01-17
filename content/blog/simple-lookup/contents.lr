@@ -109,7 +109,7 @@ The coding style employed in the examples is just a compromise between keeping t
 >>> 		; /* error handling */
 >>> ```
 >>
->> or by `goto`-ing to a precise escape point (**DONT DO THIS AT HOME**), i.e.:
+>> or by `goto`-ing to a precise escape point (**DONT TRY THIS AT HOME**), i.e.:
 >>
 >>> ```c
 >>> 	if ((r = getdns_context_create(&ctxt, 1)))

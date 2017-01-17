@@ -21,7 +21,7 @@ Happy new year!
 ---
 _discoverable: yes
 ---
-date: 2017-01-13
+date: 2017-01-17
 ---
 teaser: First spec complete implementation of getdns.
 ---
@@ -44,5 +44,79 @@ changelog:
   * bugfix: Exclude terminating '\0' from bindata's returned by
     getdns_get_suffix(). Thanks Jim Hague
   * Better README.md.  Thanks Andrew Sullivan
+
+* 2016-07-14: Version 1.0.0b2
+  * Collect coverage information from the unit tests
+    Thanks Shane Kerr
+  * pkg-config for the getdns_ext_event library
+    Thanks Tom Pusateri
+  * Bugfix: Multiple requests on the same upstream with a transport 
+    that keeps connections open in synchronous stub mode.
+  * Canonicalized DNSSEC chain with dnssec_return_validation_chain
+    (when validated)
+  * A dnssec_return_full_validation_chain extension which includes
+    then validated resource records.
+  * Bugfix: Callbacks fired while scheduling (answer from cache)
+    with the unbound plugable event API
+  * header extension to set opcode and flags in stub mode
+  * Unit tests that cover more code
+  * Static checking with the clang analyzer
+  * getdns_pretty_print_dict prints dname's as primitives
+  * Accept just bindata's instead of address dicts.
+    Allow misshing "address_type" in address dicts.
+  * TLS session resumption
+  * -C <config file> option to getdns_query to configure context 
+    from a json like formated file.  The output of -i (print API
+    information) can be used as config file directly.
+    Settings may also be given in this format as arguments of
+    the getdns_query command directly.
+  * DNS server mode for getdns_query.  Enable by providing addresses
+    to listen on, either by giving "-z <listen address>" options or by
+    providing "listen_addresses" in the config file or settings.
+  * Bugfixes from deckard testing: CNAME loop protection.
+  * "srv_addresses" in response dict with getdns_service()
+  * use libbsd when available
+    Thanks Guillem Jover
+  * Bugfix: DNSSEC wildcard validation issue
+  * Bugfix: TLS timeouts not re-using a connection
+  * A getdns_context_get_eventloop(), to get the current
+    (pluggable) eventloop from context
+  * getdns_query now uses the default event loop (instead of custom)
+  * Return call_reporting info in case of timeout
+    Thanks Robert Groenenberg
+  * Bugfix: Build fails with autoconf 2.63, works with 2.68.
+    Thanks Robert Groenenberg
+  * Doxygen output for getdns.h and getdns_extra.h only
+  * Do not call SSL_library_init() from getdns_context_create() when
+    the second bit from the set_from_os parameter is set.
+
+* 2016-03-31: Version 1.0.0b1
+  * openssl 1.1.0 support
+  * GETDNS_APPEND_NAME_TO_SINGLE_LABEL_FIRST default suffix handling
+  * getdns_context_set_follow_redirects()
+  * Read suffix list from registry on Windows
+  * A dnssec_return_all_statuses extension
+  * Set root servers without temporary file (libunbound >= 1.5.8 needed)
+  * Eliminate unit test's ldns dependency
+  * pkts wireformat <-> getdns_dict <-> string
+    conversion functions
+  * Eliminate all side effects when doing sync requests
+    (libunbound >= 1.5.9 needed)
+  * Bugfix: Load gost algorithm if digest is seen before key algorithm
+    Thanks Jelte Janssen
+  * Bugfix: Respect DNSSEC skew.
+  * Offline dnssec validation for any given point in time
+  * Correct return value in documentation for getdns_pretty_print_dict().
+    Thanks Linus Nordberg
+  * Bugfix: Don't treat "domain" or "search" as a nameserver.
+    Thanks Linus Nordberg
+  * Use the default CA trust store on Windows (for DNS over TLS).
+  * Propagate eventloop to unbound when unbound has pluggable event loops
+    (libunbound >= 1.5.9 needed)
+  * Replace mini_event extension by default_eventloop
+  * Bugfix: Segfault on NULL pin
+  * Bugfix: Correct output of get_api_settings
+  * Bugfix: Memory leak with getdns_get_api_information() 
+    Thanks Robert Groenenberg.
 ---
 sha256: a0460269c6536501a7c0af9bc97f9339e05a012f8191d5c10f79042aa62f9e96
