@@ -35,3 +35,15 @@ do
 		)
 	fi
 done
+if [ -d ../public/dist ]
+then
+	for f in assets/dist/*.tar.gz*
+	do
+		linkfile=${f#assets/dist/}
+		if [ -L "$f" -a ! -L "../public/dist/$linkfile" ]
+		then
+			(cd assets; tar cf - "dist/$linkfile")|(cd ../public; tar xvf -)
+		fi
+	done
+fi
+
