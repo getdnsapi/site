@@ -8,12 +8,14 @@ image: telefonbog.jpg
 ---
 body:
 
-This example demonstrates the basics of working with getdns, the concepts that play a role and the pieces involved:
-* A **[`getdns_context`]** is introduced as a mainstay for settings, the cache and the event loop
-* Then we illustrate how to do a query **[synchronous]ly** (one at a time).
-* The result of the query is stored in a **[response dictionary]** from which the desired pieces of information can be extracted
-* Then we show how to use the library **asynchronous**ly by **scheduling** a query and registering a **[callback function]** that will process the results.
-* We also show how "external" **event loop** libraries can be used with getdns, 
+This example demonstrates the basics of working with the C API of getdns, the concepts that play a role and the pieces involved:
+* We will use functions from the original [API specification](/documentation/spec/), but also [non standard API-spec] functions that we added as library implementers.
+* A [`getdns_context`] is introduced as a mainstay for settings, the cache and the event loop
+* Then we show how to do a [synchronous] request (one at a time).
+* The result of the request is stored in a [response dictionary] from which the desired pieces of information can be extracted
+* We show how to use the library [asynchronously] by scheduling requests and registering a [callback function] that will process the results.
+* We also show how "external" [event loop] libraries can be used with getdns,
+* [extension dictionaries] are used to do settings for a specific request.
 
 # Setting up a context
 
@@ -41,7 +43,7 @@ int main()
 }
 ```
 Almost all functions in getdns return a status code of type [`getdns_return_t`].
-When the function was success in its task, it will return `GETDNS_RETURN_SUCCESS` (which is `#define`d to be `0`).
+When the function was successful, it will return `GETDNS_RETURN_SUCCESS` (which is `#define`d to be `0`).
 Otherwise `r` will contain a non-zero value.
 
 [`getdns_get_errorstr_by_id()`] returns a textual representation of the returned [`getdns_return_t`] status code.
@@ -107,7 +109,7 @@ The coding style employed in the examples is just a compromise between keeping t
 >>> 		; /* error handling */
 >>> ```
 >>
->> or by `goto`-ing to a precise escape point, i.e.:
+>> or by `goto`-ing to a precise escape point (**DONT DO THIS AT HOME**), i.e.:
 >>
 >>> ```c
 >>> 	if ((r = getdns_context_create(&ctxt, 1)))
@@ -130,7 +132,7 @@ The coding style employed in the examples is just a compromise between keeping t
 >>> ```
 >> 
 >> Note that if it is not important to know exactly in which function something went wrong,
->> it is possible use a much more concise style; e.g.:
+>> it is possible to use a much more concise style; e.g.:
 >>
 >>> ```c
 >>> 	if (!(r = getdns_context_create(&ctxt, 1))
@@ -155,7 +157,8 @@ It contains all sorts of information about the query just performed, amongst whi
 The [response dict] is manifested as a ["json"-like structure](/documentation/spec/#2-data-structures-in-the-api), that can contain lists, integers, binary blob (bindata's) or other dictionaries representing the information.
 
 It can be convenient to have a peek of the information contained in the [response dict].
-The [`getdns_query`] tool can be used to print it out for a specific query,  or you could [do a query](/query/?hostname=getdnsapi.net&extensions=return_both_v4_and_v6)  on our website.
+The [`getdns_query`] tool can be used to print it out for a specific query, or you could [do a query](/query/?hostname=getdnsapi.net&extensions=return_both_v4_and_v6) on our website.
+Click on the "[do a query](/query/?hostname=getdnsapi.net&extensions=return_both_v4_and_v6)" to see the [response dictionary] for this query.
 
 The [response dict] contains a "name", `just_address_answers` which is a list of all the addresses that were in the received replies.
 If you need just one address, you could use [JSON-pointers] to get to it quickly:
@@ -249,7 +252,7 @@ int main()
 
 In the code fragment above, the [`getdns_address()`] function is used to schedule an address lookup.
 Alongside the information needed to do the lookup (the name), a [callback function] is registered.
-This function will be called as the query has been performed.
+This function will be called with the results when the request is done.
 
 After the request was scheduled, the library is asked to execute all outstanding requests, by a call to the [non standard API-spec] `getdns_context_run()` function.
 Note that this function is in getdns for convenience only!
@@ -372,7 +375,7 @@ void callback(getdns_context *ctxt, getdns_callback_type_t cb_type,
 
 In this example we process the [response dict] in the [callback] directly, but we don't have to do so immediately.
 From here we could start connecting to the IPv6 addresses (in order) and only schedule a connect to the IPv4 addresses when a IPv6 connection wasn't setup within 25 milliseconds (i.e. [Happy Eyeballs](https://tools.ietf.org/html/rfc6555)).
-For that use case it would be convenient to keep the [response dict] around until a connection was sucessfully made, or until all attempts failed.
+For that use case it would be convenient to keep the [response dict] around until a connection was successfully made, or until all attempts failed.
 
 # Doing multiple requests asynchronously
 
@@ -590,6 +593,7 @@ In the next, upcoming, example, I will build upon this example and show how to u
 [non standard API-spec]: /doxygen/1.0.0/getdns__extra_8h.html
 [`getdns_address()`]: /documentation/spec/#12-getdns_address
 [synchronous]: /documentation/spec/#19-calling-the-api-synchronously-without-events
+[synchronously]: /documentation/spec/#19-calling-the-api-synchronously-without-events
 [`getdns_address_sync()`]: /documentation/spec/#19-calling-the-api-synchronously-without-events
 [response dictionary]: /documentation/spec/#4-response-data-from-queries
 [response dict]: /documentation/spec/#4-response-data-from-queries
@@ -604,10 +608,13 @@ In the next, upcoming, example, I will build upon this example and show how to u
 [DANE]: https://tools.ietf.org/html/rfc6698
 [TLSA]: https://tools.ietf.org/html/rfc6698
 [extension dictionary]: /documentation/spec/#3-extensions
+[extension dictionaries]: /documentation/spec/#3-extensions
 [extension dict]: /documentation/spec/#3-extensions
 [`dnssec_return_only_secure`]: /documentation/spec/#31-extensions-for-dnssec
 [user argument]: /documentation/spec/#15-callback-functions-for-getdns
 [`getdns_cancel_callback()`]: /documentation/spec/#17-canceling-a-callback
+[asynchronously]: /documentation/spec/#1-the-getdns-async-functions
+[event loop]: /documentation/spec/#18-event-driven-programs
 ---
 categories: basic
 ---
