@@ -64,6 +64,11 @@
       </button>
     </div>
     <div id="bottom-navbar" class="navbar-collapse collapse">
+    <div class="navbar-left social-bar">
+       <a href="https://github.com/getdnsapi/getdns"><img src="/static/github.png"></a>
+       <a href="https://twitter.com/getdnsapi"><img src="/static/twitter.png"></a>
+       <a href="mailto:team@getdnsapi.net"><img src="/static/at.png"></a>
+    </div>
     <p class="navbar-text navbar-right">&copy; Copyright 2017 by the <a class="navbar-link" style="color: black"  href="mailto:team@getdnsapi.net">getdns team</a>.</p>
     <ul class="nav navbar-nav navbar-right">
           {% for page in site.get('/').children if page.in_bottom_menu  %}

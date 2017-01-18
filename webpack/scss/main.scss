@@ -14,6 +14,17 @@ $carousel-caption-color: $getdns-red;
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "offcanvas.css";
 
+.contents a.anchor {
+	padding-top: 70px;
+	margin-top: -70px;
+}
+.social-bar {
+	position: absolute;
+	bottom: 15px;
+}
+.social-bar img {
+	margin-right: 15px;
+}
 .admonition {
 	@extend .alert;
 }
