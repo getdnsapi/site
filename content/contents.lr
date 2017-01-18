@@ -59,6 +59,6 @@ image: stubby-600x230.png
 body:
 
 getdns is a modern asynchronous DNS API.
-It implements DNS entry points from a design developed and vetted by application developers, in an [API specification](/spec/).
+It implements DNS entry points from a design developed and vetted by application developers, in an [API specification](/documentation/spec/).
 The open source C implementation of getdns is developed and maintained in collaboration by NLnet Labs, Sinodun and No Mountain Software.
 This implementation is licensed under the [New BSD License](http://opensource.org/licenses/BSD-3-Clause). 
