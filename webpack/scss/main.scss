@@ -110,7 +110,20 @@ a.tag {
 	width: 200px;
 	height: 64px;
 	right: 0;
-	bottom: 0;
+	bottom: -10px;
+}
+.thing-header hr {
+	position: absolute;
+	right: 5px;
+	bottom: -17px;
+	border: 0;
+	width: 80%;
+	height: 0;
+	border-top: 1px solid $getdns-red;
+}
+@media (min-width: $screen-lg-min) {
+	.thing-header img { bottom: 0; }
+	.thing-header hr{ bottom: -7px; }
 }
 
 .thing-row {
@@ -125,6 +138,13 @@ a.tag {
 .image-thing-row .feature-img-link {
 	height: 224px;
 	overflow: hidden;
+}
+
+.small-thing {
+	float: none;
+	display: inline-block;
+	margin: 0 -0.125em;
+	vertical-align: top;
 }
 
 .small-thing-header {
