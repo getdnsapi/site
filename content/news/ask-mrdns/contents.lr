@@ -1,0 +1,15 @@
+_model: news-item
+---
+title: getdns API mention at the Ask Mr. DNS Podcast
+---
+teaser: Dan York mentions our IETF hackathon sessions and the getdns API in an interview in the Ask Mr. DNS Podcast
+---
+archive: no
+---
+date: 2017-01-25
+---
+link: http://www.ask-mrdns.com/2017/01/episode-50/
+---
+tags: media, hackathon
+---
+image: askmrdns.jpg
