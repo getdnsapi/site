@@ -14,6 +14,16 @@ $carousel-caption-color: $getdns-red;
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "offcanvas.css";
 
+.origin-reference {
+	text-align: right;
+	border-top: 1px  solid $getdns-red;
+	margin-top: 20px;
+	width: 80%;
+	font-size: 75%;
+	float: right;
+	clear: both;
+}
+
 .contents a.anchor {
 	padding-top: 70px;
 	margin-top: -70px;
@@ -37,7 +47,7 @@ $carousel-caption-color: $getdns-red;
 .admonition-tip {
 	@extend .alert-warning;
 }
-.admonition-tip {
+.admonition-warning {
 	@extend .alert-danger;
 }
 .thing-header-prefix {

@@ -35,6 +35,8 @@ printf("%s\n", getdns_pretty_print_dict(response));
 which will print a well-formatted and easy-to-read representation of the data to my screen.
 
 We've added a number of other features not in the original specification. Some of these provide improvements to the API itself, while others implement new DNS features and transport options. All of these contribute to the API's appeal to those who need or want access to advanced DNS services to implement application features or as a platform for other DNS-related services. I'll be posting more about those in the coming weeks.
+
+<p class="origin-reference">This post first appeared at <a href="https://melindashore.blogspot.nl/2016/02/enhanced-getdns-data-access.html">https://melindashore.blogspot.nl/2016/02/enhanced-getdns-data-access.html</a></p>
 ---
 date: 2016-02-03
 ---
