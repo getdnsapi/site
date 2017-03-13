@@ -2,7 +2,7 @@ title: DNS Privacy daemon - Stubby
 ---
 author: sara-dickinson
 ---
-date: 2016-11-30
+date: 2017-03-09
 ---
 tags: stubby
 ---
@@ -56,7 +56,7 @@ or grab a tarball from this page: [Latest getdns releases](https://getdnsapi.net
 
 ## Build the code
 
-Note that on Mac OS X you will need the developer tools from Xcode to compile the code. And you may need to use brew to install glibtool (and then use glibtoolize below), autoconf and automake.
+Note that on Mac OS X you will need the developer tools from Xcode to compile the code. And you may need to use brew to install libtool (and then use glibtoolize below), autoconf and automake.
 
 ```sh
 > git submodule update --init
@@ -64,7 +64,7 @@ Note that on Mac OS X you will need the developer tools from Xcode to compile th
 > autoreconf -fi
 > mkdir build
 > cd build
-> ../configure --prefix=<install_location> --without-libidn --enable-stub-only
+> ../configure --prefix=<install_location> --without-libidn --enable-stub-only --enable-debug-daemon
 > make
 > sudo make install]]></ac:plain-text-body></ac:structured-macro>
 ```
@@ -72,10 +72,10 @@ Note that on Mac OS X you will need the developer tools from Xcode to compile th
 Logging/debugging
 
 > **`--enable-debug-daemon`**
->> If you just want to see the connection statistics then use the `--enable-debug-daemon` option instead to the `configure` line above.
+>> If you don't want to see the connection statistics then remove the `--enable-debug-daemon` option in the `configure` line above.
 
 > **`--enable-debug-stub`**
->> If you want to see very detailed debug information as messages are processed (including connection statistics) then add the `--enable-debug-stub` option to the `configure` line above.
+>> If you do want to see very detailed debug information as messages are processed (including connection statistics) then add the `--enable-debug-stub` option to the `configure` line above.
 
 ## Create a config file
 
