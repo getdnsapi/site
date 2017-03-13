@@ -49,7 +49,7 @@ Either clone the code:
 ```sh
 > git clone https://github.com/getdnsapi/getdns.git
 > cd getdns
-> git checkout release/1.1.0-alpha3
+> git checkout develop
 ```
 
 or grab a tarball from this page: [Latest getdns releases](https://getdnsapi.net/releases/)
@@ -82,6 +82,9 @@ Logging/debugging
 Stubby will use the config file at `/etc/stubby.conf` by default if it exists, or the config file location can be specified on the command line using the `-C` flag.
 (Note: With no config file stubby will use UDP to the default nameservers for queries).
 
+!! <span class="glyphicon glyphicon-info-sign"></span> It is recommended to use more than one upstream for increased performance and reliability. A config files that uses Strict Privacy to several of the current test servers that support this over both IPv4 and IPv6 is provided in the stubby source. To use it simply execute: <pre>> sudo cp ../src/tools/stubby.conf /etc/stubby.conf</pre>
+
+To hand-craft a config file, read the instructions below.
 Changes to the config file require a restart of Stubby.
 
 The config file below is an example that will configure Stubby to:
@@ -101,7 +104,7 @@ The config file below is an example that will configure Stubby to:
     , tls_auth_name: "getdnsapi.net"
     , tls_pubkey_pinset:
       [ { digest: "sha256"
-        , value: 0x7e8c59467221f606695a797ecc488a6b4109dab7421aba0c5a6d3681ac5273d4
+        , value: foxZRnIh9gZpWnl+zEiKa0EJ2rdCGroMWm02gaxSc9Q=
       } ]
    } ]
 , tls_authentication: GETDNS_AUTHENTICATION_REQUIRED
@@ -116,10 +119,6 @@ Additional privacy servers can be specified by adding more entries to the `upstr
 
 A custom port can be specified by adding the `tls_port:` attribute to the `upstream_recursive_server` in the config file. 
 
-
-<div class="alert alert-info">
-<p><span class="glyphicon glyphicon-info-sign"></span> It is recommended to use more than one upstream for increased performance and reliability. This config files uses Strict Privacy to all the current test servers that support this over both IPv4 and IPv6: <a href="https://raw.githubusercontent.com/getdnsapi/getdns/release/1.1.0-alpha3/src/tools/stubby.conf"><tt>stubby.conf</tt></a></p>
-</div>
 
  
 ## Run Stubby
@@ -141,10 +140,8 @@ A quick test can be done by using dig (or your favourite DNS tool) on the loopba
 
 ## Modify your upstream resolvers
 
-<div class="alert alert-warning">
-<p><span class="glyphicon glyphicon-warning-sign"></span> Once this change is made your DNS queries will be re-directed to Stubby and sent over TLS! (</span>You may need to restart some applications to have them pick up the network settings).</p>
-<p>You can monitor the traffic using Wireshark watching on port 853.</p>
-</div>
+!!! <span class="glyphicon glyphicon-warning-sign"></span> Once this change is made your DNS queries will be re-directed to Stubby and sent over TLS! <br>
+(You may need to restart some applications to have them pick up the network settings). <p>You can monitor the traffic using Wireshark watching on port 853.</p>
 
 For Stubby to re-send outgoing DNS queries over TLS the recursive resolvers configured on your machine must be changed to send all the local queries to the loopback interface on which Stubby is listening. This depends on the operating system being run. It is useful to note your existing default nameservers before making this change!
 
@@ -164,14 +161,14 @@ For Stubby to re-send outgoing DNS queries over TLS the recursive resolvers conf
 From the command line you can do the following to set the local DNS servers on, for example, your 'Wi-Fi' interface (first line clears all servers, second line adds localhost):
 
 ```sh
-sudo networksetup -setdnsservers Wi-Fi Empty
-sudo networksetup -setdnsservers Wi-Fi 127.0.0.1 ::1
+> sudo networksetup -setdnsservers Wi-Fi Empty
+> sudo networksetup -setdnsservers Wi-Fi 127.0.0.1 ::1
 ```
 
 If you want to reset, just use:
 
 ```sh
-sudo networksetup -setdnsservers Wi-Fi Empty
+> sudo networksetup -setdnsservers Wi-Fi Empty
 ```
 
 which should pick up the default DHCP nameservers. Or use something similar to the first set of instructions if you want to specify particular namerservers.
@@ -189,5 +186,7 @@ Notes:
 
 * If you are using a DNS Privacy server that does not support concurrent processing of TLS queries, you may experience some issues due to timeouts causing subsequent queries on the same connection to fail.
 * Stubby currently backs-off for 1 hour from using servers that provide poor service - the next version will make this time configurable. Or this can be reset by restarting Stubby.
+
+<p class="origin-reference">This post first appeared at <a href="https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon+-+Stubby">https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon+-+Stubby</a></p>
 ---
 image: Stubby_in_his_great_coat.jpg
