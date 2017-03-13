@@ -1,0 +1,84 @@
+title: Hackathon at TNW-2014
+---
+author: wouter-wijngaards
+---
+body:
+
+## Context
+
+At NLnet Labs we believe that DNSSEC allows for security innovations that will change the global security and privacy landscape. Innovations like DANE, a technology that allows people to use the global DNS to bootstrap a encrypted channel, are only the start of currently unimaginable technical innovation.
+
+The deployment of DNSSEC is a typical collective action problem and we are trying to make a difference by providing the tools that help to reduce costs or bring value for those who want to provision, provide, and use secured DNS data.
+
+The [GETDNS API](https://getdnsapi.net) plays in that space. It is an attempt to provide applications a tool to get DNSSEC information that will aid the improvement of security and privacy.
+
+## The GETDNS API
+
+[![getdns API](getdns-300.png)](https://getdnsapi.net)
+
+The GETDNS API is an API description desigened by application developers for accessing DNS asynchronously with DNSSEC and DANE functionality. The GETDNS API is implemented in a collaboration effort by Verisign and NLnet Labs in the getdns library.
+
+[![GETDNS participants at TNW 2014](getdns-tnw2014-tn.png)](https://twitter.com/getdnsapi/status/459009670477135872/photo/1)
+The TNW 2014 conference in Amsterdam, the Netherlands, hosted a Hack Battle this year. Participants made ‘hacks’: apps or tools; using provided APIs and their own tools and competed in this contest. The contest ran for 36 hours and with 146 participants produced a number of contest entries. Verisign Labs and NLnet Labs promoted the use of the GETDNS.API library for DNSSEC, security, privacy and DANE implementation. This library and thus the API was available to the participants. In the contest the C API, the node.js API and the python API were available.
+
+Four entries have been made using the GETDNS.API, those participants received GetDNS Tshirts. The other teams in the back battle can be viewed [here](https://www.hackerleague.org/hackathons/kings-of-code-hack-battle-at-tnw-europe-conference-2014).
+
+The presentations of the teams are on video, [youtube link](https://www.youtube.com/channel/UCF0NmkWgpS0KDHJqrWw8-5w).
+
+## verify'EM
+*By Ruslan Mavlyutov, Arvind Narayanan and Bhavna Soman.*
+
+This entry created a plugin for Thunderbird, in python, that checks the DNSSEC credentials of DKIM record associated with an email. The user can see the status of the email.
+
+This entry won the prize given by NLnet Labs (Raspberry Pi™ kits)!
+
+[hackerleague link](https://www.hackerleague.org/hackathons/kings-of-code-hack-battle-at-tnw-europe-conference-2014/hacks/verifyem)
+
+## Bootstrapping Trust with DANE
+*By Sathya Gunasekaran and Iain Learmonth.*
+<p align="center"><a href="http://www.nlnetlabs.nl/blog/files/2014/04/tnw-gajim.jpg"><img src="http://www.nlnetlabs.nl/blog/files/2014/04/tnw-gajim-tn.jpg" alt="GETDNS participants at TNW 2014" width="148" height="96" align="right" /></a></p>
+This entry adds DNSSEC secured OTR-key lookups to the python-based gajim XMPP client.  This <a href="http://www.shiftout.com/~irl/hackbattle.pdf">project</a> allows people that use OTR in their jabber client to check if the fingerprint of a key matches the fingerprints published in the DNS. They built a python library that uses getdnsapi to fetch OTR, openPGP and S/MIME fingerprints.
+
+This team was interviewed by the Dutch Tweakers website, <a title="tweakers.net video interview" href="http://tweakers.net/video/9008/apps-maken-binnen-36-uur-op-amsterdamse-hackathon.html">video link</a>.
+
+<a href="https://github.com/irl/dnskeys">Github python dnskeys library link</a>.
+
+<a href="https://github.com/irl/gajim">Github gajim branch</a>.
+
+&nbsp;
+<h2>DANE Doctor</h2>
+<i>By Hynek Schlawack and Richard Wall.</i>
+
+This entry is a website for debugging DANE. It shows diagnostics and highlights errors.
+
+They also integrated the python bindings for getdns with the asynchronous python framework Twisted. They hope to be able to contribute this as a DANE enabled TLS client API to the Twisted framework.
+
+<a href="https://github.com/hynek/tnw">Github link</a>.
+
+&nbsp;
+<h2>DNSSEC name and shame!</h2>
+<i>By Tom Cuddy and Joel Purra.</i>
+
+This entry wants to highlight which contest sponsors do the right thing to protect DNS data and shame the ones that do it wrong.
+
+This team won the prize given by PayPal, because of the importance of protecting DNS data.
+
+<a href="https://github.com/joelpurra/node-dnssec-name-shame">Github link</a>.
+
+<a href="http://dnssec-name-and-shame.com/">website link</a>.
+
+<hr />
+
+The GETDNS API specification is <a href="http://www.vpnc.org/getdns-api/">edited by Paul Hoffman</a>. <a href="http://labs.verisigninc.com/">Verisign Labs</a> and <a href="http://nlnetlabs.nl/">NLnet Labs</a> are cooperating on the implementation of the API using code and expertise from the <a href="http://unbound.net/">Unbound</a> and <a href="http://nlnetlabs.nl/projects/ldns/">ldns</a> projects. The <a href="http://getdnsapi.net/">getdnsapi implementation website</a>, <a href="https://twitter.com/getdnsapi">twitter</a>.
+
+<p class="origin-reference">This post first appeared at <a href="https://nlnetlabs.nl/blog/2014/05/01/hackathon-at-tnw-2014/">https://www.nlnetlabs.nl/blog/2014/05/01/hackathon-at-tnw-2014/</a></p>
+---
+date: 2014-05-01
+---
+tags: hackathon
+---
+archive: yes
+---
+teaser: getdns used in hackathon projects at the TNW-2014
+---
+_hidden: yes
