@@ -66,7 +66,7 @@ Note that on Mac OS X you will need the developer tools from Xcode to compile th
 > cd build
 > ../configure --prefix=<install_location> --without-libidn --enable-stub-only --enable-debug-daemon
 > make
-> sudo make install]]></ac:plain-text-body></ac:structured-macro>
+> sudo make install
 ```
 
 Logging/debugging
