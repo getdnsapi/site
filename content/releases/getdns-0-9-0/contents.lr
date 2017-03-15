@@ -60,9 +60,9 @@ announcement:
     <p>There is brief doxygen documentation for the conversion functions here:<br />
     <a href="https://getdnsapi.net/rr_dict2wire">https://getdnsapi.net/rr_dict2wire</a>.</p>
     <p>Example usage can be found in the unit test package for these functions:<br />
-    <a href="https://getdnsapi.net/260-conversion-functions.c">https://getdnsapi.net/260-conversion-functions.c</a><br />
+    <a href="https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.c">https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.c</a><br />
     The output produced by this example program:<br />
-<a href="https://getdnsapi.net/260-conversion-functions.good">https://getdnsapi.net/260-conversion-functions.good</a>
+<a href="https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.good">https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.good</a>
     </p></dd>
     <dt>TCP Fast Open support whenever available on the platform (including Mac-OS X (new)).</dt>
     <dt>Client side <tt>edns-tcp-keepalive</tt> support</dt>

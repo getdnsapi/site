@@ -192,7 +192,7 @@ int main()
 	else if (address->size != 4 && address->size != 16)
 		fprintf(stderr, "Unable to determine type of this address\n");
 
-	else if (! inet_ntop( address->size == 4 ? AF_INET : AF_INET6,
+	else if (! inet_ntop( address->size == 4 ? AF_INET : AF_INET6
 	                    , address->data, address_str, sizeof(address_str)))
 		fprintf(stderr, "Could not convert address to string\n");
 	else

@@ -20,13 +20,13 @@ This release introduces **Stubby**, a version of `getdns_query` that listens on 
 }
 ````
 
-For more information, see the NANOG68 presentation: <https://getdnsapi.net/presentations/stubby-nanog68.pdf>
+For more information, see the NANOG68 presentation: <https://www.nanog.org/sites/default/files/3_stubby-nanog68.pdf>
 
 Documentation is available at:
 
-* getdns API documentation: <https://getdnsapi.net/spec.html>
-* getdns doxygen: <https://getdnsapi.net/doxygen-1.0/>
-* getdns as a DNS-over-TLS local stub resolver:<https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon>
+* getdns API documentation: <https://getdnsapi.net/documentation/spec/>
+* getdns doxygen: <https://getdnsapi.net/doxygen/1.1.0/>
+* getdns as a DNS-over-TLS local stub resolver:<https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon+-+Stubby>
 
 **Beware** that this documentation is not on par with Stubby operation yet.
 Expect an updated announcement on the website as soon as we have updated the documentation.

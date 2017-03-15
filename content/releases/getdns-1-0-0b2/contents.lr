@@ -19,7 +19,7 @@ Updates:
 <li>The <tt>return_call_reporting</tt> extension will also report on tried upstreams with timeouts</li>
 <li>A new <tt>getdns_context_get_eventloop()</tt> companion function to the already existing <tt>getdns_context_set_evenloop()</tt> function, that will allow applications postpone the choice for a specific event library or use the getdns default eventloop for their own I/O.</li>
 <li>More leniency in what to accept as an representation for IP and IPv6 addresses (i.e. missing <tt>address_type</tt> keys in the dict, or just the bindate without the dict container).</li>
-<li>Significant improvements to the getdns_query test tool including option to use as a daemon listening on a specified address and option to configure <tt>getdns_query</tt> via a configuration file. For more details see <a href="https://getdnsapi.net/getdns_query.html">https://getdnsapi.net/getdns_query.html</a></li>
+<li>Significant improvements to the getdns_query test tool including option to use as a daemon listening on a specified address and option to configure <tt>getdns_query</tt> via a configuration file. For more details see <a href="https://getdnsapi.net/blog/getdns_query/">https://getdnsapi.net/blog/getdns_query/</a></li>
 <li>API and Additional API information for this implementation is now available in doxygen format which can be generated using <tt>make doc</tt>. 
 </ul>
 </p>
@@ -34,9 +34,9 @@ Updates:
 <p>
 Documentation is available at:
 <ul>
-<li>getdns API documentation: <a href="https://getdnsapi.net/spec.html">https://getdnsapi.net/spec.html</a></li>
-<li>getdns doxygen: <a href="https://getdnsapi.net/doxygen/">https://getdnsapi.net/doxygen/</a></li>
-<li>getdns_query documentation: <a href="https://getdnsapi.net/getdns_query.html">https://getdnsapi.net/getdns_query.html</a></li>
+<li>getdns API documentation: <a href="https://getdnsapi.net/documentation/spec/">https://getdnsapi.net/documentation/spec/</a></li>
+<li>getdns doxygen: <a href="https://getdnsapi.net/doxygen/1.0.0/">https://getdnsapi.net/doxygen/1.0.0/</a></li>
+<li>getdns_query documentation: <a href="https://getdnsapi.net/blog/getdns_query/">https://getdnsapi.net/blog/getdns_query/</a></li>
 </ul>
 <p>We would kindly ask that you review and try out this beta release thoroughly. Depending on feedback, we hope to have a production release available in early October. </p>
 ---
