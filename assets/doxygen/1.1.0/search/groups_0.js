@@ -2,7 +2,6 @@ var searchData=
 [
   ['additional_20append_20name_20values_20and_20texts',['Additional append name values and texts',['../group__appendname.html',1,'']]],
   ['additional_20authentication_20values_20and_20texts',['Additional authentication values and texts',['../group__authvaulesandtext.html',1,'']]],
-  ['additional_20getdns_5fcontext_20async_20functions',['Additional getdns_context async functions',['../group__contextfunction.html',1,'']]],
   ['asynchronous_20api_20functions',['Asynchronous API functions',['../group__funcs.html',1,'']]],
   ['additional_20context_20codes_20and_20texts',['Additional context codes and texts',['../group__Ucontextcodes.html',1,'']]],
   ['additional_20getdns_5fcontext_5fget_20functions',['Additional getdns_context_get functions',['../group__Ucontextget.html',1,'']]],

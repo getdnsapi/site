@@ -10,7 +10,7 @@
 <title>getdns: Additional getdns_context_get functions</title>
 <link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico?h=e9ddf61d">
 <!-- Generated CSS, including Bootstrap -->
-<link rel="stylesheet" href="../../static/gen/styles.css?h=131fcd38">
+<link rel="stylesheet" href="../../static/gen/styles.css?h=eb1c207c">
 <!-- Other things -->
 <link rel="stylesheet" href="../../static/pygments.css">
 <script type="text/javascript" src="jquery.js"></script> 
@@ -28,7 +28,7 @@
 <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -36,14 +36,28 @@
       </button>
       <a class="navbar-brand" href="../../"><img height="64" src="../../static/logo.svg" alt="getdns API"></a>
     </div><!-- class="navbar-header" -->
-    <div class="navbar-collapse collapse">
+    <div id="top-navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../quick-start/">Quick Start<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/categories/basic">Basic examples</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/dns-privacy-daemon-stubby">Stubby</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/getdns_query">getdns_query</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/json-pointers">Enhanced getdns data access</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../documentation/">Documentation<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li class="nav-item ">
-                  <a class="nav-link" href="/presentations">Presentations</a>
-              </li>
               <li class="nav-item ">
                   <a class="nav-link" href="../../documentation/readme/">Readme</a>
               </li>
@@ -65,27 +79,10 @@
             </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="../../blog/">Examples</a>
+            <a class="nav-link" href="../../presentations/">Presentations</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="../../releases/">Releases</a>
-          </li>
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../contact/">Contact<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li class="nav-item ">
-                  <a class="nav-link" href="https://github.com/getdnsapi/getdns/issues">Submit a bug report</a>
-              </li>
-              <li class="nav-item ">
-                  <a class="nav-link" href="/mailman/listinfo/users">Subscribe to the users mailing-list</a>
-              </li>
-              <li class="nav-item ">
-                  <a class="nav-link" href="/mailman/listinfo/spec">Subscribe to the specification mailing-list</a>
-              </li>
-              <li class="nav-item ">
-                  <a class="nav-link" href="mailto:team@getdnsapi.net">Email us: team@getdnsapi.net</a>
-              </li>
-            </ul>
           </li>
     </ul>
     </div><!-- class="navbar-collapse collapse" -->
@@ -194,10 +191,14 @@ Functions</h2></td></tr>
 <tr class="separator:ga9369be85ebbb7f7139231f7657d28694"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga675936d37e50cdfa473ae8912c3c871d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextget.html#ga675936d37e50cdfa473ae8912c3c871d">getdns_context_get_tls_authentication</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, <a class="el" href="group__authvaulesandtext.html#ga5593a573b594c82d2b28645c36fe989b">getdns_tls_authentication_t</a> *value)</td></tr>
 <tr class="separator:ga675936d37e50cdfa473ae8912c3c871d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1658a1f49e8a9cb5740206c2c2b66fc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextget.html#ga1658a1f49e8a9cb5740206c2c2b66fc2">getdns_context_get_round_robin_upstreams</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, uint8_t *value)</td></tr>
+<tr class="separator:ga1658a1f49e8a9cb5740206c2c2b66fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ba5c11b3b95483c2e29aa025f6ec048"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextget.html#ga0ba5c11b3b95483c2e29aa025f6ec048">getdns_context_get_tls_backoff_time</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, uint16_t *value)</td></tr>
+<tr class="separator:ga0ba5c11b3b95483c2e29aa025f6ec048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2549a186cc0b71d2df232d741a77638"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextget.html#gae2549a186cc0b71d2df232d741a77638">getdns_context_get_tls_connection_retries</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, uint16_t *value)</td></tr>
+<tr class="separator:gae2549a186cc0b71d2df232d741a77638"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga34af0b3f7bcaaa20c7ac5dd9445da534"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextget.html#ga34af0b3f7bcaaa20c7ac5dd9445da534">getdns_context_get_update_callback</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, void **userarg, void(**value)(<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *, <a class="el" href="group__contextcodetypestext.html#ga8be324e2c32c3142f1e7b5783c08c2ce">getdns_context_code_t</a>, void *))</td></tr>
 <tr class="separator:ga34af0b3f7bcaaa20c7ac5dd9445da534"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8af0bdc331d502226b0907c291dca3d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextget.html#gaa8af0bdc331d502226b0907c291dca3d">getdns_context_get_num_pending_requests</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, struct timeval *next_timeout)</td></tr>
-<tr class="separator:gaa8af0bdc331d502226b0907c291dca3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -761,6 +762,84 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga1658a1f49e8a9cb5740206c2c2b66fc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_get_round_robin_upstreams </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga0ba5c11b3b95483c2e29aa025f6ec048"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_get_tls_backoff_time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gae2549a186cc0b71d2df232d741a77638"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_get_tls_connection_retries </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ga34af0b3f7bcaaa20c7ac5dd9445da534"></a>
 <div class="memitem">
 <div class="memproto">
@@ -802,32 +881,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaa8af0bdc331d502226b0907c291dca3d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t getdns_context_get_num_pending_requests </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct timeval *&#160;</td>
-          <td class="paramname"><em>next_timeout</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 
 <!-- HTML footer for doxygen 1.8.11-->
@@ -837,10 +890,51 @@ Functions</h2></td></tr>
 </div>
 </div>
 <!--#if expr="true" --><!--#include virtual="/doxygen-templates/footer-content.html" --><!--#else -->
-<hr class="footer"/>
-<footer>
-  &copy; Copyright 2017 by getdns team.
-</footer>
+<nav class="navbar navbar-default navbar-static-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bottom-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="bottom-navbar" class="navbar-collapse collapse">
+    <div class="navbar-left social-bar">
+       <a href="https://github.com/getdnsapi/getdns"><img src="/static/github.png"></a>
+       <a href="https://twitter.com/getdnsapi"><img src="/static/twitter.png"></a>
+       <a href="mailto:team@getdnsapi.net"><img src="/static/at.png"></a>
+    </div>
+    <p class="navbar-text navbar-right">&copy; Copyright 2017 by the <a class="navbar-link" href="mailto:team@getdnsapi.net">getdns team</a>.</p>
+    <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item ">
+            <a class="nav-link" href="../../blog/">All examples</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="../../bindings/">All bindings</a>
+          </li>
+          <li class="nav-item dropup">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../contact/">Contact<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="nav-item ">
+                  <a class="nav-link" href="https://github.com/getdnsapi/getdns/issues">Submit a bug report</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/mailman/listinfo/users">Subscribe to the users mailing-list</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/mailman/listinfo/spec">Subscribe to the specification mailing-list</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="mailto:team@getdnsapi.net">Email us: team@getdnsapi.net</a>
+              </li>
+            </ul>
+          </li>
+    </ul>
+    </div>
+  </div>
+</nav>
 <!--#endif -->
 </div>
   <script type=text/javascript src="../../static/gen/app.js?h=64067f7f" charset="utf-8"></script>

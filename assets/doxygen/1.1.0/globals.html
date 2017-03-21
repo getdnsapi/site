@@ -10,7 +10,7 @@
 <title>getdns: Globals</title>
 <link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico?h=e9ddf61d">
 <!-- Generated CSS, including Bootstrap -->
-<link rel="stylesheet" href="../../static/gen/styles.css?h=131fcd38">
+<link rel="stylesheet" href="../../static/gen/styles.css?h=eb1c207c">
 <!-- Other things -->
 <link rel="stylesheet" href="../../static/pygments.css">
 <script type="text/javascript" src="jquery.js"></script> 
@@ -28,7 +28,7 @@
 <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -36,14 +36,28 @@
       </button>
       <a class="navbar-brand" href="../../"><img height="64" src="../../static/logo.svg" alt="getdns API"></a>
     </div><!-- class="navbar-header" -->
-    <div class="navbar-collapse collapse">
+    <div id="top-navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../quick-start/">Quick Start<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/categories/basic">Basic examples</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/dns-privacy-daemon-stubby">Stubby</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/getdns_query">getdns_query</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/blog/json-pointers">Enhanced getdns data access</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../documentation/">Documentation<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li class="nav-item ">
-                  <a class="nav-link" href="/presentations">Presentations</a>
-              </li>
               <li class="nav-item ">
                   <a class="nav-link" href="../../documentation/readme/">Readme</a>
               </li>
@@ -65,27 +79,10 @@
             </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="../../blog/">Examples</a>
+            <a class="nav-link" href="../../presentations/">Presentations</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="../../releases/">Releases</a>
-          </li>
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../contact/">Contact<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li class="nav-item ">
-                  <a class="nav-link" href="https://github.com/getdnsapi/getdns/issues">Submit a bug report</a>
-              </li>
-              <li class="nav-item ">
-                  <a class="nav-link" href="/mailman/listinfo/users">Subscribe to the users mailing-list</a>
-              </li>
-              <li class="nav-item ">
-                  <a class="nav-link" href="/mailman/listinfo/spec">Subscribe to the specification mailing-list</a>
-              </li>
-              <li class="nav-item ">
-                  <a class="nav-link" href="mailto:team@getdnsapi.net">Email us: team@getdnsapi.net</a>
-              </li>
-            </ul>
           </li>
     </ul>
     </div><!-- class="navbar-collapse collapse" -->
@@ -390,6 +387,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>GETDNS_CONTEXT_CODE_RESOLUTION_TYPE_TEXT
 : <a class="el" href="group__contextcodetypestext.html#gaa1ed4c7d9580dadc3bdfa4716702aad6">getdns.h</a>
 </li>
+<li>GETDNS_CONTEXT_CODE_ROUND_ROBIN_UPSTREAMS
+: <a class="el" href="group__Ucontextcodes.html#ga875f46a61d74a0a7df41494a898a2985">getdns_extra.h</a>
+</li>
+<li>GETDNS_CONTEXT_CODE_ROUND_ROBIN_UPSTREAMS_TEXT
+: <a class="el" href="group__Ucontextcodes.html#gab76c12d435fd03734a058a43b387479d">getdns_extra.h</a>
+</li>
 <li>GETDNS_CONTEXT_CODE_SUFFIX
 : <a class="el" href="group__contextcodetypestext.html#gga8be324e2c32c3142f1e7b5783c08c2cea1f851ba9747095e1ca9f5cc6c250448a">getdns.h</a>
 </li>
@@ -410,6 +413,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>GETDNS_CONTEXT_CODE_TLS_AUTHENTICATION_TEXT
 : <a class="el" href="group__Ucontextcodes.html#ga4af06f115940e237651a74cd2f460cbb">getdns_extra.h</a>
+</li>
+<li>GETDNS_CONTEXT_CODE_TLS_BACKOFF_TIME
+: <a class="el" href="group__Ucontextcodes.html#gace558728fca13571141a13606c91ffc0">getdns_extra.h</a>
+</li>
+<li>GETDNS_CONTEXT_CODE_TLS_BACKOFF_TIME_TEXT
+: <a class="el" href="group__Ucontextcodes.html#gac046d8d3b01b6a365937366d830db55b">getdns_extra.h</a>
+</li>
+<li>GETDNS_CONTEXT_CODE_TLS_CONNECTION_RETRIES
+: <a class="el" href="group__Ucontextcodes.html#gac07b5ad3fa150ed4df8622be44a967b2">getdns_extra.h</a>
+</li>
+<li>GETDNS_CONTEXT_CODE_TLS_CONNECTION_RETRIES_TEXT
+: <a class="el" href="group__Ucontextcodes.html#ga6763e2e8daea90e552f3f550e0998b12">getdns_extra.h</a>
 </li>
 <li>GETDNS_CONTEXT_CODE_TLS_QUERY_PADDING_BLOCKSIZE
 : <a class="el" href="group__Ucontextcodes.html#ga67ed967068d6ac9ed287ed593d6d04b7">getdns_extra.h</a>
@@ -493,10 +508,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__Ucontextget.html#gab200b70f8a4ec5ada8d412ac1d3c6ff3">getdns_extra.h</a>
 </li>
 <li>getdns_context_get_num_pending_requests()
-: <a class="el" href="group__Ucontextget.html#gaa8af0bdc331d502226b0907c291dca3d">getdns_extra.h</a>
+: <a class="el" href="group__Uutilityfunctionsdeprecated.html#gaa8af0bdc331d502226b0907c291dca3d">getdns_extra.h</a>
 </li>
 <li>getdns_context_get_resolution_type()
 : <a class="el" href="group__Ucontextget.html#ga6d709a65ebb52cc79508c1315b4c33b4">getdns_extra.h</a>
+</li>
+<li>getdns_context_get_round_robin_upstreams()
+: <a class="el" href="group__Ucontextget.html#ga1658a1f49e8a9cb5740206c2c2b66fc2">getdns_extra.h</a>
 </li>
 <li>getdns_context_get_suffix()
 : <a class="el" href="group__Ucontextget.html#ga4089cfce97de1279d3d69193d7b662ad">getdns_extra.h</a>
@@ -506,6 +524,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>getdns_context_get_tls_authentication()
 : <a class="el" href="group__Ucontextget.html#ga675936d37e50cdfa473ae8912c3c871d">getdns_extra.h</a>
+</li>
+<li>getdns_context_get_tls_backoff_time()
+: <a class="el" href="group__Ucontextget.html#ga0ba5c11b3b95483c2e29aa025f6ec048">getdns_extra.h</a>
+</li>
+<li>getdns_context_get_tls_connection_retries()
+: <a class="el" href="group__Ucontextget.html#gae2549a186cc0b71d2df232d741a77638">getdns_extra.h</a>
 </li>
 <li>getdns_context_get_tls_query_padding_blocksize()
 : <a class="el" href="group__Ucontextget.html#ga9369be85ebbb7f7139231f7657d28694">getdns_extra.h</a>
@@ -517,7 +541,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__Ucontextget.html#gad34d2d022b35dce4a75a23b1b4a95d0f">getdns_extra.h</a>
 </li>
 <li>getdns_context_process_async()
-: <a class="el" href="group__contextfunction.html#gaa094e4506fe18aef9f0f79e0364d1572">getdns_extra.h</a>
+: <a class="el" href="group__Uutilityfunctionsdeprecated.html#gaa094e4506fe18aef9f0f79e0364d1572">getdns_extra.h</a>
 </li>
 <li>getdns_context_run()
 : <a class="el" href="group__Ueventloops.html#ga2169fbbde245e00086e2f423b82610da">getdns_extra.h</a>
@@ -574,7 +598,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__context__set.html#gaca8b7e5f548477e29b6f6603331177cf">getdns.h</a>
 </li>
 <li>getdns_context_set_listen_addresses()
-: <a class="el" href="group__Uutilityfunctions.html#gaaad0d5fcc62cd25b7175105c2d775527">getdns_extra.h</a>
+: <a class="el" href="group__UServerFunctions.html#gaaad0d5fcc62cd25b7175105c2d775527">getdns_extra.h</a>
 </li>
 <li>getdns_context_set_memory_functions()
 : <a class="el" href="group__context__set.html#ga7799de54b74efd6187cca07134e463c4">getdns.h</a>
@@ -588,6 +612,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getdns_context_set_return_dnssec_status()
 : <a class="el" href="group__Ucontextset.html#ga86fdd43815aa47468d083a04c636b0f5">getdns_extra.h</a>
 </li>
+<li>getdns_context_set_round_robin_upstreams()
+: <a class="el" href="group__Ucontextset.html#gaee949b19ba9a04e6a17553d3c6878518">getdns_extra.h</a>
+</li>
 <li>getdns_context_set_suffix()
 : <a class="el" href="group__context__set.html#ga78799126682ee1752179b484a4e6b9b5">getdns.h</a>
 </li>
@@ -596,6 +623,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>getdns_context_set_tls_authentication()
 : <a class="el" href="group__Ucontextset.html#gaf253fef4ad6ebe79514aa35a7f8a93e5">getdns_extra.h</a>
+</li>
+<li>getdns_context_set_tls_backoff_time()
+: <a class="el" href="group__Ucontextset.html#ga233c32192a157f9a4d8799ae2598339e">getdns_extra.h</a>
+</li>
+<li>getdns_context_set_tls_connection_retries()
+: <a class="el" href="group__Ucontextset.html#ga1e94bf37c357d6a4d8c57819fd64a1c6">getdns_extra.h</a>
 </li>
 <li>getdns_context_set_tls_query_padding_blocksize()
 : <a class="el" href="group__Ucontextset.html#ga39db81a84f6d6b5bce987fbce044bc69">getdns_extra.h</a>
@@ -760,7 +793,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__extvals.html#ga8cc86e114d68f91765a29cdb86503220">getdns.h</a>
 </li>
 <li>getdns_fp2rr_list()
-: <a class="el" href="group__Uutilityfunctions.html#ga7fa5820aa12afbb14dc83fd69b6e08c9">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga7fa5820aa12afbb14dc83fd69b6e08c9">getdns_extra.h</a>
 </li>
 <li>getdns_general()
 : <a class="el" href="group__funcs.html#ga1ea542d4ef0082413981ae3c7762fb12">getdns.h</a>
@@ -838,22 +871,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__getdns__list__set.html#ga6a27058a940188bb7f80336c36943137">getdns.h</a>
 </li>
 <li>getdns_msg_dict2str()
-: <a class="el" href="group__Uutilityfunctions.html#ga5c8070c8b48ae0433c27cfec547d4108">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga5c8070c8b48ae0433c27cfec547d4108">getdns_extra.h</a>
 </li>
 <li>getdns_msg_dict2str_buf()
-: <a class="el" href="group__Uutilityfunctions.html#ga024557fa6c489230466e1ff4210f9d9c">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga024557fa6c489230466e1ff4210f9d9c">getdns_extra.h</a>
 </li>
 <li>getdns_msg_dict2str_scan()
-: <a class="el" href="group__Uutilityfunctions.html#ga0692e491e4f3b4732cce310c4c9617e8">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga0692e491e4f3b4732cce310c4c9617e8">getdns_extra.h</a>
 </li>
 <li>getdns_msg_dict2wire()
-: <a class="el" href="group__Uutilityfunctions.html#ga72c580c372c6c3c4d7c59c04f21075b3">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga72c580c372c6c3c4d7c59c04f21075b3">getdns_extra.h</a>
 </li>
 <li>getdns_msg_dict2wire_buf()
-: <a class="el" href="group__Uutilityfunctions.html#ga84009c71d0ac707cd9d5ed135366f4cb">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga84009c71d0ac707cd9d5ed135366f4cb">getdns_extra.h</a>
 </li>
 <li>getdns_msg_dict2wire_scan()
-: <a class="el" href="group__Uutilityfunctions.html#gabd0fbb7f68f8b250e51e12ea40180d6c">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#gabd0fbb7f68f8b250e51e12ea40180d6c">getdns_extra.h</a>
 </li>
 <li>GETDNS_NAMESPACE_DNS
 : <a class="el" href="group__namespacetypestext.html#ggafeaba1aec6dec502195b1df8df635f58a04838a5f01b1c56557376246feb9a8fe">getdns.h</a>
@@ -922,19 +955,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__utils.html#ga2cb8b297d6c9ec42c26f3977188487b6">getdns.h</a>
 </li>
 <li>getdns_pretty_print_list()
-: <a class="el" href="group__Uutilityfunctions.html#gac952a90e12585d40ae0a2e821b265936">getdns_extra.h</a>
+: <a class="el" href="group__UXTRAPrettyPrinting.html#gac952a90e12585d40ae0a2e821b265936">getdns_extra.h</a>
 </li>
 <li>getdns_pretty_snprint_dict()
-: <a class="el" href="group__Uutilityfunctions.html#gaae23555cb0801f71e2cd133addec5c3e">getdns_extra.h</a>
+: <a class="el" href="group__UXTRAPrettyPrinting.html#gaae23555cb0801f71e2cd133addec5c3e">getdns_extra.h</a>
 </li>
 <li>getdns_pretty_snprint_list()
-: <a class="el" href="group__Uutilityfunctions.html#ga94628e25dc24d2a33b16f9cd9411c206">getdns_extra.h</a>
+: <a class="el" href="group__UXTRAPrettyPrinting.html#ga94628e25dc24d2a33b16f9cd9411c206">getdns_extra.h</a>
 </li>
 <li>getdns_print_json_dict()
-: <a class="el" href="group__Uutilityfunctions.html#ga18d9cd5fe90e297af96abe2e522b6155">getdns_extra.h</a>
+: <a class="el" href="group__UXTRAPrettyPrinting.html#ga18d9cd5fe90e297af96abe2e522b6155">getdns_extra.h</a>
 </li>
 <li>getdns_print_json_list()
-: <a class="el" href="group__Uutilityfunctions.html#ga1a458a01b546fa9349272297559d10ec">getdns_extra.h</a>
+: <a class="el" href="group__UXTRAPrettyPrinting.html#ga1a458a01b546fa9349272297559d10ec">getdns_extra.h</a>
 </li>
 <li>getdns_pubkey_pin_create_from_string()
 : <a class="el" href="group__Uutilityfunctions.html#gaeb565512ee6da5a401cd7f0c594c1c29">getdns_extra.h</a>
@@ -965,6 +998,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>GETDNS_RCODE_BADVERS
 : <a class="el" href="group__rcodes.html#ga40c2de0b4a81f4cb7d03d7db9746ccfc">getdns.h</a>
+</li>
+<li>GETDNS_RCODE_COOKIE
+: <a class="el" href="group__rcodes.html#ga19d7f7fcac113e80f6055f85ae4e6afd">getdns.h</a>
 </li>
 <li>GETDNS_RCODE_FORMERR
 : <a class="el" href="group__rcodes.html#ga6959eb584225c7f570502b23a1763bda">getdns.h</a>
@@ -1012,13 +1048,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__redirectpoliciestext.html#ga00bd601be63a6993a410ffa21f613f48">getdns.h</a>
 </li>
 <li>getdns_redirects_t
-: <a class="el" href="group__redirectpoliciestext.html#gabd7466a9b61c98de79228e332fcbf489">getdns.h</a>
+: <a class="el" href="group__redirectpoliciestext.html#gabba6c09b38c3cd8135f21f1be66c604a">getdns.h</a>
 </li>
 <li>getdns_reply()
-: <a class="el" href="group__Uutilityfunctions.html#ga1b336bf7685ac565420be0040eaa35f4">getdns_extra.h</a>
+: <a class="el" href="group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4">getdns_extra.h</a>
 </li>
 <li>getdns_request_handler_t
-: <a class="el" href="group__Uutilityfunctions.html#ga7fabb46e587d0dac4ca45ae1c893f8ff">getdns_extra.h</a>
+: <a class="el" href="group__UServerFunctions.html#ga7fabb46e587d0dac4ca45ae1c893f8ff">getdns_extra.h</a>
 </li>
 <li>GETDNS_RESOLUTION_RECURSING
 : <a class="el" href="group__resolutiontypestext.html#gga83536943379fe86ee4852f449bbccc3aa875ecbe35528dcc4a4360e608510c963">getdns.h</a>
@@ -1033,7 +1069,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__resolutiontypestext.html#ga3593521fab1f23f9b92e179eeb11b446">getdns.h</a>
 </li>
 <li>getdns_resolution_t
-: <a class="el" href="group__resolutiontypestext.html#ga8921dc5a36678ff037ceeb761994a55a">getdns.h</a>
+: <a class="el" href="group__resolutiontypestext.html#ga83536943379fe86ee4852f449bbccc3a">getdns.h</a>
 </li>
 <li>GETDNS_RESPSTATUS_ALL_BOGUS_ANSWERS
 : <a class="el" href="group__respstatus.html#ga32ef7345290ebcc859154d31518c5b7d">getdns.h</a>
@@ -1143,6 +1179,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>GETDNS_RETURN_NO_SUCH_LIST_ITEM_TEXT
 : <a class="el" href="group__returntypestext.html#ga543dae4cf087bbbec7b7643c18331aef">getdns.h</a>
 </li>
+<li>GETDNS_RETURN_NO_UPSTREAM_AVAILABLE
+: <a class="el" href="group__Ureturnvaluesandtext.html#ga3aa6b48e98335c50f78187fd12b353f5">getdns_extra.h</a>
+</li>
+<li>GETDNS_RETURN_NO_UPSTREAM_AVAILABLE_TEXT
+: <a class="el" href="group__Ureturnvaluesandtext.html#ga36c702e51345dd289461ccfdd71cdff5">getdns_extra.h</a>
+</li>
 <li>GETDNS_RETURN_NOT_IMPLEMENTED
 : <a class="el" href="group__returntypestext.html#gga21e6d721f1dc6f76c3b88cdefe639e95a30780e66c21fe5a2eb434db828379527">getdns.h</a>
 </li>
@@ -1150,7 +1192,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__returntypestext.html#gaf9a8c737e2613841d9e20e7089732e72">getdns.h</a>
 </li>
 <li>getdns_return_t
-: <a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns.h</a>
+: <a class="el" href="group__returntypestext.html#gadc08b4a6bd07b42098875ea46c09951c">getdns.h</a>
 </li>
 <li>GETDNS_RETURN_UNKNOWN_TRANSACTION
 : <a class="el" href="group__returntypestext.html#gga21e6d721f1dc6f76c3b88cdefe639e95a298e30c5d6a2ad4ae21b92d0bbfb4ce2">getdns.h</a>
@@ -1168,22 +1210,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__utils.html#ga79b45fee1a8340437e1171766268cc4c">getdns.h</a>
 </li>
 <li>getdns_rr_dict2str()
-: <a class="el" href="group__Uutilityfunctions.html#gaf67f9eb97d73607c94e21548d241b530">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#gaf67f9eb97d73607c94e21548d241b530">getdns_extra.h</a>
 </li>
 <li>getdns_rr_dict2str_buf()
-: <a class="el" href="group__Uutilityfunctions.html#ga454811cf15dc16e8af923b208b1db381">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga454811cf15dc16e8af923b208b1db381">getdns_extra.h</a>
 </li>
 <li>getdns_rr_dict2str_scan()
-: <a class="el" href="group__Uutilityfunctions.html#gae5b7d00781d2a5a3ff60f396a08b1ac1">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#gae5b7d00781d2a5a3ff60f396a08b1ac1">getdns_extra.h</a>
 </li>
 <li>getdns_rr_dict2wire()
-: <a class="el" href="group__Uutilityfunctions.html#gab806fbdb4f7d53565602064a234acfb0">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#gab806fbdb4f7d53565602064a234acfb0">getdns_extra.h</a>
 </li>
 <li>getdns_rr_dict2wire_buf()
-: <a class="el" href="group__Uutilityfunctions.html#gab239c4978757b3b9e4da890c912b6873">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#gab239c4978757b3b9e4da890c912b6873">getdns_extra.h</a>
 </li>
 <li>getdns_rr_dict2wire_scan()
-: <a class="el" href="group__Uutilityfunctions.html#gaf86b624015629efc11e20ee683d4e899">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#gaf86b624015629efc11e20ee683d4e899">getdns_extra.h</a>
 </li>
 <li>GETDNS_RRCLASS_ANY
 : <a class="el" href="group__rrclasses.html#ga2b7be5f9b4a8db6ce171652929e6026a">getdns.h</a>
@@ -1450,25 +1492,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__syncfuncs.html#ga1e215914d60181bbe3cfbd819424b924">getdns.h</a>
 </li>
 <li>getdns_snprint_json_dict()
-: <a class="el" href="group__Uutilityfunctions.html#ga45ebe5dcb956a3343b5b0a429d149f08">getdns_extra.h</a>
+: <a class="el" href="group__UXTRAPrettyPrinting.html#ga45ebe5dcb956a3343b5b0a429d149f08">getdns_extra.h</a>
 </li>
 <li>getdns_snprint_json_list()
-: <a class="el" href="group__Uutilityfunctions.html#ga33ad2c7ed11095dc48972fcc0c7542bd">getdns_extra.h</a>
+: <a class="el" href="group__UXTRAPrettyPrinting.html#ga33ad2c7ed11095dc48972fcc0c7542bd">getdns_extra.h</a>
 </li>
 <li>getdns_str2bindata()
-: <a class="el" href="group__Uutilityfunctions.html#ga4176f00002bd09b28b49c2302ae67351">getdns_extra.h</a>
+: <a class="el" href="group__Ustring2getdns__data.html#ga4176f00002bd09b28b49c2302ae67351">getdns_extra.h</a>
 </li>
 <li>getdns_str2dict()
-: <a class="el" href="group__Uutilityfunctions.html#gaa4b16db4a779f5394414c6a9f54b3f7f">getdns_extra.h</a>
+: <a class="el" href="group__Ustring2getdns__data.html#gaa4b16db4a779f5394414c6a9f54b3f7f">getdns_extra.h</a>
 </li>
 <li>getdns_str2int()
-: <a class="el" href="group__Uutilityfunctions.html#ga8221150daf495de0812fba05685ce506">getdns_extra.h</a>
+: <a class="el" href="group__Ustring2getdns__data.html#ga8221150daf495de0812fba05685ce506">getdns_extra.h</a>
 </li>
 <li>getdns_str2list()
-: <a class="el" href="group__Uutilityfunctions.html#gae60ca30d982d4ff57de2183921795858">getdns_extra.h</a>
+: <a class="el" href="group__Ustring2getdns__data.html#gae60ca30d982d4ff57de2183921795858">getdns_extra.h</a>
 </li>
 <li>getdns_str2rr_dict()
-: <a class="el" href="group__Uutilityfunctions.html#gac3047b6ed6aca91469eb3fd1430f44e1">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#gac3047b6ed6aca91469eb3fd1430f44e1">getdns_extra.h</a>
 </li>
 <li>getdns_strerror()
 : <a class="el" href="group__Uutilityfunctionsdeprecated.html#ga6fa617db8824da1af1ffbadf72a18308">getdns_extra.h</a>
@@ -1483,7 +1525,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__transportlisttypestext.html#ga8d0cc5d1beccd7d5bb2bb1c7dd330dee">getdns.h</a>
 </li>
 <li>getdns_transport_t
-: <a class="el" href="group__transporttypestext.html#gaabd0fcb43188d76d64311b1aafedf554">getdns.h</a>
+: <a class="el" href="group__transporttypestext.html#ga81310dd56b165b81db796fba34472894">getdns.h</a>
 </li>
 <li>GETDNS_TRANSPORT_TCP
 : <a class="el" href="group__transportlisttypestext.html#gga8d0cc5d1beccd7d5bb2bb1c7dd330deea86257378bfa7b0e547903e031778dc12">getdns.h</a>
@@ -1549,22 +1591,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="group__versions.html#gaa270170b4afb23fe31ea667df60bcffc">getdns_extra.h</a>
 </li>
 <li>getdns_wire2msg_dict()
-: <a class="el" href="group__Uutilityfunctions.html#ga5806bfc0d817d55a38f34e58cd7ab0e3">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga5806bfc0d817d55a38f34e58cd7ab0e3">getdns_extra.h</a>
 </li>
 <li>getdns_wire2msg_dict_buf()
-: <a class="el" href="group__Uutilityfunctions.html#ga05082fea662d4a68d6183c0a48a02158">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga05082fea662d4a68d6183c0a48a02158">getdns_extra.h</a>
 </li>
 <li>getdns_wire2msg_dict_scan()
-: <a class="el" href="group__Uutilityfunctions.html#ga755a4b00196924489c4d2b22956678a0">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga755a4b00196924489c4d2b22956678a0">getdns_extra.h</a>
 </li>
 <li>getdns_wire2rr_dict()
-: <a class="el" href="group__Uutilityfunctions.html#ga60b0e27fd719db810b387e43a0440adf">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga60b0e27fd719db810b387e43a0440adf">getdns_extra.h</a>
 </li>
 <li>getdns_wire2rr_dict_buf()
-: <a class="el" href="group__Uutilityfunctions.html#ga3039de869b01ccb89f52df7505abf90e">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga3039de869b01ccb89f52df7505abf90e">getdns_extra.h</a>
 </li>
 <li>getdns_wire2rr_dict_scan()
-: <a class="el" href="group__Uutilityfunctions.html#ga091834b2dfd6ee912a56573b700bbb87">getdns_extra.h</a>
+: <a class="el" href="group__UDNSDataConversionFunctions.html#ga091834b2dfd6ee912a56573b700bbb87">getdns_extra.h</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -1576,10 +1618,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <!--#if expr="true" --><!--#include virtual="/doxygen-templates/footer-content.html" --><!--#else -->
-<hr class="footer"/>
-<footer>
-  &copy; Copyright 2017 by getdns team.
-</footer>
+<nav class="navbar navbar-default navbar-static-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bottom-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="bottom-navbar" class="navbar-collapse collapse">
+    <div class="navbar-left social-bar">
+       <a href="https://github.com/getdnsapi/getdns"><img src="/static/github.png"></a>
+       <a href="https://twitter.com/getdnsapi"><img src="/static/twitter.png"></a>
+       <a href="mailto:team@getdnsapi.net"><img src="/static/at.png"></a>
+    </div>
+    <p class="navbar-text navbar-right">&copy; Copyright 2017 by the <a class="navbar-link" href="mailto:team@getdnsapi.net">getdns team</a>.</p>
+    <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item ">
+            <a class="nav-link" href="../../blog/">All examples</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="../../bindings/">All bindings</a>
+          </li>
+          <li class="nav-item dropup">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="../../contact/">Contact<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="nav-item ">
+                  <a class="nav-link" href="https://github.com/getdnsapi/getdns/issues">Submit a bug report</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/mailman/listinfo/users">Subscribe to the users mailing-list</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/mailman/listinfo/spec">Subscribe to the specification mailing-list</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="mailto:team@getdnsapi.net">Email us: team@getdnsapi.net</a>
+              </li>
+            </ul>
+          </li>
+    </ul>
+    </div>
+  </div>
+</nav>
 <!--#endif -->
 </div>
   <script type=text/javascript src="../../static/gen/app.js?h=64067f7f" charset="utf-8"></script>
