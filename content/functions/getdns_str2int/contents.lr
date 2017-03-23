@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_str2int.html
+---
+title: getdns_return_t getdns_str2int(const char *str, uint32_t *value)
+---
+link: /doxygen/1.1.0/group__Ustring2getdns__data.html#ga8221150daf495de0812fba05685ce506

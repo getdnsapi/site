@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_rr_dict2wire_scan.html
+---
+title: getdns_return_t getdns_rr_dict2wire_scan(const getdns_dict *rr_dict, uint8_t **wire, int *wire_sz)
+---
+link: /doxygen/1.1.0/group__UDNSDataConversionFunctions.html#gaf86b624015629efc11e20ee683d4e899

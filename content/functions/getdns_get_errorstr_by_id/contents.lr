@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_get_errorstr_by_id.html
+---
+title: const char * getdns_get_errorstr_by_id(uint16_t err)
+---
+link: /doxygen/1.1.0/group__Uutilityfunctions.html#gacb4a2592732a45016dfde223a9567286

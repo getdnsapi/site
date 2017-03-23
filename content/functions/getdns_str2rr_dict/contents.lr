@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_str2rr_dict.html
+---
+title: getdns_return_t getdns_str2rr_dict(const char *str, getdns_dict **rr_dict, const char *origin, uint32_t default_ttl)
+---
+link: /doxygen/1.1.0/group__UDNSDataConversionFunctions.html#gac3047b6ed6aca91469eb3fd1430f44e1

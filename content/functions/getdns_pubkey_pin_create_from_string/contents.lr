@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_pubkey_pin_create_from_string.html
+---
+title: getdns_dict * getdns_pubkey_pin_create_from_string(getdns_context *context, const char *str)
+---
+link: /doxygen/1.1.0/group__Uutilityfunctions.html#gaeb565512ee6da5a401cd7f0c594c1c29

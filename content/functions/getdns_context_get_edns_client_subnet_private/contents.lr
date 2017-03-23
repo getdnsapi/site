@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_edns_client_subnet_private.html
+---
+title: getdns_return_t getdns_context_get_edns_client_subnet_private(getdns_context *context, uint8_t *value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#ga67e61065570872cc2bfa433b24572d3e

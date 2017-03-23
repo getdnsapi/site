@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_dict_get_names.html
+---
+title: getdns_return_t getdns_dict_get_names(const getdns_dict *dict, getdns_list **answer)
+---
+link: /doxygen/1.1.0/group__getdns__dict__get__functions.html#gad1d95f6c07d9fd2d428b5c618621102c

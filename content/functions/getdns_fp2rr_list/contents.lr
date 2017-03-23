@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_fp2rr_list.html
+---
+title: getdns_return_t getdns_fp2rr_list(FILE *in, getdns_list **rr_list, const char *origin, uint32_t default_ttl)
+---
+link: /doxygen/1.1.0/group__UDNSDataConversionFunctions.html#ga7fa5820aa12afbb14dc83fd69b6e08c9

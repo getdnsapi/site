@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_dnssec_trust_anchors.html
+---
+title: getdns_return_t getdns_context_get_dnssec_trust_anchors(getdns_context *context, getdns_list **value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#gafe107101a7d5ed0e8e0ba89e8e65e6aa

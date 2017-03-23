@@ -1,8 +1,14 @@
-{% extends "nosidebar.html" %}
-{% block body %}
-  <div class="row">
-    <div class="col-sm-12">
-      link: <a href="{{ this.link|string|url }}">{{ this.link }}</a>
-       </div>
-  </div>
-{% endblock body %}
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="1; url={{ this.link|string|url }}">
+        <script type="text/javascript">
+            window.location.href = "{{ this.link|string|url }}"
+        </script>
+        <title>{{ this.title }}</title>
+    </head>
+    <body>
+        If you are not redirected automatically, follow this <a href="{{ this.link|string|url }}">link to {{ this.title }}</a>.
+    </body>
+</html>

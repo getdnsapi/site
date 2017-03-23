@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_list_set_int.html
+---
+title: getdns_return_t getdns_list_set_int(getdns_list *list, size_t index, uint32_t child_uint32)
+---
+link: /doxygen/1.1.0/group__getdns__list__set.html#gaa875e3a270b27bade36798d3c7dd03ce

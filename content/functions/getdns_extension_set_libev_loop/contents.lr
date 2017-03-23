@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_extension_set_libev_loop.html
+---
+title: getdns_return_t getdns_extension_set_libev_loop(struct getdns_context *context, struct ev_loop *ev_loop)
+---
+link: /doxygen/1.1.0/group__eventloops.html#ga65972f46ec8517f00bb41abaedb3b3fe

@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_print_json_list.html
+---
+title: char * getdns_print_json_list(const getdns_list *some_list, int pretty)
+---
+link: /doxygen/1.1.0/group__UXTRAPrettyPrinting.html#ga1a458a01b546fa9349272297559d10ec

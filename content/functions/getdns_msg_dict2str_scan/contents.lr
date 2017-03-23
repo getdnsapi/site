@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_msg_dict2str_scan.html
+---
+title: getdns_return_t getdns_msg_dict2str_scan(const getdns_dict *msg_dict, char **str, int *str_len)
+---
+link: /doxygen/1.1.0/group__UDNSDataConversionFunctions.html#ga0692e491e4f3b4732cce310c4c9617e8

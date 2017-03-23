@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_list_set_dict.html
+---
+title: getdns_return_t getdns_list_set_dict(getdns_list *list, size_t index, const getdns_dict *child_dict)
+---
+link: /doxygen/1.1.0/group__getdns__list__set.html#ga4245f9b7e5ec5221e82716f191631038

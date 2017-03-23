@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_list_destroy.html
+---
+title: void getdns_list_destroy(getdns_list *list)
+---
+link: /doxygen/1.1.0/group__list__create.html#ga889dc70197ee8afa8f9331f0e4cdd9ce

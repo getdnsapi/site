@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_hostname.html
+---
+title: getdns_return_t getdns_hostname(getdns_context *context, getdns_dict *address, getdns_dict *extensions, void *userarg, getdns_transaction_t *transaction_id, getdns_callback_t callbackfn)
+---
+link: /doxygen/1.1.0/group__funcs.html#gada621b1c504515de134fc834493a0b16

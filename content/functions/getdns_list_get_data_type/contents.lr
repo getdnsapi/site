@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_list_get_data_type.html
+---
+title: getdns_return_t getdns_list_get_data_type(const getdns_list *list, size_t index, getdns_data_type *answer)
+---
+link: /doxygen/1.1.0/group__getdns__list__get__functions.html#gac26e71425d49bc33a45fb3b8b702dd5a

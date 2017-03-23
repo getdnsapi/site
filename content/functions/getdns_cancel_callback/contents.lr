@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_cancel_callback.html
+---
+title: getdns_return_t getdns_cancel_callback(getdns_context *context, getdns_transaction_t transaction_id)
+---
+link: /doxygen/1.1.0/group__callbackfns.html#gac0683d7b27521a5d59adce5e54b9602e

@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_dict_util_get_string.html
+---
+title: getdns_return_t getdns_dict_util_get_string(getdns_dict *dict, char *name, char **result)
+---
+link: /doxygen/1.1.0/group__Uutilityfunctions.html#gad7fcc64082f37c9e4ee863218f8e4371

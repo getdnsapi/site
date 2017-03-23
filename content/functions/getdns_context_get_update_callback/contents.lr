@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_update_callback.html
+---
+title: getdns_return_t getdns_context_get_update_callback(getdns_context *context, void **userarg, void(**value)(getdns_context *, getdns_context_code_t, void *))
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#ga34af0b3f7bcaaa20c7ac5dd9445da534

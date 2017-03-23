@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_listen_addresses.html
+---
+title: getdns_return_t getdns_context_set_listen_addresses(getdns_context *context, const getdns_list *listen_addresses, void *userarg, getdns_request_handler_t handler)
+---
+link: /doxygen/1.1.0/group__UServerFunctions.html#gaaad0d5fcc62cd25b7175105c2d775527

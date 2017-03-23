@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_tls_query_padding_blocksize.html
+---
+title: getdns_return_t getdns_context_get_tls_query_padding_blocksize(getdns_context *context, uint16_t *value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#ga9369be85ebbb7f7139231f7657d28694

@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_resolution_type.html
+---
+title: getdns_return_t getdns_context_get_resolution_type(getdns_context *context, getdns_resolution_t *value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#ga6d709a65ebb52cc79508c1315b4c33b4

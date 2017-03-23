@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_edns_do_bit.html
+---
+title: getdns_return_t getdns_context_get_edns_do_bit(getdns_context *context, uint8_t *value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#ga42512d6bda9bbf62d57cdd3dee2f37f0

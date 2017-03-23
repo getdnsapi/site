@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_address_sync.html
+---
+title: getdns_return_t getdns_address_sync(getdns_context *context, const char *name, getdns_dict *extensions, getdns_dict **response)
+---
+link: /doxygen/1.1.0/group__syncfuncs.html#gae32eb44342e01b5cccfd879e649e875b

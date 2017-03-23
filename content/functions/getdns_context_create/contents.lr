@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_create.html
+---
+title: getdns_return_t getdns_context_create(getdns_context **context, int set_from_os)
+---
+link: /doxygen/1.1.0/group__context__create.html#gaee8c34e89e0a2e41a1c8bd84a96bf8c6

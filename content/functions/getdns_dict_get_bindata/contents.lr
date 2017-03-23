@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_dict_get_bindata.html
+---
+title: getdns_return_t getdns_dict_get_bindata(const getdns_dict *dict, const char *name, getdns_bindata **answer)
+---
+link: /doxygen/1.1.0/group__getdns__dict__get__functions.html#ga22e8786555d3cbb2196fd80c3c585dfd

@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_tls_authentication.html
+---
+title: getdns_return_t getdns_context_get_tls_authentication(getdns_context *context, getdns_tls_authentication_t *value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#ga675936d37e50cdfa473ae8912c3c871d

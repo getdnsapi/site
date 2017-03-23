@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_validate_dnssec2.html
+---
+title: getdns_return_t getdns_validate_dnssec2(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors, time_t validation_time, uint32_t skew)
+---
+link: /doxygen/1.1.0/group__Uutilityfunctions.html#gad208bad95f21d983b83dbe7e4fdcbfc1

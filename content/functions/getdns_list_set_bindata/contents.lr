@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_list_set_bindata.html
+---
+title: getdns_return_t getdns_list_set_bindata(getdns_list *list, size_t index, const getdns_bindata *child_bindata)
+---
+link: /doxygen/1.1.0/group__getdns__list__set.html#ga2a54ab9a78903d68daa8c9c4f5f22492

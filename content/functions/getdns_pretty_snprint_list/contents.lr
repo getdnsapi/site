@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_pretty_snprint_list.html
+---
+title: int getdns_pretty_snprint_list(char *str, size_t size, const getdns_list *list)
+---
+link: /doxygen/1.1.0/group__UXTRAPrettyPrinting.html#ga94628e25dc24d2a33b16f9cd9411c206

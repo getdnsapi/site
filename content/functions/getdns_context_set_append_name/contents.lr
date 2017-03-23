@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_append_name.html
+---
+title: getdns_return_t getdns_context_set_append_name(getdns_context *context, getdns_append_name_t value)
+---
+link: /doxygen/1.1.0/group__context__set.html#gace5d6fd9bc3e1deeb06b832b12f9afef

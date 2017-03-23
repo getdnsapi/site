@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_eventloop_schedule.html
+---
+title: getdns_return_t(* getdns_eventloop_schedule)(getdns_eventloop *loop, int fd, uint64_t timeout, getdns_eventloop_event *ev)
+---
+link: /doxygen/1.1.0/group__Ueventloops.html#gaaa4cfebd1bf17289c80358ea8afa27fc

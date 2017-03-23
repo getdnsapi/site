@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_convert_fqdn_to_dns_name.html
+---
+title: getdns_return_t getdns_convert_fqdn_to_dns_name(const char *fqdn_as_string, getdns_bindata **dns_name_wire_fmt)
+---
+link: /doxygen/1.1.0/group__utils.html#ga5f57a72b122c507e05e9be02723b7de7

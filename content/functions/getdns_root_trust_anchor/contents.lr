@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_root_trust_anchor.html
+---
+title: getdns_list * getdns_root_trust_anchor(time_t *utc_date_of_anchor)
+---
+link: /doxygen/1.1.0/group__utils.html#ga79b45fee1a8340437e1171766268cc4c

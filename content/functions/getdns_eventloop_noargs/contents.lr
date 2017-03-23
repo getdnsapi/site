@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_eventloop_noargs.html
+---
+title: void(* getdns_eventloop_noargs)(getdns_eventloop *loop)
+---
+link: /doxygen/1.1.0/group__Ueventloops.html#ga365f1813cd4e8f62214f4832dae2253a

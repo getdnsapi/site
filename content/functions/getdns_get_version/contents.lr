@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_get_version.html
+---
+title: const char * getdns_get_version(void)
+---
+link: /doxygen/1.1.0/group__Uutilityfunctions.html#ga5be232957898fb37414456789d47526f

@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_num_pending_requests.html
+---
+title: uint32_t getdns_context_get_num_pending_requests(getdns_context *context, struct timeval *next_timeout)
+---
+link: /doxygen/1.1.0/group__Uutilityfunctionsdeprecated.html#gaa8af0bdc331d502226b0907c291dca3d

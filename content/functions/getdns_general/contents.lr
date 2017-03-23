@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_general.html
+---
+title: getdns_return_t getdns_general(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, void *userarg, getdns_transaction_t *transaction_id, getdns_callback_t callbackfn)
+---
+link: /doxygen/1.1.0/group__funcs.html#ga1ea542d4ef0082413981ae3c7762fb12

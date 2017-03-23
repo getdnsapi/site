@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_dict_get_int.html
+---
+title: getdns_return_t getdns_dict_get_int(const getdns_dict *dict, const char *name, uint32_t *answer)
+---
+link: /doxygen/1.1.0/group__getdns__dict__get__functions.html#gaae3f4adee34af7c31d43eb34d750b01e

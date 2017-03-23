@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_timeout.html
+---
+title: getdns_return_t getdns_context_set_timeout(getdns_context *context, uint64_t timeout)
+---
+link: /doxygen/1.1.0/group__context__set.html#gad836f47f94fdb688ed5a7fefe136ca36

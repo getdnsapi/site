@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_convert_alabel_to_ulabel.html
+---
+title: char * getdns_convert_alabel_to_ulabel(const char *alabel)
+---
+link: /doxygen/1.1.0/group__utils.html#ga4cace6acf248ef78e1f3c7b66ccc7ad7

@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_dict_get_data_type.html
+---
+title: getdns_return_t getdns_dict_get_data_type(const getdns_dict *dict, const char *name, getdns_data_type *answer)
+---
+link: /doxygen/1.1.0/group__getdns__dict__get__functions.html#ga59fa78e17cee47acc10600ccb5761536

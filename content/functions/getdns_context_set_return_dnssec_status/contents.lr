@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_return_dnssec_status.html
+---
+title: getdns_return_t getdns_context_set_return_dnssec_status(getdns_context *context, int enabled)
+---
+link: /doxygen/1.1.0/group__Ucontextset.html#ga86fdd43815aa47468d083a04c636b0f5

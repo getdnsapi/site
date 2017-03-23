@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_upstream_recursive_servers.html
+---
+title: getdns_return_t getdns_context_get_upstream_recursive_servers(getdns_context *context, getdns_list **upstream_list)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#gad34d2d022b35dce4a75a23b1b4a95d0f

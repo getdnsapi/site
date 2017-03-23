@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_tls_connection_retries.html
+---
+title: getdns_return_t getdns_context_get_tls_connection_retries(getdns_context *context, uint16_t *value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#gae2549a186cc0b71d2df232d741a77638

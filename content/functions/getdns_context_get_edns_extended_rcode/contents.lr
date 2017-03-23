@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_edns_extended_rcode.html
+---
+title: getdns_return_t getdns_context_get_edns_extended_rcode(getdns_context *context, uint8_t *value)
+---
+link: /doxygen/1.1.0/group__Ucontextget.html#ga31e201cabebc1646d06aa8069344f3dd
