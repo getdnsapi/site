@@ -10,7 +10,7 @@
 <title>getdns: getdns</title>
 <link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico?h=e9ddf61d">
 <!-- Generated CSS, including Bootstrap -->
-<link rel="stylesheet" href="../../static/gen/styles.css?h=eb1c207c">
+<link rel="stylesheet" href="../../static/gen/styles.css?h=ac9f64bc">
 <!-- Other things -->
 <link rel="stylesheet" href="../../static/pygments.css">
 <script type="text/javascript" src="jquery.js"></script> 
@@ -273,10 +273,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 <h1>Known Issues</h1>
 <ul>
-<li><p class="startli">The synchronous lookup functions will not work when new file descriptors needed for the lookup will be larger than <code>FD_SETSIZE</code>. This is because the synchronous functions use a "default" event loop under the hood which is based on <code>select()</code> and thus inherits the limits that <code>select()</code> has.</p>
-<p class="startli">If you need only slightly more file descriptors, it is possible to enlarge the <code>FD_SETSIZE</code> with the <code>--with-fd-setsize=</code>*<code>size</code>* flag to <code>configure</code>.</p>
-<p class="startli">To resolve, use the asynchronous functions with an event loop extension for libevent, libev or libuv. Note that the asynchronous functions will have the same problem when used in combination with <code><a class="el" href="group__Ueventloops.html#ga2169fbbde245e00086e2f423b82610da">getdns_context_run()</a></code>, which also uses the default event loop.</p>
-</li>
+<li>None</li>
 </ul>
 <h1>Supported Platforms</h1>
 <p>The primary platforms targeted are Linux and FreeBSD, other platform are supported as we get time. The names listed here are intended to help ensure that we catch platform specific breakage, not to limit the work that folks are doing.</p>
@@ -369,6 +366,7 @@ make install
 <li>Neel Goyal, Verisign, Inc.</li>
 <li>Bryan Graham, Verisign, Inc.</li>
 <li>Robert Groenenberg</li>
+<li>Jim Hague, Sinodun</li>
 <li>Paul Hoffman</li>
 <li>Scott Hollenbeck, Verising, Inc.</li>
 <li>Christian Huitema</li>

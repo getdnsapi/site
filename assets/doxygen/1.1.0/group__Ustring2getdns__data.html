@@ -10,7 +10,7 @@
 <title>getdns: Functions for converting strings to getdns data structures</title>
 <link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico?h=e9ddf61d">
 <!-- Generated CSS, including Bootstrap -->
-<link rel="stylesheet" href="../../static/gen/styles.css?h=eb1c207c">
+<link rel="stylesheet" href="../../static/gen/styles.css?h=ac9f64bc">
 <!-- Other things -->
 <link rel="stylesheet" href="../../static/pygments.css">
 <script type="text/javascript" src="jquery.js"></script> 
@@ -268,7 +268,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">str</td><td>A textual representation of a <a class="el" href="structgetdns__bindata.html">getdns_bindata</a> The format is similar, but not precisely JSON.<ul>
 <li>Strings between double-quotes will be converted to bindata containers, but <em>without the trailing null byte</em>. For example: <code>{ suffix: [ "nlnetlabs.nl.", "nlnet.nl." ] }</code></li>
 <li>bindata representation of IP or IPv6 addresses may be given in their presentation format. For example: <code>{ dns_root_servers: [ 2001:7fd::1, 193.0.14.129 ] }</code></li>
-<li>Arbitrary binary data may be given with a <code>0x</code> prefix. For example: <pre class="fragment"> { add_opt_parameters:
+<li>Arbitrary binary data may be given with a <code>0x</code> prefix, or in base64 encoding. For example: <pre class="fragment"> { add_opt_parameters:
    { options: [ { option_code: 10
                 , option_data: 0xA9E4EC50C03F5D65
                 } ]
@@ -279,7 +279,7 @@ Functions</h2></td></tr>
    [ { address_data  : 2a04:b900:0:100::37
      , tsig_name     : hmac-md5.tsigs.getdnsapi.net.
      , tsig_algorithm: hmac-md5.sig-alg.reg.int.
-     , tsig_secret : 0xD7A1BAF4E4DE5D6EB149
+     , tsig_secret : 16G69OTeXW6xSQ==
      } ]
  }
 </pre></li>
