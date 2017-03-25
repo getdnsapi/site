@@ -418,7 +418,7 @@ name-value pairs in a dict is not important.
 * __int__ is an integer compatible with uint32_t.
 
 * __bindata__ is a struct to hold binary data. It is defined as
-`{ size_t size; uint8_t *binary_stuff; }`.
+`{ size_t size; uint8_t *data; }`.
 
 
 The API comes with helper functions to get data from the list and dict data types:
