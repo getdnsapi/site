@@ -122,3 +122,5 @@ changelog:
     connections/upstreams.
 ---
 sha256: d91ec104b33880ac901f36b8cc01b22f9086fcf7d4ab94c0cbc56336d1f6bec0
+---
+tags: getdns-1-1-0

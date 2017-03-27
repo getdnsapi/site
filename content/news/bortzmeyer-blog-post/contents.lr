@@ -1,0 +1,15 @@
+_model: news-item
+---
+title: Developing a monitoring plugin for DNS-over-TLS at the IETF hackathon
+---
+teaser: Stephane Bortzmeyer's blog post about developing a DNS-over-TLS monitor plugin at the IETF98 hackathon
+---
+archive: no
+---
+date: 2017-03-27
+---
+link: https://www.bortzmeyer.org/monitor-dns-over-tls.html
+---
+tags: media, hackathon, getdns-1-1-0
+---
+image: modem-usr-courier.jpg
