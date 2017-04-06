@@ -1,0 +1,86 @@
+version: 1.1.0-rc2
+---
+title: Second release candidate for getdns-1.1.0
+---
+announcement:
+
+Dear all,
+
+We have a second release candidate for the new feature release version 1.1.0 of getdns.
+
+The first release has been extensively tested and used in the IETF98 Hackathon, which has let to some great [hacks!], and also revealed some improvement potentials and even some bugs.
+
+This second release candidate addresses those things:
+  * The [`return_call_reporting`] extension now also returns the remote end's certificate if the interaction was over TLS.
+  * Statefull connections with and [`idle_timeout`] > 0 will not be closed after doing a synchronous request anymore.  This also involved a bugfix for naked timeout events with Windows.
+  * Stability of the dnssec extensions in combination with statefull transports have been improved (and a bugfix in which this combination hang).
+  * A default edns0 padding policy contributed by DKG.
+  * A new function `getdns_context_unset_edns_maximum_udp_payload_size()` to reset to the default behaviour to have a maximum UDP payload size dependent on the address family; 1432 for IPv4 and 1232 for IPv6 to maximize receptivity.
+
+Please review this release candidate carefully, if all is well, the actual release will follow Thursday the 13th of April.
+
+[hacks!]: /presentations/ietf98-hackathon/
+[`return_call_reporting`]: /documentation/spec/#36-extensions-relating-to-the-api
+[`idle_timeout`]: /documentation/spec/#83-contexts-for-basic-resolution
+---
+_discoverable: yes
+---
+date: 2017-04-06
+---
+teaser: Fixes for things uncovered during IETF98 Hackathon.
+---
+image: almost-ready.jpg
+---
+changelog:
+
+* 2017-04-??: Version 1.1.0
+  * bugfix: Reschedule request timeout when getting the DNSSEC chain.
+  * getdns_context_unset_edns_maximum_udp_payload_size() to reset
+    to default IPv4/IPv6 dependent edns max udp payload size.
+  * Implement sensible default edns0 padding policy.  Thanks DKG.
+  * Keep connections open with sync requests too.
+  * Fix of event loops so they do not give up with naked timers with
+    windows.  Thanks Christian Huitema.
+  * Include peer certificate with DNS-over-TLS in combination with
+    the return_call_reporting extension.
+
+* 2017-03-23: Version 1.1.0-rc1
+  * More fine grained control over TLS upstream retry and back off
+    behaviour with getdns_context_set_tls_backoff_time() and
+    getdns_context_set_tls_connection_retries().
+  * New round robin over the available upstreams feaure.
+    Enable with getdns_context_set_round_robin_upstreams()
+  * Bugfix: Queue requests when no sockets available for outgoing queries.
+  * Obey the outstanding query limit with STUB resolution mode too.
+  * Updated stubby config file
+  * Draft MDNS client implementation by Christian Huitema.
+    Enable with --enable-draft-mdns-support to configure
+  * bugfix: Let synchronous queries use fds > MAX_FDSETSIZE;
+            By moving default eventloop from select to poll
+    Thanks Neil Cook
+  * bugfix: authentication failure for self signed cert + only pinset
+  * bugfix: issue with session re-use making authentication appear to fail
+
+* 2016-10-19: Version 1.1.0-a2
+  * Improved TLS connection management
+  * OpenSSL 1.1 support
+  * Stubby, Server version of getdns_query that by default listens
+    on 127.0.0.1 and ::1 and reads config from /etc/stubby.conf
+    and $HOME/.stubby.conf
+
+* 2016-07-14: Version 1.1.0a1
+  * Conversion functions from text strings to getdns native types:
+    getdns_str2dict(), getdns_str2list(), getdns_str2bindata() and
+    getdns_str2int()
+  * A getdns_context_config() function that configures a context
+    with settings given in a getdns_dict
+  * A a getdns_context_set_listen_addresses() function and companion
+    getdns_reply() function to construct simple name servers.
+  * Relocate getdns_query to src/tools and build by default
+  * Enhancements to the logic used to select connection based upstream
+    transports (TCP, TLS) to improve robustness and re-use of
+    connections/upstreams.
+---
+sha256: 5b58ce061cea83344bdd85a9e9129a45cb785de887ebe670f99a0f5c09e169a0
+---
+tags: getdns-1-1-0, stubby
