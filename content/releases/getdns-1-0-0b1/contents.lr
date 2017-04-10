@@ -60,4 +60,5 @@ changelog:
   * Bugfix: Correct output of get_api_settings
   * Bugfix: Memory leak with getdns_get_api_information() 
     Thanks Robert Groenenberg.
-
+---
+image: 1.0.0-beta-1.png

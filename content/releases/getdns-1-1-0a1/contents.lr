@@ -49,3 +49,5 @@ changelog:
     connections/upstreams.
 ---
 tags: getdns-1-1-0
+---
+image: 1.1.0-alpha-1.png

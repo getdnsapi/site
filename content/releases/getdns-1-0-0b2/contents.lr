@@ -84,3 +84,5 @@ changelog:
     Thanks Robert Groenenberg
   * Do not call SSL_library_init() from getdns_context_create() when
     the second bit from the set_from_os parameter is set.
+---
+image: 1.0.0-beta-2.png
