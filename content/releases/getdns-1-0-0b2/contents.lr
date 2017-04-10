@@ -86,3 +86,5 @@ changelog:
     the second bit from the set_from_os parameter is set.
 ---
 image: 1.0.0-beta-2.png
+---
+tags: getdns-1-0-0
