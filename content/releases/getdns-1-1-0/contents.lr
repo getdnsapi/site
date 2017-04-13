@@ -1,0 +1,156 @@
+version: 1.1.0
+---
+title: getdns-1.1.0 release
+---
+announcement:
+
+Dear all,
+
+We are pleased to announce release 1.1.0 of our library implementation of the getdns API.
+
+This version comes with the DNS Privacy stub resolver [Stubby].
+[Stubby] encrypts DNS queries sent from a client machine (desktop or laptop) to a DNS Privacy resolver increasing end user privacy.
+[Stubby] is in the early stages of development but is suitable for technical/advanced users.
+A more generally user-friendly version is on the way!
+More information about [Stubby] is here: 
+
+  * <https://getdnsapi.net/blog/dns-privacy-daemon-stubby/>.
+
+[Stubby] will be build by default and will be installed in the `${PREFIX}/bin` directory.
+Also the [`getdns_query`] test tool will be build and installed by default now.
+If you want the library only, you can disable building and installation of those programs with the `--without-stubby` and `--without-getdns_query` options to `configure`.
+
+[`getdns_query`] (and [Stubby]) have had functionality added which was not part of the original API specification, but which we think is useful for other applications as well.
+This includes functions that have been added to deal with parsing and configuring getdns with a configuration file, and functions to serve DNS requests.
+
+To handle configuration files, functions were added to convert strings to getdns native types, [`getdns_str2dict()`], [`getdns_str2list()`], [`getdns_str2bindata()`] and [`getdns_str2int()`]; A [`getdns_context`] can then be configured with a resulting [`getdns_dict`] with the new [`getdns_context_config()`] function.
+This can reduce the amount of code needed to setup a context in a C program.
+
+It also provides default values for extensions and allows the trust anchor and root hints files to be directly specified.
+For example, the following piece of C code would configure the context to do DNSSEC roadblock avoidance (i.e. validate DNSSEC as stub, fallback to full recursive with hampering middleboxes), with alternative trust-anchor and root-hints.
+
+```c
+if (GETDNS_RETURN_GOOD == getdns_str2dict(
+    "{ dnssec_roadblock_avoidance: GETDNS_EXTENSION_TRUE"
+    ", dns_root_servers: \"/etc/yeti/named.cache\""
+    ", dnssec_trust_anchors: \"/etc/yeti/KSK.pub\""
+    "}", &config_dict))
+        getdns_context_config(context, config_dict);
+```
+
+More detailed (doxygen) documentation about the string to getdns data structure functions, and about configuring [`getdns_context`]s with [`getdns_dict`]s is here:
+
+  * <https://getdnsapi.net/doxygen/group__Ustring2getdns__data.html>
+  * <https://getdnsapi.net/functions/getdns_context_config.html>
+
+The [`getdns_context_set_listen_addresses()`] function, allows the user to register a request handler function and list of addresses that will be listened on when the eventloop is run.
+The request handler function will be called when a DNS requests arrives, with the request in [getdns reply dict] format.
+The request handler may construct a response to the request and eventually has to call [`getdns_reply()`] with that response to answer the request (or `NULL` to cancel).
+
+I will try to provide and example blog post on the website for this functionality shortly.
+For now, we have the doxygen documentation and the IETF97 hackathon project delaydns which was using this functionality:
+
+  * <https://getdnsapi.net/doxygen/group__UServerFunctions.html>
+  * <https://github.com/IETF-Hackathon/delaydns>
+
+Besides these new functions, we have much improved and more stable and robust scheduling of requests:
+
+  * The default event loop, which is also used for synchronous requests, is now based on `poll()` instead of `select()` and does not inherit `select()`'s limits any more.
+  * The limit on number of outstanding queries, set with the [`getdns_context_limit_outstanding_queries()`] function, will now also be obeyed in stub mode.
+    This was an ommision from the 1.0.0 release.
+  * getdns will now queue up requests that could not be scheduled because of resource limitations, to be rescheduled when resources become available again.
+
+
+We now also have:
+
+  * a new modus for stub resolving in which queries are scheduled round robin over the upstreams.
+    This can be enabled with the [`getdns_context_set_round_robin_upstreams()`] function.
+  * more fine grained control over how TLS upstreams are retried with the [`getdns_context_set_tls_backoff_time()`] and the [`getdns_context_set_tls_connection_retries()`] function.
+  * Much improved doxygen documentation.  Have a look here: <https://getdnsapi.net/doxygen/>
+
+Finally, we have a new draft MDNS-client implementation by Christian Huitema.
+To enable it, use the `--enable-draft-mdns-client` option to `configure`.
+
+
+Happy Easter!
+
+[`getdns_query`]: /blog/getdns_query/
+[Stubby]: /blog/dns-privacy-daemon-stubby/
+[`getdns_str2dict()`]: /functions/getdns_str2dict.html
+[`getdns_str2list()`]: /functions/getdns_str2list.html
+[`getdns_str2bindata()`]: /functions/getdns_str2bindata.html
+[`getdns_str2int()`]: /functions/getdns_str2int.html
+[`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
+[`getdns_dict`]: /documentation/spec/#2-data-structures-in-the-api
+[`getdns_context_config()`]: /functions/getdns_context_config.html
+[`getdns_context_set_listen_addresses()`]: /functions/getdns_context_set_listen_addresses.html
+[`getdns_reply()`]: /functions/getdns_reply.html
+[getdns reply dict]: /documentation/spec/#4-response-data-from-queries
+[`getdns_context_limit_outstanding_queries()`]: /documentation/spec/#83-contexts-for-basic-resolution
+[`getdns_context_set_round_robin_upstreams()`]: /functions/getdns_context_set_round_robin_upstreams.html
+[`getdns_context_set_tls_backoff_time()`]: /functions/getdns_context_set_tls_backoff_time.html
+[`getdns_context_set_tls_connection_retries()`]: /functions/getdns_context_set_tls_connection_retries.html
+---
+_discoverable: yes
+---
+date: 2017-04-13
+---
+teaser: New features release. Functions for serving DNS. Stubby on board!
+---
+image: liftoff.jpg
+---
+changelog:
+
+* 2017-04-13: Version 1.1.0
+  * bugfix: Check size of tls_auth_name.
+  * Improvements that came from Visual Studio static analysis
+  * Fix to compile with libressl.  Thanks phicoh.
+  * Spelling fixes.  Thanks Andreas Schulze.
+  * bugfix: Reschedule request timeout when getting the DNSSEC chain.
+  * getdns_context_unset_edns_maximum_udp_payload_size() to reset
+    to default IPv4/IPv6 dependent edns max udp payload size.
+  * Implement sensible default edns0 padding policy.  Thanks DKG.
+  * Keep connections open with sync requests too.
+  * Fix of event loops so they do not give up with naked timers with
+    windows.  Thanks Christian Huitema.
+  * Include peer certificate with DNS-over-TLS in combination with
+    the return_call_reporting extension.
+  * More fine grained control over TLS upstream retry and back off
+    behaviour with getdns_context_set_tls_backoff_time() and
+    getdns_context_set_tls_connection_retries().
+  * New round robin over the available upstreams feaure.
+    Enable with getdns_context_set_round_robin_upstreams()
+  * Bugfix: Queue requests when no sockets available for outgoing queries.
+  * Obey the outstanding query limit with STUB resolution mode too.
+  * Updated stubby config file
+  * Draft MDNS client implementation by Christian Huitema.
+    Enable with --enable-draft-mdns-support to configure
+  * bugfix: Let synchronous queries use fds > MAX_FDSETSIZE;
+            By moving default eventloop from select to poll
+    Thanks Neil Cook
+  * bugfix: authentication failure for self signed cert + only pinset
+  * bugfix: issue with session re-use making authentication appear to fail
+
+* 2016-10-19: Version 1.1.0-a2
+  * Improved TLS connection management
+  * OpenSSL 1.1 support
+  * Stubby, Server version of getdns_query that by default listens
+    on 127.0.0.1 and ::1 and reads config from /etc/stubby.conf
+    and $HOME/.stubby.conf
+
+* 2016-07-14: Version 1.1.0a1
+  * Conversion functions from text strings to getdns native types:
+    getdns_str2dict(), getdns_str2list(), getdns_str2bindata() and
+    getdns_str2int()
+  * A getdns_context_config() function that configures a context
+    with settings given in a getdns_dict
+  * A a getdns_context_set_listen_addresses() function and companion
+    getdns_reply() function to construct simple name servers.
+  * Relocate getdns_query to src/tools and build by default
+  * Enhancements to the logic used to select connection based upstream
+    transports (TCP, TLS) to improve robustness and re-use of
+    connections/upstreams.
+---
+sha256: aa47bca275b97f623dc6799cee97d3465fa46521d94bd9892e08e8d5d88f09c3
+---
+tags: getdns-1-1-0, stubby
