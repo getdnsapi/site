@@ -153,8 +153,6 @@ Functions</h2></td></tr>
 <tr class="separator:ga3c9fb3db21a9acb48c381c2e209b04d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga86fdd43815aa47468d083a04c636b0f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextset.html#ga86fdd43815aa47468d083a04c636b0f5">getdns_context_set_return_dnssec_status</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, int enabled)</td></tr>
 <tr class="separator:ga86fdd43815aa47468d083a04c636b0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga262c9bef4ed515a938d922707953d1cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextset.html#ga262c9bef4ed515a938d922707953d1cb">getdns_context_set_use_threads</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, int use_threads)</td></tr>
-<tr class="separator:ga262c9bef4ed515a938d922707953d1cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf253fef4ad6ebe79514aa35a7f8a93e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextset.html#gaf253fef4ad6ebe79514aa35a7f8a93e5">getdns_context_set_tls_authentication</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, <a class="el" href="group__authvaulesandtext.html#ga5593a573b594c82d2b28645c36fe989b">getdns_tls_authentication_t</a> value)</td></tr>
 <tr class="separator:gaf253fef4ad6ebe79514aa35a7f8a93e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaee949b19ba9a04e6a17553d3c6878518"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextset.html#gaee949b19ba9a04e6a17553d3c6878518">getdns_context_set_round_robin_upstreams</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, uint8_t value)</td></tr>
@@ -167,6 +165,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga12d7e0af166fb5951f3556839e236582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga39db81a84f6d6b5bce987fbce044bc69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextset.html#ga39db81a84f6d6b5bce987fbce044bc69">getdns_context_set_tls_query_padding_blocksize</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, uint16_t value)</td></tr>
 <tr class="separator:ga39db81a84f6d6b5bce987fbce044bc69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad5346d88cba36ad08492eb496b3ecd12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ucontextset.html#gad5346d88cba36ad08492eb496b3ecd12">getdns_context_unset_edns_maximum_udp_payload_size</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context)</td></tr>
+<tr class="separator:gad5346d88cba36ad08492eb496b3ecd12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -199,7 +199,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Register a callback function for context changes. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Register a callback function for context changes. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga58089d2b140a3f28725ffe23c13a3487">getdns_context_set_context_update_callback</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>The context to monitor for changes </td></tr>
     <tr><td class="paramname">userarg</td><td>A user defined argument that will be passed to the callback function. </td></tr>
@@ -234,32 +235,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ga262c9bef4ed515a938d922707953d1cb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_set_use_threads </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>use_threads</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Enable the return_dnssec_status extension on every request. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">enabled</td><td>is either GETDNS_EXTENSION_TRUE or GETDNS_EXTENSION_FALSE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context or value is invalid </dd></dl>
 
 </div>
 </div>
@@ -286,6 +271,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Configure context for oppertunistic or scrict usage profile with DNS over TLS. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextget.html#ga675936d37e50cdfa473ae8912c3c871d">getdns_context_get_tls_authentication</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">value</td><td>is either GETDNS_AUTHENTICATION_REQUIRED for the strict usage profile or GETDNS_AUTHENTICATION_NONE for opportunistic profile. See <a class="el" href="group__context__set.html#ga248a2a426cab71d8d12b093e487118af">getdns_context_set_upstream_recursive_servers</a> for details on how to configure credentials per upstream. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is null or value has an invalid value. </dd></dl>
 
 </div>
 </div>
@@ -312,6 +308,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Configure context to round robin queries over the available upstreams when resolving with the stub resolution type. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextget.html#ga1658a1f49e8a9cb5740206c2c2b66fc2">getdns_context_get_round_robin_upstreams</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">value</td><td>is either 1 to enable and 0 to disable round robin. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is null or value has an invalid value. </dd></dl>
 
 </div>
 </div>
@@ -338,6 +345,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Configure the amount of seconds a TLS connection should not be tried with an upstream when it has never been tried before. Default is 3600 which is one hour. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextget.html#ga0ba5c11b3b95483c2e29aa025f6ec048">getdns_context_get_tls_backoff_time</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">value</td><td>Number of seconds before an attempt to setup DNS over TLS, with an upstream for which setting up an TLS connection has never been successful before, will be retried. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is null. </dd></dl>
 
 </div>
 </div>
@@ -364,6 +382,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Configure the number of times getdns retries to setup DNS over TLS with a specific upstream, before it decides to give up for tls_backoff_time seconds. The default is 2. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextget.html#gae2549a186cc0b71d2df232d741a77638">getdns_context_get_tls_connection_retries</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">value</td><td>Number of attempts to retry setting up a DNS over TLS connection before giving up. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is null. </dd></dl>
 
 </div>
 </div>
@@ -390,6 +419,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Configure context to sent queries with the EDNS Client Subnet option set to hide the originating network when resolving in stub resolution. The default is 0 (disabled). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextget.html#ga67e61065570872cc2bfa433b24572d3e">getdns_context_get_edns_client_subnet_private</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">value</td><td>is either 1 to enable and 0 to disable. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is null or value has an invalid value. </dd></dl>
 
 </div>
 </div>
@@ -416,6 +456,45 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Configure context to pad each outgoing query over TLS to a multiple of the requested blocksizes. A value of 0 means disable, and a value of 1 means to "pad using a sensible policy". The default is 1 (pad using sensible policy). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextget.html#ga9369be85ebbb7f7139231f7657d28694">getdns_context_get_tls_query_padding_blocksize</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">value</td><td>The requested block size to pad to, or 0 to disable, or 1 to indicate that the library should use a sinsible policy. Currently that just means to pad to a multiple of 128 octets for outgoing queries, but this might change in the future. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is null or value has an invalid value. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad5346d88cba36ad08492eb496b3ecd12"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_unset_edns_maximum_udp_payload_size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configure context to advertise maximum UDP payload size values, that adhere to the suggestions in RFC 6891 and may follow a scheme that uses multiple values to maximize receptivity. In practice with our implementation this means 1432 for IPv4 upstreams and 1232 for IPv6 upstreams. The default is to have the edns maximum UDP payload size to be unset and thus use the adaptive scheme. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga2dd3ed3d6a23803cc6e0dc61fc3cfced">getdns_context_set_edns_maximum_udp_payload_size</a> </dd>
+<dd>
+<a class="el" href="group__Ucontextget.html#gadef9a5de318cc293ab7fa760e9b98982">getdns_context_get_edns_maximum_udp_payload_size</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is null. </dd></dl>
 
 </div>
 </div>

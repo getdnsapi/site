@@ -229,8 +229,10 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Many calls in the DNS API require a DNS context. A DNS context contains the information that the API needs in order to process DNS calls, such as the locations of upstream DNS servers, DNSSEC trust anchors, and so on. The internal structure of the DNS context is opaque, and might be different on each OS. When a context is passed to any function, it must be an allocated context; the context must not be NULL.</p>
+<p>Use getdns_context_set_* functions to configure a context. </p>
 
-<p>Definition at line <a class="el" href="getdns_8h_source.html#l00475">475</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns_8h_source.html#l00485">485</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
 
 </div>
 </div>
@@ -243,8 +245,9 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>When scheduling asynchronous requests, transaction identifiers associated with the request are returned. These identifiers are of the type: getdns_transaction_t. These identifiers can be used to associate answers with requests, and also to cancel outstanding requests. </p>
 
-<p>Definition at line <a class="el" href="getdns_8h_source.html#l00476">476</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns_8h_source.html#l00493">493</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
 
 </div>
 </div>
@@ -257,7 +260,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>used to check data types within complex types (dict, list) </p>
+<p><a class="el" href="group__getdns__list__get__functions.html#gac26e71425d49bc33a45fb3b8b702dd5a">getdns_list_get_data_type()</a> and <a class="el" href="group__getdns__dict__get__functions.html#ga59fa78e17cee47acc10600ccb5761536">getdns_dict_get_data_type()</a> return the type of data on an index in a getdns_list, or on a name in a getdns_dict. </p>
 
 </div>
 </div>
@@ -270,6 +273,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>A struct to hold binary data. </p>
 
 </div>
 </div>
@@ -284,7 +288,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>getdns dictionary data type Use helper functions getdns_dict_* to manipulate and iterate dictionaries </p>
 
-<p>Definition at line <a class="el" href="getdns_8h_source.html#l00496">496</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns_8h_source.html#l00519">519</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
 
 </div>
 </div>
@@ -299,7 +303,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>getdns list data type Use helper functions getdns_list_* to manipulate and iterate lists Indexes are 0 based. </p>
 
-<p>Definition at line <a class="el" href="getdns_8h_source.html#l00503">503</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns_8h_source.html#l00526">526</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
 
 </div>
 </div>
@@ -313,7 +317,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>used to check data types within complex types (dict, list) </p>
+<p><a class="el" href="group__getdns__list__get__functions.html#gac26e71425d49bc33a45fb3b8b702dd5a">getdns_list_get_data_type()</a> and <a class="el" href="group__getdns__dict__get__functions.html#ga59fa78e17cee47acc10600ccb5761536">getdns_dict_get_data_type()</a> return the type of data on an index in a getdns_list, or on a name in a getdns_dict. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ggafe8d9b408c6957bd397eb57b6f577f8ca6be78f392da1c4bec69002f1eb90ad8a"></a>t_dict&#160;</td><td class="fielddoc">
 </td></tr>
@@ -325,7 +329,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="getdns_8h_source.html#l00482">482</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns_8h_source.html#l00500">500</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
 
 </div>
 </div>

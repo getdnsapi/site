@@ -191,6 +191,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>create a new list with no items, creating and initializing it with the custom memory function from context. These memory functions will be used for creating, and inherited by the list members when populating the list. The custom deallocator will be used for destroying the list. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context from which the custom memory functions will be used to create and initialize the list. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to an allocated list, NULL if insufficient memory </dd></dl>
 
 </div>
 </div>
@@ -223,6 +230,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>create a new list with no items, creating and initializing it with the provided custom memory function. These memory functions will be used for creating, and inherited by the list members when populating the list. The custom deallocator will be used for destroying the list. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">malloc</td><td>Custom allocator </td></tr>
+    <tr><td class="paramname">realloc</td><td>Custom reallocator </td></tr>
+    <tr><td class="paramname">free</td><td>Custom deallocator </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to an allocated list, NULL if insufficient memory </dd></dl>
 
 </div>
 </div>
@@ -261,6 +277,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>create a new list with no items, creating and initializing it with the provided extended custom memory function. These memory functions will be used for creating, and inherited by the list members when populating the list. The custom deallocator will be used for destroying the list. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userarg</td><td>Will be passed as the first argument to the extended custom malloc, realloc, and free. </td></tr>
+    <tr><td class="paramname">malloc</td><td>Custom allocator </td></tr>
+    <tr><td class="paramname">realloc</td><td>Custom reallocator </td></tr>
+    <tr><td class="paramname">free</td><td>Custom deallocator </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to an allocated list, NULL if insufficient memory </dd></dl>
 
 </div>
 </div>

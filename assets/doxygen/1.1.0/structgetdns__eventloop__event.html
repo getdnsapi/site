@@ -170,8 +170,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:a8103c7483eb3168e9ab688d1a85bcd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00156">156</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<div class="textblock"><p>getdns uses an event loop abstraction layer to interface with event loop extensions. The extension accepts registration of getdns_eventloop_events and translates them to the underlying event loop API for which it is an extension. Also applications using getdns can use the abstraction layer themselves and in doing so inherit the flexibility being immediately compatible with all the event loop systems for which there is an extension already (i.e. libevent, libev and libuv). </p>
+
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00173">173</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="a25335c40bab0a16277dcd83ac553842f"></a>
 <div class="memitem">
@@ -182,8 +183,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The userarg argument that will be passed to the getdns_eventloop_callbacks when they are fired. </p>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00157">157</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00178">178</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -196,8 +198,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>When not NULL, it will be fired when the associated file descriptor is readable. </p>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00158">158</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00184">184</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -210,8 +213,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>When not NULL, it will be fired when the associated file descriptor is writable. </p>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00159">159</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00190">190</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -224,8 +228,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>When not NULL, it will be fired when the during scheduling specified timeout time has passed. </p>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00160">160</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00196">196</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -238,8 +243,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer to the underlying event that an eventloop extension must manage (i.e. create and free.) </p>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00165">165</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00202">202</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>

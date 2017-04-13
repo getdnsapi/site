@@ -53,7 +53,7 @@ getdns_general(
 
 > **`context`**
 >> A pointer to the DNS context that is to be used with this call. DNS contexts are
-described [later in this document]("#Contexts). Note that a context *must* be created
+described [later in this document](#Contexts). Note that a context *must* be created
 before calling the function.
 
 > **`*name`**

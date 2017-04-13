@@ -187,6 +187,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the version number of this implementation. </p><dl class="section return"><dt>Returns</dt><dd>The version number as string. For example "1.1.0". </dd></dl>
 
 </div>
 </div>
@@ -203,6 +204,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the version number of this implementation as number. </p><dl class="section return"><dt>Returns</dt><dd>The version number as number. For example 0x01010000.<ul>
+<li>The most significant byte of this uint32_t is the Major version.</li>
+<li>The second most significant byte is the Minor version.</li>
+<li>The third most significant byte the Patch version. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
@@ -219,6 +226,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the version of the getdns API specification this library implements as a string. </p><dl class="section return"><dt>Returns</dt><dd>The API specification version as string. For example "December 2015" </dd></dl>
 
 </div>
 </div>
@@ -235,6 +243,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the version of the getdns API specification this library implements as a number. </p><dl class="section return"><dt>Returns</dt><dd>The API specification version as number. For example "0x07df0c00"<ul>
+<li>The most significant 16 bits represent the year.</li>
+<li>The third most significant byte the day. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
@@ -290,6 +303,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Create a new entry in the dictionary, or replace the value of an existing entry, with a <a class="el" href="structgetdns__bindata.html">getdns_bindata</a> representing a string. The string will be copied. The size of the bindata will be strlen(value), though there will be a '\0' byte directly after the size'd position even, though the size argument suggests that this would not be part of the bindata's date space. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__dict__set.html#ga63b8f548523b211523ddf8d513759bdb">getdns_dict_set_bindata</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dict</td><td>dictionary in which to add or change the value </td></tr>
+    <tr><td class="paramname">name</td><td>key that identifies which item in the dictionary to add/change </td></tr>
+    <tr><td class="paramname">value</td><td>string to be copied and stored in the bindata at key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when one of the arguments was NULL </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when the copy could not be allocated </dd></dl>
 
 </div>
 </div>
@@ -322,6 +349,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the string associated with the speicifed name. The string should not be free()'d by the caller. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__dict__get__functions.html#ga22e8786555d3cbb2196fd80c3c585dfd">getdns_dict_get_bindata</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dict</td><td>dictionary from which to fetch the bindata </td></tr>
+    <tr><td class="paramname">name</td><td>a name/key value to look up in the dictionary </td></tr>
+    <tr><td class="paramname">result</td><td>The bindata's data value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd></dl>
 
 </div>
 </div>

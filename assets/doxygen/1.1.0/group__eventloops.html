@@ -181,6 +181,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Associate the libev ev_loop with the context, so that all asynchronous requests will schedule Input/Output with it. Synchronous requests will still use a default eventloop based on <code>poll()</code>. Applications need to</p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;#include &lt;getdns/getdns_ext_libev.h&gt; </div></div><!-- fragment --><p> and link with libgetdns_ext_ev to use this function. getdns needs to have been configured with &ndash;with-libev for this extension to be available. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">ev_loop</td><td>The libev event loop to associate with this context. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_BAD_CONTEXT when context is NULL </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when ev_loop is NULL </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when memory could not be allocated </dd></dl>
 
 </div>
 </div>
@@ -207,6 +221,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Associate the libevent event_base with the context, so that all asynchronous requests will schedule Input/Output with it. Synchronous requests will still use a default eventloop based on <code>poll()</code>. Applications need to</p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;#include &lt;getdns/getdns_ext_libevent.h&gt; </div></div><!-- fragment --><p> and link with libgetdns_ext_event to use this function. getdns needs to have been configured with &ndash;with-libevent for this extension to be available. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">this_event_base</td><td>The libevent event base to associate with this context. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_BAD_CONTEXT when context is NULL </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when this_event_base is NULL </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when memory could not be allocated </dd></dl>
 
 </div>
 </div>
@@ -233,6 +261,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Associate the libuv uv_loop with the context, so that all asynchronous requests will schedule Input/Output with it. Synchronous requests will still use a default eventloop based on <code>poll()</code>. Applications need to</p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;#include &lt;getdns/getdns_ext_libuv.h&gt; </div></div><!-- fragment --><p> and link with libgetdns_ext_uv to use this function. getdns needs to have been configured with &ndash;with-libuv for this extension to be available. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">uv_loop</td><td>The libuv event loop to associate with this context. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_BAD_CONTEXT when context is NULL </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when uv_loop is NULL </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when memory could not be allocated </dd></dl>
 
 </div>
 </div>

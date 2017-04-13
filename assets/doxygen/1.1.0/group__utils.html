@@ -201,6 +201,14 @@ GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd><
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Convert a domain name in DNS wire format to presentation format. The newly allocated string should be freed with free. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dns_name_wire_fmt</td><td>A bindata to the DNS name in wire format </td></tr>
+    <tr><td class="paramname">fqdn_as_string</td><td>A reference to a pointer that will be set to a newly allocated string containing the presentation format of the name. The caller is responsible for deallocate this space with free(). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success or GETDNS_RETURN_GENERIC_ERROR when the wireformat name could not be parsed. </dd></dl>
 
 </div>
 </div>
@@ -227,6 +235,14 @@ GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd><
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Convert a domain name in presentation format to DNS wire format. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fqdn_as_string</td><td>The name to convert in presentation format. </td></tr>
+    <tr><td class="paramname">dns_name_wire_fmt</td><td>A reference to a pointer that will be set to a newly allocated bindata containing the DNS wire format of the name. The caller is responsible for deallocate this space with free(). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success or GETDNS_RETURN_GENERIC_ERROR when the presentation format name could not be parsed. </dd></dl>
 
 </div>
 </div>
@@ -243,6 +259,13 @@ GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd><
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Convert an Unicode encoded label to ASCII encoding following the rules for IDNA 2008 described in RFC 5890-5892. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ulabel</td><td>The Unicode encoded label to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The ASCII encoding label. The caller is responsible for deallocate this space with free(). </dd></dl>
 
 </div>
 </div>
@@ -259,6 +282,13 @@ GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd><
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Convert an ASCII encoded label to Unicode encoding following the rules for IDNA 2008 described in RFC 5890-5892. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alabel</td><td>The ASCII encoded label to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Unicode encoding label. The caller is responsible for deallocation with free(). </dd></dl>
 
 </div>
 </div>
@@ -291,6 +321,15 @@ GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd><
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Offline DNSSEC validate Resource Records with the help of support records and a DNSSEC trust anchor. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_validate</td><td>This is a list of reply_dicts to validate (as can be seen under "replies_tree" in a response dict), or an RRset with signatures represented as a list of rr_dicts. The format of rr_dict can be seen in the sections of reply_dicts in response dicts. It is also possible to validate the non-existance of a query. Besides all the necessary NSEC(3)s plus signature, the to_validate should then also contain a question rr_dict with a qname, qclass and qtype. </td></tr>
+    <tr><td class="paramname">support_records</td><td>A list of all the DNSKEY, DS and NSEC(3) RRsets (in the form of rr_dicts) that may be used to validate the RRsets or replies in to_validate. The value returned under "validation_chain" in a response dict when the dnssec_return_validation_chain extension was used, can be used directly for this. </td></tr>
+    <tr><td class="paramname">trust_anchors</td><td>A list of rr_dicts containing the DNSSEC trust anchors. The return value of the <a class="el" href="group__utils.html#ga79b45fee1a8340437e1171766268cc4c">getdns_root_trust_anchor()</a> can be used directly for this. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The function returns one of GETDNS_DNSSEC_SECURE, GETDNS_DNSSEC_BOGUS, GETDNS_DNSSEC_INDETERMINATE, or GETDNS_DNSSEC_INSECURE depending on the validation status. </dd></dl>
 
 </div>
 </div>
@@ -307,6 +346,13 @@ GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd><
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the default list of trust anchor records that is used by the library to validate DNSSEC. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">utc_date_of_anchor</td><td>Set to the number of seconds since epoch the trust anchors were obtained </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The list of DNSSEC trust anchors, or NULL on error. The caller is responsible for deallocating the list with <a class="el" href="group__list__create.html#ga889dc70197ee8afa8f9331f0e4cdd9ce">getdns_list_destroy()</a>. </dd></dl>
 
 </div>
 </div>
@@ -346,6 +392,13 @@ GETDNS_RETURN_NO_SUCH_DICT_NAME if dict is invalid or name does not exist </dd><
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Converts a <a class="el" href="structgetdns__bindata.html">getdns_bindata</a> representing an IPv4 or IPv6 address to a textual representation. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bindata_of_ipv4_or_ipv6_address</td><td>The IP address to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>character array (caller must free this) containing the textual representation of the address. </dd></dl>
 
 </div>
 </div>

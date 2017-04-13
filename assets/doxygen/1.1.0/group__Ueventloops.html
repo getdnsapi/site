@@ -162,8 +162,8 @@ Data Structures</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:gafce6e2ed14787a264b551fa16f430931"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#gafce6e2ed14787a264b551fa16f430931">getdns_eventloop_callback</a>) (void *userarg)</td></tr>
 <tr class="separator:gafce6e2ed14787a264b551fa16f430931"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga96bfc9c26b9ff73f50652b12af9aaf36"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#ga96bfc9c26b9ff73f50652b12af9aaf36">getdns_eventloop_event</a></td></tr>
-<tr class="separator:ga96bfc9c26b9ff73f50652b12af9aaf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga048672645d09db3b8fc7d2f06d782a92"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#ga048672645d09db3b8fc7d2f06d782a92">getdns_eventloop_event</a></td></tr>
+<tr class="separator:ga048672645d09db3b8fc7d2f06d782a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabeb135cb21a831ea019381b08f8a3bc5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structgetdns__eventloop__vmt.html">getdns_eventloop_vmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#gabeb135cb21a831ea019381b08f8a3bc5">getdns_eventloop_vmt</a></td></tr>
 <tr class="separator:gabeb135cb21a831ea019381b08f8a3bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga238af4242cce4b2e1322d8017875f5fe"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structgetdns__eventloop.html">getdns_eventloop</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#ga238af4242cce4b2e1322d8017875f5fe">getdns_eventloop</a></td></tr>
@@ -183,8 +183,6 @@ Functions</h2></td></tr>
 <tr class="separator:gaad50e5aebcc0b7caf01bf11b6eb02304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0d46ad4f955b105663a9eccde6e1aea4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#ga0d46ad4f955b105663a9eccde6e1aea4">getdns_context_get_eventloop</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, <a class="el" href="structgetdns__eventloop.html">getdns_eventloop</a> **eventloop)</td></tr>
 <tr class="separator:ga0d46ad4f955b105663a9eccde6e1aea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4904c6495dbc85649e09dd7dace53dee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#ga4904c6495dbc85649e09dd7dace53dee">getdns_context_detach_eventloop</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context)</td></tr>
-<tr class="separator:ga4904c6495dbc85649e09dd7dace53dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2169fbbde245e00086e2f423b82610da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ueventloops.html#ga2169fbbde245e00086e2f423b82610da">getdns_context_run</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context)</td></tr>
 <tr class="separator:ga2169fbbde245e00086e2f423b82610da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -199,20 +197,28 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The type of callback function that is used by the callbacks in an <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userarg</td><td>This will have the value of the userarg attribute of the <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a> struct in which this callback was present. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00153">153</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00160">160</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ga96bfc9c26b9ff73f50652b12af9aaf36"></a>
+<a class="anchor" id="ga048672645d09db3b8fc7d2f06d782a92"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a>  <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a></td>
+          <td class="memname">typedef struct <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a> <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00163">163</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -226,7 +232,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00168">168</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00205">205</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -239,6 +245,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The manifestation of the event loop abstraction layer. Event loop extension implementers should extend this with attributed needed for the underlying event loop. The current event loop extension can be obtained with the <a class="el" href="group__Ueventloops.html#ga0d46ad4f955b105663a9eccde6e1aea4">getdns_context_get_eventloop()</a> function. </p>
 
 </div>
 </div>
@@ -251,8 +258,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The function prototype for the <code>cleanup</code> and <code>run</code> functions in an getdns event loop's Virtual Method Table. These methods have no (extra) arguments and return nothing. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loop</td><td>The event loop to <code>run</code> or <code>cleanup</code> </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00174">174</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00228">228</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -265,8 +278,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The function prototype for the <code>schedule</code> function in an event loop Virtual Method Table. The <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a> must be provided by the caller with the callbacks and userarg therein already supplied (by the caller). This function will set the ev pointer (in the <a class="el" href="structgetdns__eventloop__event.html">getdns_eventloop_event</a>) to refer to the underlying (extension) event. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loop</td><td>The event loop for which to register the event. </td></tr>
+    <tr><td class="paramname">fd</td><td>The file descriptor for which to schedule the read_cb and/or write_cb callbacks. </td></tr>
+    <tr><td class="paramname">timeout</td><td>The number of milliseconds that must pass without read and/or write event after which the timeout_cb callback is fired. </td></tr>
+    <tr><td class="paramname">ev</td><td>The event with all attributes provisioned, except for the ev-&gt;ev attribute, which will be provisioned by the implementation of the schedule method. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful and an error code otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00183">183</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00247">247</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -279,8 +302,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The function prototype for the <code>clean</code> function in an event loop Virtual Method Table. The implementation must clear the event (which is referred to with ev-&gt;ev) in the underlying event loop and make ev-&gt;ev NULL when done. getdns will test for this value to determine if events are scheduled or not. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loop</td><td>The event loop for which to event needs to be cleared. </td></tr>
+    <tr><td class="paramname">ev</td><td>[in,out] The event with the ev-&gt;ev attribute referring to the underlying event. ev-&gt;ev must be set to NULL after the event was cleared. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful and an error code otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00188">188</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00263">263</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -293,8 +324,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The function prototype for the <code>run_once</code> function in an event loop Virtual Method Table. The implementation must do a single round of firing callbacks, either blocking or not. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loop</td><td>The event loop to run </td></tr>
+    <tr><td class="paramname">blocking</td><td>When 0, only callbacks for file descriptors that are immediately readable or writable or timeouts that have passed will be fired. When 1, the eventloop will wait until the first callback can be fired, either because a associated file descriptor has become readable or writeable, or because a timeout time passed. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00190">190</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns__extra_8h_source.html#l00277">277</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -322,6 +360,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Configure a context to use the specified event loop abstraction extension. This function must be called with an provisioned eventloop by the event loop extension registration functions. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ueventloops.html#ga0d46ad4f955b105663a9eccde6e1aea4">getdns_context_get_eventloop</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">eventloop</td><td>The event loop abstraction extension with a completely provisioned Virtual Method Table and other associated data which is opaque to the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or eventloop were NULL. </dd></dl>
 
 </div>
 </div>
@@ -348,22 +397,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ga4904c6495dbc85649e09dd7dace53dee"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_detach_eventloop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
-          <td class="paramname"><em>context</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Get the current event loop abstraction extension from the context Applications using getdns can use the event loop abstraction extension themselves directly to inherit the flexibility being immediately compatible with all the event loop systems for which there is an extension (i.e. libevent, libev and libuv). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ueventloops.html#gaad50e5aebcc0b7caf01bf11b6eb02304">getdns_context_set_eventloop</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context to get the eventloop from </td></tr>
+    <tr><td class="paramname">eventloop</td><td>[out] The currently active event loop abstraction extension </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or evenloop were NULL </dd></dl>
 
 </div>
 </div>
@@ -380,6 +424,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Run the context's event loop until nothing more to do. This is equivalend to: </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="code" href="group__Ueventloops.html#ga0d46ad4f955b105663a9eccde6e1aea4">getdns_context_get_eventloop</a>(context, &amp;loop) == <a class="code" href="group__returntypestext.html#gga21e6d721f1dc6f76c3b88cdefe639e95af849ab03702935c4291b4b2b7781540e">GETDNS_RETURN_GOOD</a>)</div><div class="line">    loop-&gt;vmt-&gt;run(loop);</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context which event loop to run. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

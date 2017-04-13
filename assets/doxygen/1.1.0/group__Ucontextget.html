@@ -225,7 +225,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>begin getters </p>
+<p>Get the current resolution type setting from this context. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga97915dc0144b9cd1fe98d8705fd52dff">getdns_context_set_resolution_type</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] The resolution type, either GETDNS_RESOLUTION_RECURSING or GETDNS_RESOLUTION_STUB. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -258,7 +268,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>users must call free on the resulting namespaces if not NULL </p>
+<p>Get a copy of the namespaces list setting from this context. Users must call free on the resulting namespaces if not NULL </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga01f2350e9af818ff3b1ebcd868322abd">getdns_context_set_namespaces</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">namespace_count</td><td>[out] The length of the list. </td></tr>
+    <tr><td class="paramname">namespaces</td><td>[out] The returned namespaces list. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when any of the arguments was NULL. </dd></dl>
 
 </div>
 </div>
@@ -285,6 +306,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get what transports are used for DNS lookups. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#gab80fcf3500e13fe48c33c593bbc95c2b">getdns_context_set_dns_transport</a> </dd>
+<dd>
+<a class="el" href="group__Ucontextget.html#gafb2f9ebe71bd55d74ab252fe99a4d323">getdns_context_get_dns_transport_list</a> </dd>
+<dd>
+<a class="el" href="group__context__set.html#ga442015feb5cb54bae968675a5ac44b80">getdns_context_set_dns_transport_list</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] The transport to use for DNS lookups. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when any of the arguments was NULL. </dd></dl>
 
 </div>
 </div>
@@ -317,6 +353,22 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get a copy of the transports list setting from this context. Users must call free on the resulting transports if not NULL </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga442015feb5cb54bae968675a5ac44b80">getdns_context_set_dns_transport_list</a> </dd>
+<dd>
+<a class="el" href="group__Ucontextget.html#gafa61dde6e68b95c765b2bc426a4abb2d">getdns_context_get_dns_transport</a> </dd>
+<dd>
+<a class="el" href="group__context__set.html#gab80fcf3500e13fe48c33c593bbc95c2b">getdns_context_set_dns_transport</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">transport_count</td><td>[out] The length of the list. </td></tr>
+    <tr><td class="paramname">transports</td><td>[out] The returned transports list. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when any of the arguments was NULL. </dd></dl>
 
 </div>
 </div>
@@ -343,6 +395,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the current limit for oustanding queries setting from this context. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#gaca8b7e5f548477e29b6f6603331177cf">getdns_context_set_limit_outstanding_queries</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">limit</td><td>[out] The current limit for oustanding queries </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or limit was NULL. </dd></dl>
 
 </div>
 </div>
@@ -369,6 +432,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the current number of milliseconds the API will wait for request to return setting from this context. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#gad836f47f94fdb688ed5a7fefe136ca36">getdns_context_set_timeout</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">timeout</td><td>[out] The number of milliseconds the API will wait for a response. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or limit was NULL. </dd></dl>
 
 </div>
 </div>
@@ -395,6 +469,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the current number of milliseconds the API will leave an idle TCP or TLS connection open for (idle means no outstanding responses and no pending queries). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#gaf2936cda13c19c1c0b927b3b12979bd3">getdns_context_set_idle_timeout</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">timeout</td><td>[out] The number of milliseconds the API will leave an idle TCP or TLS connection open for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or timeout was NULL. </dd></dl>
 
 </div>
 </div>
@@ -421,6 +506,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the setting that says whether or not DNS queries follow redirects. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga1848546816e052a52135bcd5fa0cd065">getdns_context_set_follow_redirects</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] Either GETDNS_REDIRECTS_FOLLOW or GETDNS_REDIRECTS_DO_NOT_FOLLOW </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -447,6 +543,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get a copy of the list of addresses in use for looking up top-level domains in use by the context. Callers are responsible for deallocating the returned list with <a class="el" href="group__list__create.html#ga889dc70197ee8afa8f9331f0e4cdd9ce">getdns_list_destroy()</a> </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga5762b4a80fb235ff6b0e75283468d03b">getdns_context_set_dns_root_servers</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">addresses</td><td>[out] A copy of the list of dns root servers in use for looking up top level domains. The caller must destroy this list. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or adresses was NULL. </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when the copy could not be allocated </dd></dl>
 
 </div>
 </div>
@@ -473,6 +582,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get whether, how and when a suffix is appended to a query string with the context. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#gace5d6fd9bc3e1deeb06b832b12f9afef">getdns_context_set_append_name</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] GETDNS_APPEND_NAME_TO_SINGLE_LABEL_FIRST, GETDNS_APPEND_NAME_ALWAYS, GETDNS_APPEND_NAME_ONLY_TO_SINGLE_LABEL_AFTER_FAILURE, GETDNS_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE, or GETDNS_APPEND_NAME_NEVER </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -499,6 +619,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get a copy of the list of suffixes to be appended based on the value off the append_name setting in use by context Callers are responsible for deallocating the returned list with <a class="el" href="group__list__create.html#ga889dc70197ee8afa8f9331f0e4cdd9ce">getdns_list_destroy()</a> </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga78799126682ee1752179b484a4e6b9b5">getdns_context_set_suffix</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] A copy of the list of suffixes. The caller must destroy this list. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when the copy could not be allocated </dd></dl>
 
 </div>
 </div>
@@ -525,6 +658,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get a copy of the list of DNSSEC trust anchors in use by context. Callers are responsible for deallocating the returned list with <a class="el" href="group__list__create.html#ga889dc70197ee8afa8f9331f0e4cdd9ce">getdns_list_destroy()</a> </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#gadde7178a1df81558e6217616689fe92f">getdns_context_set_dnssec_trust_anchors</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] A copy of the list of DNSSEC trust anchors. The caller must destroy this list. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when the copy could not be allocated </dd></dl>
 
 </div>
 </div>
@@ -551,6 +697,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the allowed DNSSEC skew setting from context </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga9416fc9b3edd3f6a9974a7d321633435">getdns_context_set_dnssec_allowed_skew</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] The number of seconds of skew that is allowed in either direction when checking an RRSIG's Expiration and Inception fields. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -577,6 +734,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get a copy of the list of upstream that will be targeted in stub resolution mode. Callers are responsible for deallocating the returned list with <a class="el" href="group__list__create.html#ga889dc70197ee8afa8f9331f0e4cdd9ce">getdns_list_destroy()</a> </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga248a2a426cab71d8d12b093e487118af">getdns_context_set_upstream_recursive_servers</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">upstream_list</td><td>[out] A copy of the list of upstreams. The caller must destroy this list. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd>
+<dd>
+GETDNS_RETURN_MEMORY_ERROR when the copy could not be allocated </dd></dl>
 
 </div>
 </div>
@@ -603,6 +773,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the maximum UDP payload size advertised in an EDNS0 OPT record setting from context </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga2dd3ed3d6a23803cc6e0dc61fc3cfced">getdns_context_set_edns_maximum_udp_payload_size</a> </dd>
+<dd>
+<a class="el" href="group__Ucontextset.html#gad5346d88cba36ad08492eb496b3ecd12">getdns_context_unset_edns_maximum_udp_payload_size</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] the maximum UDP payload size advertised in an EDNS0 OPT record. When the value is unset, 0 is returned. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -629,6 +812,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the rcode advertised in an EDNS0 OPT record setting from context </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#gae948112add8fdeed2a6168fc5c2a108e">getdns_context_set_edns_extended_rcode</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] The rcode advertised in an EDNS0 OPT record </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -655,6 +849,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the version advertised in an EDNS0 OPT record setting from context </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga9410c39b7da78750adfb0c2aedae7c8e">getdns_context_set_edns_version</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] The version advertised in an EDNS0 OPT record </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -681,6 +886,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the DO bit advertised in an EDNS0 OPT record setting from context </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga9d6f1ace48b9e7e2961ab6d45c9a2e24">getdns_context_set_edns_do_bit</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] 1 if the DO bit is advertised in EDNS0 OPT records, 0 otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -707,6 +923,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get whether queries with this context will have the EDNS Client Subnet option set to hide the originating network when resolving in stub resolution. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__context__set.html#ga9d6f1ace48b9e7e2961ab6d45c9a2e24">getdns_context_set_edns_do_bit</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] 1 if the setting is on, 0 otherwise </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -733,6 +960,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the blocksize that will be used to pad outgoing queries over TLS. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextset.html#ga39db81a84f6d6b5bce987fbce044bc69">getdns_context_set_tls_query_padding_blocksize</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] The padding blocksize, or 0 if padding is disabled, or 1 if the setting is to pad using a sensible policy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -759,6 +997,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get whether the upstream needs to be authenticated whith DNS over TLS. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextset.html#gaf253fef4ad6ebe79514aa35a7f8a93e5">getdns_context_set_tls_authentication</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] is either GETDNS_AUTHENTICATION_REQUIRED if authentication is required, or GETDNS_AUTHENTICATION_NONE if authentication is optional. When credentials are available, the API will still try to authenticate the upstream. See <a class="el" href="group__context__set.html#ga248a2a426cab71d8d12b093e487118af">getdns_context_set_upstream_recursive_servers</a> for details on how to configure credentials per upstream. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -785,6 +1034,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get whether the context is configured to round robin queries over the available upstreams. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextget.html#ga1658a1f49e8a9cb5740206c2c2b66fc2">getdns_context_get_round_robin_upstreams</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] 1 if the setting is on, 0 otherwise </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -811,6 +1071,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the amount of seconds a TLS connection should not be tried with an upstream when it has never been tried before. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextset.html#ga233c32192a157f9a4d8799ae2598339e">getdns_context_set_tls_backoff_time</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] Number of seconds before an attempt to setup DNS over TLS, with an upstream for which setting up an TLS connection has never been successful before, will be retried. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>
@@ -837,6 +1108,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the number of times getdns retries to setup DNS over TLS with a specific upstream, before it decides to give up for tls_backoff_time seconds. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Ucontextset.html#ga1e94bf37c357d6a4d8c57819fd64a1c6">getdns_context_set_tls_connection_retries</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>[in] The context from which to get the setting </td></tr>
+    <tr><td class="paramname">value</td><td>[out] Number of attempts to retry setting up a DNS over TLS connection before giving up. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
 
 </div>
 </div>

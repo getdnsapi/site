@@ -201,8 +201,24 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The type of the callback function that must be registered when scheduling asynchronous requests. The registered function will be called from the eventloop with the following parameters. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The DNS context that was used in the calling function </td></tr>
+    <tr><td class="paramname">callback_type</td><td>Supplies the reason for the callback. This will be one of:<ul>
+<li>GETDNS_CALLBACK_COMPLETE The response has the requested data in it</li>
+<li>GETDNS_CALLBACK_CANCEL The calling program cancelled the callback; response is NULL</li>
+<li>GETDNS_CALLBACK_TIMEOUT The requested action timed out; response is filled in with empty structures or will contain additional information about the timeout when used in combination with the return_call_reporting extension.</li>
+<li>GETDNS_CALLBACK_ERROR The requested action had an error; response is NULL. </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">response</td><td>A response object with the response data. The application is responsible for cleaning up the response object with getdns_dict_destroy. </td></tr>
+    <tr><td class="paramname">userarg</td><td>Identical to the userarg passed to the calling function. </td></tr>
+    <tr><td class="paramname">transaction_id</td><td>The transaction identifier that was assigned by the calling function. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="getdns_8h_source.html#l00851">851</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
+<p>Definition at line <a class="el" href="getdns_8h_source.html#l00975">975</a> of file <a class="el" href="getdns_8h_source.html">getdns.h</a>.</p>
 
 </div>
 </div>
@@ -246,6 +262,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Retrieve information about the API itself and inspect the current context. The returned dictionary can be used with <a class="el" href="group__Uutilityfunctions.html#ga9b3496565fdd531a5624a204c2cc4600">getdns_context_config()</a> directly to configure another context with precisely these settings. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context from which to get the information </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A getdns_dict containing the following name/value pairs:<ul>
+<li><code>version_string</code> (a bindata) represents the version string for this version of the DNS API.</li>
+<li><code>implementation_string</code> (a bindata) is a string showing which implementation of the getdns API this is. In our implementation this will always be set to "https://getdnsapi.net"</li>
+<li>resolution_type (an int) is the type of resolver that the API is acting as in this context: GETDNS_RESOLUTION_RECURSING or GETDNS_RESOLUTION_STUB.</li>
+<li>all_context (a dict) with names for all the other settings in context. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>

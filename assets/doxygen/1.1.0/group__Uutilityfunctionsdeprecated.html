@@ -155,6 +155,10 @@ Functions</h2></td></tr>
 <tr class="separator:gaa094e4506fe18aef9f0f79e0364d1572"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa8af0bdc331d502226b0907c291dca3d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Uutilityfunctionsdeprecated.html#gaa8af0bdc331d502226b0907c291dca3d">getdns_context_get_num_pending_requests</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, struct timeval *next_timeout)</td></tr>
 <tr class="separator:gaa8af0bdc331d502226b0907c291dca3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4904c6495dbc85649e09dd7dace53dee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Uutilityfunctionsdeprecated.html#ga4904c6495dbc85649e09dd7dace53dee">getdns_context_detach_eventloop</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context)</td></tr>
+<tr class="separator:ga4904c6495dbc85649e09dd7dace53dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga262c9bef4ed515a938d922707953d1cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Uutilityfunctionsdeprecated.html#ga262c9bef4ed515a938d922707953d1cb">getdns_context_set_use_threads</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, int use_threads)</td></tr>
+<tr class="separator:ga262c9bef4ed515a938d922707953d1cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -187,6 +191,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>WARNING! Function getdns_strerror is not in the API specification and is likely to be removed from future versions of our implementation, to be replaced by getdns_get_errorstr_by_id or something similar. Please use getdns_get_errorstr_by_id instead of getdns_strerror. </p>
 
 </div>
 </div>
@@ -203,6 +208,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Runs the event loop once non blocking. WARNING! Do not use this function. This function will be removed in future versions of getdns. </p>
 
 </div>
 </div>
@@ -229,6 +235,68 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Return the number of pending requests and the point of time of the next timeout. WARNING! Do not use this function. This function will be removed in future versions of getdns. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga4904c6495dbc85649e09dd7dace53dee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_detach_eventloop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Detach the eventloop from the context. Resets the context with the default event loop based on poll(). WARNING! Do not use this function. It is For internal use only and may disappear in future releases. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to reset to default event loop usage </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER when context is NULL </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga262c9bef4ed515a938d922707953d1cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_context_set_use_threads </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>use_threads</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tell underlying unbound context to use background threads or fork. This is only relevant for libunbound version before 1.5.9. After this version the underlying unbound will share the event loop with getdns eliminating the use for threads. Since the need for this function is doubtful and likely to disappear in the future, use is strongly discouraged. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>The context to configure </td></tr>
+    <tr><td class="paramname">use_threads</td><td>is either 1 to use threads, or 0 to use fork </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success </dd>
+<dd>
+GETDNS_RETURN_INVALID_PARAMETER if context is NULL </dd></dl>
 
 </div>
 </div>

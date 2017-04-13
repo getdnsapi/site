@@ -408,8 +408,8 @@ DNS record in the replies_tree</p>
 
 
 <p>Set to GETDNS_EXTENSION_TRUE to cause only records that
-the API can validate as secure withe DNSSEC to be returned
-in the <i>replies_tree</i></p><td width="15%"></td>
+the API can validate as secure with DNSSEC to be returned in
+the <i>replies_tree</i></p><td width="15%"></td>
 <td width="34%">
 
 
