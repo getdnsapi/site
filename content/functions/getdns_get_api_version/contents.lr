@@ -4,4 +4,4 @@ _slug: getdns_get_api_version.html
 ---
 title: const char * getdns_get_api_version(void)
 ---
-link: /doxygen/1.1.0/group__Uutilityfunctions.html#ga95f25ef05573ca2f24880269341d7d5b
+link: /doxygen/group__versionfuncs.html#ga95f25ef05573ca2f24880269341d7d5b

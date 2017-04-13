@@ -4,4 +4,4 @@ _slug: getdns_context_set_edns_client_subnet_private.html
 ---
 title: getdns_return_t getdns_context_set_edns_client_subnet_private(getdns_context *context, uint8_t value)
 ---
-link: /doxygen/1.1.0/group__Ucontextset.html#ga12d7e0af166fb5951f3556839e236582
+link: /doxygen/group__getdns__context.html#ga12d7e0af166fb5951f3556839e236582

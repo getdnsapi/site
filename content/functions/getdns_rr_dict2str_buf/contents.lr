@@ -4,4 +4,4 @@ _slug: getdns_rr_dict2str_buf.html
 ---
 title: getdns_return_t getdns_rr_dict2str_buf(const getdns_dict *rr_dict, char *str, size_t *str_len)
 ---
-link: /doxygen/1.1.0/group__UDNSDataConversionFunctions.html#ga454811cf15dc16e8af923b208b1db381
+link: /doxygen/group__UDNSDataConversionFunctions.html#ga454811cf15dc16e8af923b208b1db381

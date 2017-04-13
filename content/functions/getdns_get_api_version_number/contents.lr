@@ -4,4 +4,4 @@ _slug: getdns_get_api_version_number.html
 ---
 title: uint32_t getdns_get_api_version_number(void)
 ---
-link: /doxygen/1.1.0/group__Uutilityfunctions.html#ga957c49fca5da1ace8c9c3af1fdd9485e
+link: /doxygen/group__versionfuncs.html#ga957c49fca5da1ace8c9c3af1fdd9485e

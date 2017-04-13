@@ -4,4 +4,4 @@ _slug: getdns_reply.html
 ---
 title: getdns_return_t getdns_reply(getdns_context *context, getdns_dict *reply, getdns_transaction_t request_id)
 ---
-link: /doxygen/1.1.0/group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4
+link: /doxygen/group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4

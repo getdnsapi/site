@@ -4,4 +4,4 @@ _slug: getdns_context_set_edns_version.html
 ---
 title: getdns_return_t getdns_context_set_edns_version(getdns_context *context, uint8_t value)
 ---
-link: /doxygen/1.1.0/group__context__set.html#ga9410c39b7da78750adfb0c2aedae7c8e
+link: /doxygen/group__getdns__context.html#ga9410c39b7da78750adfb0c2aedae7c8e

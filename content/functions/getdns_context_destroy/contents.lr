@@ -4,4 +4,4 @@ _slug: getdns_context_destroy.html
 ---
 title: void getdns_context_destroy(getdns_context *context)
 ---
-link: /doxygen/1.1.0/group__context__create.html#gac7cc7deb698763fd0c977a540afbe569
+link: /doxygen/group__getdns__context.html#gac7cc7deb698763fd0c977a540afbe569

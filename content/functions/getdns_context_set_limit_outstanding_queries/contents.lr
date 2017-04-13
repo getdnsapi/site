@@ -4,4 +4,4 @@ _slug: getdns_context_set_limit_outstanding_queries.html
 ---
 title: getdns_return_t getdns_context_set_limit_outstanding_queries(getdns_context *context, uint16_t limit)
 ---
-link: /doxygen/1.1.0/group__context__set.html#gaca8b7e5f548477e29b6f6603331177cf
+link: /doxygen/group__getdns__context.html#gaca8b7e5f548477e29b6f6603331177cf

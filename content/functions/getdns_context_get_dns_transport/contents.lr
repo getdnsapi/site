@@ -4,4 +4,4 @@ _slug: getdns_context_get_dns_transport.html
 ---
 title: getdns_return_t getdns_context_get_dns_transport(getdns_context *context, getdns_transport_t *value)
 ---
-link: /doxygen/1.1.0/group__Ucontextget.html#gafa61dde6e68b95c765b2bc426a4abb2d
+link: /doxygen/group__getdns__context.html#gafa61dde6e68b95c765b2bc426a4abb2d

@@ -4,4 +4,4 @@ _slug: getdns_dict_set_int.html
 ---
 title: getdns_return_t getdns_dict_set_int(getdns_dict *dict, const char *name, uint32_t child_uint32)
 ---
-link: /doxygen/1.1.0/group__getdns__dict__set.html#ga958548ae3c0f07daf89927a534f48f7a
+link: /doxygen/group__getdns__dict.html#ga958548ae3c0f07daf89927a534f48f7a

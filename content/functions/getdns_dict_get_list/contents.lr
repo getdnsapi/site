@@ -4,4 +4,4 @@ _slug: getdns_dict_get_list.html
 ---
 title: getdns_return_t getdns_dict_get_list(const getdns_dict *dict, const char *name, getdns_list **answer)
 ---
-link: /doxygen/1.1.0/group__getdns__dict__get__functions.html#ga8ed2005a722afe7daf5a0d85dca710d1
+link: /doxygen/group__getdns__dict.html#ga8ed2005a722afe7daf5a0d85dca710d1

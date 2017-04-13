@@ -312,7 +312,7 @@ int main()
 }
 ```
 
-Note that besides including the `uv.h` header file, you also need to include [`getdns/getdns_ext_libuv.h`](/doxygen/1.0.0/getdns__ext__libuv_8h.html) for the `getdns_extension_set_libuv_loop()` function needed to associate the [`getdns_context`] with the event loop.
+Note that besides including the `uv.h` header file, you also need to include [`getdns/getdns_ext_libuv.h`](/doxygen/getdns__ext__libuv_8h.html) for the `getdns_extension_set_libuv_loop()` function needed to associate the [`getdns_context`] with the event loop.
 Furthermore, the example needs to be linked against libgetdns_ext_uv.so:
 ```sh
 $ cc -o async-example async-example.c -lgetdns -lgetdns_ext_uv -luv
@@ -320,7 +320,7 @@ $ cc -o async-example async-example.c -lgetdns -lgetdns_ext_uv -luv
 
 Additionally we provide a header file and extension library for [libev] and [libevent].
 
-> ! <span class="glyphicon glyphicon-exclamation-sign"></span> Note that our library provides functions to [integrate with an existing asynchronous event mechanism](/doxygen/1.0.0/group__Ueventloops.html).
+> ! <span class="glyphicon glyphicon-exclamation-sign"></span> Note that our library provides functions to [integrate with an existing asynchronous event mechanism](/doxygen/group__eventloops.html).
 > A good example are the node.js bindings, that use this mechanism to seamlessly integrate getdns into the node.js execution environment.
 > 
 > ! <span class="glyphicon glyphicon-exclamation-sign"></span> Note that when getdns is linked against libunbound version 1.5.9 or later, full recursive queries will also use the event loop associated with the context.
@@ -588,9 +588,9 @@ In the next, upcoming, example, I will build upon this example and show how to u
 [`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
 [`getdns_context_create()`]: /documentation/spec/#16-setting-up-the-dns-context
 [`getdns_return_t`]: /documentation/spec/#52-return-codes
-[`getdns_get_errorstr_by_id()`]: /doxygen/1.0.0/group__Uutilityfunctions.html#gacb4a2592732a45016dfde223a9567286
-[`getdns/getdns_extra.h`]: /doxygen/1.0.0/getdns__extra_8h.html
-[non standard API-spec]: /doxygen/1.0.0/getdns__extra_8h.html
+[`getdns_get_errorstr_by_id()`]: /functions/getdns_get_errorstr_by_id.html
+[`getdns/getdns_extra.h`]: /doxygen/getdns__extra_8h.html
+[non standard API-spec]: /doxygen/getdns__extra_8h.html
 [`getdns_address()`]: /documentation/spec/#12-getdns_address
 [synchronous]: /documentation/spec/#19-calling-the-api-synchronously-without-events
 [synchronously]: /documentation/spec/#19-calling-the-api-synchronously-without-events

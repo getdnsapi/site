@@ -4,4 +4,4 @@ _slug: getdns_context_set_tls_query_padding_blocksize.html
 ---
 title: getdns_return_t getdns_context_set_tls_query_padding_blocksize(getdns_context *context, uint16_t value)
 ---
-link: /doxygen/1.1.0/group__Ucontextset.html#ga39db81a84f6d6b5bce987fbce044bc69
+link: /doxygen/group__getdns__context.html#ga39db81a84f6d6b5bce987fbce044bc69

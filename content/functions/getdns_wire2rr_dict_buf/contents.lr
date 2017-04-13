@@ -4,4 +4,4 @@ _slug: getdns_wire2rr_dict_buf.html
 ---
 title: getdns_return_t getdns_wire2rr_dict_buf(const uint8_t *wire, size_t *wire_sz, getdns_dict **rr_dict)
 ---
-link: /doxygen/1.1.0/group__UDNSDataConversionFunctions.html#ga3039de869b01ccb89f52df7505abf90e
+link: /doxygen/group__UDNSDataConversionFunctions.html#ga3039de869b01ccb89f52df7505abf90e

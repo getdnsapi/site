@@ -4,4 +4,4 @@ _slug: getdns_str2bindata.html
 ---
 title: getdns_return_t getdns_str2bindata(const char *str, getdns_bindata **bindata)
 ---
-link: /doxygen/1.1.0/group__Ustring2getdns__data.html#ga4176f00002bd09b28b49c2302ae67351
+link: /doxygen/group__Ustring2getdns__data.html#ga4176f00002bd09b28b49c2302ae67351

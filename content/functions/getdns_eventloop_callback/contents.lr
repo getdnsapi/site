@@ -4,4 +4,4 @@ _slug: getdns_eventloop_callback.html
 ---
 title: void(* getdns_eventloop_callback)(void *userarg)
 ---
-link: /doxygen/1.1.0/group__Ueventloops.html#gafce6e2ed14787a264b551fa16f430931
+link: /doxygen/group__eventloops.html#gafce6e2ed14787a264b551fa16f430931

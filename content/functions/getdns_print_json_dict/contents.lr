@@ -4,4 +4,4 @@ _slug: getdns_print_json_dict.html
 ---
 title: char * getdns_print_json_dict(const getdns_dict *some_dict, int pretty)
 ---
-link: /doxygen/1.1.0/group__UXTRAPrettyPrinting.html#ga18d9cd5fe90e297af96abe2e522b6155
+link: /doxygen/group__getdns__dict.html#ga18d9cd5fe90e297af96abe2e522b6155

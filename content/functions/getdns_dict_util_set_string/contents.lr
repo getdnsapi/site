@@ -4,4 +4,4 @@ _slug: getdns_dict_util_set_string.html
 ---
 title: getdns_return_t getdns_dict_util_set_string(getdns_dict *dict, char *name, const char *value)
 ---
-link: /doxygen/1.1.0/group__Uutilityfunctions.html#ga8b4c6fc54e9412e596e0dd96d9fb1122
+link: /doxygen/group__getdns__dict.html#ga8b4c6fc54e9412e596e0dd96d9fb1122

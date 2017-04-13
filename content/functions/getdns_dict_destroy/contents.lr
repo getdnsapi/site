@@ -4,4 +4,4 @@ _slug: getdns_dict_destroy.html
 ---
 title: void getdns_dict_destroy(getdns_dict *dict)
 ---
-link: /doxygen/1.1.0/group__dict__create.html#ga2e5fab8172313b6505792c0bbbb4d38b
+link: /doxygen/group__getdns__dict.html#ga2e5fab8172313b6505792c0bbbb4d38b

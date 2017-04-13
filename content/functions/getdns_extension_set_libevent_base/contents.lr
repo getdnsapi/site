@@ -4,4 +4,4 @@ _slug: getdns_extension_set_libevent_base.html
 ---
 title: getdns_return_t getdns_extension_set_libevent_base(struct getdns_context *context, struct event_base *this_event_base)
 ---
-link: /doxygen/1.1.0/group__eventloops.html#ga50efe21a410c8c41024fe0539a463972
+link: /doxygen/group__eventloops.html#ga50efe21a410c8c41024fe0539a463972

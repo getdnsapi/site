@@ -4,4 +4,4 @@ _slug: getdns_dict_create_with_memory_functions.html
 ---
 title: getdns_dict * getdns_dict_create_with_memory_functions(void *(*malloc)(size_t), void *(*realloc)(void *, size_t), void(*free)(void *))
 ---
-link: /doxygen/1.1.0/group__dict__create.html#ga042099bddca48deb475f449248ee8636
+link: /doxygen/group__getdns__dict.html#ga042099bddca48deb475f449248ee8636

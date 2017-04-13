@@ -4,4 +4,4 @@ _slug: getdns_context_set_suffix.html
 ---
 title: getdns_return_t getdns_context_set_suffix(getdns_context *context, getdns_list *value)
 ---
-link: /doxygen/1.1.0/group__context__set.html#ga78799126682ee1752179b484a4e6b9b5
+link: /doxygen/group__getdns__context.html#ga78799126682ee1752179b484a4e6b9b5

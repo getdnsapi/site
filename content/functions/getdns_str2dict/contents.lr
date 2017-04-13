@@ -4,4 +4,4 @@ _slug: getdns_str2dict.html
 ---
 title: getdns_return_t getdns_str2dict(const char *str, getdns_dict **dict)
 ---
-link: /doxygen/1.1.0/group__Ustring2getdns__data.html#gaa4b16db4a779f5394414c6a9f54b3f7f
+link: /doxygen/group__Ustring2getdns__data.html#gaa4b16db4a779f5394414c6a9f54b3f7f

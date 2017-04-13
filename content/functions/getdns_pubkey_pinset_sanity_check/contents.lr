@@ -4,4 +4,4 @@ _slug: getdns_pubkey_pinset_sanity_check.html
 ---
 title: getdns_return_t getdns_pubkey_pinset_sanity_check(const getdns_list *pinset, getdns_list *errorlist)
 ---
-link: /doxygen/1.1.0/group__Uutilityfunctions.html#ga3761aa1edc37d5bb562843a4a312164a
+link: /doxygen/group__utils.html#ga3761aa1edc37d5bb562843a4a312164a

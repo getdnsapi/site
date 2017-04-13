@@ -18,7 +18,8 @@ echo $DOXYCONFIG
 	echo OUTPUT_DIRECTORY=`pwd`/assets/doxygen/
 	echo GENERATE_LATEX=NO
 	echo GENERATE_MAN=NO
-	echo HTML_OUTPUT=$PROJECT_NUMBER
+	#echo HTML_OUTPUT=$PROJECT_NUMBER
+	echo HTML_OUTPUT=.
 ) > $DOXYCONFIG && (
 	cd $1/src
 	doxygen $DOXYCONFIG

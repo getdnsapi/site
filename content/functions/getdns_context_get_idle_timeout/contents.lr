@@ -4,4 +4,4 @@ _slug: getdns_context_get_idle_timeout.html
 ---
 title: getdns_return_t getdns_context_get_idle_timeout(getdns_context *context, uint64_t *timeout)
 ---
-link: /doxygen/1.1.0/group__Ucontextget.html#ga4fd49184e4416a38e8f009c4693f609b
+link: /doxygen/group__getdns__context.html#ga4fd49184e4416a38e8f009c4693f609b

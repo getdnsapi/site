@@ -4,4 +4,4 @@ _slug: getdns_extension_set_libuv_loop.html
 ---
 title: getdns_return_t getdns_extension_set_libuv_loop(struct getdns_context *context, struct uv_loop_s *uv_loop)
 ---
-link: /doxygen/1.1.0/group__eventloops.html#ga4d2c7fc2b7646cf206f79a79a2e5959a
+link: /doxygen/group__eventloops.html#ga4d2c7fc2b7646cf206f79a79a2e5959a

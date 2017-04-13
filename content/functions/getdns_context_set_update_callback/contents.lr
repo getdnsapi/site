@@ -4,4 +4,4 @@ _slug: getdns_context_set_update_callback.html
 ---
 title: getdns_return_t getdns_context_set_update_callback(getdns_context *context, void *userarg, void(*value)(getdns_context *, getdns_context_code_t, void *))
 ---
-link: /doxygen/1.1.0/group__Ucontextset.html#ga3c9fb3db21a9acb48c381c2e209b04d0
+link: /doxygen/group__getdns__context.html#ga3c9fb3db21a9acb48c381c2e209b04d0

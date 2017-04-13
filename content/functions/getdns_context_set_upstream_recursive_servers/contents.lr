@@ -4,4 +4,4 @@ _slug: getdns_context_set_upstream_recursive_servers.html
 ---
 title: getdns_return_t getdns_context_set_upstream_recursive_servers(getdns_context *context, getdns_list *upstream_list)
 ---
-link: /doxygen/1.1.0/group__context__set.html#ga248a2a426cab71d8d12b093e487118af
+link: /doxygen/group__getdns__context.html#ga248a2a426cab71d8d12b093e487118af

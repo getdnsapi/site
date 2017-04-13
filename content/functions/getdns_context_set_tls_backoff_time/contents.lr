@@ -4,4 +4,4 @@ _slug: getdns_context_set_tls_backoff_time.html
 ---
 title: getdns_return_t getdns_context_set_tls_backoff_time(getdns_context *context, uint16_t value)
 ---
-link: /doxygen/1.1.0/group__Ucontextset.html#ga233c32192a157f9a4d8799ae2598339e
+link: /doxygen/group__getdns__context.html#ga233c32192a157f9a4d8799ae2598339e

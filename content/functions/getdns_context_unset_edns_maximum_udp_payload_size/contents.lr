@@ -4,4 +4,4 @@ _slug: getdns_context_unset_edns_maximum_udp_payload_size.html
 ---
 title: getdns_return_t getdns_context_unset_edns_maximum_udp_payload_size(getdns_context *context)
 ---
-link: /doxygen/1.1.0/group__Ucontextset.html#gad5346d88cba36ad08492eb496b3ecd12
+link: /doxygen/group__getdns__context.html#gad5346d88cba36ad08492eb496b3ecd12

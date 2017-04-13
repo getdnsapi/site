@@ -4,4 +4,4 @@ _slug: getdns_strerror.html
 ---
 title: getdns_return_t getdns_strerror(getdns_return_t err, char *buf, size_t buflen)
 ---
-link: /doxygen/1.1.0/group__Uutilityfunctionsdeprecated.html#ga6fa617db8824da1af1ffbadf72a18308
+link: /doxygen/group__Uutilityfunctionsdeprecated.html#ga6fa617db8824da1af1ffbadf72a18308

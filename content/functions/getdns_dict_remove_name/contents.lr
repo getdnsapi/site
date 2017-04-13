@@ -4,4 +4,4 @@ _slug: getdns_dict_remove_name.html
 ---
 title: getdns_return_t getdns_dict_remove_name(getdns_dict *dict, const char *name)
 ---
-link: /doxygen/1.1.0/group__functions.html#gafd199ad615b46903f0ff9adfaf522527
+link: /doxygen/group__functions.html#gafd199ad615b46903f0ff9adfaf522527

@@ -4,4 +4,4 @@ _slug: getdns_context_set_eventloop.html
 ---
 title: getdns_return_t getdns_context_set_eventloop(getdns_context *context, getdns_eventloop *eventloop)
 ---
-link: /doxygen/1.1.0/group__Ueventloops.html#gaad50e5aebcc0b7caf01bf11b6eb02304
+link: /doxygen/group__eventloops.html#gaad50e5aebcc0b7caf01bf11b6eb02304

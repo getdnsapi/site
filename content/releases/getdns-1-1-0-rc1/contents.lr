@@ -31,14 +31,14 @@ if (GETDNS_RETURN_GOOD == getdns_str2dict("
 
 More detailed (doxygen) documentation about the string to getdns data structure functions, and about configuring [`getdns_context`]s with [`getdns_dict`]s is here:
 
-  * <https://getdnsapi.net/doxygen/1.1.0/group__Ustring2getdns__data.html>
+  * <https://getdnsapi.net/doxygen/group__Ustring2getdns__data.html>
   * <https://getdnsapi.net/functions/getdns_context_config.html>
 
 The [`getdns_context_set_listen_addresses()`] function, allows the user to register a request handler function and list of addresses that will be listened on when the eventloop is run. The request handler function will be called when a DNS requests arrives, with the request in [getdns reply dict] format. The request handler may construct a response to the request and eventually has to call [`getdns_reply()`] with that response to answer the request (or `NULL` to cancel).
 
 I will try to provide and example blog post on the website for this functionality with the actual getdns-1.1.0 release announcement. For now, we have the doxygen documentation and the IETF97 hackathon project delaydns which was using this functionality:
 
-  * <https://getdnsapi.net/doxygen/1.1.0/group__UServerFunctions.html>
+  * <https://getdnsapi.net/doxygen/group__UServerFunctions.html>
   * <https://github.com/IETF-Hackathon/delaydns>
 
 Besides these new functions, we have much improved and more stable and robust scheduling of requests:

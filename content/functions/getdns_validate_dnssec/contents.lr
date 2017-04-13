@@ -4,4 +4,4 @@ _slug: getdns_validate_dnssec.html
 ---
 title: getdns_return_t getdns_validate_dnssec(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors)
 ---
-link: /doxygen/1.1.0/group__utils.html#ga17d7b9f761abc95cda84b901053419d1
+link: /doxygen/group__dnssecfuncs.html#ga17d7b9f761abc95cda84b901053419d1

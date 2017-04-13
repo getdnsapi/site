@@ -4,4 +4,4 @@ _slug: getdns_context_set_use_threads.html
 ---
 title: getdns_return_t getdns_context_set_use_threads(getdns_context *context, int use_threads)
 ---
-link: /doxygen/1.1.0/group__Uutilityfunctionsdeprecated.html#ga262c9bef4ed515a938d922707953d1cb
+link: /doxygen/group__Uutilityfunctionsdeprecated.html#ga262c9bef4ed515a938d922707953d1cb

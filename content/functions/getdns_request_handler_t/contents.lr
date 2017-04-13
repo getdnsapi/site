@@ -4,4 +4,4 @@ _slug: getdns_request_handler_t.html
 ---
 title: void(* getdns_request_handler_t)(getdns_context *context, getdns_callback_type_t callback_type, getdns_dict *request, void *userarg, getdns_transaction_t request_id)
 ---
-link: /doxygen/1.1.0/group__UServerFunctions.html#ga7fabb46e587d0dac4ca45ae1c893f8ff
+link: /doxygen/group__UServerFunctions.html#ga7fabb46e587d0dac4ca45ae1c893f8ff

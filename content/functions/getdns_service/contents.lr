@@ -4,4 +4,4 @@ _slug: getdns_service.html
 ---
 title: getdns_return_t getdns_service(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t *transaction_id, getdns_callback_t callbackfn)
 ---
-link: /doxygen/1.1.0/group__funcs.html#ga85d7635203bcde041d89bd6590d71c34
+link: /doxygen/group__asyncfuncs.html#ga85d7635203bcde041d89bd6590d71c34

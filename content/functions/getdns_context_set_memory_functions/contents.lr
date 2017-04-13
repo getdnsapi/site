@@ -4,4 +4,4 @@ _slug: getdns_context_set_memory_functions.html
 ---
 title: getdns_return_t getdns_context_set_memory_functions(getdns_context *context, void *(*malloc)(size_t), void *(*realloc)(void *, size_t), void(*free)(void *))
 ---
-link: /doxygen/1.1.0/group__context__set.html#ga7799de54b74efd6187cca07134e463c4
+link: /doxygen/group__getdns__context.html#ga7799de54b74efd6187cca07134e463c4

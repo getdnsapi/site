@@ -4,4 +4,4 @@ _slug: getdns_context_set_extended_memory_functions.html
 ---
 title: getdns_return_t getdns_context_set_extended_memory_functions(getdns_context *context, void *userarg, void *(*malloc)(void *userarg, size_t sz), void *(*realloc)(void *userarg, void *ptr, size_t sz), void(*free)(void *userarg, void *ptr))
 ---
-link: /doxygen/1.1.0/group__context__set.html#ga9f60a3822c532619f7f48105d8864b69
+link: /doxygen/group__getdns__context.html#ga9f60a3822c532619f7f48105d8864b69

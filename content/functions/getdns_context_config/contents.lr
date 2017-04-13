@@ -4,4 +4,4 @@ _slug: getdns_context_config.html
 ---
 title: getdns_return_t getdns_context_config(getdns_context *context, const getdns_dict *config_dict)
 ---
-link: /doxygen/1.1.0/group__Uutilityfunctions.html#ga9b3496565fdd531a5624a204c2cc4600
+link: /doxygen/group__getdns__context.html#ga9b3496565fdd531a5624a204c2cc4600

@@ -4,4 +4,4 @@ _slug: getdns_context_get_append_name.html
 ---
 title: getdns_return_t getdns_context_get_append_name(getdns_context *context, getdns_append_name_t *value)
 ---
-link: /doxygen/1.1.0/group__Ucontextget.html#gaf3515a43855646fe563f6f2222d9d050
+link: /doxygen/group__getdns__context.html#gaf3515a43855646fe563f6f2222d9d050

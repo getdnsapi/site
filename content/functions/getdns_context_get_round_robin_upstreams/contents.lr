@@ -4,4 +4,4 @@ _slug: getdns_context_get_round_robin_upstreams.html
 ---
 title: getdns_return_t getdns_context_get_round_robin_upstreams(getdns_context *context, uint8_t *value)
 ---
-link: /doxygen/1.1.0/group__Ucontextget.html#ga1658a1f49e8a9cb5740206c2c2b66fc2
+link: /doxygen/group__getdns__context.html#ga1658a1f49e8a9cb5740206c2c2b66fc2

@@ -35,7 +35,7 @@ Updates:
 Documentation is available at:
 <ul>
 <li>getdns API documentation: <a href="https://getdnsapi.net/documentation/spec/">https://getdnsapi.net/documentation/spec/</a></li>
-<li>getdns doxygen: <a href="https://getdnsapi.net/doxygen/1.0.0/">https://getdnsapi.net/doxygen/1.0.0/</a></li>
+<li>getdns doxygen: <a href="https://getdnsapi.net/doxygen/">https://getdnsapi.net/doxygen/</a></li>
 <li>getdns_query documentation: <a href="https://getdnsapi.net/blog/getdns_query/">https://getdnsapi.net/blog/getdns_query/</a></li>
 </ul>
 <p>We would kindly ask that you review and try out this beta release thoroughly. Depending on feedback, we hope to have a production release available in early October. </p>

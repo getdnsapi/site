@@ -4,4 +4,4 @@ _slug: getdns_eventloop_clear.html
 ---
 title: getdns_return_t(* getdns_eventloop_clear)(getdns_eventloop *loop, getdns_eventloop_event *ev)
 ---
-link: /doxygen/1.1.0/group__Ueventloops.html#ga1a6fd267d93267f48b4bf4a080b440aa
+link: /doxygen/group__eventloops.html#ga1a6fd267d93267f48b4bf4a080b440aa

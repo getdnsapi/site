@@ -4,4 +4,4 @@ _slug: getdns_context_set_edns_do_bit.html
 ---
 title: getdns_return_t getdns_context_set_edns_do_bit(getdns_context *context, uint8_t value)
 ---
-link: /doxygen/1.1.0/group__context__set.html#ga9d6f1ace48b9e7e2961ab6d45c9a2e24
+link: /doxygen/group__getdns__context.html#ga9d6f1ace48b9e7e2961ab6d45c9a2e24

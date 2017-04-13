@@ -4,4 +4,4 @@ _slug: getdns_context_set_dnssec_allowed_skew.html
 ---
 title: getdns_return_t getdns_context_set_dnssec_allowed_skew(getdns_context *context, uint32_t value)
 ---
-link: /doxygen/1.1.0/group__context__set.html#ga9416fc9b3edd3f6a9974a7d321633435
+link: /doxygen/group__getdns__context.html#ga9416fc9b3edd3f6a9974a7d321633435

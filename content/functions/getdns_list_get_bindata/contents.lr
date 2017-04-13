@@ -4,4 +4,4 @@ _slug: getdns_list_get_bindata.html
 ---
 title: getdns_return_t getdns_list_get_bindata(const getdns_list *list, size_t index, getdns_bindata **answer)
 ---
-link: /doxygen/1.1.0/group__getdns__list__get__functions.html#ga4213ad6c29f7e655d08ee99a129c5761
+link: /doxygen/group__getdns__list.html#ga4213ad6c29f7e655d08ee99a129c5761

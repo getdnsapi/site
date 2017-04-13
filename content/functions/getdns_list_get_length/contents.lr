@@ -4,4 +4,4 @@ _slug: getdns_list_get_length.html
 ---
 title: getdns_return_t getdns_list_get_length(const getdns_list *list, size_t *answer)
 ---
-link: /doxygen/1.1.0/group__getdns__list__get__functions.html#ga43e2241ce08b237a70254699ceee6107
+link: /doxygen/group__getdns__list.html#ga43e2241ce08b237a70254699ceee6107

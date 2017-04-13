@@ -4,4 +4,4 @@ _slug: getdns_snprint_json_dict.html
 ---
 title: int getdns_snprint_json_dict(char *str, size_t size, const getdns_dict *dict, int pretty)
 ---
-link: /doxygen/1.1.0/group__UXTRAPrettyPrinting.html#ga45ebe5dcb956a3343b5b0a429d149f08
+link: /doxygen/group__getdns__dict.html#ga45ebe5dcb956a3343b5b0a429d149f08

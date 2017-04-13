@@ -4,4 +4,4 @@ _slug: getdns_display_ip_address.html
 ---
 title: char * getdns_display_ip_address(const getdns_bindata *bindata_of_ipv4_or_ipv6_address)
 ---
-link: /doxygen/1.1.0/group__utils.html#ga78522215997040ef92e2ce55aa2c4c46
+link: /doxygen/group__utils.html#ga78522215997040ef92e2ce55aa2c4c46

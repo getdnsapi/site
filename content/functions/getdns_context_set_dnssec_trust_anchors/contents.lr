@@ -4,4 +4,4 @@ _slug: getdns_context_set_dnssec_trust_anchors.html
 ---
 title: getdns_return_t getdns_context_set_dnssec_trust_anchors(getdns_context *context, getdns_list *value)
 ---
-link: /doxygen/1.1.0/group__context__set.html#gadde7178a1df81558e6217616689fe92f
+link: /doxygen/group__getdns__context.html#gadde7178a1df81558e6217616689fe92f

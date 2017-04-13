@@ -4,4 +4,4 @@ _slug: getdns_callback_t.html
 ---
 title: void(* getdns_callback_t)(getdns_context *context, getdns_callback_type_t callback_type, getdns_dict *response, void *userarg, getdns_transaction_t transaction_id)
 ---
-link: /doxygen/1.1.0/group__functions.html#ga8438dd685225fc623baac03fe89f0a4e
+link: /doxygen/group__asyncfuncs.html#ga8438dd685225fc623baac03fe89f0a4e

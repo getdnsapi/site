@@ -34,5 +34,5 @@ _slug: %s.html
 ---
 title: %s
 ---
-link: /doxygen/1.1.0/%s
+link: /doxygen/%s
 """ % (name, title, link))
