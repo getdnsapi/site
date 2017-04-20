@@ -7,13 +7,11 @@ features:
 #### feature ####
 title: Stubby
 ----
-text:
-
-Stubby is an experimental implementation of a DNS Privacy enabled stub resolver. It is currently suitable for advanced/technical users - all feedback is welcome! Also see [dnsprivacy.org](https://dnsprivacy.org/DNS+Privacy+daemon+-+Stubby) for more information on DNS Privacy and stubby. 
+text: Stubby is an experimental implementation of a DNS Privacy enabled stub resolver. It is currently suitable for advanced/technical users - all feedback is welcome! Also see [dnsprivacy.org](https://dnsprivacy.org/) for more information on DNS Privacy.
 ----
 image: stubby.png
 ----
-link: /tags/stubby
+link: blog/dns-privacy-daemon-stubby
 #### feature ####
 title: Fork me on github
 ----
