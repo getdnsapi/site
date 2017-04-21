@@ -27,11 +27,8 @@ Stubby is available in the 1.1 release of getdns.
 
 Check to see if the 1.1 release of getdns is available via a package manager. Details on Supported Platforms can be found in the 'Supported Platforms' section of the [README](https://getdnsapi.net/documentation/readme)  documentation. 
 
-Note: a Homebrew package for Stubby is on the way. It can be installed currently via Homebrew using 
+Note: a Homebrew package for Stubby is on the way. 
 
-```sh
-brew install --develop --enable-stub-only --without-libidn getdns
-```
 # Building Stubby from Source
 
 ## Dependencies
