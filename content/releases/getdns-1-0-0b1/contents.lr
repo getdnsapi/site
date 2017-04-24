@@ -9,27 +9,37 @@ archive: yes
 sha256: 01ca30b4642762e268e2b7b48ff6835212bfc99e0a6f79b57e0fc801f30e776a
 ---
 announcement:
-<p>Dear All,</p>
-<p>I am very pleased to announce that we have a beta release for version 1.0.0 of getdns</p>
-<p>We are now 100% spec complete.  The last remaining function from the specification, <tt>getdns_context_set_follow_redirects()</tt>, is functional with this release.  This release also contains the following improvements and non-spec features:</p>
-<dl>
-   <dt>A <tt>dnssec_return_all_statuses</tt> extension</dt>
-   <dd>Use this extension if you want to know about DNSSEC status, but you don't want the DNSSEC protection.  When this extension is set, all replies will always be included in the response dict, regardless their dnssec status.<br>
-   When used on its own or in combination with just <tt>dnssec_return_status</tt>, it will return BOGUS replies, but those replies will have <tt>"dnssec_status": GETDNS_DNSSEC_BOGUS</tt>.  The response dict <tt>"status"</tt> will be <tt>GETDNS_RESPSTATUS_GOOD</tt> then.<br />
-    When used on in combination with <tt>dnssec_return_only_secure,</tt> it will return BOGUS and INSECURE replies (shown in their <tt>"dnssec_status"</tt>).  The response dict <tt>"status"</tt> can be any of the status that the <tt>dnssec_return_only_secure</tt> extenstion returns, so <tt>GETDNS_RESPSTATUS_GOOD</tt> when at least one reply was secure, <tt>GETDNS_RESPSTATUS_NO_SECURE_ANSWERS</tt> when all replies were insecure, or <tt>GETDNS_RESPSTATUS_ALL_BOGUS_ANSWERS</tt> when all replies were bogus.
-    </dd>
-    <dt>Conversion functions for DNS messages.</dt>
-    <dd>With these the unit tests could be adapted so they are not dependent on ldns anymore</dd>
-    <dt><tt>GETDNS_APPEND_NAME_TO_SINGLE_LABEL_FIRST</tt> default suffix handling<dt>
-    <dd>This makes suffix handling more like what is conventional with system stub behaviour.  Suffixes are appended to a name before trying it without suffixes, but only if the name consists of a single label.</dd>
-   <dt>MS Windows version in 100% working order</dt>
-   <dd>The default event loop, that is also used for synchronous calls, has been renewed.  With it, TCP and TLS transports are now also possible on MS Windows.<br />
-   The event loop extension (custom or not) will now also be used in recursive lookups (libunbound &gt;= 1.5.9 is needed for this).  Because of this it is now also possible to do recursive requests in MS Windows.<br />
-   The MS Windows native certificate store will be used with TLS transport and also suffixes are initialized as the system stub is.
-   </dd>
-</dl>
-<p>Besides these new features and improvements, a few bugs have been fixed.  For a complete overview see the ChangeLog below.</p>
-<p>We would kindly ask you to review and try out this bete release thoroughly.  The 1.0.0 release will follow as soon as we are confident we haven't missed anything and it is ready for production</p>
+
+Dear All,
+
+I am very pleased to announce that we have a beta release for version 1.0.0 of getdns
+
+We are now 100% spec complete.  The last remaining function from the specification, [`getdns_context_set_follow_redirects()`](/functions/getdns_context_set_follow_redirects.html), is functional with this release.  This release also contains the following improvements and non-spec features:
+
+  * A `dnssec_return_all_statuses` extension
+  > Use this extension if you want to know about DNSSEC status, but you don't want the DNSSEC protection.  When this extension is set, all replies will always be included in the response dict, regardless their dnssec status.
+  >
+  > When used on its own or in combination with just `dnssec_return_status`, it will return BOGUS replies, but those replies will have `"dnssec_status": GETDNS_DNSSEC_BOGUS`.  The response dict `"status"` will be `GETDNS_RESPSTATUS_GOOD` then.
+  >
+  > When used on in combination with `dnssec_return_only_secure,` it will return BOGUS and INSECURE replies (shown in their `"dnssec_status"`).  The response dict `"status"` can be any of the status that the `dnssec_return_only_secure` extenstion returns, so `GETDNS_RESPSTATUS_GOOD` when at least one reply was secure, `GETDNS_RESPSTATUS_NO_SECURE_ANSWERS` when all replies were insecure, or `GETDNS_RESPSTATUS_ALL_BOGUS_ANSWERS` when all replies were bogus.
+
+
+  * Conversion functions for DNS messages.
+  > With these the unit tests could be adapted so they are not dependent on ldns anymore
+
+
+  * `GETDNS_APPEND_NAME_TO_SINGLE_LABEL_FIRST` default suffix handling  * 
+  > This makes suffix handling more like what is conventional with system stub behaviour.  Suffixes are appended to a name before trying it without suffixes, but only if the name consists of a single label.
+
+
+  * MS Windows version in 100% working order
+    * The default event loop, that is also used for synchronous calls, has been renewed.  With it, TCP and TLS transports are now also possible on MS Windows.
+    * The event loop extension (custom or not) will now also be used in recursive lookups (libunbound >= 1.5.9 is needed for this).  Because of this it is now also possible to do recursive requests in MS Windows.
+    * The MS Windows native certificate store will be used with TLS transport and also suffixes are initialized as the system stub is.
+
+Besides these new features and improvements, a few bugs have been fixed.  For a complete overview see the ChangeLog below.
+
+We would kindly ask you to review and try out this bete release thoroughly.  The 1.0.0 release will follow as soon as we are confident we haven't missed anything and it is ready for production
 ---
 changelog:
 * 2016-??-??: Version 1.0.0

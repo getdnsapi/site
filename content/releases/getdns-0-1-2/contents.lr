@@ -9,15 +9,15 @@ archive: yes
 sha256: 1c3ec28f4bacda428b257e7568f34f00ad31819ab3c5c746282f84b8491dcde1
 ---
 announcement:
-<p>On behalf of the getdns API core team:</p>
-<p>release 0.1.2 of our getdns API implementation is now available at:<br />
-<br />
-<a href="https://github.com/getdnsapi/getdns/tree/v0.1.2">https://github.com/getdnsapi/getdns/tree/v0.1.2</a>
-</p>
-<p>Binaries built from these sources will be posted to the project website over the next few days.
-</p>
-<p>A detailed list of changes can be read in the github commit logs, a brief summary is in the ChangeLog file in the source tree.
-</p>
+
+On behalf of the getdns API core team:
+
+release 0.1.2 of our getdns API implementation is now available at:
+  * <https://github.com/getdnsapi/getdns/tree/v0.1.2>
+
+Binaries built from these sources will be posted to the project website over the next few days.
+
+A detailed list of changes can be read in the github commit logs, a brief summary is in the ChangeLog file in the source tree.
 ---
 changelog:
 * 2014-06-02: Version 0.1.2

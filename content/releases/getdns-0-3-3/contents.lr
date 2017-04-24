@@ -9,12 +9,18 @@ archive: yes
 sha256: 8a02da5779c3da8d9a7973662ddb5cf19825c2689b48cbc604c536014cca1046
 ---
 announcement:
-<p>Dear All,</p>
-<p>We have a fast-track single bugfix release of getdns: version 0.3.3.</p>
-<p>The native DNSSEC validation, which is part of getdns since version 0.3.0, failed to validate direct <tt>CNAME</tt> queries.  This affected direct CNAME queries only.  Queries that have <tt>CNAME</tt> redirections included are not affected.  Also the (default) <tt>RECURSING</tt> resolution mode is not affected, except when used in combination with the <tt>dnssec_return_validation_chain</tt> extension.</p>
-<p>When a query is done for a valid <tt>CNAME</tt> in either <tt>STUB</tt> resolution mode or with the <tt>dnssec_return_validation_chain</tt> extension, with getdns version 0.3.0, 0.3.1 or 0.3.2, the returned <tt>dnssec_status</tt> will be <tt>GETDNS_DNSSEC_BOGUS</tt> always.</p>
-<p>This release has this issue resolved.  A patch for getdns version 0.3.0, 0.3.1 and 0.3.2 is provided here: <a href="https://getdnsapi.net/patches/dnssec-cname-query-validation.patch">https://getdnsapi.net/patches/dnssec-cname-query-validation.patch</a></p>
-<p>Because of the smallness of the change, we've decided to bypass a release candidate and do the release immediately.</p>
+
+Dear All,
+
+We have a fast-track single bugfix release of getdns: version 0.3.3.
+
+The native DNSSEC validation, which is part of getdns since version 0.3.0, failed to validate direct `CNAME` queries.  This affected direct CNAME queries only.  Queries that have `CNAME` redirections included are not affected.  Also the (default) `RECURSING` resolution mode is not affected, except when used in combination with the `dnssec_return_validation_chain` extension.
+
+When a query is done for a valid `CNAME` in either `STUB` resolution mode or with the `dnssec_return_validation_chain` extension, with getdns version 0.3.0, 0.3.1 or 0.3.2, the returned `dnssec_status` will be `GETDNS_DNSSEC_BOGUS` always.
+
+This release has this issue resolved.  A patch for getdns version 0.3.0, 0.3.1 and 0.3.2 is provided here: <https://getdnsapi.net/patches/dnssec-cname-query-validation.patch>
+
+Because of the smallness of the change, we've decided to bypass a release candidate and do the release immediately.
 ---
 changelog:
 * 2015-09-09: Version 0.3.3

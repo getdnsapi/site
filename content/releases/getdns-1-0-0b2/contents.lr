@@ -9,36 +9,31 @@ archive: yes
 sha256: 67e9935704fa8f5ed5da020c241ef1bf10bb2fbe6691e5118130b69945f6bbc2
 ---
 announcement:
-<p>We are please to announce a second beta release of getdns 1.0.0 is available for testing.</p>
-<p>
+We are please to announce a second beta release of getdns 1.0.0 is available for testing.
+
 Updates:
-<ul>
-<li>RFC2782 style ordering of SRV resource records after a call to <tt>getdns_service()</tt> is now implemented (was missing from the previous beta release). 
-<li>The DNSSEC authentication chain returned by using the dnssec_return_validation_chain extension, will now be in canonicalized from and order</li>
-<li>A new extension <tt>dnssec_return_full_validation_chain</tt> that will return the DNSSEC authentication chain in canonicalized form and order, including the authenticated resource record set.</li>
-<li>The <tt>return_call_reporting</tt> extension will also report on tried upstreams with timeouts</li>
-<li>A new <tt>getdns_context_get_eventloop()</tt> companion function to the already existing <tt>getdns_context_set_evenloop()</tt> function, that will allow applications postpone the choice for a specific event library or use the getdns default eventloop for their own I/O.</li>
-<li>More leniency in what to accept as an representation for IP and IPv6 addresses (i.e. missing <tt>address_type</tt> keys in the dict, or just the bindate without the dict container).</li>
-<li>Significant improvements to the getdns_query test tool including option to use as a daemon listening on a specified address and option to configure <tt>getdns_query</tt> via a configuration file. For more details see <a href="https://getdnsapi.net/blog/getdns_query/">https://getdnsapi.net/blog/getdns_query/</a></li>
-<li>API and Additional API information for this implementation is now available in doxygen format which can be generated using <tt>make doc</tt>. 
-</ul>
-</p>
-<p>Bugfixes:
-<ul>
-<li>An issue with DNSSEC wildcard validation</li>
-<li>An issue with CNAME loop protection in generating the response dicts</li>
-<li>Correct processing of callbacks that are fired before the scheduling call has returned</li>
-<li>Correct processing of multiple requests on an open state-full transport</li>
-<li>Correctly reusing a TLS transport after a request on it timed out</li>
-</p>
-<p>
+  * RFC2782 style ordering of SRV resource records after a call to [`getdns_service()`](/documentation/spec/#14-getdns_service) is now implemented (was missing from the previous beta release). 
+  * The DNSSEC authentication chain returned by using the `dnssec_return_validation_chain` extension, will now be in canonicalized from and order
+  * A new extension `dnssec_return_full_validation_chain` that will return the DNSSEC authentication chain in canonicalized form and order, including the authenticated resource record set.
+  * The `return_call_reporting` extension will also report on tried upstreams with timeouts
+  * A new [`getdns_context_get_eventloop()`](/functions/getdns_context_get_eventloop.html) companion function to the already existing [`getdns_context_set_evenloop()`](/functions/getdns_context_set_eventloop.html) function, that will allow applications postpone the choice for a specific event library or use the getdns default eventloop for their own I/O.
+  * More leniency in what to accept as an representation for IP and IPv6 addresses (i.e. missing `address_type` keys in the dict, or just the bindate without the dict container).
+  * Significant improvements to the getdns_query test tool including option to use as a daemon listening on a specified address and option to configure `getdns_query` via a configuration file. For more details see <https://getdnsapi.net/blog/getdns_query/>
+  * API and Additional API information for this implementation is now available in doxygen format which can be generated using `make doc`. 
+
+Bugfixes:
+  * An issue with DNSSEC wildcard validation
+  * An issue with CNAME loop protection in generating the response dicts
+  * Correct processing of callbacks that are fired before the scheduling call has returned
+  * Correct processing of multiple requests on an open state-full transport
+  * Correctly reusing a TLS transport after a request on it timed out
+
 Documentation is available at:
-<ul>
-<li>getdns API documentation: <a href="https://getdnsapi.net/documentation/spec/">https://getdnsapi.net/documentation/spec/</a></li>
-<li>getdns doxygen: <a href="https://getdnsapi.net/doxygen/">https://getdnsapi.net/doxygen/</a></li>
-<li>getdns_query documentation: <a href="https://getdnsapi.net/blog/getdns_query/">https://getdnsapi.net/blog/getdns_query/</a></li>
-</ul>
-<p>We would kindly ask that you review and try out this beta release thoroughly. Depending on feedback, we hope to have a production release available in early October. </p>
+  * getdns API documentation: <https://getdnsapi.net/documentation/spec/>
+  * getdns doxygen: <https://getdnsapi.net/doxygen/>
+  * getdns_query documentation: <https://getdnsapi.net/blog/getdns_query/>
+
+We would kindly ask that you review and try out this beta release thoroughly. Depending on feedback, we hope to have a production release available in early October. 
 ---
 changelog:
 * 2016-07-14: Version 1.0.0b2

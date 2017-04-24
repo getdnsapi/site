@@ -9,11 +9,12 @@ archive: yes
 sha256: 0ee7ce7042487d017b04143a1c3e59fe69366e15a796ad4804822f5d48d33263
 ---
 announcement:
-<p>Dear all,</p>
-<p>I am pleased to announce version 0.1.4 of our getdns API implementation.
-</p>
-<p>This is primarily a bugfix release.
-</p>
+
+Dear all,
+
+I am pleased to announce version 0.1.4 of our getdns API implementation.
+
+This is primarily a bugfix release.
 ---
 changelog:
 * 2014-09-03: Version 0.1.4

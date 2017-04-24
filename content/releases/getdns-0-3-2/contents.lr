@@ -9,10 +9,14 @@ archive: yes
 sha256: 6944b0d9fd3fd33ee2fcd8e2dc123a3097ac95255092b4a3b8ee36400f85dba7
 ---
 announcement:
-<p>Dear All,</p>
-<p>We have a bugfix release of getdns: version 0.3.2.  The most prominent fix is fallback handling of statefull transports.</p>
-<p>Besides bugfixes, we have two new configure options.  With <tt>--enable-stub-only</tt> getdns will be compiled without <tt>libunbound</tt>.  You can then only use getdns in stub resolution mode and this is also the default resolution mode.</p>
-<p>The<tt>--with-getdns_query</tt> option will build and install the <tt>getdns_query</tt> tool that is part of the getdns test suite, but might have use cases outside that setting too</p>
+
+Dear All,
+
+We have a bugfix release of getdns: version 0.3.2.  The most prominent fix is fallback handling of statefull transports.
+
+Besides bugfixes, we have two new configure options.  With `--enable-stub-only` getdns will be compiled without `libunbound`.  You can then only use getdns in stub resolution mode and this is also the default resolution mode.
+
+The`--with-getdns_query` option will build and install the `getdns_query` tool that is part of the getdns test suite, but might have use cases outside that setting too
 ---
 changelog:
 * 2015-09-04: Version 0.3.2

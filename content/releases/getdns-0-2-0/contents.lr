@@ -1,6 +1,6 @@
 version: 0.2.0
 ---
-date: 2014-05-21
+date: 2015-05-21
 ---
 teaser: Bug fixes, mature native stub and STARTTLS
 ---
@@ -9,12 +9,18 @@ archive: yes
 sha256: 3909ed34dbd416f150178535d2b7eeac7a9f241ee3191ddc084eb0bc7c365a86
 ---
 announcement:
-<p>Dear all,</p>
-<p>I am pleased to announce version 0.2.0 of our getdns API implementation.</p>
-<p>This release has its intermediate version bumped to indicate that we consider the native stub operation, introduced in version 0.1.6, to be in a mature state.</p>
-<p>Besides bug fixes, the DNS over TLS transport option, introduced in the previous version, has been fully incorporated in the native stub module and is now truly asynchronous in all its phases; including the TCP and the TLS handshake.</p>
-<p>In addition, a new transport option is introduced with this release: <tt>GETDNS_TRANSPORT_STARTTLS_FIRST_AND_FALL_BACK_TO_TCP_KEEP_CONNECTIONS_OPEN</tt></p>
-<p>A list of servers supporting TLS on port 1021 and STARTTLS on port 53 for testing purposes is available on <a href="https://portal.sinodun.com/wiki/display/TDNS/DNS-over-TLS+test+servers">the sinodun portal</a></p>
+
+Dear all,
+
+I am pleased to announce version 0.2.0 of our getdns API implementation.
+
+This release has its intermediate version bumped to indicate that we consider the native stub operation, introduced in version 0.1.6, to be in a mature state.
+
+Besides bug fixes, the DNS over TLS transport option, introduced in the previous version, has been fully incorporated in the native stub module and is now truly asynchronous in all its phases; including the TCP and the TLS handshake.
+
+In addition, a new transport option is introduced with this release: `GETDNS_TRANSPORT_STARTTLS_FIRST_AND_FALL_BACK_TO_TCP_KEEP_CONNECTIONS_OPEN`
+
+A list of servers supporting TLS on port 1021 and STARTTLS on port 53 for testing purposes is available on [the sinodun portal](https://portal.sinodun.com/wiki/display/TDNS/DNS-over-TLS+test+servers)
 ---
 changelog:
 * 2015-05-21: Version 0.2.0

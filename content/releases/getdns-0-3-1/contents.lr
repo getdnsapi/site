@@ -9,11 +9,15 @@ archive: yes
 sha256: 58fd791187d5fd158ba7db1b5f29d4b0274583447f405577c758c7c7751e8883
 ---
 announcement:
-<p>Dear All,</p>
-<p>We have an emergency release, version 0.3.1 of getdns.  This release fixes a single bug which will cause getdns to hang on querying RR types with repeating rdata fields.</p>
-<p>The previous release contained a fix that would allow for empty rdata fields.  This happens with the "type bitmap" rdata field with <tt>NSEC3</tt> RRs on empty non terminals.  Parsing that properly is essential for sound DNSSEC validation.  Unfortunately the fix introduced a new bug, which allowed repeating rdata fields to be empty too.  Parsing such RR types would lead to an infinite list of empty rdata fields.  This emergency release has this fixed.</p>
-<p>We apologize our current test suite did not catch this problem.  We will address this by extending our test coverage for all supported RR types before next release.</p>
-<p>We urgently advise to update the previous version to v0.3.1 immediately.</p>
+
+Dear All,
+
+We have an emergency release, version 0.3.1 of getdns.  This release fixes a single bug which will cause getdns to hang on querying RR types with repeating rdata fields.
+
+The previous release contained a fix that would allow for empty rdata fields.  This happens with the "type bitmap" rdata field with `NSEC3` RRs on empty non terminals.  Parsing that properly is essential for sound DNSSEC validation.  Unfortunately the fix introduced a new bug, which allowed repeating rdata fields to be empty too.  Parsing such RR types would lead to an infinite list of empty rdata fields.  This emergency release has this fixed.
+
+We apologize our current test suite did not catch this problem.  We will address this by extending our test coverage for all supported RR types before next release.
+We urgently advise to update the previous version to v0.3.1 immediately.
 ---
 changelog:
 * 2015-07.18: Version 0.3.1

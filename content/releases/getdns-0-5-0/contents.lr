@@ -10,13 +10,19 @@ sha256: b0680170249ba9987b8af4c7f2bc64833fe6396ecd66565c991b33775f78ccdb
 ---
 announcement:
 
-<p>Dear All,</p>
-<p>We have a new release version 0.5.0 of getdns.</p>
-<p>This is mostly a new features release</p>
-<p>This release does all crypto operations using OpenSSL directly and has no longer a dependency on libldns.  Note however that libldns is still used by the unit tests.</p>
-<p>Following the October 2015 release of the API specification, the library can now access deeply embedded data structure members in <tt>getdns_dict</tt>s by using JSON Pointers as the name to be accessed (<a href="https://tools.ietf.org/html/rfc6901">RFC 6901</a>).  This works for the getter and setter functions (<tt>getdns_dict_get_*</tt> and <tt>getdns_dict_set_*</tt>).</p>
-<p>DNS over TLS now uses the default IANA assigned port number for domain-s: 853.</p>
-<p>This release includes an experimental implementation of upstream server hostname authentication for TLS connections in stub mode (note that the default behaviour has not changed compared to the 0.3 release).  A new, non-standard function <tt>getdns_context_set_tls_authentication()</tt> can be used to set the authentication to <tt>GETDNS_AUTHENTICATION_HOSTNAME</tt> which requires that a server provides a valid certificate (validated using the default CA repository) and that the hostname specified in the "<tt>tls_auth_name</tt>" field of the upstream dict matches that in the certificate.  The authentication setting is only enforced when the transport list contains only <tt>GETDNS_TRANSPORT_TLS</tt> and in this case if authentication fails for all upstreams, queries will fail.  If the transport list contains other clear text transports then opportunistic TLS will be performed which does not require authentication of the TLS connection.  Examples of usage using the <tt>getdns_query</tt> tool can be found in the <a href="https://github.com/getdnsapi/getdns/blob/v0.5.0/src/test/tests_transports.sh"><tt>tests_transports.sh</tt></a> script in the <tt>test</tt> directory.</p>
+Dear All,
+
+We have a new release version 0.5.0 of getdns.
+
+This is mostly a new features release
+
+This release does all crypto operations using OpenSSL directly and has no longer a dependency on libldns.  Note however that libldns is still used by the unit tests.
+
+Following the October 2015 release of the API specification, the library can now access deeply embedded data structure members in [`getdns_dict`s](/documentation/spec/#2-data-structures-in-the-api) by using JSON Pointers as the name to be accessed ([RFC 6901](https://tools.ietf.org/html/rfc6901)).  This works for the getter and setter functions (`getdns_dict_get_*` and `getdns_dict_set_*`).
+
+DNS over TLS now uses the default IANA assigned port number for domain-s: 853.
+
+This release includes an experimental implementation of upstream server hostname authentication for TLS connections in stub mode (note that the default behaviour has not changed compared to the 0.3 release).  A new, non-standard function [`getdns_context_set_tls_authentication()`](/functions/getdns_context_set_tls_authentication.html) can be used to set the authentication to `GETDNS_AUTHENTICATION_HOSTNAME` which requires that a server provides a valid certificate (validated using the default CA repository) and that the hostname specified in the "`tls_auth_name`" field of the upstream dict matches that in the certificate.  The authentication setting is only enforced when the transport list contains only `GETDNS_TRANSPORT_TLS` and in this case if authentication fails for all upstreams, queries will fail.  If the transport list contains other clear text transports then opportunistic TLS will be performed which does not require authentication of the TLS connection.  Examples of usage using the `getdns_query` tool can be found in the [`tests_transports.sh`](https://github.com/getdnsapi/getdns/blob/v0.5.0/src/test/tests_transports.sh) script in the `test` directory.
 ---
 changelog:
 

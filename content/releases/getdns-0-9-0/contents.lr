@@ -10,90 +10,110 @@ archive: yes
 sha256: b6b73a501ee79c0fafb0721023eb3a5d0e1bfa047fbe65302db278cb956bd1fe
 ---
 announcement:
-<p>Dear All,</p>
-<p>We have a special New Year's Eve release, version 0.9.0 of getdns.</p>
-<p>This release brings the implementation on par with the December 2015 version of the specification and has (almost) all of the still remaining functionality from the specification implemented.  These include:</p>
-<dl><dt>Respecting the given dns root servers in recursive resolution modus</dt>
-    <dd>See this in action with <tt>getdns_query</tt>, for example with the root servers of the Yeti DNS Project (<a href="https://yeti-dns.org/">https://yeti-dns.org/</a>):<br />
-    <blockquote><tt>getdns_query -f yeti.key -R yeti.hints getdnsapi.net A +dnssec_return_status</tt>
-    </blockquote>
-    Where <tt>yeti.key</tt> came from:<br />
-    <a href="https://github.com/BII-Lab/Yeti-Project/raw/master/domain/KSK.pub">https://github.com/BII-Lab/Yeti-Project/raw/master/domain/KSK.pub</a><br />
-    and <tt>yeti.hints</tt> came from:<br />
-    <a href="https://github.com/BII-Lab/Yeti-Project/raw/master/domain/named.cache">https://github.com/BII-Lab/Yeti-Project/raw/master/domain/named.cache</a>
-    </dd>
 
-    <dt>TSIG authentication.</dt>
-    <dd>Specification of upstreams with <tt>getdns_query</tt> has been extended to configure a TSIG name and secret.  From the <tt>getdns_query</tt> help text:
-    <blockquote>
-	<tt>getdns_query [&lt;option&gt; ...] [@&lt;upstream&gt; ...] [+&lt;extension&gt; ...] [&lt;name&gt;] [&lt;type&gt;]</tt><br />
-	<tt>upstreams: @&lt;ip&gt;[%&lt;scope_id&gt;][@&lt;port&gt;][#&lt;tls port&gt;][~&lt;tls name&gt;][^&lt;tsig spec&gt;]</tt><br />
-	<tt>tsig spec: [&lt;algorithm&gt;:]&lt;name&gt;:&lt;secret in Base64&gt;</tt>
-    </blockquote>
-    For example:
-    <blockquote>
-    <tt>getdns_query -s @185.49.141.37^hmac-md5.tsigs.getdnsapi.net:16G69OTeXW6xSQ== getdnsapi.net SOA</tt>
-    </blockquote>
-    You can check the query was <tt>TSIG</tt> authenticated by looking for the <tt>tsig_status</tt> key in the replies in the <tt>replies_tree</tt>.
-    </dd>
-    <dt>Operation of suffixes and the "<tt>append_name</tt>" setting.</dt>
-    <dd>Options have been added to <tt>getdns_query</tt> to try this out too.  A list of suffixes to be tried can be given with the <tt>-Z</tt> option, so that this query:
-    <blockquote><tt>
-    getdns_query -Z getdnsapi.net,com -A www.verisignlabs
-    </tt></blockquote>
-    Will first try to get the addresses for <tt>www.verisignlabs.getdnsapi.net</tt> and will then try and return the successfull lookup of the addresses for <tt>www.verisignlabs.com</tt></dd>
-    <dt>The <tt>add_warning_for_bad_dns</tt> extension.</dt>
-    <dd>For example, this query:
-    <blockquote><tt>
-    	getdns_query +add_warning_for_bad_dns _443._tcp.www.nlnetlabs.nl TXT
-    </tt></blockquote>
-    will result in having the following <tt>"bad dns"</tt> list in the reply in the <tt>replies_tree</tt>:
-    <blockquote><tt>
-    "bad_dns": [ GETDNS_BAD_DNS_CNAME_RETURNED_FOR_OTHER_TYPE<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;, GETDNS_BAD_DNS_ALL_NUMERIC_LABEL ]
-    </tt></blockquote>
-    <dt>
-</dl>
-<p>Other new features and noteworthy improvements are:
-<dl><dt>Functions to convert <tt>getdns_dict</tt>s representing resource records to and from wire- and zone file format.</dt>
-    <dd>Also zone files can be read into a <tt>getdns_list</tt> of <tt>getdns_dict</tt>s representing the resource records in that zone file.  These lists can then conveniently be used with (for example) <tt>getdns_context_set_dns_root_servers()</tt> and <tt>getdns_context_set_dnssec_trust_anchors()</tt>.
-    <p>There is brief doxygen documentation for the conversion functions here:<br />
-    <a href="https://getdnsapi.net/rr_dict2wire">https://getdnsapi.net/rr_dict2wire</a>.</p>
-    <p>Example usage can be found in the unit test package for these functions:<br />
-    <a href="https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.c">https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.c</a><br />
-    The output produced by this example program:<br />
-<a href="https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.good">https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.good</a>
-    </p></dd>
-    <dt>TCP Fast Open support whenever available on the platform (including Mac-OS X (new)).</dt>
-    <dt>Client side <tt>edns-tcp-keepalive</tt> support</dt>
-    <dt>Pinning of upstream certificate's public keys with pinsets (with TLS transport)</dt>
-    <dd>Configuration is done per-upstream, with an additional member of the upstream object, <tt>tls_pubkey_pinset</tt>.  This is a list of dicts,  each of which describes a public key pin, which looks like this:
-<blockquote><tt>
-{<br />
-&nbsp;&nbsp;"address_data": &lt;bindata for 185.49.141.38&gt;,<br />
-&nbsp;&nbsp;"address_type": &lt;bindata of "IPv4"&gt;,<br />
-&nbsp;&nbsp;"tls_pubkey_pinset":<br />
-&nbsp;&nbsp;[<br />
-&nbsp;&nbsp;&nbsp;&nbsp;{<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"digest": &lt;bindata of "sha256"&gt;,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": &lt;bindata of 0x17d099f483436ddfb6791428cd8aaa6d...&gt;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;},<br />
-&nbsp;&nbsp;&nbsp;&nbsp;{<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"digest": &lt;bindata of "sha256"&gt;,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": &lt;bindata of 0x7e8c59467221f606695a797ecc488a6b...&gt;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;}<br />
-&nbsp;&nbsp;]<br />
-}
-</tt></blockquote>
-There is a new argument for <tt>getdns_query</tt>, <tt>-K</tt>, to specify pins.
-All pins are applied to all upstreams.  For example:
-<blockquote><tt>
-getdns_query -s -K 'pin-sha256="foxZRnIh9gZpWnl+zEiKa0EJ2rdCGroMWm02gaxSc9S="' @185.49.141.38~getdnsapi.net -L -m
-</tt></blockquote>
-    </dd>
-    <dt>Initial support for Windows</dt>
-</dl>
-<p>Besides these new functionalities, a few bugs have been fixed.  For a complete overview see the ChangeLog below.</p>
+Dear All,
+
+We have a special New Year's Eve release, version 0.9.0 of getdns.
+
+This release brings the implementation on par with the December 2015 version of the specification and has (almost) all of the still remaining functionality from the specification implemented.  These include:
+
+  * Respecting the given dns root servers in recursive resolution modus
+    > See this in action with `getdns_query`, for example with the root servers of the Yeti DNS Project (<https://yeti-dns.org/>):
+    > ```
+    > getdns_query -f yeti.key -R yeti.hints getdnsapi.net A +dnssec_return_status
+    > ```
+    > Where `yeti.key` came from:<br />
+    > <https://github.com/BII-Lab/Yeti-Project/raw/master/domain/KSK.pub>
+    > and `yeti.hints` came from:
+    > <https://github.com/BII-Lab/Yeti-Project/raw/master/domain/named.cache>
+
+
+  * TSIG authentication.
+    > Specification of upstreams with `getdns_query` has been extended to configure a TSIG name and secret.  From the `getdns_query` help text:
+    > ```
+    > getdns_query [<option> ...] [@<upstream> ...] [+<extension> ...] [<name>] [<type>]
+    > upstreams: @<ip>[%<scope_id>][@<port>][#<tls port>][~<tls name>][^<tsig spec>]
+    > tsig spec: [<algorithm>:]<name>:<secret in Base64>
+    > ```
+    > For example:
+    > ```
+    > getdns_query -s @185.49.141.37^hmac-md5.tsigs.getdnsapi.net:16G69OTeXW6xSQ== getdnsapi.net SOA
+    > ```
+    > You can check the query was `TSIG` authenticated by looking for the `tsig_status` key in the replies in the `replies_tree`.
+
+
+  * Operation of suffixes and the "`append_name`" setting.
+    > Options have been added to `getdns_query` to try this out too.  A list of suffixes to be tried can be given with the `-Z` option, so that this query:
+    > ```
+    > getdns_query -Z getdnsapi.net,com -A www.verisignlabs
+    > ```
+    > Will first try to get the addresses for `www.verisignlabs.getdnsapi.net` and will then try and return the successfull lookup of the addresses for `www.verisignlabs.com`
+
+
+  * The `add_warning_for_bad_dns` extension.
+    > For example, this query:
+    > ```
+    > getdns_query +add_warning_for_bad_dns _443._tcp.www.nlnetlabs.nl TXT
+    > ```
+    > will result in having the following `"bad dns"` list in the reply in the `replies_tree`:
+    > ```
+    > "bad_dns": [ GETDNS_BAD_DNS_CNAME_RETURNED_FOR_OTHER_TYPE
+    >            , GETDNS_BAD_DNS_ALL_NUMERIC_LABEL ]
+    > ```
+
+
+Other new features and noteworthy improvements are:
+
+  * Functions to convert `getdns_dict`s representing resource records to and from wire- and zone file format.
+    > Also zone files can be read into a `getdns_list` of `getdns_dict`s representing the resource records in that zone file.  These lists can then conveniently be used with (for example) [`getdns_context_set_dns_root_servers()`](/functions/getdns_context_set_dns_root_servers.html) and [`getdns_context_set_dnssec_trust_anchors()`](/functions/getdns_context_set_dnssec_trust_anchors.html).
+    >
+    > There is brief doxygen documentation for the conversion functions here:
+    * <https://getdnsapi.net/functions/getdns_rr_dict2wire.html>.
+    >
+    > Example usage can be found in the unit test package for these functions:
+    * <https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.c>
+    >
+    > The output produced by this example program:
+    * <https://github.com/getdnsapi/getdns/blob/release/v0.9.0/src/test/tpkg/260-conversion-functions.tpkg/260-conversion-functions.good>
+
+
+  * TCP Fast Open support whenever available on the platform (including Mac-OS X (new)).
+
+
+  * Client side `edns-tcp-keepalive` support
+
+
+  * Pinning of upstream certificate's public keys with pinsets (with TLS transport)
+    > Configuration is done per-upstream, with an additional member of the upstream object, `tls_pubkey_pinset`.  This is a list of dicts,  each of which describes a public key pin, which looks like this:
+    > ```
+    > {
+    >   "address_data": <bindata for 185.49.141.38>,
+    >   "address_type": <bindata of "IPv4">,
+    >   "tls_pubkey_pinset":
+    >   [
+    >     {
+    >       "digest": <bindata of "sha256">,
+    >       "value": <bindata of 0x17d099f483436ddfb6791428cd8aaa6d...>
+    >     },
+    >     {
+    >       "digest": <bindata of "sha256">,
+    >       "value": <bindata of 0x7e8c59467221f606695a797ecc488a6b...>
+    >     }
+    >   ]
+    > }
+    > ```
+    >
+    > There is a new argument for `getdns_query`, `-K`, to specify pins.
+    > All pins are applied to all upstreams.  For example:
+    > ```
+    > getdns_query -s -K 'pin-sha256="foxZRnIh9gZpWnl+zEiKa0EJ2rdCGroMWm02gaxSc9S="' @185.49.141.38~getdnsapi.net -L -m
+    > ```
+
+
+  * Initial support for Windows
+
+
+Besides these new functionalities, a few bugs have been fixed.  For a complete overview see the ChangeLog below.
 ---
 changelog:
 * 2015-12-31: Version 0.9.0

@@ -1,0 +1,17 @@
+--- src/dnssec.c.orig	2015-09-04 11:11:21.000000000 +0200
++++ src/dnssec.c	2015-09-08 11:27:27.739813613 +0200
+@@ -1065,6 +1065,14 @@
+ 		q_rrset.name = _getdns_rdf_if_or_as_decompressed(
+ 				rdf, cname_spc, &cname_len);
+ 	}
++
++	/* If the qtype was a CNAME, and we got one, we'r done.
++	 * We asked for it directly, so no redirection applies.
++	 * Otherwise we have to check the referred to name/qtype.
++	 */
++	if (qtype == GETDNS_RRTYPE_CNAME && q_rrset.name != qname)
++		return;
++
+ 	q_rrset.rr_type  = qtype;
+ 	if (!(rr = rrtype_iter_init(&rr_spc, &q_rrset))) {
+ 		/* No answer for the question.  Add a head for this rrset

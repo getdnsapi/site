@@ -17,14 +17,14 @@ Updates:
 * `getdns_query` is promoted to be a a first class citizen of the getdns suite and it is relocated to `src/tools` and built by default.
 * The 1.1 release exposes several function prototypes (prototyped in getdns_query) to the library user.  Details can be found in the [1.1 doxygen documentation](/doxygen/) for:
   * functions to convert text strings to the getdns native types:
-`getdns_str2dict()`, `getdns_str2dict()`, `getdns_str2bindata()` and `getdns_str2int()`
+[`getdns_str2dict()`](/functions/getdns_str2dict.html), [`getdns_str2dict()`](/functions/getdns_str2dict.html), [`getdns_str2bindata()`](/functions/getdns_str2bindata.html) and [`getdns_str2int()`](/functions/getdns_str2int.html)
 (Note that the expected input is similar, but not precisely JSON)
-  * a `getdns_context_config()` function that configures a context with settings provided in a getdns_dict.
+  * a [`getdns_context_config()`](/functions/getdns_context_config.html) function that configures a context with settings provided in a getdns_dict.
 This can reduce the amount of code needed to setup a context in a C program dramatically.
 It also provides default values for extensions and allows the trust anchor files to be directly specified.
-  * a `getdns_context_set_listen_addresses()` function, that allows the user to register a request handler function and list of addresses that will be listened on when the eventloop is run.
+  * a [`getdns_context_set_listen_addresses()`](/functions/getdns_context_set_listen_addresses.html) function, that allows the user to register a request handler function and list of addresses that will be listened on when the eventloop is run.
 The request handler function will be called when a DNS requests arrives, with the request in getdns reply dict format.
-The request handler may construct a response to the request and eventually has to call `getdns_reply()` with that response (or `NULL` to cancel) to answer the request.
+The request handler may construct a response to the request and eventually has to call [`getdns_reply()`](/functions/getdns_reply.html) with that response (or `NULL` to cancel) to answer the request.
   * Enhancements to the logic used to select connection based upstream transports (TCP, TLS) to improve robustness and re-use of connections/upstreams.  This facilitates using getdns locally as a DNS-over-TLS stub resolver.
 
 Documentation is available at:

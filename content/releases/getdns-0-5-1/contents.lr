@@ -9,27 +9,34 @@ archive: yes
 sha256: 273659b3a9236e8f9ae1e69dd37cd2f11554b156f33162c952f40221c1feeaa3
 ---
 announcement:
-<p>Dear All,</p>
-<p>We have special RIPE71 release, version 0.5.1 of getdns.</p>
-<p>This release contains all contributions added during the hackathon helt at the IETF94 in Yokahama; carefully reviewed and polished.</p>
-<p>The included contributions are:</p>
-<dl><dt>EDNS(0) padding option</dt>
-    <dd>With this option, the query size will be padded to be a multiple of a block size when queried over <tt>GETDNS_TRANSPORT_TLS</tt> transport, to eliminate guessing the query by analyzing query sizes.
-         The block size can be set with <tt>getdns_context_set_tls_query_padding_blocksize()</tt> function.</dd>
-    <dt>An EDNS client subnet private option</dt>
-    <dd>With this option EDNS client subnet aware upstreams are asked to not reveal the originating network of the query.</dd>
-    <dt>The <tt>return_call_debugging</tt> extensions</dt>
-    <dd>This extension was already in the API, but had not been implemented yet.
-        It returns "meta" information about a query in the response dict (under the name "<tt>call_debugging</tt>".
-	On top of the returned information which was already described in the API spec, this version also returns information about the transport eventually used to perform the query, and (if applicable) whether authentication succeeded.</dd>
-    <dt>A <tt>dnssec_roadblock_avoidance</tt> extension</dt>
-    <dd>When set, the library will work in stub resolution mode and try to get a by DNSSEC validation assessed answer.
-        On BOGUS answers the library will retry recursive resolution mode.
-	This is the simplest form of passive roadblock detection and avoidance.
-	For a very extensive overview of the types of roadblock, see: draft-ietf-dnsop-dnssec-roadblock-avoidance.
-        Use the <tt>--enable-draft-dnssec-roadblock-avoidance</tt> option to configure to compile with this extension.</dd>
-</dl>
-<p>Besides these additions contains a few bugfixes too.  For an complete overview see the ChangeLog.</p>
+Dear All,
+
+We have special RIPE71 release, version 0.5.1 of getdns.
+
+This release contains all contributions added during the hackathon helt at the IETF94 in Yokahama; carefully reviewed and polished.
+
+The included contributions are:
+
+  * EDNS(0) padding option
+    > With this option, the query size will be padded to be a multiple of a block size when queried over `GETDNS_TRANSPORT_TLS` transport, to eliminate guessing the query by analyzing query sizes.
+    > The block size can be set with [`getdns_context_set_tls_query_padding_blocksize()`](/functions/getdns_context_set_tls_query_padding_blocksize.html) function.
+
+  * An EDNS client subnet private option
+    > With this option EDNS client subnet aware upstreams are asked to not reveal the originating network of the query.
+
+  * The `return_call_debugging` extensions
+    > This extension was already in the API, but had not been implemented yet.
+    > It returns "meta" information about a query in the response dict (under the name "`call_debugging`".
+    > On top of the returned information which was already described in the API spec, this version also returns information about the transport eventually used to perform the query, and (if applicable) whether authentication succeeded.
+
+  * A `dnssec_roadblock_avoidance` extension
+    > When set, the library will work in stub resolution mode and try to get a by DNSSEC validation assessed answer.
+    > On BOGUS answers the library will retry recursive resolution mode.
+    > This is the simplest form of passive roadblock detection and avoidance.
+    > For a very extensive overview of the types of roadblock, see: [draft-ietf-dnsop-dnssec-roadblock-avoidance](https://tools.ietf.org/html/draft-ietf-dnsop-dnssec-roadblock-avoidance).
+    > Use the `--enable-draft-dnssec-roadblock-avoidance` option to configure to compile with this extension.
+
+Besides these additions contains a few bugfixes too.  For an complete overview see the ChangeLog.
 ---
 changelog:
 * 2015-11-18: Version 0.5.1
