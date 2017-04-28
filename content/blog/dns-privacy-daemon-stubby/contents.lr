@@ -41,7 +41,7 @@ It may be necessary to install [1.0.2 from source](https://openssl.org/source/op
 
 ### OS X
 
-It is recommended to [install OpenSSL using homebrew](http://brewformulas.org/Openssl), in which case use the following in the `configure` line in step 1.3 below:
+It is recommended to [install OpenSSL using homebrew](http://brewformulas.org/Openssl), in which case use the following in the `configure` line in the build step below:
 
 ```sh
 --with-ssl=/usr/local/opt/openssl/
@@ -135,11 +135,16 @@ A custom port can be specified by adding the `tls_port:` attribute to the `upstr
 # Run Stubby
 
 
-Simply invoke Stubby on the command line. By default it runs in the foreground, the `-g` flag runs it in the background. The pid file is `/var/run/stubby.pid`
+Simply invoke Stubby on the command line. By default it runs in the foreground, the `-g` flag runs it in the background. 
 
 ```sh
 > sudo stubby
 ```
+
+* The logging is currently crude and simply writes to stderr. (We are working on making this better!)
+   * If don't want to see any logging for some reason then include the following on the command line: `2>/dev/null`
+   * If you build with both stub and daemon logging and want to see only the daemon logging use: `2>&1 >/dev/null |  grep 'DAEMON' `
+* The pid file is /var/run/stubby.pid
 
 # Test Stubby
 
