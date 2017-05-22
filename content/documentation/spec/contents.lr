@@ -744,10 +744,9 @@ query. For example, if the application also includes any of the DNSSEC extension
 sure that the OPT resource record sets the resource record appropriately, making the needed changes
 to the settings from the `add_opt_parameters` extension.
 
-The use of this extension can conflict with the values in the DNS context. For example,
-the default for an OS might be a maximum payload size of 65535, but the extension might specify
-1550. In such a case, the API will honor the values stated in the extension, but will honor the
-values from the DNS context if values are not given in the extension.
+The use of this extension can conflict with the values in the DNS context.
+For example, the default for an OS might be a maximum payload size of 65535, but the extension might specify 1550.
+In such a case, the API will honor the values stated in the extension, but will honor the values from the DNS context if values are not given in the extension.  
 
 ## 3·4 Getting Warnings for Responses that Violate the DNS Standard
 
