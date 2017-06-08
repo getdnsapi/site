@@ -8,13 +8,13 @@ Dear all,
 
 We have a release candidate for a quickfix release version 1.1.1 of getdns.
 
-When working on a [brew] formula for [Stubby], we discovered that the default configuration file, [`stubby.conf`] was missing from the distribution tarball.
+When working on the [brew] formula for [Stubby], we discovered that the default configuration file, [`stubby.conf`] was missing from the distribution tarball.
 This release is just to fix this omission and has no further big changes.
 
 Besides the [`stubby.conf`] file, this release also includes a [script](https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby-setdns-macos.sh) that helps with setting up [Stubby] on a Mac, and [guidance](https://github.com/getdnsapi/getdns/tree/develop/systemd) for integration with [`systemd`].
 
 Since our last release we have steadily improved and added unit tests, and significantly increased the code covered by them.
-This has let to a few bugfixes which are also included with this release.
+This has led to a few bugfixes which are also included with this release.
 
 For a more complete overview also see the ChangeLog section below.
 
