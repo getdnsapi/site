@@ -31,7 +31,7 @@ _discoverable: yes
 ---
 date: 2017-06-08
 ---
-teaser: Inclusing of the stubby.conf file
+teaser: stubby.conf and DNS setup script + guidance
 ---
 image: dont-forget.jpg
 ---
