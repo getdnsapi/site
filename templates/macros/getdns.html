@@ -260,10 +260,10 @@
     {% for attachement in thing.attachments %}
       {% if attachement.record_label == 'getdns-' + thing.version + '.tar.gz' %}
         <div class="row">
-          <div class="col-xs-2 col-md-3 thing-label">
+          <div class="hidden-xs hidden-sm col-md-3 thing-label">
 	    <p style="margin-top: 1em"><b>Download:</b></p>
 	  </div>
-          <div class="col-xs-10 col-md-9">
+          <div class="col-md-9">
 	    <div class="btn-group btn-group btn-group-lg">
               <a href="{{ attachement|url }}" class="btn btn-default"><span class="glyphicon glyphicon-download-alt"></span> &nbsp; {{ attachement.record_label }}</a>
               {% for signature in thing.attachments %}
