@@ -1,12 +1,12 @@
-version: 1.1.1rc1
+version: 1.1.1
 ---
-title: First release candidate for getdns-1.1.1
+title: getdns-1.1.1 release
 ---
 announcement:
 
 Dear all,
 
-We have a release candidate for a quickfix release version 1.1.1 of getdns.
+We are pleased to announce release 1.1.1 of our library implementation of the getdns API.
 
 When working on the [brew] formula for [Stubby], we discovered that the default configuration file, [`stubby.conf`] was missing from the distribution tarball.
 This release is just to fix this omission and has no further big changes.
@@ -18,26 +18,24 @@ This has led to a few bugfixes which are also included with this release.
 
 For a more complete overview also see the ChangeLog section below.
 
-Please review this release candidate carefully, if all is well, the actual release will follow Thursday the 15th of June.
-
-
 [Stubby]: /blog/dns-privacy-daemon-stubby/
 [brew]: https://brew.sh/
 [`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
 [`systemd`]: https://freedesktop.org/wiki/Software/systemd/
 
 ---
-_discoverable: no
+_discoverable: yes
 ---
-date: 2017-06-08
+date: 2017-06-15
 ---
 teaser: stubby.conf and DNS setup script + guidance
 ---
-image: dont-forget.jpg
+image: forget-me-not.jpg
 ---
 changelog:
-
-* 2017-06-??: Version 1.1.1
+* 2017-06-15: Version 1.1.1
+  * Bugfix #306 hanging/segfaulting on certain (IPv6) upstream failures
+  * Spelling fix s/receive/receive.  Thanks Andreas Schulze.
   * Added stubby-setdns-macos.sh script to support Homebrew formula
   * Include stubby.conf in the districution tarball
   * Bugfix #286 reschedule reused listening addresses
@@ -51,8 +49,6 @@ changelog:
   * Also check for memory leaks with advances server capabilities.
   * Bugfix convert IP string to IP dict with getdns_str2dict() directly.
 ---
-sha256: f63340b1d05410b875217c6abd7066586fc55a811db4ae90ffd01d2240e05e57
+sha256: fa414c30d5f2d2b2453b5cec77362b4cc0f44d440be5893233748d82bd6a1a56
 ---
 tags: stubby
----
-_hidden: yes
