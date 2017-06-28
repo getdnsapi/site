@@ -13,7 +13,7 @@ More specifically, libgetdns was configured to output statistics about upstreams
 
 To allow to display upstream statistics without the necessity for a specifically configured library, this release introduces a single new feature: the ability to register a callback function that will fire when certain subsystems have a log message of a certain severity.
 Which subsystems will fire the callback can be specified with the registration function.
-Currently this only applies to the subsystem involving upstream statistic, but in the future the log messages for the other subsystems will be provided in a similar fashion.
+Currently this is only available for upstream statistics, but in the future the log messages for the other subsystems will be provided in a similar fashion.
 
 Besides this single feature, we have a few bugfixes in this release.
 The most prominent one fixing fallbacks on certain error conditions for stateful transports on MacOS.
