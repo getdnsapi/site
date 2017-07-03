@@ -1,0 +1,50 @@
+version: 1.1.2
+---
+title: getdns-1.1.2 release
+---
+announcement:
+
+Dear all,
+
+We have a quickfix release version 1.1.2 of getdns.
+
+The [brew] formula for [Stubby] installed and configured a version of the getdns library that would not fit other applications using getdns very well.
+More specifically, libgetdns was configured to output statistics about upstreams.
+
+To allow to display upstream statistics without the necessity for a specifically configured library, this release introduces a single new feature: the ability to register a callback function that will fire when certain subsystems have a log message of a certain severity.
+Which subsystems will fire the callback can be specified with the registration function.
+Currently this is only available for upstream statistics, but in the future the log messages for the other subsystems will be provided in a similar fashion.
+
+Besides this single feature, we have a few bugfixes in this release.
+The most prominent one fixing fallbacks on certain error conditions for stateful transports on MacOS.
+
+For a more complete overview also see the ChangeLog section below.
+
+[Stubby]: /blog/dns-privacy-daemon-stubby/
+[brew]: https://brew.sh/
+[`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
+[`systemd`]: https://freedesktop.org/wiki/Software/systemd/
+---
+_discoverable: yes
+---
+date: 2017-07-03
+---
+teaser: At runtime upstream statistics logging
+---
+image: drink-beer.jpg
+---
+changelog:
+
+* 2017-07-03: Version 1.1.2
+  * Bugfix for parallel make install
+  * Bugfix to trigger event callbacks on socket errors
+  * A getdns_context_set_logfunc() function with which one may
+    register a callback log function for certain library subsystems
+    at certain levels.  Currently this can only be used for
+    upstream stastistics subsystem.
+---
+sha256: 685fbd493601c88c90b0bf3021ba0ee863e3297bf92f01b8bf1b3c6637c86ba5
+---
+tags: stubby
+---
+_hidden: no
