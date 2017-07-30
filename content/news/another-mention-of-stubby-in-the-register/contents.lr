@@ -4,12 +4,12 @@ title: Another mention of Stubby in the register
 ---
 teaser: Stubby in The Register again in an article about IETF pervasive monitoring work
 ---
-archive: no
+archive: yes
 ---
 date: 2016-12-06
 ---
 link: http://www.theregister.co.uk/2016/12/06/ietf_report_card/
 ---
-tags: media, stubby
+tags: media, stubby, dns-privacy
 ---
 image: register2.png

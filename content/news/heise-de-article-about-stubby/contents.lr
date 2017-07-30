@@ -4,12 +4,12 @@ title: heise.de article about Stubby
 ---
 teaser: The popular German online computer magazine Heise.de published an article about Stubby
 ---
-archive: no
+archive: yes
 ---
 date: 2016-11-17
 ---
 link: https://www.heise.de/netze/meldung/IETF-97-Stubby-verspricht-DNS-Privacy-3487287.html
 ---
-tags: media, stubby
+tags: media, stubby, dns-privacy
 ---
 image: heise.png
