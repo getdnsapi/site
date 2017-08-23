@@ -1,0 +1,19 @@
+title: The Usability Challenge for DNS Privacy and End Users
+---
+abstract: 
+---
+date: 2017-02-26
+---
+event: NDSS2017
+---
+event_url: https://www.internetsociety.org/events/ndss-symposium/ndss-symposium-2017/dns-privacy-workshop-2017-programme
+---
+presenters: sara-dickinson, willem-toorop, allison-mankin
+---
+slides_url: /slides/9_Dickinson_NDSS_Usability_Challenges.pdf
+---
+tags: dns-privacy, stubby
+---
+teaser: The usability challenges for Stubby, presented at the NDSS2017
+---
+image: stubby-usec.png
