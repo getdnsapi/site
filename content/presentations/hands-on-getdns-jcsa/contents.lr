@@ -1,0 +1,25 @@
+date: 2017-07-06
+---
+event: JCSA17
+---
+event_url: https://www.afnic.fr/fr/l-afnic-en-bref/actualites/actualites-generales/10597/show/journee-du-conseil-scientifique-de-l-afnic-le-6-juillet-2017-9.html
+---
+presenters: sara-dickinson, willem-toorop
+---
+title: Hands on getdns
+---
+slides_url: /slides/hands-on-getdns-jcsa17.pdf
+---
+teaser: Tutorial at the JCSA17 in Paris
+---
+image: hands-on-jcsa17.png
+---
+abstract:
+
+This tutorial gives an overview of the getdns API: a modern, application-friendly interface that can be used by app developers to more easily query arbitrary data in the DNS without the need to be DNS protocol experts.
+
+We will show concrete programming examples using getdns, including an open-source library implementation of the API in several languages: Python, Javascript and C.
+---
+embedded_video_url: http://eyedo.tv/Live/Embedded?id=18114&chapitreId=9616&autoplay=0&disposition=2&langue=fr&mute=0
+---
+video_url: https://www.eyedo.tv/fr-fr/#!/Live/Detail/18114
