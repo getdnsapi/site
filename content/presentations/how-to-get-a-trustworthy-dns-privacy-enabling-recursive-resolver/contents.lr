@@ -1,0 +1,19 @@
+title: How to get a trustworthy DNS Privacy enabling recursive resolver
+---
+abstract: TLS from the stub client to a trusted recursive resolver can withstand the power and capabilities of a passive pervasive monitor, but it does not withstand an attacker that plugs itself into the path between an individual’s stub client and her trusted recursive resolver. To guarantee connectivity with the intended resolver it needs to be authenticated. In the presentation we give an analysis of the authentication mechanisms currently known to be operable for DNS over TLS and evaluate their usability and robustness metrics.
+---
+date: 2017-02-26
+---
+event: NDSS2017
+---
+event_url: https://www.internetsociety.org/events/ndss-symposium/ndss-symposium-2017/dns-privacy-workshop-2017-programme
+---
+presenters: willem-toorop, benno-overeinder, melinda-shore
+---
+slides_url: /slides/trustworthy-privacy-enabling-resolver.pdf
+---
+tags: dns-privacy
+---
+teaser: Analysis of authentication mechanisms for DNS Privacy enabling recursive resolvers, presented at the NDSS2017
+---
+image: ndss2017.png
