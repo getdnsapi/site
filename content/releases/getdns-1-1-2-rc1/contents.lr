@@ -27,7 +27,7 @@ Please review this release candidate carefully, if all is well, the actual relea
 [`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
 [`systemd`]: https://freedesktop.org/wiki/Software/systemd/
 ---
-_discoverable: no
+_discoverable: yes
 ---
 date: 2017-06-28
 ---
@@ -49,4 +49,6 @@ sha256: 6cee73b5d56806420870e0cd80938d054034792ab5107f058c9f062f4fdb310d
 ---
 tags: stubby
 ---
-_hidden: yes
+_hidden: no
+---
+archive: yes
