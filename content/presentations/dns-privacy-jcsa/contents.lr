@@ -1,0 +1,25 @@
+date: 2017-07-06
+---
+event: JCSA17
+---
+event_url: https://www.afnic.fr/fr/l-afnic-en-bref/actualites/actualites-generales/10597/show/journee-du-conseil-scientifique-de-l-afnic-le-6-juillet-2017-9.html
+---
+presenters: sara-dickinson
+---
+title: DNS Privacy
+---
+slides_url: /slides/AFNIC_JCSA_DNS_Privacy-1.pdf
+---
+teaser: DNS Privacy tutorial at the JCSA17 in Paris
+---
+image: dprive-jcsa17.png
+---
+abstract:
+
+DNS is one of the oldest pieces of protocol "Infrastructure" used in the Internet, and the most widely used. Confidentiality or privacy of users' DNS queries and responses was not included in its design. The DPRIVE working group was created to design a mechanism to add a layer of confidentiality to DNS queries, without adversely impacting the existing DNS protocol or the user base. This talk will discuss the various ways DNS queries are exposed to leakage and surveillance, what has been designed and implemented, and where we are going next.
+---
+embedded_video_url: http://eyedo.tv/Live/Embedded?id=18114&chapitreId=9616&autoplay=0&disposition=2&langue=fr&mute=0
+---
+video_url: https://www.eyedo.tv/fr-fr/#!/Live/Detail/18114
+---
+tags: dns-privacy
