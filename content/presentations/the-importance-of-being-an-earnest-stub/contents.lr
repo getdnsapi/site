@@ -31,6 +31,8 @@ slides_url: /slides/an-earnest-stub.pdf
 ---
 video_url: https://www.youtube.com/watch?v=hr_ziislx74&t=6h59m12s
 ---
+embedded_video_url: https://www.youtube.com/embed/hr_ziislx74?start=25152&end=26620
+---
 tags: dns-privacy, stubby
 ---
 teaser: Presentation at the DNS-OARC26 in Madrid

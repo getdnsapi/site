@@ -1,0 +1,35 @@
+title: dnsprivacy.net - A project to support deployment of DNS-over-TLS services
+---
+abstract:
+
+The DPRIVE Working Group has recently produced several standards relating to DNS-over-TLS as a method for encrypting Stub to recursive communications. Whilst there are several implementations available, deployment is still in the early stages.
+
+Several experiment DNS-over-TLS servers have been running since 2016 and the dnsprivacy.net project is aiming to
+
+  * Increase DNS-over-TLS deployment during 2017
+  * Develop tools to ease deployment and monitoring
+  * Perform research into the practicalities of delivering DNS-over-TLS services
+  * Raise awareness of DNS Privacy with operators and end users
+  * Produce a Best Current Practices guide for operators.
+
+This talk will provide an update on the status of the dnsprivacy.net project and outline in detail the short and medium term goals with the aim of engaging operators in these activities.
+---
+date: 2017-05-15
+---
+event: DNS-OARC26
+---
+event_url: https://indico.dns-oarc.net/event/26/session/4/contribution/10
+---
+presenters: sara-dickinson
+---
+slides_url: /slides/OARC26_dnsprivacy.net.pdf
+---
+video_url: https://www.youtube.com/watch?v=hr_ziislx74&t=6h45m21s
+---
+embedded_video_url: https://www.youtube.com/embed/hr_ziislx74?start=24321&end=25152
+---
+tags: dns-privacy
+---
+teaser: Presentation at the DNS-OARC26 in Madrid
+---
+image: OARC26_dnsprivacy.net.png
