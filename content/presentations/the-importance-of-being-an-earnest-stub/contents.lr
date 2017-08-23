@@ -1,0 +1,38 @@
+title: The Importance of Being an Earnest stub
+---
+abstract:
+
+Many transactions that need to be trustworthy, and possibly encrypted, start with a DNS query. If we consider security from the ground-up, we need to include end users DNS transactions with resolvers in the security realm. The minimal step is DNSSEC where the received data can be verified and validated to be correct and authentic. But if we want to take security and privacy a step further, also the recursive resolver needs to be authenticated and communication with it encrypted.
+
+These requirements put higher demands, on the capabilities and also on the role and responsibilities of stub resolvers, and changes the relationship with and the requirements on the recursive resolvers they use. The first/last mile is changing.
+
+In this presentation we discuss the idea of security from the ground-up, focussing on the versatile stub resolver as designed in the getdns project. Current challenges and solutions to DNSSEC roadblocks are presented, and ideas/design of future developments are outlined.
+
+## Summary
+
+For both DANE and DNS Privacy, stub resolvers need to be able to reliably establish the authenticity of data and the remote end. This alone already involves DNSSEC and/or PKIX validation, and might also involve DNSSEC roadblocks avoidance, discovery and anticipating IPv6-only networks (DNS64/NAT64), and reliable trust requirements maintenance (i.e. the KSK rollover). Furthermore, to correctly perform DANE, applications need to learn from the stub resolver the status of the authentication result.
+
+In this course of the presentation the following topics will be covered:
+
+  * the current techniques stub resolvers have to reliably do DNSSEC,
+  * the changing architectural role of the stub-resolver system-component (Stub as daemon, as library, as both, dbus interface, nsswitch module),
+  * the stub resolver specific challenges with the KSK rollover, and
+  * the implementation status of different stub software with respect to the bullet points above.
+---
+date: 2017-05-15
+---
+event: DNS-OARC26
+---
+event_url: https://indico.dns-oarc.net/event/26/session/4/contribution/24
+---
+presenters: willem-toorop
+---
+slides_url: /slides/an-earnest-stub.pdf
+---
+video_url: https://www.youtube.com/watch?v=hr_ziislx74&t=6h59m12s
+---
+tags: dns-privacy, stubby
+---
+teaser: Presentation at the DNS-OARC26 in Madrid
+---
+image: handbag.jpg
