@@ -1,0 +1,25 @@
+date: 2017-07-16
+---
+event: Tutorial @ IETF99
+---
+event_url: https://ietf.org/meeting/99/tutorials.html
+---
+presenters: sara-dickinson
+---
+title: DNS Privacy
+---
+slides_url: /slides/slides-99-edu-sessh-dns-privacy-tutorial-00.pdf
+---
+teaser: DNS Privacy tutorial at the IETF99 in Prague
+---
+image: dns-privacy-tutorial-ietf99.jpg
+---
+abstract:
+
+DNS is one of the oldest pieces of protocol "Infrastructure" used in the Internet, and the most widely used. Confidentiality or privacy of users' DNS queries and responses was not included in its design. The DPRIVE working group was created to design a mechanism to add a layer of confidentiality to DNS queries, without adversely impacting the existing DNS protocol or the user base. This talk will discuss the various ways DNS queries are exposed to leakage and surveillance, what has been designed and implemented, and where we are going next.
+---
+embedded_video_url: https://www.youtube.com/embed/JnxE5RPnyiE
+---
+video_url: https://www.youtube.com/watch?v=JnxE5RPnyiE
+---
+tags: dns-privacy
