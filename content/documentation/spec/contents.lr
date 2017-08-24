@@ -785,7 +785,7 @@ names:
 * `query_name` (a bindata) is the name that was sent
 * `query_type` (an int) is the type that was queried for
 * `query_to` (a bindata) is the address to which the query was sent
-* `run_time` (a bindata) is the difference between the time the successful
+* `run_time/ms` (a bindata) is the difference between the time the successful
 query started and ended in milliseconds, represented
 as a uint32_t (this does not include time taken for connection set up
 or transport fallback)
