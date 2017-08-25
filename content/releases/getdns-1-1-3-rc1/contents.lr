@@ -11,12 +11,23 @@ We have a release candidate for a bugfix release version 1.1.3 of getdns.
 The [brew] formula for getdns and [Stubby] were conflicting because they both installed [Stubby].
 To resolve, we gave [Stubby] its own repository (<https://github.com/getdnsapi/stubby>) with getdns as a library dependency.
 
-This release *does* include the new Stubby from its own repository too, but it is not build by default anymore.
+This release will allow for two complementary brew formulas.
+  1. One that installs the getdns library and the [`getdns_query`] tool with:
+     ```bash
+     brew install getdns
+     ```
+  2. Another one that installs Stubby and (implicitly) the getdns library:
+     ```bash
+     brew install stubby
+     ```
+
+This release **does** include the new Stubby from its own repository too, but it is not build by default anymore.
 To build Stubby together with the library you must `configure` it with the `--with-stubby` option.
 
 Besides this organizational matter, we have a few fixes for high priority bugs in this release:
   * When UDP upstreams were "temporarily" failing, the upstream selection process would crash when it would come back to the first specified UDP upstream after it initially failed.
-  * High-load multi-threading environments had an serviceability issue, because file descriptors were closed repeatedly when they were finished.  A freshly obtained reused file descriptor might become unusable because it would be closed by another thread immediately.
+  * High-load multi-threading environments had an serviceability issue, because file descriptors were closed repeatedly when they were finished.
+    As a result, a freshly obtained reused file descriptor by some thread could become unusable because it would be closed by another thread immediately.
 
 A few more minor bugs have been addressed with this release too.
 For a complete overview see the ChangeLog section below.
@@ -29,6 +40,7 @@ Please review this release candidate carefully, if all is well, the actual relea
 [brew]: https://brew.sh/
 [`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
 [`systemd`]: https://freedesktop.org/wiki/Software/systemd/
+[`getdns_query`]: /blog/getdns_query/
 ---
 _discoverable: yes
 ---
