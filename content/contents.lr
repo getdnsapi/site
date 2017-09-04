@@ -21,7 +21,7 @@ image: octocat.png
 ----
 link: https://github.com/getdnsapi/getdns/fork
 #### feature ####
-title: Download the 1.1.3 release candidate!
+title: Download the 1.1.3 release!
 ----
 text: The latest source code tarball is available for download  with checksum [here](releases/).
 ----
