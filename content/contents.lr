@@ -11,7 +11,7 @@ text: Stubby is an experimental implementation of a DNS Privacy enabled stub res
 ----
 image: stubby.png
 ----
-link: blog/dns-privacy-daemon-stubby
+link: https://dnsprivacy.org/wiki/x/JYAT
 #### feature ####
 title: Fork me on github
 ----
