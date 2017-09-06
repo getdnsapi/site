@@ -10,6 +10,9 @@ teaser: A reference page on how to get up and running with Stubby!
 ---
 body:
 
+!!!! <h3><span class="glyphicon glyphicon-remove-sign"></span> Take note that this page is no longer updated (last update was August 2017). <br>The documentation for Stubby has moved to [dnsprivacy.org](https://dnsprivacy.org/wiki/x/JYAT).<h3>
+
+
 # About Stubby
 
 Stubby is an application that acts as a local **DNS Privacy stub resolver** (using DNS-over-TLS). Stubby encrypts DNS queries sent from a client machine (desktop or laptop) to a DNS Privacy resolver increasing end user privacy. Stubby is in the early stages of development but is suitable for technical/advanced users. A more generally user-friendly version is on the way!
