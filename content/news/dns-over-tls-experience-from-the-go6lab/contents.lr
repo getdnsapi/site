@@ -1,0 +1,11 @@
+title: DNS over TLS: experience from the Go6lab
+---
+date: 2017-09-05
+---
+link: http://www.internetsociety.org/deploy360/blog/2017/09/dns-over-tls-experience-from-go6lab/
+---
+teaser: Jan Žorž giving Stubby a spin in this excellent article on ISOC's Deploy360 blog
+---
+image: go6lab.png
+---
+tags: media, dns-privacy, stubby
