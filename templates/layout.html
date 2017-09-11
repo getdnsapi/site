@@ -50,6 +50,7 @@
 	     {% set items = ( site.get('/presentations').children|list
 		          + site.get('/releases').children|list
 			  + site.get('/news').children|list
+			  + site.get('/blog').children|list
 			  ) | sort(attribute = 'date', reverse = True)|list %}
              {% for item in items if not item.archive %}
 	       <a href="{{ g.thing_link(item) }}" class="list-group-item news-list-item">

@@ -5,6 +5,15 @@ title: Welcome to getdns!
 features:
 
 #### feature ####
+title: KSK rollover impact
+----
+text: Installations of getdns v1.1.x and earlier with root trust anchors fetched before the 2nd of February 2017 need to refetch before October 11th.  The soon to be released getdns v1.2 will have zero configuration DNSSEC. [Read more](blog/categories/announcements/KSK-rollover-impact-on-getdns/)
+----
+image: anchor.png
+----
+link: blog/categories/announcements/KSK-rollover-impact-on-getdns/
+
+#### feature ####
 title: Stubby
 ----
 text: Stubby is an experimental implementation of a DNS Privacy enabled stub resolver. It is currently suitable for advanced/technical users - all feedback is welcome! Also see [dnsprivacy.org](https://dnsprivacy.org/) for more information on DNS Privacy.
@@ -12,14 +21,6 @@ text: Stubby is an experimental implementation of a DNS Privacy enabled stub res
 image: stubby.png
 ----
 link: https://dnsprivacy.org/wiki/x/JYAT
-#### feature ####
-title: Fork me on github
-----
-text: The code repository for getdns is available at <https://github.com/getdnsapi/getdns>. You can fork from the repository.
-----
-image: octocat.png
-----
-link: https://github.com/getdnsapi/getdns/fork
 #### feature ####
 title: Download the 1.1.3 release!
 ----
@@ -29,13 +30,13 @@ image: fireworks.png
 ----
 link: /getdns-latest.tar.gz
 #### feature ####
-title: Do a Query
+title: Fork me on github
 ----
-text: Perform DNS queries using the web application that is built using getdns and examine the results displayed.
+text: The code repository for getdns is available at <https://github.com/getdnsapi/getdns>. You can fork from the repository.
 ----
-image: query-blue.png
+image: octocat.png
 ----
-link: query/
+link: https://github.com/getdnsapi/getdns/fork
 ---
 carousel:
 

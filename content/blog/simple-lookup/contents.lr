@@ -623,3 +623,5 @@ author: willem-toorop
 tags: json-pointers
 ---
 teaser: Demo of doing an address lookup with getdns both synchronous and asynchronous
+---
+archive: yes

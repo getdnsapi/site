@@ -166,3 +166,5 @@ The `getdns_context` used by `getdns_query` can now also be configured with the 
 author: sara-dickinson
 ---
 teaser: What is getdns_query clarification
+---
+archive: yes

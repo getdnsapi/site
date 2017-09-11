@@ -1,0 +1,57 @@
+title: KSK rollover impact on getdns
+---
+_discoverable: yes
+---
+date: 2017-09-11
+---
+image: anchor.png
+---
+body:
+
+This message is intended to communicate details of how DNSSEC validation done by *getdns* is impacted by the [root Key Signing Key rollover](https://www.icann.org/resources/pages/ksk-rollover) that is in progress and specifically the actual rollover event that takes place on the 11th of October which introduces a new KSK. 
+
+## *getdns* v1.1 and earlier
+
+In the releases to-date *getdns* does **not** have automatic DNSSEC trust-anchor management included within the library.
+When installing *getdns* v1.1 or earlier from source, a message is displayed requesting the manual installation of a root trust-anchor with [`unbound-anchor`] using the command
+```
+> unbound-achor -a <trust_anchor_file>
+```
+The default location of the *`<trust_anchor_file>`* used by *getdns* in this case depends on the value of `sysconfdir` during configuring.  Typically this could be `/usr/local/etc/unbound/getdns-root.key` or `/etc/unbound/getdns-root.key`.
+
+If the most recent manual installation of the root trust-anchor was performed before __2nd Febrary 2017__ and no trust anchor management is performed externally to *getdns*, then another manual installation __MUST be re-run before 11th October__ to obtain the new KSK in order to enable DNSSEC validation to continue after October 11th.
+The easiest way to determine this is to run
+```
+> getdns_query -k
+```
+-- if there is only 1 entry for a DNSKEY then the last update was most likely before 2nd February 2017.
+
+If the most recent manual installation of the root trust-anchor was performed after __2nd Febrary 2017__, then that operation also installed the new KSK and *getdns* is already equiped to perform DNSSEC validation after October 11th.
+This is because *getdns* parses the default trust-anchors file as a zone file and uses all the keys it finds (regardless of any annotations that [`unbound-anchor`] may have added).
+This is true in both stub and full recursive mode.
+
+Also note that when used in a long running procces *getdns* is not aware of updates to the trust-anchor file.
+Long running programs that use *getdns* to perform DNSSEC validation MUST be restarted after the trust-anchors have been manually updated for the changes to take effect.
+
+
+## getdns v1.2
+
+We recognise that a dependency on external or manual trust-anchor management for a library intended for applications is not optimal.
+Ideally applications that want to use DNSSEC validation, for example to perform DANE, would want to be able to rely on an application library to deliver DNSSEC, without requiring additional system configuration.
+Therefore the soon-to-be release version 1.2.0 of *getdns* will include a form of built-in trust-anchor management modelled on [RFC7958](https://tools.ietf.org/html/rfc7958), that is suitable for a resolver library which can not assume reliable up-time and which we have named: *zero configuration DNSSEC.*
+
+With zero configuration DNSSEC, a new set of root trust-anchors will be fetched from <https://data.iana.org/root-anchors/root-anchors.xml> and validated with ICANN when a DNSSEC answer could not be validated and the root DNSKEY set is either seen for the first time or has changed.  
+Details about the precise operation of zero configuration DNSSEC will come with the *getdns* 1.2.0 release announcement.
+
+We strongly recommend upgrading to *getdns* 1.2 as soon as possible for all users who perform DNSSEC validation. Details of the release dates of *getdns* will be announced on the [getdns-users list](/mailman/listinfo/users).
+
+
+[`unbound-anchor`]: https://unbound.net/documentation/unbound-anchor.html
+---
+author: willem-toorop
+---
+tags: announcement
+---
+teaser: How does the upcoming root KSK impact getdns
+---
+categories: announcements
