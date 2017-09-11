@@ -19,18 +19,18 @@ When installing *getdns* v1.1 or earlier from source, a message is displayed req
 ```
 The default location of the *`<trust_anchor_file>`* used by *getdns* in this case depends on the value of `sysconfdir` during configuring.  Typically this could be `/usr/local/etc/unbound/getdns-root.key` or `/etc/unbound/getdns-root.key`.
 
-If the most recent manual installation of the root trust-anchor was performed before __2nd Febrary 2017__ and no trust anchor management is performed externally to *getdns*, then another manual installation __MUST be re-run before 11th October__ to obtain the new KSK in order to enable DNSSEC validation to continue after October 11th.
+If the most recent manual installation of the root trust-anchor was performed before __2nd February 2017__ and no trust anchor management is performed externally to *getdns*, then another manual installation __MUST be re-run before 11th October__ to obtain the new KSK in order to enable DNSSEC validation to continue after October 11th.
 The easiest way to determine this is to run
 ```
 > getdns_query -k
 ```
 -- if there is only 1 entry for a DNSKEY then the last update was most likely before 2nd February 2017.
 
-If the most recent manual installation of the root trust-anchor was performed after __2nd Febrary 2017__, then that operation also installed the new KSK and *getdns* is already equiped to perform DNSSEC validation after October 11th.
+If the most recent manual installation of the root trust-anchor was performed after __2nd February 2017__, then that operation also installed the new KSK and *getdns* is already equipped to perform DNSSEC validation after October 11th.
 This is because *getdns* parses the default trust-anchors file as a zone file and uses all the keys it finds (regardless of any annotations that [`unbound-anchor`] may have added).
 This is true in both stub and full recursive mode.
 
-Also note that when used in a long running procces *getdns* is not aware of updates to the trust-anchor file.
+Also note that when used in a long running process *getdns* is not aware of updates to the trust-anchor file.
 Long running programs that use *getdns* to perform DNSSEC validation MUST be restarted after the trust-anchors have been manually updated for the changes to take effect.
 
 
