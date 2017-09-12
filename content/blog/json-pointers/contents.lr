@@ -45,3 +45,5 @@ tags: json-pointers
 archive: yes
 ---
 teaser: Motivation, introduction and demonstration of JSON-pointers
+---
+categories: basic
