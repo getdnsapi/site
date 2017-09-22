@@ -50,7 +50,7 @@ As a consequence those configuration files needed to be in the getdns JSON like 
 
 With this release a new function is introduced: [`getdns_yaml2dict()`] which converts from the much more readable and humane [YAML] format into [`getdns_dict`]s.
 This release will also include a version of [Stubby] that will read [YAML] configuration files.
-[Stubby] will first try to read the configuration in [YAML] format (from the "`stubby.yml`" file) and will fall back to the old getdns JSON like format (from the `stubby.conf` file) only when it failed to be read.
+[Stubby] will first try to read the configuration in [YAML] format (from the "[`stubby.yml`]" file) and will fall back to the old getdns JSON like format (from the `stubby.conf` file) only when it failed to be read.
 
 Don't forget that the `--with-stubby` option needs to be used with configure when you want to build [Stubby] alongside the library.
 
