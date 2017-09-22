@@ -45,7 +45,7 @@ A (new) version of "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" will be ret
 
 # Converting YAML to getdns_dicts
 
-We already had a function for [converting the getdns'es JSON like format to `getdns_dict`s](/functions/getdns_str2dict.html), and [configuring of `getdns_context`'s with `getdns_dicts`](/functions_getdns_context_config.html); And this is how [Stubby] manages it's configuration files.
+We already had a function for [converting the getdns'es JSON like format to `getdns_dict`s](/functions/getdns_str2dict.html), and [configuring of `getdns_context`'s with `getdns_dicts`](/functions/getdns_context_config.html); And this is how [Stubby] manages it's configuration files.
 As a consequence those configuration files needed to be in the getdns JSON like format, but the use of opening and closing brackets for lists and objects and the lack of comments make it unsuitable for human consumption.
 
 With this release a new function is introduced: [`getdns_yaml2dict()`] which converts from the much more readable and humane [YAML] format into [`getdns_dict`]s.
@@ -91,7 +91,7 @@ Please review this release candidate carefully, if all is well, the actual relea
 [`getdns_context_set_trust_anchors_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_CA.html
 [`getdns_context_set_trust_anchors_verify_email()`]: /functions/getdns_context_set_trust_anchors_verify_email.html
 [`getdns_context_set_appdata_dir()`]: /functions/getdns_context_set_appdata_dir.html
-[`getdns_yaml2dict`]: /functions/getdns_yaml2dict.html
+[`getdns_yaml2dict()`]: /functions/getdns_yaml2dict.html
 [`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/devel/compile-on-windows/stubby.yml.example
 [libyaml]: http://pyyaml.org/wiki/LibYAML
 [`getdns_context_set_tls_backoff_time()`]: /functions/getdns_context_set_tls_backoff_time.html
