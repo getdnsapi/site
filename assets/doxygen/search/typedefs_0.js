@@ -17,6 +17,8 @@ var searchData=
   ['getdns_5feventloop_5fschedule',['getdns_eventloop_schedule',['../group__eventloops.html#gaaa4cfebd1bf17289c80358ea8afa27fc',1,'getdns_extra.h']]],
   ['getdns_5feventloop_5fvmt',['getdns_eventloop_vmt',['../group__eventloops.html#gabeb135cb21a831ea019381b08f8a3bc5',1,'getdns_extra.h']]],
   ['getdns_5flist',['getdns_list',['../group__valuesandtexts.html#ga0b612b4ea0d429040a12ede153ee7081',1,'getdns.h']]],
+  ['getdns_5flogfunc_5ftype',['getdns_logfunc_type',['../group__getdns__context.html#gaa0d65cce92aa2d01ee86cdce5aa7295a',1,'getdns_extra.h']]],
+  ['getdns_5floglevel_5ftype',['getdns_loglevel_type',['../group__getdns__context.html#ga1f5d00d8243311b532d72a393ac65766',1,'getdns_extra.h']]],
   ['getdns_5fnamespace_5ft',['getdns_namespace_t',['../group__namespacetypestext.html#ga457ef4783236e81ca297b345de807ce8',1,'getdns.h']]],
   ['getdns_5fredirects_5ft',['getdns_redirects_t',['../group__redirectpoliciestext.html#gabd7466a9b61c98de79228e332fcbf489',1,'getdns.h']]],
   ['getdns_5frequest_5fhandler_5ft',['getdns_request_handler_t',['../group__UServerFunctions.html#ga7fabb46e587d0dac4ca45ae1c893f8ff',1,'getdns_extra.h']]],

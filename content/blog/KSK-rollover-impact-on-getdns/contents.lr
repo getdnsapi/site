@@ -61,7 +61,7 @@ We strongly recommend upgrading to *getdns* 1.2 as soon as possible for all user
 ---
 author: willem-toorop
 ---
-tags: announcement
+tags: announcement, zeroconf-dnssec
 ---
 teaser: How does the upcoming root KSK impact getdns
 ---

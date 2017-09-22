@@ -4,6 +4,7 @@ var searchData=
   ['getdns_5fcallback_5ftype_5ft',['getdns_callback_type_t',['../group__callbacktype.html#ga32008e094c4a68d82d2d584143397cc6',1,'getdns.h']]],
   ['getdns_5fcontext_5fcode_5ft',['getdns_context_code_t',['../group__contextcodetypestext.html#ga8be324e2c32c3142f1e7b5783c08c2ce',1,'getdns.h']]],
   ['getdns_5fdata_5ftype',['getdns_data_type',['../group__valuesandtexts.html#gafe8d9b408c6957bd397eb57b6f577f8c',1,'getdns.h']]],
+  ['getdns_5floglevel_5ftype',['getdns_loglevel_type',['../group__getdns__context.html#ga64b0354cc2ee26ca0855111c138713b6',1,'getdns_extra.h']]],
   ['getdns_5fnamespace_5ft',['getdns_namespace_t',['../group__namespacetypestext.html#gafeaba1aec6dec502195b1df8df635f58',1,'getdns.h']]],
   ['getdns_5fredirects_5ft',['getdns_redirects_t',['../group__redirectpoliciestext.html#gabba6c09b38c3cd8135f21f1be66c604a',1,'getdns.h']]],
   ['getdns_5fresolution_5ft',['getdns_resolution_t',['../group__resolutiontypestext.html#ga83536943379fe86ee4852f449bbccc3a',1,'getdns.h']]],

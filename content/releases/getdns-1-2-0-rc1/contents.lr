@@ -1,0 +1,139 @@
+version: 1.2.0-rc1
+---
+title: First release candidate for getdns-1.2.0
+---
+announcement:
+
+Dear all,
+
+We have a first release candidate for the upcoming 1.2.0 feature release of getdns.
+
+This release will contain three new features:
+
+  * Built-in DNSSEC trust-anchor management: *Zero configuration DNSSEC*
+  * Reading [`getdns_dict`]'s (to be used for configuration) in [YAML] format
+  * Better TLS upstream failure management, more resilient to transient connectivity loss and laptop "sleeps" etc.
+
+# Zero configuration DNSSEC
+
+Until now, we've assumed an external system component (like [`unbound-anchor`]) to do the trust-anchor management for getdns, but this is not optimal.
+Ideally applications that want to use DNSSEC validation, for example to perform DANE, would want to be able to rely on an application library to deliver DNSSEC, without requiring additional system configuration.
+This release includes a form of built-in trust-anchor management modelled on [RFC7958], that is suitable for a resolver library which can not assume reliable up-time and which we have named: *Zero configuration DNSSEC*.
+
+With *Zero configuration DNSSEC*, the "[`root-anchors.xml`]" file (from <http://data.iana.org/root-anchors/root-anchors.xml>) will be verified by validating the S/MIME signatures (stored separately in "[`root-anchors.p7s`]") with the [ICANN Root Certificate Authority].
+
+Trust anchors from "[`root-anchors.xml`]" will be used only when the accompanying "[`root-anchors.p7s`]" matches and validates and when either:
+
+  * There were no other trust anchors provided, either by the default trust anchor file (likely either `/etc/unbound/getdns-root.key` or `/usr/local/etc/unbound/getdns-root.key`), or set explicitly by the application with the [`getdns_context_set_dnssec_trust_anchors()`] function, or
+  * The available trust anchors (from the default location or set explicitly by the application) caused the root DNSKEY RRset to fail validation.
+
+The "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" files will be tried to read from a location for storing library specific data: `${HOME}/.getdns/` on Unix like systems (Linux, BSD's, MacOS) and `%AppData%\getdns` on Windows.
+
+When trust anchors from "[`root-anchors.xml`]" are used, the root DNSKEY is also tracked (for changes) and a copy of it is stored in a "`root.key`" file in the library specific data directory.
+
+A (new) version of "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" will be retrieved from ICANN, when either:
+
+  * The library specific data directory is (creatable and) writeable by the current user, but the "[`root-anchors.xml`]" or "[`root-anchors.p7s`]" files were absent, or
+  * There is a new root DNSKEY RRset (or signature) and it contains keys with ID's which were not in "[`root-anchors.xml`]".
+
+*Zero configuration DNSSEC* assumes DNSSEC with the ICANN root trust-anchors and is configured to use the ICANN defaults defined in [RFC7958], but all default parameters can be adapted to fit alternate DNS(SEC) roots, with:
+
+  * [`getdns_context_set_trust_anchors_url()`]
+  * [`getdns_context_set_verify_CA()`]
+  * [`getdns_context_set_verify_email()`]
+  * [`getdns_context_set_appdata_dir()`]
+
+# Converting YAML to getdns_dicts
+
+We already had a function for [converting the getdns'es JSON like format to `getdns_dict`s](/functions/getdns_str2dict.html), and [configuring of `getdns_context`'s with `getdns_dicts`](/functions_getdns_context_config.html); And this is how [Stubby] manages it's configuration files.
+As a consequence those configuration files needed to be in the getdns JSON like format, but the use of opening and closing brackets for lists and objects and the lack of comments make it unsuitable for human consumption.
+
+With this release a new function is introduced: [`getdns_yaml2dict()`] which converts from the much more readable and humane [YAML] format into [`getdns_dict`]s.
+This release will also include a version of [Stubby] that will read [YAML] configuration files.
+[Stubby] will first try to read the configuration in [YAML] format (from the "`stubby.yml`" file) and will fall back to the old getdns JSON like format (from the `stubby.conf` file) only when it failed to be read.
+
+Don't forget that the `--with-stubby` option needs to be used with configure when you want to build [Stubby] alongside the library.
+
+This feature adds an additional dependency on [libyaml].
+We are still considering whether this functionality (and consequently the dependency on [libyaml]) would be a better fit for [Stubby] instead of the getdns library.
+Suggestions or thoughts on this matter are welcomed.
+
+
+# Better TLS upstream failure management
+
+[RFC7858] suggested a back-off period of one hour on failing TLS upstreams.
+However this is not a resilient and practical demeanor in practice when short-term network outages or connection loss caused, for example, by laptops going to sleep.
+
+This release introduces a new TLS upstream failure management scheme in which the back-off time is incremented gradually from 1 second up, and doubled each retry with a maximum set by the [`getdns_context_set_tls_backoff_time()`] function.
+Also, back-off time is ignored when there are no more responding TLS upstreams and the upstream with the least amount of retries will be used for retrying first.
+
+[Stubby] will be much more resilient against transient outages and connection losses with this scheme.
+
+<hr />
+
+Please review this release candidate carefully, if all is well, the actual release will follow Friday the 29th of September.
+
+[Stubby]: /blog/dns-privacy-daemon-stubby/
+[brew]: https://brew.sh/
+[`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
+[`systemd`]: https://freedesktop.org/wiki/Software/systemd/
+[`getdns_query`]: /blog/getdns_query/
+[`getdns_dict`]: /documentation/spec/#2-data-structures-in-the-api
+[YAML]: http://yaml.org/
+[`unbound-anchor`]: https://unbound.net/documentation/unbound-anchor.html
+[RFC7958]: https://tools.ietf.org/html/rfc7958
+[RFC7858]: https://tools.ietf.org/html/rfc7858
+[`root-anchors.xml`]: https://data.iana.org/root-anchors/root-anchors.xml
+[`root-anchors.p7s`]: https://data.iana.org/root-anchors/root-anchors.p7s
+[ICANN Root Certificate Authority]: https://data.iana.org/root-anchors/icannbundle.pem
+[`getdns_context_set_dnssec_trust_anchors()`]: /functions/getdns_context_set_dnssec_trust_anchors.html
+[`getdns_context_set_trust_anchors_url()`]: /functions/getdns_context_set_trust_anchors_url.html
+[`getdns_context_set_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_CA.html
+[`getdns_context_set_verify_email()`]: /functions/getdns_context_set_trust_anchors_verify_email.html
+[`getdns_context_set_appdata_dir()`]: /functions/getdns_context_set_appdata_dir.html
+[`getdns_yaml2dict`]: /functions/getdns_yaml2dict.html
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/devel/compile-on-windows/stubby.yml.example
+[libyaml]: http://pyyaml.org/wiki/LibYAML
+[`getdns_context_set_tls_backoff_time()`]: /functions/getdns_context_set_tls_backoff_time.html
+---
+_discoverable: yes
+---
+date: 2017-09-22
+---
+teaser: Zero configuration DNSSEC, YAML config files and resilient TLS upstream management
+---
+image: keys.jpg
+---
+changelog:
+
+* 2017-09-??: Version 1.2.0
+  * A function to set the location for library specific data,
+    like trust-anchors: getdns_context_set_appdata().
+  * Zero configuration DNSSEC - build upon the scheme
+    described in RFC7958.  The URL from which to fetch
+    the trust anchor, the verification CA and email
+    can be set with the new getdns_context_set_trust_anchor_url(),
+    getdns_context_set_trust_anchor_verify_CA() and
+    getdns_context_set_trust_anchor_verify_email() functions.
+    The default values are to fetch from IANA and to validate
+    with the ICANN CA.
+  * Update of Stubby with yaml configuration file and
+    logging from a certain severity support.
+  * Conversion of yaml to getdns_dict and getdns_list with
+    getdns_yaml2dict() and getdns_yaml2list() functions
+  * Fix tpkg exit status on test failure. Thanks Jim Hague.
+  * Refined logging levels for upstream statistics
+  * Reuse (best behaving) backed-off TLS upstreams when non are usable.
+  * Let TLS upstreams back-off a incremental amount of time.
+    Back-off time starts with 1 second and is doubled each failure, but
+    will not exceed the time given by getdns_context_set_tls_backoff_time()
+  * Make TLS upstream management more resilient to temporary outages
+    (like laptop sleeps)
+---
+sha256: 4ed9185e06c6162a09c73a27141fbe735a893b0c13e47db91583f0eb583799fb
+---
+tags: stubby, zeroconf-dnssec
+---
+_hidden: no
+---
+archive: no
