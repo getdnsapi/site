@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_logfunc_type.html
+---
+title: void(* getdns_logfunc_type)(void *userarg, uint64_t log_systems, getdns_loglevel_type, const char *, va_list ap)
+---
+link: /doxygen/group__getdns__context.html#gaa0d65cce92aa2d01ee86cdce5aa7295a

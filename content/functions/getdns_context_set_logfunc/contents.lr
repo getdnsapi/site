@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_logfunc.html
+---
+title: getdns_return_t getdns_context_set_logfunc(getdns_context *context, void *userarg, uint64_t system, getdns_loglevel_type level, getdns_logfunc_type func)
+---
+link: /doxygen/group__getdns__context.html#gaf08fa57a2af9442b1cd64e5a1ab9f6de

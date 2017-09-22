@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_trust_anchors_url.html
+---
+title: getdns_return_t getdns_context_set_trust_anchors_url(getdns_context *context, const char *url)
+---
+link: /doxygen/group__getdns__context.html#ga9be14a73f82042c6daac45f35e056e69

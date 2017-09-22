@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_appdata_dir.html
+---
+title: getdns_return_t getdns_context_set_appdata_dir(getdns_context *context, const char *appdata_dir)
+---
+link: /doxygen/group__getdns__context.html#ga4bf89d8b38a0246bc6db84413d509a36

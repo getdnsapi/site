@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_yaml2dict.html
+---
+title: getdns_return_t getdns_yaml2dict(const char *str, getdns_dict **dict)
+---
+link: /doxygen/group__Ustring2getdns__data.html#ga48d73e1acd10533fa50839fc4afda11b

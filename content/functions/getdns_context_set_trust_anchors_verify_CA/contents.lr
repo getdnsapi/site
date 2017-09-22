@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_trust_anchors_verify_CA.html
+---
+title: getdns_return_t getdns_context_set_trust_anchors_verify_CA(getdns_context *context, const char *verify_CA)
+---
+link: /doxygen/group__getdns__context.html#gab0210c864042a56c557217cc1c3a26d9

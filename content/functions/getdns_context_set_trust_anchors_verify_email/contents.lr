@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_trust_anchors_verify_email.html
+---
+title: getdns_return_t getdns_context_set_trust_anchors_verify_email(getdns_context *context, const char *verify_email)
+---
+link: /doxygen/group__getdns__context.html#ga25a5a363a1b86ded16b4236e38c81d2d
