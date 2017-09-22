@@ -88,7 +88,7 @@ Please review this release candidate carefully, if all is well, the actual relea
 [ICANN Root Certificate Authority]: https://data.iana.org/root-anchors/icannbundle.pem
 [`getdns_context_set_dnssec_trust_anchors()`]: /functions/getdns_context_set_dnssec_trust_anchors.html
 [`getdns_context_set_trust_anchors_url()`]: /functions/getdns_context_set_trust_anchors_url.html
-[`getdns_context_set_trust_anchors_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_CA.html
+[`getdns_context_set_trust_anchors_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_ca.html
 [`getdns_context_set_trust_anchors_verify_email()`]: /functions/getdns_context_set_trust_anchors_verify_email.html
 [`getdns_context_set_appdata_dir()`]: /functions/getdns_context_set_appdata_dir.html
 [`getdns_yaml2dict()`]: /functions/getdns_yaml2dict.html
