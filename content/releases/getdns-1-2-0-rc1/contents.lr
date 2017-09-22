@@ -39,8 +39,8 @@ A (new) version of "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" will be ret
 *Zero configuration DNSSEC* assumes DNSSEC with the ICANN root trust-anchors and is configured to use the ICANN defaults defined in [RFC7958], but all default parameters can be adapted to fit alternate DNS(SEC) roots, with:
 
   * [`getdns_context_set_trust_anchors_url()`]
-  * [`getdns_context_set_verify_CA()`]
-  * [`getdns_context_set_verify_email()`]
+  * [`getdns_context_set_trust_anchors_verify_CA()`]
+  * [`getdns_context_set_trust_anchors_verify_email()`]
   * [`getdns_context_set_appdata_dir()`]
 
 # Converting YAML to getdns_dicts
@@ -88,8 +88,8 @@ Please review this release candidate carefully, if all is well, the actual relea
 [ICANN Root Certificate Authority]: https://data.iana.org/root-anchors/icannbundle.pem
 [`getdns_context_set_dnssec_trust_anchors()`]: /functions/getdns_context_set_dnssec_trust_anchors.html
 [`getdns_context_set_trust_anchors_url()`]: /functions/getdns_context_set_trust_anchors_url.html
-[`getdns_context_set_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_CA.html
-[`getdns_context_set_verify_email()`]: /functions/getdns_context_set_trust_anchors_verify_email.html
+[`getdns_context_set_trust_anchors_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_CA.html
+[`getdns_context_set_trust_anchors_verify_email()`]: /functions/getdns_context_set_trust_anchors_verify_email.html
 [`getdns_context_set_appdata_dir()`]: /functions/getdns_context_set_appdata_dir.html
 [`getdns_yaml2dict`]: /functions/getdns_yaml2dict.html
 [`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/devel/compile-on-windows/stubby.yml.example
