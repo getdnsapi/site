@@ -6,11 +6,12 @@ announcement:
 
 Dear all,
 
-We have a first release candidate for the upcoming 1.2.0 feature release of getdns.
+We have a new feature release version 1.2.0 of getdns.
 
-This release will contain two new features:
+This release contains two new features:
 
-  * Built-in DNSSEC trust-anchor management: *Zero configuration DNSSEC*
+  * Built-in DNSSEC trust-anchor management:  
+    **Zero configuration DNSSEC**
   * Better TLS upstream failure management, more resilient to transient connectivity loss and laptop "sleeps" etc.
 
 and
