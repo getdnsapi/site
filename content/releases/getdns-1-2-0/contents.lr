@@ -1,6 +1,6 @@
-version: 1.2.0-rc1
+version: 1.2.0
 ---
-title: First release candidate for getdns-1.2.0
+title: getdns-1.2.0 release
 ---
 announcement:
 
@@ -8,11 +8,14 @@ Dear all,
 
 We have a first release candidate for the upcoming 1.2.0 feature release of getdns.
 
-This release will contain three new features:
+This release will contain two new features:
 
   * Built-in DNSSEC trust-anchor management: *Zero configuration DNSSEC*
-  * Reading [`getdns_dict`]'s (to be used for configuration) in [YAML] format
   * Better TLS upstream failure management, more resilient to transient connectivity loss and laptop "sleeps" etc.
+
+and
+  * An updated version of [Stubby] (0.1.3) with [YAML] configuration files.
+
 
 # Zero configuration DNSSEC
 
@@ -31,7 +34,7 @@ The "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" files will be tried to rea
 
 When trust anchors from "[`root-anchors.xml`]" are used, the root DNSKEY is also tracked (for changes) and a copy of it is stored in a "`root.key`" file in the library specific data directory.
 
-A (new) version of "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" will be retrieved from ICANN, when either:
+A (new) version of "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" will be retrieved from [`data.iana.org`](https://data.iana.org/root-anchors/), when either:
 
   * The library specific data directory is (creatable and) writeable by the current user, but the "[`root-anchors.xml`]" or "[`root-anchors.p7s`]" files were absent, or
   * There is a new root DNSKEY RRset (or signature) and it contains keys with ID's which were not in "[`root-anchors.xml`]".
@@ -43,21 +46,6 @@ A (new) version of "[`root-anchors.xml`]" and "[`root-anchors.p7s`]" will be ret
   * [`getdns_context_set_trust_anchors_verify_email()`]
   * [`getdns_context_set_appdata_dir()`]
 
-# Converting YAML to getdns_dicts
-
-We already had a function for [converting the getdns'es JSON like format to `getdns_dict`s](/functions/getdns_str2dict.html), and [configuring of `getdns_context`'s with `getdns_dicts`](/functions/getdns_context_config.html); And this is how [Stubby] manages it's configuration files.
-As a consequence those configuration files needed to be in the getdns JSON like format, but the use of opening and closing brackets for lists and objects and the lack of comments make it unsuitable for human consumption.
-
-With this release a new function is introduced: [`getdns_yaml2dict()`] which converts from the much more readable and humane [YAML] format into [`getdns_dict`]s.
-This release will also include a version of [Stubby] that will read [YAML] configuration files.
-[Stubby] will first try to read the configuration in [YAML] format (from the "[`stubby.yml`]" file) and will fall back to the old getdns JSON like format (from the `stubby.conf` file) only when it failed to be read.
-
-Don't forget that the `--with-stubby` option needs to be used with configure when you want to build [Stubby] alongside the library.
-
-This feature adds an additional dependency on [libyaml].
-We are still considering whether this functionality (and consequently the dependency on [libyaml]) would be a better fit for [Stubby] instead of the getdns library.
-Suggestions or thoughts on this matter are welcomed.
-
 
 # Better TLS upstream failure management
 
@@ -67,13 +55,27 @@ However this is not a resilient and practical demeanor in practice when short-te
 This release introduces a new TLS upstream failure management scheme in which the back-off time is incremented gradually from 1 second up, and doubled each retry with a maximum set by the [`getdns_context_set_tls_backoff_time()`] function.
 Also, back-off time is ignored when there are no more responding TLS upstreams and the upstream with the least amount of retries will be used for retrying first.
 
-[Stubby] will be much more resilient against transient outages and connection losses with this scheme.
+[Stubby] will be much more resilient against short term outages and connection losses with this scheme.
 
-<hr />
 
-Please review this release candidate carefully, if all is well, the actual release will follow Friday the 29th of September.
+# YAML configuration files from Stubby
 
-[Stubby]: /blog/dns-privacy-daemon-stubby/
+This release comes with an updated version of [Stubby] (version 0.1.3) with the new improvement to read configuration files in [YAML] format.
+
+Previously [Stubby] would read configuration files in the [JSON like format](/functions/getdns_str2dict.html) that is understood by getdns.
+However, the necessity to deal with opening and closing brackets and the lack of comments make it unsuitable for human consumption.
+[YAML] is much better readable and most importantly: can be annotated with comments and is as such a good fit for configuration files.
+
+Stubby configuration files are now specified in [YAML] format by default.
+JSON format can still be used if it is given on the command line with the -C flag.
+
+Don't forget that the `--with-stubby` option needs to be used with configure when you want to build [Stubby] alongside the library.
+When build **with** [Stubby], there is an additional dependency on [libyaml] for the `stubby` binary only.
+
+Also note that the primary location for Stubby has moved to the [dnsprivacy.org](https://dnsprivacy.org/wiki/x/JYAT) website.
+
+
+[Stubby]: https://dnsprivacy.org/wiki/x/JYAT
 [brew]: https://brew.sh/
 [`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
 [`systemd`]: https://freedesktop.org/wiki/Software/systemd/
@@ -98,15 +100,16 @@ Please review this release candidate carefully, if all is well, the actual relea
 ---
 _discoverable: yes
 ---
-date: 2017-09-22
+date: 2017-09-29
 ---
-teaser: Zero configuration DNSSEC, YAML config files and resilient TLS upstream management
+teaser: Zero configuration DNSSEC, Stubby config in YAML format and resilient TLS upstream management
 ---
-image: keys.jpg
+image: key-handover.jpg
 ---
 changelog:
-
-* 2017-09-??: Version 1.2.0
+* 2017-09-28: Version 1.2.0
+  * Bugfix of rc1: authentication of first query with TLS
+    Thanks Travis Burtrum
   * A function to set the location for library specific data,
     like trust-anchors: getdns_context_set_appdata().
   * Zero configuration DNSSEC - build upon the scheme
@@ -119,8 +122,6 @@ changelog:
     with the ICANN CA.
   * Update of Stubby with yaml configuration file and
     logging from a certain severity support.
-  * Conversion of yaml to getdns_dict and getdns_list with
-    getdns_yaml2dict() and getdns_yaml2list() functions
   * Fix tpkg exit status on test failure. Thanks Jim Hague.
   * Refined logging levels for upstream statistics
   * Reuse (best behaving) backed-off TLS upstreams when non are usable.
@@ -130,10 +131,10 @@ changelog:
   * Make TLS upstream management more resilient to temporary outages
     (like laptop sleeps)
 ---
-sha256: 4ed9185e06c6162a09c73a27141fbe735a893b0c13e47db91583f0eb583799fb
+sha256: 0363a22f8be4908892b2910785df00f9ad4114a85822bdae88956f80ffd1c6e6
 ---
 tags: stubby, zeroconf-dnssec
 ---
 _hidden: no
 ---
-archive: yes
+archive: no

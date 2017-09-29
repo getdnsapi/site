@@ -170,6 +170,5 @@ var searchData=
   ['getdns_5fwire2msg_5fdict_5fscan',['getdns_wire2msg_dict_scan',['../group__UDNSDataConversionFunctions.html#ga755a4b00196924489c4d2b22956678a0',1,'getdns_extra.h']]],
   ['getdns_5fwire2rr_5fdict',['getdns_wire2rr_dict',['../group__UDNSDataConversionFunctions.html#ga60b0e27fd719db810b387e43a0440adf',1,'getdns_extra.h']]],
   ['getdns_5fwire2rr_5fdict_5fbuf',['getdns_wire2rr_dict_buf',['../group__UDNSDataConversionFunctions.html#ga3039de869b01ccb89f52df7505abf90e',1,'getdns_extra.h']]],
-  ['getdns_5fwire2rr_5fdict_5fscan',['getdns_wire2rr_dict_scan',['../group__UDNSDataConversionFunctions.html#ga091834b2dfd6ee912a56573b700bbb87',1,'getdns_extra.h']]],
-  ['getdns_5fyaml2dict',['getdns_yaml2dict',['../group__Ustring2getdns__data.html#ga48d73e1acd10533fa50839fc4afda11b',1,'getdns_extra.h']]]
+  ['getdns_5fwire2rr_5fdict_5fscan',['getdns_wire2rr_dict_scan',['../group__UDNSDataConversionFunctions.html#ga091834b2dfd6ee912a56573b700bbb87',1,'getdns_extra.h']]]
 ];

@@ -128,8 +128,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga48d73e1acd10533fa50839fc4afda11b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ustring2getdns__data.html#ga48d73e1acd10533fa50839fc4afda11b">getdns_yaml2dict</a> (const char *str, <a class="el" href="group__valuesandtexts.html#ga8ed18ee690a92c0b24af42261119817b">getdns_dict</a> **dict)</td></tr>
-<tr class="separator:ga48d73e1acd10533fa50839fc4afda11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa4b16db4a779f5394414c6a9f54b3f7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ustring2getdns__data.html#gaa4b16db4a779f5394414c6a9f54b3f7f">getdns_str2dict</a> (const char *str, <a class="el" href="group__valuesandtexts.html#ga8ed18ee690a92c0b24af42261119817b">getdns_dict</a> **dict)</td></tr>
 <tr class="separator:gaa4b16db4a779f5394414c6a9f54b3f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae60ca30d982d4ff57de2183921795858"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Ustring2getdns__data.html#gae60ca30d982d4ff57de2183921795858">getdns_str2list</a> (const char *str, <a class="el" href="group__valuesandtexts.html#ga0b612b4ea0d429040a12ede153ee7081">getdns_list</a> **list)</td></tr>
@@ -141,51 +139,6 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga48d73e1acd10533fa50839fc4afda11b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga48d73e1acd10533fa50839fc4afda11b">&#9670;&nbsp;</a></span>getdns_yaml2dict()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a> getdns_yaml2dict </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga8ed18ee690a92c0b24af42261119817b">getdns_dict</a> **&#160;</td>
-          <td class="paramname"><em>dict</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Convert YAML text to a getdns_dict.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">str</td><td>A textual representation of a getdns_dict. The format is similar, but not precisely YAML.<ul>
-<li>When str contains an IP or IPv6 address, it is converted to an getdns dict representation of that address. This may contain a port, tls_port, tsig spec or tls authentication name in the same way as may be given with the <code>getdns_query</code> tool. For example: <code>185.49.140.67:80#443</code> will result in the following getdns_dict: <pre class="fragment"> { address_type: "IPv4"
- , address_data: "185.49.140.67"
- , port: 80
- , tls_port: 443
- }
-</pre> </li>
-</ul>
-</td></tr>
-    <tr><td class="paramname">dict</td><td>The returned getdns_dict. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success or an error code on failure. </dd></dl>
-
-</div>
-</div>
 <a id="gaa4b16db4a779f5394414c6a9f54b3f7f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaa4b16db4a779f5394414c6a9f54b3f7f">&#9670;&nbsp;</a></span>getdns_str2dict()</h2>
 
