@@ -59,7 +59,7 @@ Also, back-off time is ignored when there are no more responding TLS upstreams a
 [Stubby] will be much more resilient against short term outages and connection losses with this scheme.
 
 
-# YAML configuration files from Stubby
+# YAML configuration files for Stubby
 
 This release comes with an updated version of [Stubby] (version 0.1.3) with the new improvement to read configuration files in [YAML] format.
 
