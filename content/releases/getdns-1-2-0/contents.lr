@@ -108,7 +108,7 @@ teaser: Zero configuration DNSSEC, Stubby config in YAML format and resilient TL
 image: key-handover.jpg
 ---
 changelog:
-* 2017-09-28: Version 1.2.0
+* 2017-09-29: Version 1.2.0
   * Bugfix of rc1: authentication of first query with TLS
     Thanks Travis Burtrum
   * A function to set the location for library specific data,
