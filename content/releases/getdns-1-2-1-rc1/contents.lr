@@ -1,0 +1,72 @@
+version: 1.2.1-rc1
+---
+title: First release candidate for getdns-1.2.1
+---
+announcement:
+
+Dear all,
+
+We have a first release candidate for the upcoming 1.2.1 bugfix release of getdns.
+
+This release includes bugfixes, robustness and stability improvements only.
+
+The version of [Stubby] included with this release has been updated to 0.1.4.
+
+Please review this release candidate carefully, if all is well, the actual release will follow Friday the 10th of November.
+
+[Stubby]: /blog/dns-privacy-daemon-stubby/
+[brew]: https://brew.sh/
+[`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
+[`systemd`]: https://freedesktop.org/wiki/Software/systemd/
+[`getdns_query`]: /blog/getdns_query/
+[`getdns_dict`]: /documentation/spec/#2-data-structures-in-the-api
+[YAML]: http://yaml.org/
+[`unbound-anchor`]: https://unbound.net/documentation/unbound-anchor.html
+[RFC7958]: https://tools.ietf.org/html/rfc7958
+[RFC7858]: https://tools.ietf.org/html/rfc7858
+[`root-anchors.xml`]: https://data.iana.org/root-anchors/root-anchors.xml
+[`root-anchors.p7s`]: https://data.iana.org/root-anchors/root-anchors.p7s
+[ICANN Root Certificate Authority]: https://data.iana.org/root-anchors/icannbundle.pem
+[`getdns_context_set_dnssec_trust_anchors()`]: /functions/getdns_context_set_dnssec_trust_anchors.html
+[`getdns_context_set_trust_anchors_url()`]: /functions/getdns_context_set_trust_anchors_url.html
+[`getdns_context_set_trust_anchors_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_ca.html
+[`getdns_context_set_trust_anchors_verify_email()`]: /functions/getdns_context_set_trust_anchors_verify_email.html
+[`getdns_context_set_appdata_dir()`]: /functions/getdns_context_set_appdata_dir.html
+[`getdns_yaml2dict()`]: /functions/getdns_yaml2dict.html
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/devel/compile-on-windows/stubby.yml.example
+[libyaml]: http://pyyaml.org/wiki/LibYAML
+[`getdns_context_set_tls_backoff_time()`]: /functions/getdns_context_set_tls_backoff_time.html
+---
+_discoverable: no
+---
+date: 2017-11-03
+---
+teaser: Just bug-, robustness- and stability-fixes
+---
+image: bug.gif
+---
+changelog:
+
+* 2017-11-??: Version 1.2.1
+  * Stubby version 0.1.4
+  * Bugfix: Tolerate unsigned and unused RRsets in the authority section.
+            Fixes DNSSEC with BIND upstream.
+  * Bugfix: DNSSEC validation without support records
+  * Bugfix: Validation of full recursive DNSKEY lookups
+  * Bugfix: Retry to validate full recursion BOGUS replies with zero
+    configuration DNSSEC only when DNSSEC was actually requested
+  * Bugfix #348: Fix a linking issue in stubby when libbsd is present
+    Thanks Remi Gacogne
+  * More robust scheduling; Eliminating a segfault with long running
+    applications.
+  * Miscellaneous Windows portability fixes from Jim Hague.
+  * Fix Makefile dependencies for parallel install.
+    Thanks ilovezfs
+---
+sha256: 
+---
+tags: 
+---
+_hidden: no
+---
+archive: no
