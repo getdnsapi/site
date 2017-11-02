@@ -169,7 +169,7 @@
     {% if thing.tags %}
       {% for tag_id in thing.tags %}
         {% set tag = site.get('/tags/' + tag_id) %}
-        <a class="btn btn-default btn-xs tag" href="{{ tag|url }}"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;{{ tag.record_label }}</a>
+        <a class="btn btn-default btn-xs tag" href="{{ tag|url }}"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;{{ tag.name }}</a>
       {% endfor %}
     {% endif %}
 
