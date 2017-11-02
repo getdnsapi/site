@@ -218,6 +218,11 @@
 {% macro render_full_page(thing) %}
   <div class="row">
     <div class="hidden-lg col-xs-12" style="text-align: right; margin-bottom: -15px">
+        {% if thing._model == 'release' %}
+	  <a href="https://repology.org/metapackage/getdns">
+            <img src="https://repology.org/badge/tiny-repos/getdns.svg" alt="Packaging status">
+          </a>&nbsp;&nbsp;
+        {% endif %}
         {% if thing.tags %}
           {{ render_tags(thing) }}
 	  &nbsp;&nbsp;
@@ -294,7 +299,10 @@
     <div class="row">
       <div class="visible-lg col-sm-3 thing-label">
         <b>Announcement:</b><br><br>
-        {{ render_tags(thing) }}
+        {{ render_tags(thing) }}<br><br>
+	<a href="https://repology.org/metapackage/getdns" style="display: block;  width: 100%; overflow: hidden;">
+          <img src="https://repology.org/badge/vertical-allrepos/getdns.svg" alt="Packaging status" align="right" width="245">
+        </a>
       </div>
       <div class="col-lg-9">
         {% if thing.image and thing.image is not none and thing.image != '' %}

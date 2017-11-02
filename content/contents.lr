@@ -12,7 +12,6 @@ text: Installations of getdns v1.1.x and earlier with root trust anchors fetched
 image: anchor.png
 ----
 link: blog/categories/announcements/KSK-rollover-impact-on-getdns/
-
 #### feature ####
 title: Stubby
 ----
@@ -24,7 +23,11 @@ link: https://dnsprivacy.org/wiki/x/JYAT
 #### feature ####
 title: Download the 1.2.0 release!
 ----
-text: The latest source code tarball is available for download  with checksum [here](releases/).
+text:
+
+The latest source code tarball is available for download  with checksum [here](releases/).
+
+[![Packaging status](https://repology.org/badge/tiny-repos/getdns.svg)](https://repology.org/metapackage/getdns)
 ----
 image: fireworks.png
 ----
