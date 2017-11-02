@@ -1,13 +1,14 @@
 
-<!-- HTML header for doxygen 1.8.11-->
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>getdns: getdns</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico?h=e9ddf61d">
 <!-- Generated CSS, including Bootstrap -->
 <link rel="stylesheet" href="../../static/gen/styles.css?h=18900b3f">
@@ -19,6 +20,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../../doxygen/customdoxygen.css?h=3b371262">
 </head>
 <body>
 <!--#if expr="true" --><!--#include virtual="/doxygen-templates/navbar.html" --><!--#else -->
@@ -42,13 +44,16 @@
                   <a class="nav-link" href="/blog/categories/basic">Basic examples</a>
               </li>
               <li class="nav-item ">
-                  <a class="nav-link" href="/blog/dns-privacy-daemon-stubby">Stubby</a>
+                  <a class="nav-link" href="https://dnsprivacy.org/wiki/x/JYAT">Stubby</a>
               </li>
               <li class="nav-item ">
                   <a class="nav-link" href="/blog/getdns_query">getdns_query</a>
               </li>
               <li class="nav-item ">
                   <a class="nav-link" href="/blog/json-pointers">Enhanced getdns data access</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/query/">Do a Query</a>
               </li>
             </ul>
           </li>
@@ -168,7 +173,6 @@ $(function() {
 <li><a href="https://unbound.net/">libunbound from NLnet Labs</a> version 1.4.16 or later.</li>
 <li><a href="https://www.gnu.org/software/libidn/">libidn from the FSF</a> version 1. (Note that the libidn version means the conversions between A-labels and U-labels may permit conversion of formally invalid labels under IDNA2008.)</li>
 <li><a href="https://www.openssl.org/">libssl and libcrypto from the OpenSSL Project</a> version 0.9.7 or later. (Note: version 1.0.1 or later is required for TLS support, version 1.0.2 or later is required for TLS hostname authentication)</li>
-<li><a href="http://pyyaml.org/wiki/LibYAML">libyaml</a> version 0.1.6 or later.</li>
 <li>Doxygen is used to generate documentation; while this is not technically necessary for the build it makes things a lot more pleasant.</li>
 </ul>
 <p>For example, to build on a recent version of Ubuntu, you would need the following packages: </p><pre class="fragment"># apt install build-essential libunbound-dev libidn11-dev libssl-dev libtool m4 autoconf
@@ -177,7 +181,7 @@ $(function() {
 
 # libtoolize -ci # (use glibtoolize for OS X, libtool is installed as glibtool to avoid name conflict on OS X)
 # autoreconf -fi
-</pre><p>As well as building the getdns library 2 other tools are installed by default by the above process:</p>
+</pre><p>As well as building the getdns library two other tools may be installed:</p>
 <ul>
 <li>getdns_query: a command line test script wrapper for getdns</li>
 <li>stubby: an experimental DNS Privacy enabled client</li>
@@ -187,7 +191,6 @@ $(function() {
 <ul>
 <li>getdns can be configured for stub resolution mode only with the <code>--enable-stub-only</code> option to configure. This removes the dependency on <code>libunbound</code>.</li>
 <li>Currently getdns only offers two helper functions to deal with IDN: <code>getdns_convert_ulabel_to_alabel</code> and <code>getdns_convert_alabel_to_ulabel</code>. If you do not need these functions, getdns can be configured to compile without them with the <code>--without-libidn</code> option to configure.</li>
-<li>getdns can be configured to not support YAML configuration with the <code>--disable-yaml-config</code> option to configure. This removes the dependency on <code>libyaml</code>.</li>
 <li>When both <code>--enable-stub-only</code> and <code>--without-libidn</code> options are used, getdns has only one dependency left, which is OpenSSL.</li>
 </ul>
 <h2>Extensions and Event loop dependencies</h2>
@@ -200,17 +203,18 @@ $(function() {
 <h2>Stubby</h2>
 <ul>
 <li>Stubby is an experimental implementation of a DNS Privacy enabled stub resolver than encrypts DNS queries using TLS. It is currently suitable for advanced/technical users - all feedback is welcome!</li>
-<li>Details on how to use Stubby can be found in the <a href="https://getdnsapi.net/blog/dns-privacy-daemon-stubby">Stubby Reference Guide</a>.</li>
+<li>Details on how to use Stubby can be found in the <a href="https://dnsprivacy.org/wiki/x/JYAT">Stubby Reference Guide</a>.</li>
 <li>Also see <a href="https://dnsprivacy.org">dnsprivacy.org</a> for more information on DNS Privacy.</li>
 </ul>
 <h2>Regression Tests</h2>
 <p>A suite of regression tests are included with the library, if you make changes or just want to sanity check things on your system take a look at src/test. You will need to install <a href="https://libcheck.github.io/check/">libcheck</a>. The check library is also available from many of the package repositories for the more popular operating systems.</p>
-<p>The regression tests do not work with &ndash;enable-stub-only.</p>
 <h2>DNSSEC dependencies</h2>
 <p>For the library to be DNSSEC capable, it needs to know the root trust anchor. The library will try to load the root trust anchor from <code>/etc/unbound/getdns-root.key</code> by default. This file is expected to have one or more <code>DS</code> or <code>DNSKEY</code> resource records in presentation (i.e. zone file) format. Note that this is different than the format of BIND.keys.</p>
-<p>The best way to setup or update the root trust anchor is by using <a href="https://www.unbound.net/documentation/unbound-anchor.html"><code>unbound-anchor</code></a>. To setup the library with the root trust anchor at the default location, execute the following steps as root: </p><pre class="fragment"># mkdir -p /etc/unbound
-# unbound-anchor -a /etc/unbound/getdns-root.key
-</pre><h1>Support </h1>
+<h2>$ Zero configuration DNSSEC</h2>
+<p>When the root trust anchor is not installed in the default location and a DNSSEC query is done, getdns will try to use the trust anchors published here: <a href="http://data.iana.org/root-anchors/root-anchors.xml">http://data.iana.org/root-anchors/root-anchors.xml</a> . It will validate these anchors with the ICANN Certificate Authority certificate following the procedure described in [RFC7958]. The <code>root-anchors.xml</code> and <code>root-anchors.p7s</code> S/MIME signature will be cached in the <code>$HOME/.getdns</code> directory.</p>
+<p>When using trust-anchors from the <code>root-anchors.xml</code> file, getdns will track the keys in the root DNSKEY rrset and store a copy in $HOME/.getdns/root.key. Only when the KSK DNSKEY's change, a new version of <code>root-anchors.xml</code> is tried to be retrieved from <a href="https://data.iana.org/root-anchors/">data.iana.org</a>.</p>
+<p>A installed trust-anchor from the default location (<code>/etc/unbound/getdns-root.key</code>) that fails to validate the root DNSKEY RRset, will also trigger the "Zero configuration DNSSEC" procedure described above.</p>
+<h1>Support </h1>
 <h2>Mailing lists</h2>
 <p>We have a <a href="https://getdnsapi.net/mailman/listinfo/users">getdns users list</a> for this implementation.</p>
 <p>The <a href="https://getdnsapi.net/mailman/listinfo/spec">getdns-api mailing list</a> is a good place to engage in discussions regarding the design of the API.</p>
@@ -259,7 +263,7 @@ $(function() {
 <ul>
 <li>RHEL/CentOS 6.4</li>
 <li>OSX 10.8</li>
-<li>Ubuntu 14.04</li>
+<li>Ubuntu 16.04</li>
 <li>Microsoft Windows 8.1</li>
 </ul>
 <p>We intend to add Android and other platforms to future releases as we have time to port it.</p>
@@ -306,7 +310,7 @@ Note: If using a self-compiled version, manual configuration of certificates int
 <p>If you're using <a href="http://brew.sh/">Homebrew</a>, you may run <code>brew install getdns</code>. By default, this will only build the core library without any 3rd party event loop support.</p>
 <p>To install the <a href="https://getdnsapi.net/doxygen/group__eventloops.html">event loop integration libraries</a> that enable support for libevent, libuv, and libev, run: <code>brew install getdns --with-libevent --with-libuv --with-libev</code>. All switches are optional.</p>
 <p>Note that in order to compile the examples, the <code>--with-libevent</code> switch is required.</p>
-<p>As of the 0.2.0 release, when installing via Homebrew, the trust anchor is expected to be located at <code>$(brew --prefix)/etc/getdns-root.key</code>. Additionally, the OpenSSL library installed by Homebrew is linked against. Note that the Homebrew OpenSSL installation clones the Keychain certificates to the default OpenSSL location so TLS certificate authentication should work out of the box.</p>
+<p>Additionally, the OpenSSL library installed by Homebrew is linked against. Note that the Homebrew OpenSSL installation clones the Keychain certificates to the default OpenSSL location so TLS certificate authentication should work out of the box.</p>
 <h3>Microsoft Windows 8.1</h3>
 <p>The build has been tested using the following: 32 bit only Mingw: <a href="http://www.mingw.org/">Mingw(3.21.0) and Msys 1.0</a> on Windows 8.1 32 bit build on a 64 bit Mingw [Download latest from: <a href="http://mingw-w64.org/doku.php/download/mingw-builds">http://mingw-w64.org/doku.php/download/mingw-builds</a> and <a href="http://msys2.github.io/">http://msys2.github.io/</a>]. IMPORTANT: Install tested ONLY on the "x86_64" for 64-bit installer of msys2.</p>
 <h4>Dependencies</h4>
@@ -400,6 +404,7 @@ make install
     <div id="bottom-navbar" class="navbar-collapse collapse">
     <div class="navbar-left social-bar">
        <a href="https://github.com/getdnsapi/getdns"><img src="/static/github.png"></a>
+       <a href="https://repology.org/metapackage/getdns/versions"><img src="/static/repology.png"></a>
        <a href="https://twitter.com/getdnsapi"><img src="/static/twitter.png"></a>
        <a href="mailto:team@getdnsapi.net"><img src="/static/at.png"></a>
     </div>

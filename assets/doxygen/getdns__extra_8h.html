@@ -1,13 +1,14 @@
 
-<!-- HTML header for doxygen 1.8.11-->
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>getdns: getdns_extra.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico?h=e9ddf61d">
 <!-- Generated CSS, including Bootstrap -->
 <link rel="stylesheet" href="../../static/gen/styles.css?h=18900b3f">
@@ -19,6 +20,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../../doxygen/customdoxygen.css?h=3b371262">
 </head>
 <body>
 <!--#if expr="true" --><!--#include virtual="/doxygen-templates/navbar.html" --><!--#else -->
@@ -42,13 +44,16 @@
                   <a class="nav-link" href="/blog/categories/basic">Basic examples</a>
               </li>
               <li class="nav-item ">
-                  <a class="nav-link" href="/blog/dns-privacy-daemon-stubby">Stubby</a>
+                  <a class="nav-link" href="https://dnsprivacy.org/wiki/x/JYAT">Stubby</a>
               </li>
               <li class="nav-item ">
                   <a class="nav-link" href="/blog/getdns_query">getdns_query</a>
               </li>
               <li class="nav-item ">
                   <a class="nav-link" href="/blog/json-pointers">Enhanced getdns data access</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="/query/">Do a Query</a>
               </li>
             </ul>
           </li>
@@ -207,9 +212,9 @@ Macros</h2></td></tr>
 <tr class="separator:ga653aebac47b0ff1c8b0dec59c5625d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae9eb69a110904081d6184134cf79d84f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__contextcodetypestext.html#gae9eb69a110904081d6184134cf79d84f">GETDNS_CONTEXT_CODE_APPDATA_DIR_TEXT</a>&#160;&#160;&#160;&quot;Change related to <a class="el" href="group__getdns__context.html#ga4bf89d8b38a0246bc6db84413d509a36">getdns_context_set_appdata_dir</a>&quot;</td></tr>
 <tr class="separator:gae9eb69a110904081d6184134cf79d84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa270170b4afb23fe31ea667df60bcffc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__versions.html#gaa270170b4afb23fe31ea667df60bcffc">GETDNS_VERSION</a>&#160;&#160;&#160;&quot;1.2.0&quot;</td></tr>
+<tr class="memitem:gaa270170b4afb23fe31ea667df60bcffc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__versions.html#gaa270170b4afb23fe31ea667df60bcffc">GETDNS_VERSION</a>&#160;&#160;&#160;&quot;1.2.1rc1&quot;</td></tr>
 <tr class="separator:gaa270170b4afb23fe31ea667df60bcffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae273ef088f644428626836d4a8e8da48"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__versions.html#gae273ef088f644428626836d4a8e8da48">GETDNS_NUMERIC_VERSION</a>&#160;&#160;&#160;0x01020000</td></tr>
+<tr class="memitem:gae273ef088f644428626836d4a8e8da48"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__versions.html#gae273ef088f644428626836d4a8e8da48">GETDNS_NUMERIC_VERSION</a>&#160;&#160;&#160;0x010200C1</td></tr>
 <tr class="separator:gae273ef088f644428626836d4a8e8da48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacedfae73ec8de5b9b1a4bb2b18cee201"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__versions.html#gacedfae73ec8de5b9b1a4bb2b18cee201">GETDNS_API_VERSION</a>&#160;&#160;&#160;&quot;December 2015&quot;</td></tr>
 <tr class="separator:gacedfae73ec8de5b9b1a4bb2b18cee201"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -518,6 +523,7 @@ Functions</h2></td></tr>
     <div id="bottom-navbar" class="navbar-collapse collapse">
     <div class="navbar-left social-bar">
        <a href="https://github.com/getdnsapi/getdns"><img src="/static/github.png"></a>
+       <a href="https://repology.org/metapackage/getdns/versions"><img src="/static/repology.png"></a>
        <a href="https://twitter.com/getdnsapi"><img src="/static/twitter.png"></a>
        <a href="mailto:team@getdnsapi.net"><img src="/static/at.png"></a>
     </div>

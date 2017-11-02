@@ -1,16 +1,17 @@
 {% extends "components.html" %}
 {% block navbar_xtras %}{% endblock navbar_xtras %}
 {% block html %}
-<!-- HTML header for doxygen 1.8.11-->
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen $doxygenversion"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--BEGIN PROJECT_NAME--><title>$projectname: $title</title><!--END PROJECT_NAME-->
 <!--BEGIN !PROJECT_NAME--><title>$title</title><!--END !PROJECT_NAME-->
+<link href="$relpath^tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="shortcut icon" type="image/x-icon" href="{{ '/static/favicon.ico'|asseturl }}">
 <!-- Generated CSS, including Bootstrap -->
 <link rel="stylesheet" href="{{ '/static/gen/styles.css'|asseturl }}">
@@ -23,6 +24,7 @@ $search
 $mathjax
 <link href="$relpath^$stylesheet" rel="stylesheet" type="text/css" />
 $extrastylesheet
+<link rel="stylesheet" href="{{ '/doxygen/customdoxygen.css'|asseturl }}">
 </head>
 <body>
 <!--#if expr="true" --><!--#include virtual="/doxygen-templates/navbar.html" --><!--#else -->{% block navbar %}{{ super() }}{% endblock navbar %}<!--#endif -->
