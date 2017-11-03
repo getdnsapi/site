@@ -323,9 +323,25 @@
         <b>ChangeLog:</b>
       </div>
       <div class="col-lg-9">
+        <div class="hidden-lg">
+          <b>ChangeLog:</b>
+	</div>
         <pre>{{ thing.changelog }}</pre>
       </div>
     </div>
+    {% if thing.stubbychangelog %}
+      <div class="row">
+        <div class="visible-lg col-sm-3 thing-label">
+          <b>Stubby ChangeLog:</b>
+        </div>
+        <div class="col-lg-9">
+          <div class="hidden-lg">
+            <b>Stubby ChangeLog:</b>
+          </div>
+          <pre>{{ thing.stubbychangelog }}</pre>
+        </div>
+      </div>
+    {% endif %}
   {% elif thing._model == 'presentation' %}{# if thing._model == 'release' #}
     {% if thing.slides_url %}
       <div class="row">
