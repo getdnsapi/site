@@ -368,3 +368,8 @@ span.SRScope {
 .page-header .label {
   font-size: 50%;
 }
+
+h2.memtitle {
+display: none;
+}
+
