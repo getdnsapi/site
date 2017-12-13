@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_hosts.html
+---
+title: getdns_return_t getdns_context_set_hosts(getdns_context *context, const char *hosts)
+---
+link: /doxygen/group__getdns__context.html#gacca5a8070b07f12079ce4be49f62a821

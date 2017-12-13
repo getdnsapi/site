@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_CApath.html
+---
+title: getdns_return_t getdns_context_set_CApath(getdns_context *context, const char *CApath)
+---
+link: /doxygen/group__getdns__context.html#gab32dc0e947dbdb9aafc5b4e5d0d65897

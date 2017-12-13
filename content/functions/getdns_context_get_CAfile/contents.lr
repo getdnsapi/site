@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_CAfile.html
+---
+title: getdns_return_t getdns_context_get_CAfile(getdns_context *context, const char **CAfile)
+---
+link: /doxygen/group__getdns__context.html#ga4e5ee31272967ed2e2b2d953fdcafb16
