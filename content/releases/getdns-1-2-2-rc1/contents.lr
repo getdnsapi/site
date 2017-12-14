@@ -31,6 +31,8 @@ This release candidate includes a candidate for a 0.2.0 release of [Stubby].
 The most prominent bugfix therein is to **not** do DNSSEC validation for queries with the `CD` bit set, when DNSSEC validation was not configured in the first place.
 This bug caused decreased performance for configurations with an [unbound](https://unbound.net/) forwarding to [Stubby].
 
+The 0.2.0 release (candidate) of Stubby also includes some additional auxiliary functionality which is used by the macOS prototype GUI that was just released: <https://dnsprivacy.org/wiki/display/DP/Stubby+GUI+for+macOS>
+
 Please review this release candidate carefully, if all is well, the actual release will follow Thursday the 21th of December.
 
 [`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
