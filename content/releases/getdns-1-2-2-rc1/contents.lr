@@ -117,4 +117,4 @@ tags: stubby, zeroconf-dnssec
 ---
 _hidden: no
 ---
-archive: no
+archive: yes
