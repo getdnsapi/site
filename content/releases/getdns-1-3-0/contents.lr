@@ -1,0 +1,154 @@
+version: 1.3.0
+---
+title: getdns-1.3.0 release
+---
+announcement:
+
+Dear all,
+
+I am pleased to announce the new special Christmas 2017 bugfix release, version 1.3.0 of getdns.
+
+Recently [Stubby] has seen increased interest.
+Already after the release of the [Windows installer](https://dnsprivacy.org/wiki/display/DP/Windows+installer+for+Stubby), but even more so after the introduction of [Quad9] and the description of how to use [DNS-over-TLS] with [Stubby] by [Alex Band](https://medium.com/@alexander_band/privacy-using-dns-over-tls-with-the-new-quad9-dns-service-1ff2d2b687c5) and [Stéphane Borzmeyer](https://labs.ripe.net/Members/stephane_bortzmeyer/quad9-a-public-dns-resolver-with-security).
+
+The increased install base has generated excellent feedback and has also revealed some bugs.
+This release has those bugs fixed, and also contains a few more configuration options to be able to adapt to more diverse situations.
+
+The bugs fixed with this release are:
+  * A segfault with the native DNSSEC validation code when DS and DNSKEY queries timed out,
+  * A non [RFC compliant](https://tools.ietf.org/html/rfc7871#section-7.1.2) [`edns_client_subnet_private`] option that caused some upstream EDNS Client Subnet implementations (i.e. [Unbound](https://unbound.net/)'s) to return `FORMERR`, and
+  * Doing the meta queries for [Zero configuration DNSSEC](/tags/zeroconf-dnssec/) with the resolvers from `/etc/resolv.conf`, which caused [Stubby] to query itself for this, effectively breaking the possibility to fetch the [root trust-anchors] and bootstrap DNSSEC.
+
+Besides these fixes, this release allows to configure a [`getdns_context`] to be initialized with `resolv.conf` and `hosts` at alternative locations, with the [`getdns_context_set_resolvconf()`] and [`getdns_context_set_hosts()`] functions.
+
+Also the TLS parameters for [DNS-over-TLS] are more configurable with this relase.
+The CA store, for authenticating [DNS-over-TLS] upstreams, can be specified with the [`getdns_context_set_tls_ca_path()`] and [`getdns_context_set_tls_ca_file()`] functions.
+The default available ciphers are configurable with the [`getdns_context_set_tls_cipher_list()`] functions.
+The default available cipher list has been adapted to support TLS1.3 too linked with a TLS1.3 supporting version of OpenSSL (i.e. >= 1.1.1).
+Available ciphers can be set for specific upstreams to with [`getdns_context_set_upstream_recursive_servers()`].
+
+The [`getdns_context_get_api_information()`] function exposes more [`getdns_context`] settings, amongst which:
+  * The default settings for [extensions](/documentation/spec/#3-extensions),
+  * The paths for files that were used to initialize a [`getdns_context`] (`resolv.conf`, `hosts` and trust anchors), and
+  * More information about the version, configuration and capabilities of the [OpenSSL](https://www.openssl.org/) library in use.
+
+-------------------
+
+This release includes the 0.2.1 release of [Stubby].
+The most prominent bugfix therein is to **not** do DNSSEC validation for queries with the `CD` bit set, when DNSSEC validation was not configured in the first place.
+This bug caused decreased performance for configurations with an [unbound](https://unbound.net/) forwarding to [Stubby].
+
+The 0.2.1 release of Stubby also includes some additional auxiliary functionality which is used by the macOS prototype GUI that was just released: <https://dnsprivacy.org/wiki/display/DP/Stubby+GUI+for+macOS>
+
+-------------------
+
+This release has version number 1.3.0 and not 1.2.2, for which the release candidate was created, because we comply to the [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) scheme, and a few new functions are introduced into the API.
+The other change from the release candidate is that the Certificate Authority store location settings are now prepended with `tls_`, like all other setting influencing [DNS-over-TLS].
+
+Merry CHristmas & Happy New year from the getdns team!
+
+<p class="origin-reference">Picture of ladybug in Christmas tree courtesy of 
+[David Whelan](https://www.flickr.com/photos/davidpwhelan/31658092252/)
+</p>
+
+[`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: /blog/dns-privacy-daemon-stubby/
+[`stubby.conf`]: https://github.com/getdnsapi/getdns/blob/develop/src/tools/stubby.conf
+[`systemd`]: https://freedesktop.org/wiki/Software/systemd/
+[`getdns_query`]: /blog/getdns_query/
+[`getdns_dict`]: /documentation/spec/#2-data-structures-in-the-api
+[YAML]: http://yaml.org/
+[`unbound-anchor`]: https://unbound.net/documentation/unbound-anchor.html
+[RFC7958]: https://tools.ietf.org/html/rfc7958
+[RFC7858]: https://tools.ietf.org/html/rfc7858
+[root trust-anchors]: https://data.iana.org/root-anchors/
+[`root-anchors.xml`]: https://data.iana.org/root-anchors/root-anchors.xml
+[`root-anchors.p7s`]: https://data.iana.org/root-anchors/root-anchors.p7s
+[ICANN Root Certificate Authority]: https://data.iana.org/root-anchors/icannbundle.pem
+[`getdns_context_set_dnssec_trust_anchors()`]: /functions/getdns_context_set_dnssec_trust_anchors.html
+[`getdns_context_set_trust_anchors_url()`]: /functions/getdns_context_set_trust_anchors_url.html
+[`getdns_context_set_trust_anchors_verify_CA()`]: /functions/getdns_context_set_trust_anchors_verify_ca.html
+[`getdns_context_set_trust_anchors_verify_email()`]: /functions/getdns_context_set_trust_anchors_verify_email.html
+[`getdns_context_set_appdata_dir()`]: /functions/getdns_context_set_appdata_dir.html
+[`getdns_yaml2dict()`]: /functions/getdns_yaml2dict.html
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/devel/compile-on-windows/stubby.yml.example
+[libyaml]: http://pyyaml.org/wiki/LibYAML
+[`getdns_context_set_tls_backoff_time()`]: /functions/getdns_context_set_tls_backoff_time.html
+[Quad9]: https://www.quad9.net/
+[`edns_client_subnet_private`]: /functions/getdns_context_set_edns_client_subnet_private.html
+[`getdns_context_set_resolvconf()`]: /functions/getdns_context_set_resolvconf.html
+[`getdns_context_set_hosts()`]: /functions/getdns_context_set_hosts.html
+[`getdns_context_set_tls_ca_path()`]: /functions/getdns_context_set_tls_ca_path.html
+[`getdns_context_set_tls_ca_file()`]: /functions/getdns_context_set_tls_ca_file.html
+[`getdns_context_set_tls_cipher_list()`]: /functions/getdns_context_set_tls_cipher_list.html
+[`getdns_context_set_upstream_recursive_servers()`]: /functions/getdns_context_set_upstream_recursive_servers.html
+[`getdns_context_get_api_information()`]: /functions/getdns_context_get_api_information.html
+[DNS-over-TLS]: https://tools.ietf.org/html/rfc7858
+---
+_discoverable: yes
+---
+date: 2017-12-22
+---
+teaser: Bug-, robustness- and stability-fixes that came out of Stubby usage
+---
+image: ladybug-christmas.jpg
+---
+changelog:
+* 2017-12-21: Version 1.3.0
+  * Bugfix #300: Detect dnsmasq and skip unit test that fails with it.
+    Thanks Tim Rühsen and Konomi Kitten
+  * Specify default available cipher suites for authenticated TLS
+    upstreams with getdns_context_set_tls_ciphers_list()
+    An upstream specific available cipher suite may also be given
+    with the tls_cipher_list setting in the upstream dict with
+    getdns_context_set_upstream_recursive_servers()
+  * PR #366: Add support for TLS 1.3 and Chacha20-Poly1305
+    Thanks Pascal Ernster
+  * Bugfix #356: Do Zero configuration DNSSEC meta queries over on the
+    context configured upstreams.  Thanks Andreas Schulze
+  * Report default extension settings with
+    getdns_context_get_api_information()
+  * Specify locations at which CA certificates for verification purposes
+    are located: getdns_context_set_tls_ca_path()
+    getdns_context_set_tls_ca_file()
+  * getdns_context_set_resolvconf() function to initialize a context 
+    upstreams and suffices with a resolv.conf file.
+    getdns_context_get_resolvconf() to get the file used to initialize
+    the context's upstreams and suffixes.
+    getdns_context_set_hosts() function to initialize a context's
+    LOCALNAMES namespace.
+    getdns_context_get_hosts() function to get the file used to initialize
+    the context's LOCALNAMES namespace.
+  * get which version of OpenSSL was used at build time and at run time
+    when available with getdns_context_get_api_information()
+  * GETDNS_RETURN_IO_ERROR return error code
+  * Bugfix #359: edns_client_subnet_private should set family
+    Thanks Daniel Areiza & Andreas Schulze
+  * Bugfix getdnsapi/stubby#34: Segfault issue with native DNSSEC
+    validation.  Thanks Bruno Pagani
+---
+stubbychangelog:
+
+* 2017-12-18: Version 0.2.1
+ * Fix use of logging on macos 10.11
+
+* 2017-12-18: Version 0.2.0
+ * Add Powershell scripts for Windows 7 that will update the IPv4 DNS resolvers.
+ * Add Windows scripts to enable a Scheduled task for stubby
+ * Add files to support a separate macOS GUI application to manage stubby
+   https://dnsprivacy.org/wiki/x/CIBn
+ * Add Quad9 details to the configuration file
+ * Bugfix #48: Do not do native DNSSEC validation when cd bit was
+   received (for example from an unbound forwarder), but DNSSEC
+   validation was not enabled in the first place.
+ * Bugfix getdnsapi/getdns#358: Parse config files given with the
+   -C option that have an .yaml extension as YAML not JSON.
+   Thanks Ollivier Robert
+---
+sha256: 920fa2e07c72fd0e5854db1820fa777108009fc5cb702f9aa5155ef58b12adb1
+---
+tags: stubby, zeroconf-dnssec
+---
+_hidden: no
+---
+archive: no

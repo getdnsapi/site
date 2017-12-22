@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_tls_cipher_list.html
+---
+title: getdns_return_t getdns_context_set_tls_cipher_list(getdns_context *context, const char *cipher_list)
+---
+link: /doxygen/group__getdns__context.html#gaba9068650e0ef82837a45ac6b176dcd3
