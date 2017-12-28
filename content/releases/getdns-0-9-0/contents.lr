@@ -163,3 +163,5 @@ changelog:
   * Setting the +specify_class extension with getdns_query
   * Return NOT_IMPLEMENTED for not implemented namespaces, and the
     not implemented getdns_context_set_follow_redirects() function.
+---
+title: getdns-0.9.0 release
