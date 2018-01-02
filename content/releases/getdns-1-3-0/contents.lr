@@ -21,11 +21,11 @@ The bugs fixed with this release are:
 
 Besides these fixes, this release allows to configure a [`getdns_context`] to be initialized with `resolv.conf` and `hosts` at alternative locations, with the [`getdns_context_set_resolvconf()`] and [`getdns_context_set_hosts()`] functions.
 
-Also the TLS parameters for [DNS-over-TLS] are more configurable with this relase.
-The CA store, for authenticating [DNS-over-TLS] upstreams, can be specified with the [`getdns_context_set_tls_ca_path()`] and [`getdns_context_set_tls_ca_file()`] functions.
-The default available ciphers are configurable with the [`getdns_context_set_tls_cipher_list()`] functions.
-The default available cipher list has been adapted to support TLS1.3 too linked with a TLS1.3 supporting version of OpenSSL (i.e. >= 1.1.1).
-Available ciphers can be set for specific upstreams to with [`getdns_context_set_upstream_recursive_servers()`].
+Also, the TLS parameters for [DNS-over-TLS] are more configurable with this relase.
+  * The CA store, for authenticating [DNS-over-TLS] upstreams, can be specified with the [`getdns_context_set_tls_ca_path()`] and [`getdns_context_set_tls_ca_file()`] functions.
+  * The available ciphers are configurable with the [`getdns_context_set_tls_cipher_list()`] functions.
+  * The default cipher list has been adapted to cater for TLS1.3, when getdns is linked with a TLS1.3 supporting version of OpenSSL (i.e. >= 1.1.1).
+  * Ciphers can be set for specific upstreams too with: [`getdns_context_set_upstream_recursive_servers()`].
 
 The [`getdns_context_get_api_information()`] function exposes more [`getdns_context`] settings, amongst which:
   * The default settings for [extensions](/documentation/spec/#3-extensions),
@@ -36,13 +36,13 @@ The [`getdns_context_get_api_information()`] function exposes more [`getdns_cont
 
 This release includes the 0.2.1 release of [Stubby].
 The most prominent bugfix therein is to **not** do DNSSEC validation for queries with the `CD` bit set, when DNSSEC validation was not configured in the first place.
-This bug caused decreased performance for configurations with an [unbound](https://unbound.net/) forwarding to [Stubby].
+This bug caused decreased performance for configurations with [unbound](https://unbound.net/) forwarding to [Stubby].
 
 The 0.2.1 release of Stubby also includes some additional auxiliary functionality which is used by the macOS prototype GUI that was just released: <https://dnsprivacy.org/wiki/display/DP/Stubby+GUI+for+macOS>
 
 -------------------
 
-This release has version number 1.3.0 and not 1.2.2, for which the release candidate was created, because we comply to the [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) scheme, and a few new functions are introduced into the API.
+This release has version number 1.3.0 and not 1.2.2, for which the candidate was created, because we comply to the [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) scheme, and a few new functions are introduced into the API.
 The other change from the release candidate is that the Certificate Authority store location settings are now prepended with `tls_`, like all other setting influencing [DNS-over-TLS].
 
 Merry CHristmas & Happy New year from the getdns team!
