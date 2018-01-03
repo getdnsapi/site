@@ -1,0 +1,11 @@
+title: Privacy: Using DNS-over-TLS with the Quad9 DNS Service
+---
+date: 2017-11-20
+---
+link: https://medium.com/nlnetlabs/privacy-using-dns-over-tls-with-the-new-quad9-dns-service-1ff2d2b687c5
+---
+teaser: Blog post on how to configure Stubby for use with Quad9 by Alex Band
+---
+image: terminal.jpg
+---
+tags: media, dns-privacy, stubby

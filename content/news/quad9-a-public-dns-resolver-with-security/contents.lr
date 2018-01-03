@@ -1,0 +1,11 @@
+title: Quad9, a Public DNS Resolver - with Security
+---
+date: 2017-11-21
+---
+link: https://labs.ripe.net/Members/stephane_bortzmeyer/quad9-a-public-dns-resolver-with-security
+---
+teaser: Blog post on how to configure Stubby for use with Quad9 by Stéphane Bortzmeyer on RIPE Labs
+---
+image: quad9logo.png
+---
+tags: media, dns-privacy, stubby
