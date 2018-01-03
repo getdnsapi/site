@@ -154,3 +154,5 @@ changelog:
 sha256: aa47bca275b97f623dc6799cee97d3465fa46521d94bd9892e08e8d5d88f09c3
 ---
 tags: getdns-1-1-0, stubby
+---
+archive: yes
