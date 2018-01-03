@@ -6,6 +6,6 @@ link: https://labs.ripe.net/Members/stephane_bortzmeyer/quad9-a-public-dns-resol
 ---
 teaser: Blog post on how to configure Stubby for use with Quad9 by Stéphane Bortzmeyer on RIPE Labs
 ---
-image: quad9logo.png
+image: ripelabs-quad9.png
 ---
 tags: media, dns-privacy, stubby
