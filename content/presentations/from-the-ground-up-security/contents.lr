@@ -1,0 +1,23 @@
+title: From the Ground Up Security
+---
+date: 2016-07-11
+---
+event: JCSA16
+---
+event_url: https://www.afnic.fr/fr/l-afnic-en-bref/agenda/182/show/jcsa16-journee-du-conseil-scientifique-de-l-afnic-2016.html
+---
+presenters: benno-overeinder
+---
+slides_url: /slides/04-B-Overeinder-From_the-Ground-Up-Security-JCSA16.pdf
+---
+video_url: https://www.youtube.com/watch?v=jUvYjfE1fpc&t=5h55m16s
+---
+embedded_video_url: https://www.youtube.com/embed/jUvYjfE1fpc?start=21316&end=23250
+---
+teaser: How DNS(SEC) provides building blocks for security and privacy from the very first query
+---
+image: padlock.png
+---
+archive: yes
+---
+tags: end-2-endness
