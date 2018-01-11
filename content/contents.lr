@@ -60,6 +60,8 @@ image: stubby-600x230.png
 ---
 body:
 
+<a href="https://awards.isoc.nl/innovatie/2018/"><img alt="getdns zorgt ervoor dat programmeurs niet zelf veiligheidsmaatregelen en controles hoeven te ontwerpen (maar ze gwoon kunnen opvragen) en dat super veilig  &quot;Hallo! Tweemaal domainnaam A en AAAA met extra TLSA&quot;" src="/static/awards-isoc-nl-2018-727.jpg" style="width: 100%"></a>
+
 getdns is a modern asynchronous DNS API.
 It implements DNS entry points from a design developed and vetted by application developers, in an [API specification](/documentation/spec/).
 The open source C implementation of getdns is developed and maintained in collaboration by NLnet Labs, Sinodun and No Mountain Software.
