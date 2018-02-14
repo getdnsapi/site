@@ -1,0 +1,21 @@
+title: Living on the Edge
+---
+date: 2018-02-04
+---
+event: DNS devroom @ FOSDEM'18
+---
+event_url: https://fosdem.org/2018/schedule/track/dns/
+---
+presenters: willem-toorop
+---
+slides_url: /slides/living-on-the-edge-hands-on-getdns.pdf
+---
+video_url: https://video.fosdem.org/2018/AW1.121/dns_living_on_the_edge.webm
+---
+embedded_video_url: https://video.fosdem.org/2018/AW1.121/dns_living_on_the_edge.webm
+---
+teaser: Greatly needed stub resolver capabilities for applications and systems with the getdns library
+---
+image: living-on-the-edge-slide.png
+---
+tags: end-2-endness
