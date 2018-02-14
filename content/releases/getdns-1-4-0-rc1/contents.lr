@@ -44,7 +44,7 @@ This release candidate includes a candidate for a 0.2.2 release of [Stubby].
 Please review this release candidate carefully, if all is well, the actual release will follow Wednesday the 21st of February.
 
 <p class="origin-reference">Picture of Boo Valentine courtesy of 
-[DaPuglet](https://www.flickr.com/photos/dapuglet/32582086002/) (CC BY-SA 2.0)
+<a href="https://www.flickr.com/photos/dapuglet/32582086002/">DaPuglet</a> (CC BY-SA 2.0)
 </p>
 
 [`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
