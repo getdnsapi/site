@@ -1,0 +1,15 @@
+_model: news-item
+---
+title: Bringing DNS security and privacy to the end user
+---
+teaser: Blog post at APNIC
+---
+archive: no
+---
+date: 2018-02-07
+---
+link: https://blog.apnic.net/2018/02/07/bringing-dns-security-privacy-end-user/
+---
+tags: media, dns-privacy, end-2-endness
+---
+image: end-user.png

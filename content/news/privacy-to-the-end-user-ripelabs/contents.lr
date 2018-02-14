@@ -1,0 +1,15 @@
+_model: news-item
+---
+title: Bringing DNS security and privacy to the end user
+---
+teaser: Blog post at RIPE Labs
+---
+archive: no
+---
+date: 2018-01-24
+---
+link: https://labs.ripe.net/Members/benno_overeinder/bringing-dns-security-and-privacy-to-the-end-user
+---
+tags: media, dns-privacy, end-2-endness
+---
+image: end2endness.png
