@@ -171,27 +171,28 @@ $(function() {
 <p>External dependencies are linked outside the getdns API build tree (we rely on configure to find them). We would like to keep the dependency tree short. Please refer to section for building on Windows for separate dependency and build instructions for that platform.</p>
 <ul>
 <li><a href="https://unbound.net/">libunbound from NLnet Labs</a> version 1.4.16 or later.</li>
-<li><a href="https://www.gnu.org/software/libidn/">libidn from the FSF</a> version 1. (Note that the libidn version means the conversions between A-labels and U-labels may permit conversion of formally invalid labels under IDNA2008.)</li>
+<li><a href="https://www.gnu.org/software/libidn/">libidn from the FSF</a> version 1 or 2. (Note that the libidn version means the conversions between A-labels and U-labels may permit conversion of formally invalid labels under IDNA2008.)</li>
 <li><a href="https://www.openssl.org/">libssl and libcrypto from the OpenSSL Project</a> version 0.9.7 or later. (Note: version 1.0.1 or later is required for TLS support, version 1.0.2 or later is required for TLS hostname authentication)</li>
 <li>Doxygen is used to generate documentation; while this is not technically necessary for the build it makes things a lot more pleasant.</li>
 </ul>
-<p>For example, to build on a recent version of Ubuntu, you would need the following packages: </p><pre class="fragment"># apt install build-essential libunbound-dev libidn11-dev libssl-dev libtool m4 autoconf
+<p>For example, to build on a recent version of Ubuntu, you would need the following packages: </p><pre class="fragment"># apt install build-essential libunbound-dev libidn2-dev libssl-dev libtool m4 autoconf
 </pre><p>If you are building from git, you need to do the following before building:</p>
 <pre class="fragment"># git submodule update --init
 
 # libtoolize -ci # (use glibtoolize for OS X, libtool is installed as glibtool to avoid name conflict on OS X)
 # autoreconf -fi
-</pre><p>As well as building the getdns library two other tools may be installed:</p>
+</pre><p>As well as building the getdns library three other tools may be installed:</p>
 <ul>
 <li>getdns_query: a command line test script wrapper for getdns</li>
 <li>stubby: an experimental DNS Privacy enabled client</li>
+<li>getdns_server_mon: test DNS server function and capabilities</li>
 </ul>
 <p>Note: If you only want to build stubby, then use the <code>--with-stubby</code> option when running 'configure'.</p>
 <h2>Minimizing dependencies</h2>
 <ul>
 <li>getdns can be configured for stub resolution mode only with the <code>--enable-stub-only</code> option to configure. This removes the dependency on <code>libunbound</code>.</li>
-<li>Currently getdns only offers two helper functions to deal with IDN: <code>getdns_convert_ulabel_to_alabel</code> and <code>getdns_convert_alabel_to_ulabel</code>. If you do not need these functions, getdns can be configured to compile without them with the <code>--without-libidn</code> option to configure.</li>
-<li>When both <code>--enable-stub-only</code> and <code>--without-libidn</code> options are used, getdns has only one dependency left, which is OpenSSL.</li>
+<li>Currently getdns only offers two helper functions to deal with IDN: <code>getdns_convert_ulabel_to_alabel</code> and <code>getdns_convert_alabel_to_ulabel</code>. If you do not need these functions, getdns can be configured to compile without them with the <code>--without-libidn</code> and <code>--without-libidn2</code> options to configure.</li>
+<li>When <code>--enable-stub-only</code>, <code>--without-libidn</code> and <code>--without-libidn2</code> options are used, getdns has only one dependency left, which is OpenSSL.</li>
 </ul>
 <h2>Extensions and Event loop dependencies</h2>
 <p>The implementation works with a variety of event loops, each built as a separate shared library. See <a href="https://getdnsapi.net/doxygen/group__eventloops.html">this Doxygen page</a> and <a href="https://getdnsapi.net/documentation/manpages/#ASYNCHRONOUS USE">this man page</a> for more details.</p>

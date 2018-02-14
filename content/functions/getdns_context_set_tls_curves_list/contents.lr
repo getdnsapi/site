@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_tls_curves_list.html
+---
+title: getdns_return_t getdns_context_set_tls_curves_list(getdns_context *context, const char *curves_list)
+---
+link: /doxygen/group__getdns__context.html#ga93e5f0540b2ab198ba908e6868cd51b6

@@ -1,0 +1,353 @@
+title: stubby.1
+---
+body:
+
+
+<h1 align="center">STUBBY</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#CONFIGURATION">CONFIGURATION</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">stubby - a
+local DNS Privacy stub resolver</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>stubby</b>
+[<b>-C</b> <i>file</i>] [<b>-ghilV</b>] [<b>-v</b>
+<i>loglevel</i>]</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>stubby</b>
+acts as a local DNS Privacy stub resolver, using
+DNS-over-TLS. Stubby encrypts DNS queries sent from the
+local machine to a DNS Privacy resolver, increasing end user
+privacy.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>stubby</b>
+is in the early stages of development but is suitable for
+technical/advanced users.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>stubby</b>
+provides DNS Privacy by running as a daemon that listens on
+the loopback address for DNS queries, and forwards those
+queries out over TLS. The default configuration provides
+Strict Privacy, and uses a subset of available DNS Privacy
+servers. See
+<i>https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Test+Servers</i></p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>-C&nbsp;</b>file</i></p>
+
+<p style="margin-left:22%;">Read settings from the
+configuration file <i>file</i>. If this option is not given,
+<b>stubby</b> looks for a configuration file at
+<i>~/.stubby.yml</i>. If this is not present, <b>stubby</b>
+falls back to the global configuration file
+<i>/usr/local/etc/stubby/stubby.yml</i>.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-g</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Run <b>stubby</b> as a daemon.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-h</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a usage message and exit.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-i</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Read the configuration, validate the contents,
+pretty-print them to the standard output and exit.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-l</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Enable all logging. Equivalent to <b>-v 7</b>.</p></td></tr>
+</table>
+
+
+<p style="margin-left:11%;"><b>-v&nbsp;</b><i>loglevel</i></p>
+
+<p style="margin-left:22%;">Enable logging. All logging
+messages at or below <i>loglevel</i> are printed to standard
+error: <br>
+0: EMERG</p>
+
+<p style="margin-left:32%;">The system is unusable</p>
+
+<p style="margin-left:22%;">1: ALERT</p>
+
+<p style="margin-left:32%;">Action must be taken
+immediately</p>
+
+<p style="margin-left:22%;">2: CRIT</p>
+
+<p style="margin-left:32%;">Critical conditions</p>
+
+<p style="margin-left:22%;">3: ERROR</p>
+
+<p style="margin-left:32%;">Error conditions</p>
+
+<p style="margin-left:22%;">4: WARN</p>
+
+<p style="margin-left:32%;">Warning conditions</p>
+
+<p style="margin-left:22%;">5: NOTICE</p>
+
+<p style="margin-left:32%;">Normal, but significant,
+conditions</p>
+
+<p style="margin-left:22%;">6: INFO</p>
+
+<p style="margin-left:32%;">Information messages</p>
+
+<p style="margin-left:22%;">7: DEBUG</p>
+
+<p style="margin-left:32%;">Debug-level messages</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-V</b></p></td>
+<td width="8%"></td>
+<td width="52%">
+
+
+<p>Print the <b>stubby</b> version and exit.</p></td>
+<td width="26%">
+</td></tr>
+</table>
+
+<h2>CONFIGURATION
+<a name="CONFIGURATION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The
+configuration file is in YAML. An example config is:</p>
+
+
+<p style="margin-left:22%; margin-top: 1em">resolution_type:
+GETDNS_RESOLUTION_STUB <br>
+dns_transport_list: <br>
+- GETDNS_TRANSPORT_TLS <br>
+tls_authentication: GETDNS_AUTHENTICATION_REQUIRED <br>
+tls_query_padding_blocksize: 256 <br>
+edns_client_subnet_private : 1 <br>
+idle_timeout: 10000 <br>
+listen_addresses: <br>
+- 127.0.0.1 <br>
+- 0::1 <br>
+round_robin_upstreams: 1 <br>
+upstream_recursive_servers: <br>
+- address_data: 145.100.185.15 <br>
+tls_auth_name: &quot;dnsovertls.sinodun.com&quot; <br>
+tls_pubkey_pinset: <br>
+- digest: &quot;sha256&quot; <br>
+value: 62lKu9HsDVbyiPenApnc4sfmSYTHOVfFgL3pyB+cBL4= <br>
+- address_data: 145.100.185.16 <br>
+tls_auth_name: &quot;dnsovertls1.sinodun.com&quot; <br>
+tls_pubkey_pinset: <br>
+- digest: &quot;sha256&quot; <br>
+value: cE2ecALeE5B+urJhDrJlVFmf38cJLAvqekONvjvpqUA= <br>
+- address_data: 185.49.141.37 <br>
+tls_auth_name: &quot;getdnsapi.net&quot; <br>
+tls_pubkey_pinset: <br>
+- digest: &quot;sha256&quot; <br>
+value: foxZRnIh9gZpWnl+zEiKa0EJ2rdCGroMWm02gaxSc9Q= <br>
+- address_data: 2001:610:1:40ba:145:100:185:15 <br>
+tls_auth_name: &quot;dnsovertls.sinodun.com&quot; <br>
+tls_pubkey_pinset: <br>
+- digest: &quot;sha256&quot; <br>
+value: 62lKu9HsDVbyiPenApnc4sfmSYTHOVfFgL3pyB+cBL4= <br>
+- address_data: 2001:610:1:40ba:145:100:185:16 <br>
+tls_auth_name: &quot;dnsovertls1.sinodun.com&quot; <br>
+tls_pubkey_pinset: <br>
+- digest: &quot;sha256&quot; <br>
+value: cE2ecALeE5B+urJhDrJlVFmf38cJLAvqekONvjvpqUA= <br>
+- address_data: 2a04:b900:0:100::38 <br>
+tls_auth_name: &quot;getdnsapi.net&quot; <br>
+tls_pubkey_pinset: <br>
+- digest: &quot;sha256&quot; <br>
+value: foxZRnIh9gZpWnl+zEiKa0EJ2rdCGroMWm02gaxSc9Q=</p>
+
+<p style="margin-left:11%; margin-top: 1em">The
+configuration items are as follow. Some take constant values
+from the <b>getdns</b> library underlying <b>stubby</b> and
+further explanation of their values may be found in the
+<b>getdns</b> documentation or at
+<i>http://www.getdnsapi.net</i> <b><br>
+resolution_type</b> <i>resolution</i>.</p>
+
+<p style="margin-left:22%;">This must be set to
+<i>GETDNS_RESOLUTION_STUB</i> for historic reasons.
+<b>stubby</b> will exit with an error if any other setting
+is used.</p>
+
+<p style="margin-left:11%;"><b>dns_transport_list</b>
+<i>list</i></p>
+
+<p style="margin-left:22%;">Set the list of transport types
+to be used. For DNS Privacy this must be set to
+<i>GETDNS_TRANSPORT_TLS</i>. Clear text transports are
+<i>GETDNS_TRANSPORT_TCP</i> and
+<i>GETDNS_TRANSPORT_UDP</i></p>
+
+<p style="margin-left:11%;"><b>tls_authentication</b>
+<i>type</i></p>
+
+<p style="margin-left:22%;">Set the type of authentication
+required. For Strict Privacy, this should be set to
+<i>GETDNS_AUTHENTICATION_REQUIRED</i>. For Opportunistic
+mode, remove this setting or set to
+<i>GETDNS_AUTHENTICATION_NONE</i>. In Opportunistic mode
+authentication of the nameserver is not required and
+fallback to clear text transports is permitted if they are
+in <i>dns_transport_list</i></p>
+
+
+<p style="margin-left:11%;"><b>tls_query_padding_blocksize</b>
+<i>blocksize</i></p>
+
+<p style="margin-left:22%;">Use the EDNS0 padding option to
+pad DNS queries to hide their size.</p>
+
+
+<p style="margin-left:11%;"><b>edns_client_subnet_private</b>
+<i>0</i> or <i>1</i></p>
+
+<p style="margin-left:22%;">If 1, use EDNS0 Client Subnet
+privacy so the client s ubnet is not sent to authoritative
+servers.</p>
+
+<p style="margin-left:11%;"><b>idle_timeout</b>
+<i>timeout</i></p>
+
+<p style="margin-left:22%;">Use an EDNS0 Keepalive idle
+timeout of <i>timeout</i> milliseconds unless overridden by
+the server. This keeps idle TLS connections open to avoid
+the overhead of opening a new connection for every
+query.</p>
+
+<p style="margin-left:11%;"><b>round_robin_upstreams</b>
+<i>0</i> or <i>1</i></p>
+
+<p style="margin-left:22%;">If 1, round robin queries
+across all the configured upstream servers. Without this
+option <b>stubby</b> will use each upstream server
+sequentially until it becomes unavailable and then move on
+to use the next.</p>
+
+
+<p style="margin-left:11%;"><b>upstream_recursive_servers</b>
+<i>server list</i></p>
+
+<p style="margin-left:22%;">Specify the upstream servers
+that <b>stubby</b> is to use. Each item in the list contains
+the following items: <b><br>
+address_data</b> <i>address</i></p>
+
+<p style="margin-left:32%;">IPv4 or IPv6 address of the
+server.</p>
+
+<p style="margin-left:22%;"><b>tls_auth_name</b>
+<i>name</i></p>
+
+<p style="margin-left:32%;">This is the authentication
+domain name that will be verified against the presented
+certificate.</p>
+
+<p style="margin-left:22%;"><b>tls_pubkey_pinset</b>
+<i>pinset</i></p>
+
+<p style="margin-left:32%;">The sha256 SPKI pinset for the
+server. This is also verified against the presented
+certificate. This contains two items: <b><br>
+digest</b> <i>type</i></p>
+
+<p style="margin-left:43%;">The type of the key digest.</p>
+
+<p style="margin-left:32%;"><b>value</b> <i>keyval</i></p>
+
+<p style="margin-left:43%;">The key value.</p>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>~/.stubby.yml
+<br>
+/usr/local/etc/stubby/stubby.yml</i></p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>https://getdnsapi.net/
+<br>
+
+https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby</i></p>
+<hr>

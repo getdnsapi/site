@@ -6,6 +6,22 @@ then
 	exit
 fi
 
+for m in $1/src/*.1
+do
+	name=${m#$1/src/}
+	name=${name%.1}
+	if [ ! -d content/documentation/manpages/$name ]
+	then
+		mkdir content/documentation/manpages/$name
+	fi
+	( echo title: $name.1
+	  echo ---
+	  echo body:
+	  echo ""
+	  groff -mandoc -T html $m | awk 'BEGIN{p=0}/<\/body>/{p=0}{if(p==1)print}/<body>/{p=1}'
+	) > content/documentation/manpages/$name/contents.lr
+done
+
 for m in $1/doc/*.3
 do
 	name=${m#$1/doc/}

@@ -1,0 +1,110 @@
+version: 1.4.0-rc1
+---
+title: First release candidate for getdns-1.4.0
+---
+announcement:
+
+Dear all,
+
+We have a first release candidate for the upcoming 1.4.0 security and bugfix release of getdns.
+
+Continuous reports on [Stubby] have revealed a few more crash bugs in certain conditions.
+
+Besides these bugfixes, the release contains two security fixes.
+  1. When TLS upstreams were authenticated with SHA256 SPKI pins, certain verification errors - like self-signed certificates - were tolerated when the SPKI pin matched.
+     This is wrong because checking for the error status indicating self-signed certificates does not mean that no other errors occurred.
+     Only one error status is returned by the [underlying OpenSSL verification function](https://www.openssl.org/docs/manmaster/man3/X509_verify_cert.html) and that error status masks potential other errors.
+
+     This release will check SPKI pins with the [native OpenSSL DANE functions](https://www.openssl.org/docs/man1.1.0/ssl/SSL_CTX_dane_enable.html), for OpenSSL version 1.1.0 and higher, or with the DANE functions from the included [Viktor Dukhovni's danessl library](https://github.com/vdukhovni/ssl_dane) for OpenSSL version 1.0.0 and higher.
+
+     For OpenSSL versions before 1.0.0 and for LibreSSL, self-signed certificates are no longer tolerated.
+
+  2. The recent [CVE-2017-15105](https://medium.com/nlnetlabs/the-peculiar-case-of-nsec-processing-using-expanded-wildcard-records-ae8285f236be), exposed a flaw with a few resolvers, that made it possible to downgrade secure connections.
+     One of the causes of the issue, was that wildcard expansions of resource records used in DNSSEC proof were allowed.
+     Although getdns was not vulnerable to the specific issue addressed in CVE-2017-15105, it did not explicitly disallow wildcard expansions of resource records used in DNSSEC proof.
+     This release has that fixed.
+
+
+Although this release is binary compatible up to getdns version 1.1.0, the .so version is still bumped at request for the fedora package.
+
+This release includes a new tool `getdns_server_mon` based on Stéphane Borzmeyer's [monitor DNS-over-TLS](https://github.com/bortzmeyer/monitor-dns-over-tls) tool.
+This tool is used to generate [the table showing public DNS-over-TLS servers capabilities](https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/)
+
+Besides the available ciphers, now the supported curves can be configured too with the [`getdns_context_set_tls_curves_list()`] function or the per upstream in with the [`getdns_context_set_upstream_recursive_servers()`] function.
+
+----------------
+
+This release candidate includes a candidate for a 0.2.2 release of [Stubby].
+
+  - It includes an updated and fixed [`stubby.yml`] configuration file.
+  - Has additional logging of basic configuration on startup.
+  - Has a [manpage](http://localhost:5000/documentation/manpages/stubby/) included
+
+
+Please review this release candidate carefully, if all is well, the actual release will follow Wednesday the 21st of February.
+
+<p class="origin-reference">Picture of Boo Valentine courtesy of 
+[DaPuglet](https://www.flickr.com/photos/dapuglet/32582086002/) (CC BY-SA 2.0)
+</p>
+
+[`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.2/stubby.yml.example
+[`getdns_context_set_tls_curves_list()`]: /functions/getdns_context_set_tls_curves_list.html
+[`getdns_context_set_upstream_recursive_servers()`]: /functions/getdns_context_set_upstream_recursive_resolvers.html
+---
+_discoverable: yes
+---
+date: 2018-02-14
+---
+teaser: Security and bugfixes
+---
+image: valentine.jpg
+---
+changelog:
+
+* 2018-02-??: Version 1.4.0
+  * .so revision bump to please fedora packaging system.
+    Thanks Paul Wouters
+  * Specify the supported curves with getdns_context_set_tls_curves_list()
+    An upstream specific list of supported curves may also be given
+    with the tls_curves_list setting in the upstream dict with
+    getdns_context_set_upstream_recursive_servers()
+  * New tool getdns_server_mon for checking upstream recursive
+    resolver's capabilities.
+  * Improved handling of opportunistic back-off.  If other transports
+    are working, don’t forcibly promote failed upstreams just wait for
+    the re-try timer.
+  * Hostname authentication with libressl
+    Thanks Norbert Copones
+  * Security bugfix in response to CVE-2017-15105.  Although getdns was
+    not vulnerable for this specific issue, as a precaution code has been
+    adapted so that signatures of DNSKEYs, DSs, NSECs and NSEC3s can not
+    be wildcard expansions when used with DNSSEC proofs.  Only direct
+    queries for those types are allowed to be wildcard expansions.
+  * Bugfix PR#379: Miscelleneous double free or corruption, and corrupted
+    memory double linked list detected issue, whith serving functionality.
+    Thanks maddie and Bruno Pagani
+  * Security Bugfix PR#293: Check sha256 pinset's
+    with OpenSSL native DANE functions for OpenSSL >= 1.1.0
+    with Viktor Dukhovni's danessl library for OpenSSL >= 1.0.0
+    don't allow for authentication exceptions (like self-signed
+    certificates) otherwise.  Thanks Viktor Dukhovni
+  * libidn2 support.  Thanks Paul Wouters
+---
+stubbychangelog:
+
+* 2018-02-??: Version 0.2.2
+ * Fixes and updates to the stubby.yml.config file. Add separate entries for
+   servers that listen on port 443.
+ * Additional logging of basic config on startup
+ * -V option to show version
+ * Added a man page
+---
+sha256: b60963f966111e24efdc96e048d1e3b7492d5cfd590abc73cff227ecc3549f52
+---
+tags:
+---
+_hidden: no
+---
+archive: no
