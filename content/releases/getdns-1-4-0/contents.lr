@@ -1,12 +1,12 @@
-version: 1.4.0-rc1
+version: 1.4.0
 ---
-title: First release candidate for getdns-1.4.0
+title: getdns-1.4.0 release
 ---
 announcement:
 
 Dear all,
 
-We have a first release candidate for the upcoming 1.4.0 security and stability release of getdns.
+I am pleased to announce the new security and bugfix release, version 1.4.0 of getdns.
 
 **Security Fixes:**  The release contains two security fixes.
   1. When TLS upstreams were authenticated with SHA256 SPKI pins, certain verification errors - like self-signed certificates - were tolerated when the SPKI pin matched.
@@ -24,7 +24,7 @@ We have a first release candidate for the upcoming 1.4.0 security and stability 
 
 **Stability Fixes:** Detailed reports from our [Stubby] users have revealed a few more bugs causing crashes in the getdns library in certain conditions.
 
-** 'Additional API' - new functions:** Besides the available ciphers, now the supported curves can be configured too with the [`getdns_context_set_tls_curves_list()`] function or the per upstream in with the [`getdns_context_set_upstream_recursive_servers()`] function.
+**'Additional API' - new functions:** Besides the available ciphers, now the supported curves can be configured too with the [`getdns_context_set_tls_curves_list()`] function or the per upstream in with the [`getdns_context_set_upstream_recursive_servers()`] function.
 
 **Tools:** This release includes a new tool `getdns_server_mon` based on Stéphane Borzmeyer's [monitor DNS-over-TLS](https://github.com/bortzmeyer/monitor-dns-over-tls) tool.
 This tool is used to generate [the table showing public DNS-over-TLS servers capabilities](https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/)
@@ -33,18 +33,17 @@ This tool is used to generate [the table showing public DNS-over-TLS servers cap
 
 ----------------
 
-**Stubby:** This release candidate includes a candidate for a 0.2.2 release of [Stubby].
+**Stubby:** This release includes the new version 0.2.2 release of [Stubby].
 
   - It includes an updated and fixed [`stubby.yml`] configuration file.
   - Has additional logging of basic configuration on startup.
-  - Has a [manpage](http://localhost:5000/documentation/manpages/stubby/) included
-----------------
+  - Has a [manpage](/documentation/manpages/stubby/) included
 
-Please review this release candidate carefully, if all is well, the actual release will follow Wednesday the 21st of February.
 
-<p class="origin-reference">Picture of Boo Valentine courtesy of 
-<a href="https://www.flickr.com/photos/dapuglet/32582086002/">DaPuglet</a> (CC BY-SA 2.0)
+<p class="origin-reference">Picture of Safe and Sounds Puppy courtesy of 
+<a href="https://www.flickr.com/photos/51189951@N02/6888133678">Kaydee H</a> (CC BY-SA 2.0)
 </p>
+
 
 [`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
 [Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
@@ -54,15 +53,15 @@ Please review this release candidate carefully, if all is well, the actual relea
 ---
 _discoverable: yes
 ---
-date: 2018-02-14
+date: 2018-02-21
 ---
 teaser: Security and bugfixes
 ---
-image: valentine.jpg
+image: safe-and-sound.jpg
 ---
 changelog:
 
-* 2018-02-??: Version 1.4.0
+* 2018-02-21: Version 1.4.0
   * .so revision bump to please fedora packaging system.
     Thanks Paul Wouters
   * Specify the supported curves with getdns_context_set_tls_curves_list()
@@ -93,17 +92,17 @@ changelog:
 ---
 stubbychangelog:
 
-* 2018-02-??: Version 0.2.2
+* 2018-02-21: Version 0.2.2
  * Fixes and updates to the stubby.yml.config file. Add separate entries for
    servers that listen on port 443.
  * Additional logging of basic config on startup
  * -V option to show version
  * Added a man page
 ---
-sha256: b60963f966111e24efdc96e048d1e3b7492d5cfd590abc73cff227ecc3549f52
+sha256: de360cd554fdec4bae3f5afbb36145872b8ff7306ded5deb0905442c4909f7b3
 ---
 tags: 
 ---
 _hidden: no
 ---
-archive: yes
+archive: no
