@@ -11,7 +11,9 @@ def parse_lektor(lr):
 	for a in lr.strip().split('---\n'):
 		lns = a.strip().split('\n')
 		if len(lns) == 1:
-			key, value = lns[0].split(': ')
+			lnsl = lns[0].split(': ')
+			key = lnsl[0]
+			value = ': '.join(lnsl[1:]) if len(lnsl) > 1 else ''
 		else:
 			key = lns[0][:-1]
 			value = '\n'.join(lns[2:])
