@@ -773,7 +773,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when succesful. </dd>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD when successful. </dd>
 <dd>
 GETDNS_RETURN_INVALID_PARAMETER when context was NULL. </dd></dl>
 
@@ -2284,7 +2284,7 @@ GETDNS_RETURN_INVALID_PARAMETER when context was NULL. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>The context to configure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">resolvonf</td><td>Defaults to /etc/resolv.conf </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">resolvconf</td><td>Defaults to /etc/resolv.conf </td></tr>
   </table>
   </dd>
 </dl>
@@ -2698,11 +2698,11 @@ GETDNS_RETURN_INVALID_PARAMETER when any of the arguments was NULL. </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the current limit for oustanding queries setting from this context. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__context.html#gaca8b7e5f548477e29b6f6603331177cf">getdns_context_set_limit_outstanding_queries</a> </dd></dl>
+<p>Get the current limit for outstanding queries setting from this context. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__context.html#gaca8b7e5f548477e29b6f6603331177cf">getdns_context_set_limit_outstanding_queries</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>The context from which to get the setting </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">limit</td><td>The current limit for oustanding queries </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">limit</td><td>The current limit for outstanding queries </td></tr>
   </table>
   </dd>
 </dl>
@@ -3336,7 +3336,7 @@ GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get whether the upstream needs to be authenticated whith DNS over TLS. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__context.html#gaf253fef4ad6ebe79514aa35a7f8a93e5">getdns_context_set_tls_authentication</a> </dd>
+<p>Get whether the upstream needs to be authenticated with DNS over TLS. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__context.html#gaf253fef4ad6ebe79514aa35a7f8a93e5">getdns_context_set_tls_authentication</a> </dd>
 <dd>
 <a class="el" href="group__authvaulesandtext.html">Authentication values and texts</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -3377,7 +3377,7 @@ GETDNS_RETURN_INVALID_PARAMETER when context or value was NULL. </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get whether the context is configured to round robin queries over the available upstreams. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__context.html#ga1658a1f49e8a9cb5740206c2c2b66fc2">getdns_context_get_round_robin_upstreams</a> </dd></dl>
+<p>Get whether the context is configured to round robin queries over the available upstreams. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getdns__context.html#gaee949b19ba9a04e6a17553d3c6878518">getdns_context_set_round_robin_upstreams</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>The context from which to get the setting </td></tr>
@@ -3686,7 +3686,7 @@ GETDNS_RETURN_INVALID_PARAMETER when context was NULL. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>The context to configure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">resolvonf</td><td>NULL if the context was not initialized with a resolv.conf file. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">resolvconf</td><td>NULL if the context was not initialized with a resolv.conf file. </td></tr>
   </table>
   </dd>
 </dl>
