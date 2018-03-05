@@ -33,7 +33,7 @@ Where should the 'official' Stubby homepage be?
 -->
 See [Stubby Homepage](https://getdnsapi.net/blog/dns-privacy-daemon-stubby/) for more details
 
-# Dependancies
+# Dependencies
 
 Stubby uses [getdns](https://getdnsapi.net/) and requires the 1.1.2 release of getdns or later.
 
@@ -191,7 +191,7 @@ instructions below but adding the ``--with-stubby`` flag to the `configure` step
 
 ## Dependencies
 
-The most limited install of getdns that will work with Stubby requires only OpenSSL as a dependancy (version 1.0.2 or later is required for hostname authentication to be supported). If OpenSSL is installed in a non-standard location on your system use the `--with-ssl` option to `configure` below to specify where it is installed.
+The most limited install of getdns that will work with Stubby requires only OpenSSL as a dependency (version 1.0.2 or later is required for hostname authentication to be supported). If OpenSSL is installed in a non-standard location on your system use the `--with-ssl` option to `configure` below to specify where it is installed.
 
 ### Linux
 

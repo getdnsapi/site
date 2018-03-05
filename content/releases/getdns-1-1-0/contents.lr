@@ -57,7 +57,7 @@ Besides these new functions, we have much improved and more stable and robust sc
 
   * The default event loop, which is also used for synchronous requests, is now based on `poll()` instead of `select()` and does not inherit `select()`'s limits any more.
   * The limit on number of outstanding queries, set with the [`getdns_context_limit_outstanding_queries()`] function, will now also be obeyed in stub mode.
-    This was an ommision from the 1.0.0 release.
+    This was an omission from the 1.0.0 release.
   * getdns will now queue up requests that could not be scheduled because of resource limitations, to be rescheduled when resources become available again.
 
 

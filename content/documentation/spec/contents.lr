@@ -76,7 +76,7 @@ extensions. See [the section below](#Extensions) for information on how to speci
 the extensions used for a request.
 
 > **`*userarg`**
->> A void* that is passed to the function, which the funciton
+>> A void* that is passed to the function, which the function
 returns to the callback function untouched. `userarg` can be used by the callback
 function for any user-specific data needed. This can be NULL.
 
@@ -1440,7 +1440,7 @@ void callback(getdns_context        *context,
 	assert( callback_type == GETDNS_CALLBACK_COMPLETE );
 
 	if ((r = getdns_dict_get_int(response, "status", &status)))
-		fprintf(stderr, "Could not get \"status\" from reponse");
+		fprintf(stderr, "Could not get \"status\" from response");
 
 	else if (status != GETDNS_RESPSTATUS_GOOD)
 		fprintf(stderr, "The search had no results, and a return value of %"PRIu32".\n", status);
@@ -1554,7 +1554,7 @@ void callback(getdns_context        *context,
 	assert( callback_type == GETDNS_CALLBACK_COMPLETE );
 
 	if ((r = getdns_dict_get_list(response, "replies_tree", &replies_tree)))
-		fprintf(stderr, "Could not get \"replies_tree\" from reponse");
+		fprintf(stderr, "Could not get \"replies_tree\" from response");
 
 	else if ((r = getdns_list_get_length(replies_tree, &n_replies)))
 		fprintf(stderr, "Could not get replies_tree\'s length");
@@ -1781,7 +1781,7 @@ void callback(getdns_context        *context,
 	assert( callback_type == GETDNS_CALLBACK_COMPLETE );
 
 	if ((r = getdns_dict_get_list(response, "/replies_tree/0/answer", &answer)))
-		fprintf(stderr, "Could not get \"answer\" section from first reply in the reponse");
+		fprintf(stderr, "Could not get \"answer\" section from first reply in the response");
 
 	else if ((r = getdns_list_get_length(answer, &n_answers)))
 		fprintf(stderr, "Could not get replies_tree\'s length");

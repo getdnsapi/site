@@ -57,7 +57,7 @@ changelog:
     Allow misshing "address_type" in address dicts.
   * TLS session resumption
   * -C <config file> option to getdns_query to configure context 
-    from a json like formated file.  The output of -i (print API
+    from a json like formatted file.  The output of -i (print API
     information) can be used as config file directly.
     Settings may also be given in this format as arguments of
     the getdns_query command directly.

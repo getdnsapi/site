@@ -47,7 +47,7 @@ This release brings the implementation on par with the December 2015 version of 
     > ```
     > getdns_query -Z getdnsapi.net,com -A www.verisignlabs
     > ```
-    > Will first try to get the addresses for `www.verisignlabs.getdnsapi.net` and will then try and return the successfull lookup of the addresses for `www.verisignlabs.com`
+    > Will first try to get the addresses for `www.verisignlabs.getdnsapi.net` and will then try and return the successful lookup of the addresses for `www.verisignlabs.com`
 
 
   * The `add_warning_for_bad_dns` extension.

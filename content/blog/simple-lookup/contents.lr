@@ -109,7 +109,7 @@ The coding style employed in the examples is just a compromise between keeping t
 >>> 		; /* error handling */
 >>> ```
 >>
->> or by `goto`-ing to a precise escape point (**DONT TRY THIS AT HOME**), i.e.:
+>> or by `goto`-ing to a precise escape point (**DON'T TRY THIS AT HOME**), i.e.:
 >>
 >>> ```c
 >>> 	if ((r = getdns_context_create(&ctxt, 1)))
@@ -210,7 +210,7 @@ int main()
 Note that getdns returns "network" format IPv4 and IPv6 addresses.
 In fact, getdns does not convert any data in the returned DNS replies.
 Addresses in DNS replies are represented by network format (By `A` and `AAAA` resource records).
-The [reponse dict] is merely a mechanism to get to the correct places within the DNS replies.
+The [response dict] is merely a mechanism to get to the correct places within the DNS replies.
 
 
 # Asynchronous query

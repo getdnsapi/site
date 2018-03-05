@@ -82,7 +82,7 @@ changelog:
     be wildcard expansions when used with DNSSEC proofs.  Only direct
     queries for those types are allowed to be wildcard expansions.
   * Bugfix PR#379: Miscelleneous double free or corruption, and corrupted
-    memory double linked list detected issue, whith serving functionality.
+    memory double linked list detected issue, with serving functionality.
     Thanks maddie and Bruno Pagani
   * Security Bugfix PR#293: Check sha256 pinset's
     with OpenSSL native DANE functions for OpenSSL >= 1.1.0
