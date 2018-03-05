@@ -1,0 +1,79 @@
+version: 1.4.1-rc1
+---
+title: First release candidate for getdns-1.4.1
+---
+announcement:
+
+Dear all,
+
+We have a first release candidate for the upcoming 1.4.1 quick-fix release of getdns.
+
+This release has a fix for a DNSSEC validation failure for insecure NODATA responses, which was introduced in getdns-1.2.1.
+Besides this DNSSEC bugfix getdns can now also determine the DNSSEC validation status of zone's with missing SOA records.  This sometimes occurs with sloppily implemented CDNs.
+
+Besides these DNSSEC fixes, this release also contains a few upstream management improvements, mainly contributed by Robert Groenenberg:
+
+  * Before, when a UDP query for a specific upstream failed, is was marked to back off for a certain number of queries.
+    The number of queries to let pass before giving it another go, increased exponentially on each successive failure.
+    This exponential back off increase is now limited.
+    The default maximum UDP back off value is 1000.
+    This means that when an UDP upstream is down, it will always at least retry one every 1000 queries.
+
+  * When all UDP upstreams are failing (for example because the WiFi is temporarily down), the back off scheme described above will be abandoned, and all failing upstreams will be retried equally.
+    This speeds up DNS availability reestablishment when upstream become functional again (WiFi is up!).
+
+  * For each individual query, every upstream will be tried only once.
+    This resolves a nasty bug in which failing TCP upstreams are retried over and over again with the same failing query, because TCP upstreams lack the time based back off mechanisms that TLS upstreams have.
+
+
+A few more issues are resolved with this release.
+For a complete overview view the ChangeLog below.
+
+
+Please review this release candidate carefully, if all is well, the actual release will follow Monday the 5th of March.
+
+<p class="origin-reference">Drawing of adhesive bandage courtesy of 
+<a href="https://commons.wikimedia.org/wiki/File:Adhesive_bandage_drawing_nevit.svg">Nevit Dilmen</a> (CC BY-SA 3.0)
+</p>
+
+[`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.2/stubby.yml.example
+[`getdns_context_set_tls_curves_list()`]: /functions/getdns_context_set_tls_curves_list.html
+[`getdns_context_set_upstream_recursive_servers()`]: /functions/getdns_context_set_upstream_recursive_resolvers.html
+---
+_discoverable: yes
+---
+date: 2018-03-05
+---
+teaser: Quick bugfix
+---
+image: band-aid.png
+---
+changelog:
+
+* 2018-03-??: Version 1.4.1
+  * Bugfix #388: Prevent fallback to an earlier tried upstream within a
+    single query.  Thanks Robert Groenenberg
+  * PR #387: Compile with OpenSSL with deprecated APIs disabled.
+    Thanks Rosen Penev
+  * PR #386: UDP failover improvements:
+    - When all UDP upstreams fail, retry them (more or less) equally
+    - Limit maximum UDP backoff (default to 1000)
+      This is configurable with the --with-max-udp-backoff configure
+      option.
+    Thanks Robert Groenenberg
+  * Bugfix: Find zonecut with DS queries (instead of SOA queries).
+    Thanks Elmer Lastdrager
+  * Bugfix #385: Verifying insecure NODATA answers (broken since 1.2.1).
+    Thanks hanvinke
+  * PR #384: Fix minor spelling and formatting.  Thanks dkg.
+  * Bugfix #382: Parallel install of getdns_query and getdns_server_mon
+---
+sha256: e1540d289ec82a752f0d4046d59c2445b76dcdc74a8653b90d7e530e6b2bec19
+---
+tags: 
+---
+_hidden: no
+---
+archive: no
