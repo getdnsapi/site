@@ -1,12 +1,12 @@
-version: 1.4.1-rc1
+version: 1.4.1
 ---
-title: First release candidate for getdns-1.4.1
+title: getdns-1.4.1 release
 ---
 announcement:
 
 Dear all,
 
-We have a first release candidate for the upcoming 1.4.1 quick-fix release of getdns.
+I am pleased to announce the new bugfix release, version 1.4.1 of getdns.
 
 This release has a fix for a DNSSEC validation failure for insecure NODATA responses, which was introduced in getdns-1.2.1.
 Besides this DNSSEC bugfix getdns can now also determine the DNSSEC validation status of zone's with missing SOA records.  This sometimes occurs with sloppily implemented CDNs.
@@ -29,11 +29,8 @@ Besides these DNSSEC fixes, this release also contains a few upstream management
 A few more issues are resolved with this release.
 For a complete overview view the ChangeLog below.
 
-
-Please review this release candidate carefully, if all is well, the actual release will follow Monday the 12th of March.
-
-<p class="origin-reference">Drawing of adhesive bandage courtesy of 
-<a href="https://commons.wikimedia.org/wiki/File:Adhesive_bandage_drawing_nevit.svg">Nevit Dilmen</a> (CC BY-SA 3.0)
+<p class="origin-reference">Picture of eurostar train to London courtesy of 
+<a href="https://pixabay.com/eurostar-engeland-frankrijk-2719577/">Erich Westendarp</a> (CC0 1.0)
 </p>
 
 [`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
@@ -44,15 +41,15 @@ Please review this release candidate carefully, if all is well, the actual relea
 ---
 _discoverable: yes
 ---
-date: 2018-03-05
+date: 2018-03-12
 ---
 teaser: Quick bugfix
 ---
-image: band-aid.png
+image: eurostar.jpg
 ---
 changelog:
 
-* 2018-03-??: Version 1.4.1
+* 2018-03-12: Version 1.4.1
   * Bugfix #388: Prevent fallback to an earlier tried upstream within a
     single query.  Thanks Robert Groenenberg
   * PR #387: Compile with OpenSSL with deprecated APIs disabled.
@@ -70,10 +67,10 @@ changelog:
   * PR #384: Fix minor spelling and formatting.  Thanks dkg.
   * Bugfix #382: Parallel install of getdns_query and getdns_server_mon
 ---
-sha256: e1540d289ec82a752f0d4046d59c2445b76dcdc74a8653b90d7e530e6b2bec19
+sha256: 245233dc780f615b6ab1472f2b9cdcd957a451a736f3036717d0da466ab1c51e
 ---
 tags: 
 ---
 _hidden: no
 ---
-archive: yes
+archive: no
