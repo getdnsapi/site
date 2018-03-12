@@ -9,3 +9,5 @@ teaser: getdns is discussed in DNS Privacy article by Geoff Huston and Joao Luis
 image: ipj.png
 ---
 tags: media, dns-privacy
+---
+archive: yes

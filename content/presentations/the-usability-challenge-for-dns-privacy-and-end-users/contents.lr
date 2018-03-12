@@ -17,3 +17,5 @@ tags: dns-privacy, stubby
 teaser: The usability challenges for Stubby, presented at the NDSS2017
 ---
 image: stubby-usec.png
+---
+archive: yes

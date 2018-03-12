@@ -17,3 +17,5 @@ tags: dns-privacy
 teaser: Analysis of authentication mechanisms for DNS Privacy enabling recursive resolvers, presented at the NDSS2017
 ---
 image: ndss2017.png
+---
+archive: yes
