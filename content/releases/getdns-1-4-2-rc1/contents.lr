@@ -1,0 +1,84 @@
+version: 1.4.2-rc1
+---
+title: First release candidate for getdns-1.4.2
+---
+announcement:
+
+Dear all,
+
+We have a first release candidate for the upcoming 1.4.2 bugfix release of getdns.
+The two major bugfixes are:
+
+  * DNSSEC Denial of Existence validation at NSEC wildcards, which was broken since 1.4.0.
+
+  * Null termination of strings in configuration dictionaries.  This in particular affected [Stubby] configurations with settings for `trust_anchors_url`, `trust_anchors_verify_CA`, `trust_anchors_verify_email`, `appdata_dir`, `resolvconf`, `hosts`, `tls_ca_path`, `tls_ca_file`, `tls_cipher_list` and `tls_curves_list`.
+    If you use [Stubby] and had one of these configured, but they did not affect [Stubby] operation as expected, retry with this release candidate to see if it resolves the issue.
+
+
+DNSSEC validation in stub mode has been improved and should be possible more often now (also with badly behaving authoritatives),  because it is now partly traced from the root up.
+
+
+A few more issues are resolved with this release.
+For a complete overview see the ChangeLog below.
+
+
+This release has a release candidate for [Stubby] 0.2.3 included, with:
+  - An updated [`stubby.yml`] file (Watch out! The entries for securedns.eu have changed!)
+  - Better recommendations for running [Stubby] with `systemd`
+  - No pass through of ENDS0 options that were handled by underlying getdns
+
+
+Please review these release candidates carefully, if all is well, the actual release will follow Friday the 11th of May.
+
+<p class="origin-reference">Japanese freedom characters courtesy of
+<a href="https://www.sketchport.com/drawing/6160828814327808/japan-letters-freedom">Jin4Ever</a> (CC BY 4.0)
+</p>
+
+[`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.3/stubby.yml.example
+[`getdns_context_set_tls_curves_list()`]: /functions/getdns_context_set_tls_curves_list.html
+[`getdns_context_set_upstream_recursive_servers()`]: /functions/getdns_context_set_upstream_recursive_resolvers.html
+---
+_discoverable: yes
+---
+date: 2018-05-04
+---
+teaser: Bugfixes for strings in config files and NSEC at wildcard
+---
+image: freedom.png
+---
+changelog:
+
+* 2018-05-??: Version 1.4.2
+  * Bugfix getdnsapi/stubby#99: Partly trace DNSSEC from the root
+    up (for tld and sld), to find insecure delegations quicker.
+    Thanks UniverseXXX
+  * Bugfix: Allow NSEC spans starting from (unexpanded) wildcards
+    Bug was introduced when dealing with CVE-2017-15105
+  * Bugfix getdnsapi/stubby#46: Don't assume trailing zero with
+    string bindata's.  Thanks Lonnie Abelbeck
+  * Bugfix #394: Update src/compat/getentropy_linux.c in order to
+    handle ENOSYS (not implemented) fallback.
+    Thanks Brent Blood
+  * Bugfix #395: Clarify that libidn2 dependency is for version 2.0.0
+    or higher. Thanks mire3212
+---
+stubbychangelog:
+
+* 2018-05-??: Version 0.2.3
+ * With systemd setups, make /run/stubby directory writeable for stubby user
+   and include a "appdata_dir" directory in stubby.yml.example
+ * Update securedns.eu entries in stubby.yml.example
+ * Added Cloudflare servers in stubby.yml.example
+ * Added basic upstart script in contrib/upstart dir. Thanks vapniks
+ * Bugfix #98: EDNS options that are handled internally should not
+   be passed on through downstream.  Thanks Twisteroid Ambassador
+---
+sha256: 3d2f7c866d3db39236d1a6a27ae64c59ddc38789422bc67d88ad2d7c979e71cd
+---
+tags: 
+---
+_hidden: no
+---
+archive: no
