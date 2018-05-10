@@ -111,11 +111,26 @@ options:
 		This option can be given more than once.
 ```
 
+# Example queries
+
+```
+# UDP only recursive query for A record
+getdns_query @<serverIP>      -a -A       example.com
+# UDP only stub mode query for A record
+getdns_query @<serverIP> -s -a -A         example.com
+# TCP only stub mode query for A record
+getdns_query @<serverIP> -s -a -A  -l T   example.com
+# TLS only stub mode query for A record
+getdns_query @<serverIP> -s -a -A  -l L   example.com
+# TLS only stub mode query for A record
+getdns_query @<serverIP> -s -a -A -l LT   example.com
+# TLS only stub mode query for A record in Strict mode using server hostname for authentication)
+getdns_query @<serverIP>~<hostname> -s -a -A -l L -m example.com
+```
+Adding the +return_call_reporting option provides and extra section in the response dict that reports details of the transport and authentication used for the transport the query was actually performed over. 
+Note that recursive mode does not support TLS. 
+
 # Updates
-
-## New in 1.1.0a1
-
-The version of `getdns_query` in 1.1.0a1 is suitable to run getdns locally as a DNS-over-TLS stub resolver (see: <https://portal.sinodun.com/wiki/display/TDNS/DNS+Privacy+daemon> )
 
 ## New in 1.0.0b2
 `getdns_query` can now listen for and answer DNS requests through the library configured with the normal command line options, by providing the IP(6) addresses to listen on with the `-z` option.
