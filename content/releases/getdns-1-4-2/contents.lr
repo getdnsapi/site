@@ -1,12 +1,12 @@
-version: 1.4.2-rc1
+version: 1.4.2
 ---
-title: First release candidate for getdns-1.4.2
+title: getdns-1.4.2 release
 ---
 announcement:
 
 Dear all,
 
-We have a first release candidate for the upcoming 1.4.2 bugfix release of getdns.
+I am pleased to announce the new bugfix release, version 1.4.2 of getdns
 The two major bugfixes are:
 
   * DNSSEC Denial of Existence validation at NSEC wildcards, which was broken since 1.4.0.
@@ -22,16 +22,15 @@ A few more issues are resolved with this release.
 For a complete overview see the ChangeLog below.
 
 
-This release has a release candidate for [Stubby] 0.2.3 included, with:
+This release has [Stubby] release 0.2.3 included, with:
   - An updated [`stubby.yml`] file (Watch out! The entries for securedns.eu have changed!)
   - Better recommendations for running [Stubby] with `systemd`
   - No pass through of ENDS0 options that were handled by underlying getdns
 
 
-Please review these release candidates carefully, if all is well, the actual release will follow Friday the 11th of May.
 
-<p class="origin-reference">Japanese freedom characters courtesy of
-<a href="https://www.sketchport.com/drawing/6160828814327808/japan-letters-freedom">Jin4Ever</a> (CC BY 4.0)
+<p class="origin-reference">Picture of Palais du Pharo in Marseille of
+<a href="https://www.flickr.com/photos/knowtex/5912025670">Knowtex</a> (CC BY 2.0)
 </p>
 
 [`getdns_context`]: /documentation/spec/#16-setting-up-the-dns-context
@@ -42,15 +41,17 @@ Please review these release candidates carefully, if all is well, the actual rel
 ---
 _discoverable: yes
 ---
-date: 2018-05-04
+date: 2018-05-11
 ---
 teaser: Bugfixes for strings in config files and NSEC at wildcard
 ---
-image: freedom.png
+image: palais-du-pharo.jpg
 ---
 changelog:
 
-* 2018-05-??: Version 1.4.2
+* 2018-05-11: Version 1.4.2
+  * Bugfix getdnsapi/stubby#106: Core dump when printing certain
+    configuration. Thanks Han Vinke
   * Bugfix getdnsapi/stubby#99: Partly trace DNSSEC from the root
     up (for tld and sld), to find insecure delegations quicker.
     Thanks UniverseXXX
@@ -66,19 +67,21 @@ changelog:
 ---
 stubbychangelog:
 
-* 2018-05-??: Version 0.2.3
- * With systemd setups, make /run/stubby directory writeable for stubby user
-   and include a "appdata_dir" directory in stubby.yml.example
+* 2018-05-11: Version 0.2.3
+ * Bugfix #62 and #106: With systemd setups, make /run/stubby directory
+   writeable for stubby user and include a "appdata_dir" directory
+   in stubby.yml.example.
+   Thanks Paul Wouters, eccgecko and Han Vinke
  * Update securedns.eu entries in stubby.yml.example
  * Added Cloudflare servers in stubby.yml.example
  * Added basic upstart script in contrib/upstart dir. Thanks vapniks
  * Bugfix #98: EDNS options that are handled internally should not
    be passed on through downstream.  Thanks Twisteroid Ambassador
 ---
-sha256: 3d2f7c866d3db39236d1a6a27ae64c59ddc38789422bc67d88ad2d7c979e71cd
+sha256: a2301432a61ec6615407804018d6250df472e11e38c96bc59bb728a49a02586c
 ---
 tags: 
 ---
 _hidden: no
 ---
-archive: yes
+archive: no
