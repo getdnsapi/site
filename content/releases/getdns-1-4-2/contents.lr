@@ -50,6 +50,10 @@ image: palais-du-pharo.jpg
 changelog:
 
 * 2018-05-11: Version 1.4.2
+  * Bugfix getdnsapi/stubby#87: Detect and ignore duplicate certs
+    in the Windows root CA store.
+  * PR #397: No TCP sendto without TCP_FASTOPEN
+    Thanks Emery Hemingway
   * Bugfix getdnsapi/stubby#106: Core dump when printing certain
     configuration. Thanks Han Vinke
   * Bugfix getdnsapi/stubby#99: Partly trace DNSSEC from the root
@@ -78,7 +82,7 @@ stubbychangelog:
  * Bugfix #98: EDNS options that are handled internally should not
    be passed on through downstream.  Thanks Twisteroid Ambassador
 ---
-sha256: a2301432a61ec6615407804018d6250df472e11e38c96bc59bb728a49a02586c
+sha256: 1685b82dfe297cffc4bae08a773cdc88a3edf9a4e5a1ea27d8764bb5affc0e80
 ---
 tags: 
 ---
