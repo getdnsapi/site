@@ -55,7 +55,7 @@ Please review these release candidates carefully, if all is well, the actual rel
 
 <p class="origin-reference">Photo by <a href="https://unsplash.com/photos/S4W4qSsFdZU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jakob Owens</a> on <a href="https://unsplash.com/search/photos/christmas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
 
-[`context`]: /documentation/spec/#16-setting-up-the-dns-context
+[context]: /documentation/spec/#16-setting-up-the-dns-context
 [Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
 [`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.3/stubby.yml.example
 [`getdns_context_set_tls_ciphersuites()`]: /functions/getdns_context_set_tls_ciphersuites.html
