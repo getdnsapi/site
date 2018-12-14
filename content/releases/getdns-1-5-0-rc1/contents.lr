@@ -14,9 +14,11 @@ For the DNS-over-TLS capability this means **TLS1.3 support**.
   * TLS1.3 cipher suites can now be configured, either at [context] level with the [`getdns_context_set_tls_ciphersuites()`] function, or at upstream level by specifying a `tls_ciphersuites` entry.
     For example:
     ```
-    getdns_query -s -L '{ upstream_recursive_servers:
-      [ { address_data    : 1.1.1.1
-        , tls_ciphersuites: "TLS_AES_256_GCM_SHA384" } ] }'
+    getdns_query -s -L \
+    '{ upstream_recursive_servers: [
+       { address_data    : 1.1.1.1
+       , tls_ciphersuites: "TLS_AES_256_GCM_SHA384"
+       } ] }'
     ```
   * The minimum & maximum TLS version to be used per upstream can be specified now at context level with the [`getdns_context_set_tls_min_version()`] and the [`getdns_context_set_tls_max_version()`] functions, or at upstream level by specifying an `tls_min_version` or a `tls_max_version`.
     For example:
