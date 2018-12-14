@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_resolvconf.html
 ---
-title: getdns_return_t getdns_context_get_resolvconf(getdns_context *context, const char **resolvconf)
+title: getdns_return_t getdns_context_get_resolvconf(const getdns_context *context, const char **resolvconf)
 ---
-link: /doxygen/group__getdns__context.html#ga147e2381ac5ba0cace3ad5a034d09595
+link: /doxygen/group__getdns__context.html#ga5957d57a9142e3f8280779cc3d7d09a9

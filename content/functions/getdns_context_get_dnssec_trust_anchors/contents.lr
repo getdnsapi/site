@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_dnssec_trust_anchors.html
 ---
-title: getdns_return_t getdns_context_get_dnssec_trust_anchors(getdns_context *context, getdns_list **value)
+title: getdns_return_t getdns_context_get_dnssec_trust_anchors(const getdns_context *context, getdns_list **value)
 ---
-link: /doxygen/group__getdns__context.html#gafe107101a7d5ed0e8e0ba89e8e65e6aa
+link: /doxygen/group__getdns__context.html#ga51fd62819f8364b942b505ad913439bd

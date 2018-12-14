@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_general_sync.html
 ---
-title: getdns_return_t getdns_general_sync(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, getdns_dict **response)
+title: getdns_return_t getdns_general_sync(getdns_context *context, const char *name, uint16_t request_type, const getdns_dict *extensions, getdns_dict **response)
 ---
-link: /doxygen/group__syncfuncs.html#ga5eb88be61380761dacb7a9e001a11853
+link: /doxygen/group__syncfuncs.html#gadd5ace40a5ca8169d0f398686fd77b72

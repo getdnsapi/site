@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_upstream_recursive_servers.html
 ---
-title: getdns_return_t getdns_context_get_upstream_recursive_servers(getdns_context *context, getdns_list **upstream_list)
+title: getdns_return_t getdns_context_get_upstream_recursive_servers(const getdns_context *context, getdns_list **upstream_list)
 ---
-link: /doxygen/group__getdns__context.html#gad34d2d022b35dce4a75a23b1b4a95d0f
+link: /doxygen/group__getdns__context.html#gaba84225ad31fe27c292725b51df98715

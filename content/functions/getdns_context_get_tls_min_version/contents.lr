@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_tls_min_version.html
+---
+title: getdns_return_t getdns_context_get_tls_min_version(const getdns_context *context, getdns_tls_version_t *min_version)
+---
+link: /doxygen/group__getdns__context.html#ga2a48b506e1984e11b81e67d6d0a0456e

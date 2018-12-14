@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_tls_max_version.html
+---
+title: getdns_return_t getdns_context_set_tls_max_version(getdns_context *context, getdns_tls_version_t max_version)
+---
+link: /doxygen/group__getdns__context.html#gaef9150246bd2f01b2cf1a706584b1695

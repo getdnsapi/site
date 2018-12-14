@@ -5,7 +5,7 @@ title: Welcome to getdns!
 features:
 
 #### feature ####
-title: Download the 1.4.2 release
+title: Download the 1.5.0 candidate
 ----
 text:
 
@@ -60,7 +60,7 @@ image: stubby-600x230.png
 ---
 body:
 
-<a href="https://awards.isoc.nl/innovatie/2018/"><img alt="GetDNS relieves programmers from the task of having to design and implement secure parsing and validation of domain info themselves. Instead it's just a call away  &quot;Hi! Two times domain name. One A and one AAAA with extra TLSA&quot;" src="/static/awards-isoc-nl-2018-727-en.jpg" style="width: 100%"></a>
+<!-- <a href="https://awards.isoc.nl/innovatie/2018/"><img alt="GetDNS relieves programmers from the task of having to design and implement secure parsing and validation of domain info themselves. Instead it's just a call away  &quot;Hi! Two times domain name. One A and one AAAA with extra TLSA&quot;" src="/static/awards-isoc-nl-2018-727-en.jpg" style="width: 100%"></a>-->
 
 getdns is a modern asynchronous DNS API.
 It implements DNS entry points from a design developed and vetted by application developers, in an [API specification](/documentation/spec/).

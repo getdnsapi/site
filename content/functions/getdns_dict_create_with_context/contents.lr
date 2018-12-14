@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_dict_create_with_context.html
 ---
-title: getdns_dict * getdns_dict_create_with_context(getdns_context *context)
+title: getdns_dict * getdns_dict_create_with_context(const getdns_context *context)
 ---
-link: /doxygen/group__getdns__dict.html#ga65183b57f98cfb50fe73550176754108
+link: /doxygen/group__getdns__dict.html#gad665ac40807db8b17b1ee98ede0b2f21

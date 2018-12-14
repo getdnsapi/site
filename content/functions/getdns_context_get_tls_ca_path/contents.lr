@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_tls_ca_path.html
 ---
-title: getdns_return_t getdns_context_get_tls_ca_path(getdns_context *context, const char **tls_ca_path)
+title: getdns_return_t getdns_context_get_tls_ca_path(const getdns_context *context, const char **tls_ca_path)
 ---
-link: /doxygen/group__getdns__context.html#ga01ef4afffede3663f361b9afc48cbc35
+link: /doxygen/group__getdns__context.html#gae6cc572b02dddec7e1ee63d1cecc47ee

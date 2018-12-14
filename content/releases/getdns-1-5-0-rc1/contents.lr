@@ -1,0 +1,120 @@
+version: 1.5.9-rc1
+---
+title: First release candidate for getdns-1.5.0
+---
+announcement:
+
+Dear all,
+
+We have a first candidate for the upcoming 1.5.0 bugfix and maintenance release of getdns.
+
+Maintenance work included bringing getdns up to par with OpenSSL 1.1.1.
+
+For the DNS-over-TLS capability this means **TLS1.3 support**.
+  * TLS1.3 cipher suites can now be configured, either at [context] level with the [`getdns_context_set_tls_ciphersuites()`] function, or at upstream level by specifying a `tls_ciphersuites` entry.
+    For example:
+    ```
+    getdns_query -s -L '{ upstream_recursive_servers:
+      [ { address_data    : 1.1.1.1
+        , tls_ciphersuites: "TLS_AES_256_GCM_SHA384" } ] }'
+    ```
+  * The minimum & maximum TLS version to be used per upstream can be specified now at context level with the [`getdns_context_set_tls_min_version()`] and the [`getdns_context_set_tls_max_version()`] functions, or at upstream level by specifying an `tls_min_version` or a `tls_max_version`.
+    For example:
+    ```
+    getdns_query -s -L '{ upstream_recursive_servers:
+                          [ { address_data   : 185.49.141.38
+                            , tls_max_version: GETDNS_TLS1_2 } ] }' 
+    ```
+
+For DNSSEC:
+  - Compiling with OpenSSL 1.1.1 means Ed25519 and Ed448 DNSKEY algorithm support.
+  - A new extension names just `dnssec`, which requires that DNSSEC verification is performed.
+    Answers with DNSSEC status INDETERMINATE will no longer return answers with this extension.
+    Only INSECURE and SECURE answers will be returned.
+  - Automatic fetching of trast anchors à la [zero configuration DNSSEC], will now be retried after failure, after a certain amount of miliseconds that can be specified with [`getdns_context_set_trust_anchors_backoff_time()`].
+
+
+This release has a bit more specific error return codes, and in addition logs much more messages using the [logging system], in error conditions.
+Further more, this release adds a few extra logging systems:
+  - `GETDNS_LOG_SYS_STUB` (0x2000) for logging about non upstream specific stub resolving`
+  - `GETDNS_LOG_SYS_RECURSING` (0x4000) for loggin about recursive resolving
+  - `GETDNS_LOG_SYS_ANCHOR` (0x8000) to logging about fetching trust anchors à la [zero configuration DNSSEC]
+
+
+A few more issues are resolved with this release.
+For a complete overview see the ChangeLog below.
+
+
+This release has a release candidate for [Stubby] 0.2.4 included, with:
+  - A better `stubby.service` file, that will only start [Stubby] after the network came up.
+
+
+Please review these release candidates carefully, if all is well, the actual release will follow Friday the 21th of December.
+
+<p class="origin-reference">Photo by <a href="https://unsplash.com/photos/S4W4qSsFdZU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jakob Owens</a> on <a href="https://unsplash.com/search/photos/christmas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+
+[`context`]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.3/stubby.yml.example
+[`getdns_context_set_tls_ciphersuites()`]: /functions/getdns_context_set_tls_ciphersuites.html
+[`getdns_context_set_tls_min_version()`]: /functions/getdns_context_set_tls_min_version.html
+[`getdns_context_set_tls_max_version()`]: /functions/getdns_context_set_tls_max_version.html
+[`getdns_context_set_trust_anchors_backoff_time()`]: /functions/getdns_context_set_trust_anchors_backoff_time.html
+[zero configuration DNSSEC]: /releases/getdns-1-2-0/#zero-configuration-dnssec
+[logging system]: /functions/getdns_context_set_logfunc.html
+---
+_discoverable: yes
+---
+date: 2018-12-14
+---
+teaser: Maintenance & bugfixes
+---
+image: jakob-owens-486025-unsplash.jpg
+---
+changelog:
+
+* 2018-12-??: Version 1.5.0
+  * ZONEMD rr-type
+  * getdns_query queries for addresses when a query name
+    without a type is given.
+  * RFE #408: Fetching of trust anchors will be retried
+    after failure, after a certain backoff time. The time
+    can be configured with
+    getdns_context_set_trust_anchors_backoff_time().
+  * RFE #408: A "dnssec" extension that requires DNSSEC
+    verification.  When this extension is set, Indeterminate
+    DNSSEC status will not be returned.
+  * Issue #410: Unspecified ownership of get_api_information()
+  * Fix for DNSSEC bug in finding most specific key when
+    trust anchor proves non-existance of one of the labels
+    along the authentication chain other than the non-
+    existance of a DS record on a zonecut.
+  * Enhancement getdnsapi/stubby#56 & getdnsapi/stubby#130:
+    Configurable minimum and maximum TLS versions with
+    getdns_context_set_tls_min_version() and
+    getdns_context_set_tls_max_version() functions and
+    tls_min_version and tls_max_version configuration parameters
+    for upstreams.
+  * Configurable TLS1.3 ciphersuites with the
+    getdns_context_set_tls_ciphersuites() function and
+    tls_ciphersuites config parameter for upstreams.
+  * Bugfix in upstream string configurations: tls_cipher_list and
+    tls_curve_list
+  * Bugfix finding signer for validating NSEC and NSEC3s, which
+    caused trouble with the partly tracing DNSSEC from the root
+    up, introduced in 1.4.2.  Thanks Philip Homburg
+---
+stubbychangelog:
+
+* 2018-12-??: Version 0.2.3
+ * More DoT servers for stubby.yml.example
+ * Bugfix: only start Stubby when network is up
+   Thanks Bruno Pagani
+---
+sha256: 8bf13d39de90f03939b7b531cae079061cae29ab
+---
+tags: 
+---
+_hidden: no
+---
+archive: no

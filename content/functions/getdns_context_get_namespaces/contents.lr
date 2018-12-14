@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_namespaces.html
 ---
-title: getdns_return_t getdns_context_get_namespaces(getdns_context *context, size_t *namespace_count, getdns_namespace_t **namespaces)
+title: getdns_return_t getdns_context_get_namespaces(const getdns_context *context, size_t *namespace_count, getdns_namespace_t **namespaces)
 ---
-link: /doxygen/group__getdns__context.html#gab200b70f8a4ec5ada8d412ac1d3c6ff3
+link: /doxygen/group__getdns__context.html#gacd3f533aff9cbac0670da95a14ebf107

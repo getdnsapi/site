@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_eventloop.html
 ---
-title: getdns_return_t getdns_context_get_eventloop(getdns_context *context, getdns_eventloop **eventloop)
+title: getdns_return_t getdns_context_get_eventloop(const getdns_context *context, getdns_eventloop **eventloop)
 ---
-link: /doxygen/group__eventloops.html#ga0d46ad4f955b105663a9eccde6e1aea4
+link: /doxygen/group__eventloops.html#ga7e7c95c36f41507626c592e7b8f7f098

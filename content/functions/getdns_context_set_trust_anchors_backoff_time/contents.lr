@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_set_trust_anchors_backoff_time.html
+---
+title: getdns_return_t getdns_context_set_trust_anchors_backoff_time(getdns_context *context, uint64_t value)
+---
+link: /doxygen/group__getdns__context.html#ga2b61c594585cf309f7dd7f3057e7df97

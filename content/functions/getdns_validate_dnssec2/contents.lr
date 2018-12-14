@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_validate_dnssec2.html
 ---
-title: getdns_return_t getdns_validate_dnssec2(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors, time_t validation_time, uint32_t skew)
+title: getdns_return_t getdns_validate_dnssec2(const getdns_list *to_validate, const getdns_list *support_records, const getdns_list *trust_anchors, time_t validation_time, uint32_t skew)
 ---
-link: /doxygen/group__dnssecfuncs.html#gad208bad95f21d983b83dbe7e4fdcbfc1
+link: /doxygen/group__dnssecfuncs.html#ga5238d5b89f8bd67b10a21124d8658571

@@ -141,8 +141,8 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:gaaad0d5fcc62cd25b7175105c2d775527"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UServerFunctions.html#gaaad0d5fcc62cd25b7175105c2d775527">getdns_context_set_listen_addresses</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, const <a class="el" href="group__valuesandtexts.html#ga0b612b4ea0d429040a12ede153ee7081">getdns_list</a> *listen_addresses, void *userarg, <a class="el" href="group__UServerFunctions.html#ga7fabb46e587d0dac4ca45ae1c893f8ff">getdns_request_handler_t</a> handler)</td></tr>
 <tr class="separator:gaaad0d5fcc62cd25b7175105c2d775527"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1b336bf7685ac565420be0040eaa35f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4">getdns_reply</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, <a class="el" href="group__valuesandtexts.html#ga8ed18ee690a92c0b24af42261119817b">getdns_dict</a> *reply, <a class="el" href="group__valuesandtexts.html#gaf50d5797abe9282db56faeb2e533a87e">getdns_transaction_t</a> request_id)</td></tr>
-<tr class="separator:ga1b336bf7685ac565420be0040eaa35f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9564060a2574465280b67e6f1992fa96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95">getdns_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UServerFunctions.html#ga9564060a2574465280b67e6f1992fa96">getdns_reply</a> (<a class="el" href="group__valuesandtexts.html#ga79d9e0f5d2c1410e06a5d53a4cbabff7">getdns_context</a> *context, const <a class="el" href="group__valuesandtexts.html#ga8ed18ee690a92c0b24af42261119817b">getdns_dict</a> *reply, <a class="el" href="group__valuesandtexts.html#gaf50d5797abe9282db56faeb2e533a87e">getdns_transaction_t</a> request_id)</td></tr>
+<tr class="separator:ga9564060a2574465280b67e6f1992fa96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -159,7 +159,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>The user defined request handler that will be called on incoming requests. </p>
 
-<p class="definition">Definition at line <a class="el" href="getdns__extra_8h_source.html#l02081">2081</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="getdns__extra_8h_source.html#l02239">2239</a> of file <a class="el" href="getdns__extra_8h_source.html">getdns_extra.h</a>.</p>
 
 </div>
 </div>
@@ -207,7 +207,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">context</td><td>The context managing the eventloop that needs to be run to start serving. </td></tr>
     <tr><td class="paramname">listen_addresses</td><td>A list of address dicts or bindatas that will be listened on for DNS requests. Both UDP and TCP transports will be used. </td></tr>
     <tr><td class="paramname">userarg</td><td>A user defined argument that will be passed to the handler untouched. </td></tr>
-    <tr><td class="paramname">handler</td><td>The user defined request handler that will be called with the request received in reply dict format. To reply to this request the function has to construct a response (or modify the request) and call <a class="el" href="group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4">getdns_reply()</a> with the response and the with the request associated request_id. The user is responsible of destroying both the replies and the response. <b>Beware</b> that if requests are not answered by the function, by not calling <a class="el" href="group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4">getdns_reply()</a> this will cause a memory leak. The user most use <a class="el" href="group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4">getdns_reply()</a> with NULL as the response to not answer/cancel a request. </td></tr>
+    <tr><td class="paramname">handler</td><td>The user defined request handler that will be called with the request received in reply dict format. To reply to this request the function has to construct a response (or modify the request) and call <a class="el" href="group__UServerFunctions.html#ga9564060a2574465280b67e6f1992fa96">getdns_reply()</a> with the response and the with the request associated request_id. The user is responsible of destroying both the replies and the response. <b>Beware</b> that if requests are not answered by the function, by not calling <a class="el" href="group__UServerFunctions.html#ga9564060a2574465280b67e6f1992fa96">getdns_reply()</a> this will cause a memory leak. The user most use <a class="el" href="group__UServerFunctions.html#ga9564060a2574465280b67e6f1992fa96">getdns_reply()</a> with NULL as the response to not answer/cancel a request. </td></tr>
   </table>
   </dd>
 </dl>
@@ -215,8 +215,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga1b336bf7685ac565420be0040eaa35f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1b336bf7685ac565420be0040eaa35f4">&#9670;&nbsp;</a></span>getdns_reply()</h2>
+<a id="ga9564060a2574465280b67e6f1992fa96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9564060a2574465280b67e6f1992fa96">&#9670;&nbsp;</a></span>getdns_reply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,7 +230,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__valuesandtexts.html#ga8ed18ee690a92c0b24af42261119817b">getdns_dict</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__valuesandtexts.html#ga8ed18ee690a92c0b24af42261119817b">getdns_dict</a> *&#160;</td>
           <td class="paramname"><em>reply</em>, </td>
         </tr>
         <tr>
@@ -255,7 +255,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success or an error code on failure. On fatal failure (no retry strategy possible) the user still needs to cancel the request by recalling <a class="el" href="group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4">getdns_reply()</a> but with NULL as response, to clean up state. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>GETDNS_RETURN_GOOD on success or an error code on failure. On fatal failure (no retry strategy possible) the user still needs to cancel the request by recalling <a class="el" href="group__UServerFunctions.html#ga9564060a2574465280b67e6f1992fa96">getdns_reply()</a> but with NULL as response, to clean up state. </dd></dl>
 
 </div>
 </div>

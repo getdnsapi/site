@@ -25,6 +25,7 @@ var searchData=
   ['getdns_5fresolution_5ft',['getdns_resolution_t',['../group__resolutiontypestext.html#ga8921dc5a36678ff037ceeb761994a55a',1,'getdns.h']]],
   ['getdns_5freturn_5ft',['getdns_return_t',['../group__returntypestext.html#gadc08b4a6bd07b42098875ea46c09951c',1,'getdns.h']]],
   ['getdns_5ftls_5fauthentication_5ft',['getdns_tls_authentication_t',['../group__authvaulesandtext.html#gad5cb1c4781ba665050204d0dd9480002',1,'getdns_extra.h']]],
+  ['getdns_5ftls_5fversion_5ft',['getdns_tls_version_t',['../group__getdns__context.html#gab5a23f6c5678c092df66f4586b6a4a2c',1,'getdns_extra.h']]],
   ['getdns_5ftransaction_5ft',['getdns_transaction_t',['../group__valuesandtexts.html#gaf50d5797abe9282db56faeb2e533a87e',1,'getdns.h']]],
   ['getdns_5ftransport_5flist_5ft',['getdns_transport_list_t',['../group__transportlisttypestext.html#ga1a35e1c92ccefeafaa978471d11d6da8',1,'getdns.h']]],
   ['getdns_5ftransport_5ft',['getdns_transport_t',['../group__transporttypestext.html#gaabd0fcb43188d76d64311b1aafedf554',1,'getdns.h']]]

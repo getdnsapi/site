@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_follow_redirects.html
 ---
-title: getdns_return_t getdns_context_get_follow_redirects(getdns_context *context, getdns_redirects_t *value)
+title: getdns_return_t getdns_context_get_follow_redirects(const getdns_context *context, getdns_redirects_t *value)
 ---
-link: /doxygen/group__getdns__context.html#ga897d99af0d21824554e7aa8dc4b70822
+link: /doxygen/group__getdns__context.html#ga5f448037cb1f9701e937fcbcd1e00fb1

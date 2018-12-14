@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_service.html
 ---
-title: getdns_return_t getdns_service(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t *transaction_id, getdns_callback_t callbackfn)
+title: getdns_return_t getdns_service(getdns_context *context, const char *name, const getdns_dict *extensions, void *userarg, getdns_transaction_t *transaction_id, getdns_callback_t callbackfn)
 ---
-link: /doxygen/group__asyncfuncs.html#ga85d7635203bcde041d89bd6590d71c34
+link: /doxygen/group__asyncfuncs.html#gacad51c1750170dc437223309e1ddd0ee

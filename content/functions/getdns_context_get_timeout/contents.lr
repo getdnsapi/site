@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_timeout.html
 ---
-title: getdns_return_t getdns_context_get_timeout(getdns_context *context, uint64_t *timeout)
+title: getdns_return_t getdns_context_get_timeout(const getdns_context *context, uint64_t *timeout)
 ---
-link: /doxygen/group__getdns__context.html#gaff77c243c4b428166b5b3cee2eecb8d1
+link: /doxygen/group__getdns__context.html#ga30f2ac47c14f653bdbe0fd774297e6bc

@@ -1,0 +1,7 @@
+_model: link
+---
+_slug: getdns_context_get_tls_ciphersuites.html
+---
+title: getdns_return_t getdns_context_get_tls_ciphersuites(const getdns_context *context, const char **ciphersuites)
+---
+link: /doxygen/group__getdns__context.html#ga7c0eca5f47dcb22fb5076314a9dbb954

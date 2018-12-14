@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_dict_util_set_string.html
 ---
-title: getdns_return_t getdns_dict_util_set_string(getdns_dict *dict, char *name, const char *value)
+title: getdns_return_t getdns_dict_util_set_string(getdns_dict *dict, const char *name, const char *value)
 ---
-link: /doxygen/group__getdns__dict.html#ga8b4c6fc54e9412e596e0dd96d9fb1122
+link: /doxygen/group__getdns__dict.html#gab598f3f4741b237d32348ac25e9c60b2

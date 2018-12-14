@@ -10,6 +10,7 @@ var searchData=
   ['getdns_5fresolution_5ft',['getdns_resolution_t',['../group__resolutiontypestext.html#ga83536943379fe86ee4852f449bbccc3a',1,'getdns.h']]],
   ['getdns_5freturn_5ft',['getdns_return_t',['../group__returntypestext.html#ga21e6d721f1dc6f76c3b88cdefe639e95',1,'getdns.h']]],
   ['getdns_5ftls_5fauthentication_5ft',['getdns_tls_authentication_t',['../group__authvaulesandtext.html#ga5593a573b594c82d2b28645c36fe989b',1,'getdns_extra.h']]],
+  ['getdns_5ftls_5fversion_5ft',['getdns_tls_version_t',['../group__getdns__context.html#ga3d249bdc72f55086551adc21e9e2b231',1,'getdns_extra.h']]],
   ['getdns_5ftransport_5flist_5ft',['getdns_transport_list_t',['../group__transportlisttypestext.html#ga8d0cc5d1beccd7d5bb2bb1c7dd330dee',1,'getdns.h']]],
   ['getdns_5ftransport_5ft',['getdns_transport_t',['../group__transporttypestext.html#ga81310dd56b165b81db796fba34472894',1,'getdns.h']]]
 ];

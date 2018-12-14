@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_dns_root_servers.html
 ---
-title: getdns_return_t getdns_context_get_dns_root_servers(getdns_context *context, getdns_list **addresses)
+title: getdns_return_t getdns_context_get_dns_root_servers(const getdns_context *context, getdns_list **addresses)
 ---
-link: /doxygen/group__getdns__context.html#ga8d9cb61ff95291d07802e5c643e81a8e
+link: /doxygen/group__getdns__context.html#ga02065f78b67aa2cac33fac3abb12e82a

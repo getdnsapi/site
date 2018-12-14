@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_reply.html
 ---
-title: getdns_return_t getdns_reply(getdns_context *context, getdns_dict *reply, getdns_transaction_t request_id)
+title: getdns_return_t getdns_reply(getdns_context *context, const getdns_dict *reply, getdns_transaction_t request_id)
 ---
-link: /doxygen/group__UServerFunctions.html#ga1b336bf7685ac565420be0040eaa35f4
+link: /doxygen/group__UServerFunctions.html#ga9564060a2574465280b67e6f1992fa96

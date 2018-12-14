@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_limit_outstanding_queries.html
 ---
-title: getdns_return_t getdns_context_get_limit_outstanding_queries(getdns_context *context, uint16_t *limit)
+title: getdns_return_t getdns_context_get_limit_outstanding_queries(const getdns_context *context, uint16_t *limit)
 ---
-link: /doxygen/group__getdns__context.html#gac747c92c9e3419be269b16a22610e1c2
+link: /doxygen/group__getdns__context.html#gadcb4ab6dc60175b65335d81fa3f0bf2e

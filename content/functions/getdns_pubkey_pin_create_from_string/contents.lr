@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_pubkey_pin_create_from_string.html
 ---
-title: getdns_dict * getdns_pubkey_pin_create_from_string(getdns_context *context, const char *str)
+title: getdns_dict * getdns_pubkey_pin_create_from_string(const getdns_context *context, const char *str)
 ---
-link: /doxygen/group__utils.html#gaeb565512ee6da5a401cd7f0c594c1c29
+link: /doxygen/group__utils.html#ga7fc7f54479dab4fe2dbc1f0ba06aaa21

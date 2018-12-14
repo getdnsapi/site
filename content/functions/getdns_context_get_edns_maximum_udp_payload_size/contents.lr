@@ -2,6 +2,6 @@ _model: link
 ---
 _slug: getdns_context_get_edns_maximum_udp_payload_size.html
 ---
-title: getdns_return_t getdns_context_get_edns_maximum_udp_payload_size(getdns_context *context, uint16_t *value)
+title: getdns_return_t getdns_context_get_edns_maximum_udp_payload_size(const getdns_context *context, uint16_t *value)
 ---
-link: /doxygen/group__getdns__context.html#gadef9a5de318cc293ab7fa760e9b98982
+link: /doxygen/group__getdns__context.html#gabe8f08b903f62dcd77287e0ede551c64
