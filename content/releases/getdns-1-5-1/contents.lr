@@ -9,11 +9,11 @@ Dear all,
 The [previous release] had a bug which prevented it from building on MacOS.
 This release has (almost) only this single bug fixed.
 
-Also, some new configurable properties for DNS-over-TLS were introduced in the [previous release], but these properties were not exposed in [`stubby.yml.example`].
-This release includes [Stubby 0.2.5](https://github.com/getdnsapi/stubby/releases/tag/v0.2.5), which does have example configuration for these properties in [`stubby.yml.example`].
+Also, some new configurable properties for DNS-over-TLS were introduced in the [previous release], but these properties were not exposed in [`stubby.yml.example`](https://github.com/getdnsapi/stubby/blob/release/0.2.4/stubby.yml.example).
+This release includes [Stubby 0.2.5](https://github.com/getdnsapi/stubby/releases/tag/v0.2.5), which does have example configuration for these properties in [`stubby.yml.example`](https://github.com/getdnsapi/stubby/blob/release/0.2.4/stubby.yml.example#L98).
 
 Google [recently announced](https://security.googleblog.com/2019/01/google-public-dns-now-supports-dns-over.html) DNS-over-TLS support on the Google public DNS resolvers.
-Example configuration entries for DNS-over-TLS with Google public DNS are added to [`stubby.yml.example`] too.
+Example configuration entries for DNS-over-TLS with Google public DNS are added to [`stubby.yml.example`](https://github.com/getdnsapi/stubby/blob/release/0.2.4/stubby.yml.example#L247) too.
 
 
 <p class="origin-reference">Photo from <a href="https://pxhere.com/en/photo/1393624">pxhere</a></p>
