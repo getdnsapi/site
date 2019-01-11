@@ -57,7 +57,6 @@ Further more, this release adds a few extra logging systems:
 A few more issues are resolved with this release.
 For a complete overview see the ChangeLog section below.
 
-------------------
 
 This release has the 0.2.4 release of [Stubby] included, with:
   - Updated [`stubby.yml.example`] that uses the `dnssec` extension to enable DNSSEC with explanation of its consequences.
