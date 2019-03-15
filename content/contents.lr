@@ -19,7 +19,7 @@ link: /getdns-latest.tar.gz
 #### feature ####
 title: Stubby
 ----
-text: Stubby is an experimental implementation of a DNS Privacy enabled stub resolver. It is currently suitable for advanced/technical users - all feedback is welcome! Also see [dnsprivacy.org](https://dnsprivacy.org/) for more information on DNS Privacy.
+text: Stubby is a DNS Privacy enabled stub resolver. It is currently suitable for advanced/technical users - all feedback is welcome! Also see [dnsprivacy.org](https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby) for more information on Stubby and DNS Privacy.
 ----
 image: stubby.png
 ----
