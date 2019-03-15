@@ -1,0 +1,83 @@
+version: 1.5.2-rc1
+---
+title: First release candidate for getdns-1.5.2
+---
+announcement:
+
+Dear all,
+
+We have a first candidate for the upcoming 1.5.2 GnuTLS, bugfix and maintenance release of getdns.
+
+
+This release has experimental support for GnuTLS >= 3.5.0 as replacement for OpenSSL.
+To enabled, use the `--with-gnutls` option at `configure` time.
+Note that getdns needs the gnutls-dane library too (which is used for SPKI authentication of DNS-over-TLS upstreams).
+DNSSEC validation will use the cryptographic functions from `libnettle` (the cryptographic library also used by GnuTLS).
+
+When build with GnuTLS, getdns will still be linked with `libcrypto` (from OpenSSL) for S/MIME verification of the `root-anchors.xml` file with Zero configuration DNSSEC.
+It is our intention to replace that with something more GnuTLS native at some point in the future too, so that getdns can do without OpenSSL altogether.
+
+
+Maintenance work included bringing TCP Fast Open up to par with current practice.
+This means that at least on Linux 4.11+, getdns can connect TFO with TLS.
+
+The most prominent bugfix is for DNSSEC scheduling which in some circumstances wrongly failed with insecure delegations of more than one label.
+
+A few more issues are resolved with this release.
+For a complete overview see the ChangeLog below.
+
+
+This release has a release candidate for [Stubby] 0.2.6 included, with updates to documentation and fixes for the Windows build.
+
+
+Please review these release candidates carefully, if all is well, the actual release will follow Friday the 22th of March.
+
+<p class="origin-reference">Picture by <a href="https://gnutls.org/gnutls-logo.html">Claus Schrammel</a></p>
+
+[context]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.3/stubby.yml.example
+[`getdns_context_set_tls_ciphersuites()`]: /functions/getdns_context_set_tls_ciphersuites.html
+[`getdns_context_set_tls_min_version()`]: /functions/getdns_context_set_tls_min_version.html
+[`getdns_context_set_tls_max_version()`]: /functions/getdns_context_set_tls_max_version.html
+[`getdns_context_set_trust_anchors_backoff_time()`]: /functions/getdns_context_set_trust_anchors_backoff_time.html
+[zero configuration DNSSEC]: /releases/getdns-1-2-0/#zero-configuration-dnssec
+[logging system]: /functions/getdns_context_set_logfunc.html
+---
+_discoverable: yes
+---
+date: 2019-03-15
+---
+teaser: Bugfixes & GnuTLS support
+---
+image: gnutls-logo-nobackground.png
+---
+changelog:
+
+* 2019-03-??: Version 1.5.2
+  * Issue #422: Enable server side and update client side TCP Fast
+    Open implementation. Thanks Craig Andrews
+  * Issue #423: Fix insecure delegation detection while scheduling.
+    Thanks Charles Milette
+  * Issue #419: Escape backslashed when printing in JSON format.
+    Thanks boB Rudis
+  * Use GnuTLS instead of OpenSSL for TLS with the --with-gnutls
+    option to configure.  libcrypto (from OpenSSL) still needed
+    for Zero configuration DNSSEC.
+  * DOA rr-type
+  * AMTRELAY rr-type
+---
+stubbychangelog:
+
+* 2019-02-xx: Version 0.2.6
+ * Windows: use appropriate system and user configuration directories.
+ * Windows: replace references to C:\Program Files with %PROGRAMFILES%.
+ * Windows: use location of stubby.bat to find stubby.exe and stubby.yml.
+---
+sha256: 41abaaee26c12c3d34e40a3b5396f4a41a6b6fec8d4a847b9ba2e128129f5f4c
+---
+tags: 
+---
+_hidden: no
+---
+archive: no
