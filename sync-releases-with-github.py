@@ -90,10 +90,10 @@ with file(os.environ.get('HOME', '~') + '/.github/auth') as f:
 repo = g.repository('getdnsapi', 'getdns')
 rels = dict()
 
-for rel in repo.iter_releases():
+for rel in repo.releases():
 	rels[rel.tag_name] = rel
 
-for tag in repo.iter_tags():
+for tag in repo.tags():
 	if not tag.name.startswith('v'):
 		continue
 	if tag.name in rels:
