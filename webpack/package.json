@@ -1,15 +1,15 @@
 {
   "private": true,
   "devDependencies": {
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.26.3",
     "babel-loader": "^6.4.0",
     "bootstrap": "3.3.7",
     "bootstrap-sass": "3.3.7",
-    "css-loader": "^0.28.4",
+    "css-loader": "^2.1.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.11.2",
     "jquery": "^3.2.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.11.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.8",
