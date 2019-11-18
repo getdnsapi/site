@@ -4,12 +4,14 @@ title: cmake Quick Start
 ---
 body:
 
-This page is a quick overview of how to use the cmake build system (used from version 1.6.0) for those not familiar with cmake.
+This page is a quick overview of how to use the [CMake](https://cmake.org) build system (used from version 1.6.0) for those not familiar with CMake.
+
+If you are interested in learning more details of CMake, the [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html) is a good place to start.
 
 # Basic build 
 
-A cmake based build consists of 2 steps. For a Linux OS this is normally:
-*  configuring the build (using `cmake`)
+A CMake based build consists of 2 steps. For a GNU/Linux OS this is normally:
+* configuring the build (using `cmake`)
 * doing the build (using `make`)
 
 If you like to use a separate build directory for build files, then to do a simple build of getdns use the following:
@@ -27,7 +29,7 @@ This will use the default build options.
 
 # Build options
 
-In cmake the options to configure the build are available as `build options`,  the current values of which (and their types) can be listed by using:
+In CMake the options to configure the build are available as `build options`,  the current values of which (and their types) can be listed by using:
 ```
 cmake -LA ..
 ```
