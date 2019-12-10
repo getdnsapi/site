@@ -1,0 +1,98 @@
+_model: page
+---
+title: cmake Quick Start
+---
+body:
+
+This page is a quick overview of how to use the [CMake](https://cmake.org) build system (used from version 1.6.0) for those not familiar with CMake.
+
+If you are interested in learning more details of CMake, the [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html) is a good place to start.
+
+# Basic build 
+
+A CMake based build consists of 2 steps. For a GNU/Linux OS this is normally:
+* configuring the build (using `cmake`)
+* doing the build (using `make`)
+
+If you like to use a separate build directory for build files, then to do a simple build of getdns use the following:
+```
+git clone https://github.com/getdnsapi/getdns.git
+cd getdns
+git checkout develop          #or desired branch
+mkdir build
+cd build
+cmake ..
+make
+```
+
+This will use the default build options.
+
+# Build options
+
+In CMake the options to configure the build are available as `build options`,  the current values of which (and their types) can be listed by using:
+```
+cmake -LA ..
+```
+For example:
+```
+BUILD_DOXYGEN:BOOL=OFF
+BUILD_EXAMPLES:BOOL=OFF
+BUILD_GETDNS_QUERY:BOOL=ON
+BUILD_GETDNS_SERVER_MON:BOOL=ON
+BUILD_STUBBY:BOOL=OFF
+BUILD_TESTING:BOOL=ON
+BZRCOMMAND:FILEPATH=BZRCOMMAND-NOTFOUND
+CHECK_INCLUDE_DIR:PATH=/usr/local/include
+CHECK_LIBRARY:FILEPATH=/usr/local/lib/libcheck.dylib
+CHECK_MATH_LIBRARY:FILEPATH=/usr/lib/libm.dylib
+...
+```
+
+Each option can be set on the `cmake` line using the `-D` flag by setting a value for the option depending on its type e.g.
+```
+cmake -DENABLE_STUB_ONLY=ON -DCMAKE_INSTALL_PREFIX=/usr/local/opt/getdns ..
+```
+Alternatively the `ccmake`  tool can be used to list and edit these values (note that paths and less used options are available in the 'advanced' options seen by toggling the `t` key). 
+
+Some common build options which are off by default but users may want to enable are:
+```
+BUILD_STUBBY
+ENABLE_DEBUG_* (ALL, ANCHOR, DAEMON, DNSSEC, REQ, SCHED, SERVER, STUB)
+ENABLE_STUB_ONLY
+USE_LIB* (EV, UV, EVENT2)
+```
+
+Some paths that users may want to commonly set are:
+```
+CMAKE_INSTALL_PREFIX     
+CMAKE_INSTALL_SYSCONFDIR       
+... # (and similar configuration directories)
+LIBIDN2_INCLUDE_DIR                                                                                                                         
+LIBIDN2_LIBRARY
+OPENSSL_CRYPTO_LIBRARY                                                                                                  
+OPENSSL_INCLUDE_DIR                                                                                                                         
+OPENSSL_SSL_LIBRARY
+```
+
+# Caching of Build Options
+
+If you list the files in the build directory you will see a file called `CMakeCache.txt`. This file holds all the values for the build options used in the current build. 
+
+Note that subsequent runs of `cmake` do not update the current build options UNLESS the option is specified on the command line. This means doing
+```
+cmake -DENABLE_STUB_ONLY=ON -DCMAKE_INSTALL_PREFIX=/usr/local/opt/getdns ..
+cmake ..
+```
+will result in configuring the build with the parameters as set  on the first line.
+
+To do a 'clean' build, i.e. resetting to the default build options, simply delete the `CMakeCache.txt` file and reconfigure:
+```
+cmake ..
+```
+
+# Tips and tricks
+
+* Use `VERBOSE=1 make` to get a detailed output of the build and link commands
+
+---
+in_menu: no
