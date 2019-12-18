@@ -1,0 +1,66 @@
+version: 1.6.0-beta.1
+---
+title: First cmake beta release
+---
+announcement:
+
+Dear all,
+
+We have a first beta release of getdns in which the traditional autotools based build system has been replaced with a [CMake] build system.
+
+This release has only the build system replaced and has no other features or bugfixes.
+The purpose of this release is to give package maintainers opportunity to test and adopt the build recipies for the packages to fit our new build system.
+Once this has setled and we have had sufficient feedback to continue doing future releases with the cmake build system
+
+The motivation for this to be able to build getdns and stubby with a native Windows build toolchain, ideally via the Visual Studio project, with to goal to facilitate developing a User Interface for Stubby on Windows.
+This release has a [Stubby] version 0.2.6 included, also modified for the [CMake] build tools.
+
+
+<p class="origin-reference"><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>: the Cmake team</p>
+
+[CMake]: https://cmake.org
+[context]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.3/stubby.yml.example
+[`getdns_context_set_tls_ciphersuites()`]: /functions/getdns_context_set_tls_ciphersuites.html
+[`getdns_context_set_tls_min_version()`]: /functions/getdns_context_set_tls_min_version.html
+[`getdns_context_set_tls_max_version()`]: /functions/getdns_context_set_tls_max_version.html
+[`getdns_context_set_trust_anchors_backoff_time()`]: /functions/getdns_context_set_trust_anchors_backoff_time.html
+[zero configuration DNSSEC]: /releases/getdns-1-2-0/#zero-configuration-dnssec
+[logging system]: /functions/getdns_context_set_logfunc.html
+---
+_discoverable: yes
+---
+date: 2019-12-18
+---
+teaser: cmake build system
+---
+image: Cmake.svg.png
+---
+changelog:
+
+* 2019-12-20: Version 1.6.0-beta.1
+  * Migration of build system to cmake. Build now works on Ubuntu,
+    Windows 10 and macOS.
+    Some notes on minor differences in the new cmake build:
+      * OpenSSL 1.0.2 or higher is now required
+      * libunbound 1.5.9 is now required
+      * Only libidn2 2.0.0 and later is supported (not libidn)
+      * Windows uses ENABLE_STUB_ONLY=ON as the default
+      * Unit and regression tests work on Linux/macOS
+        (but not Windows yet)
+---
+stubbychangelog:
+
+* 2019-04-03: Version 0.2.6
+ * Windows: use appropriate system and user configuration directories.
+ * Windows: replace references to C:\Program Files with %PROGRAMFILES%.
+ * Windows: use location of stubby.bat to find stubby.exe and stubby.yml.
+---
+sha256: 1af8fdfc87e96cd336ebac1a637dddab39f2ff1f3fd635ccce40826d007bc5e6
+---
+tags: cmake, windows
+---
+_hidden: no
+---
+archive: no
