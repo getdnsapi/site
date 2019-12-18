@@ -8,12 +8,15 @@ Dear all,
 
 We have a first beta release of getdns in which the traditional autotools based build system has been replaced with a [CMake] build system.
 
-This release has only the build system replaced and has no other features or bugfixes.
-The purpose of this release is to give package maintainers opportunity to test and adopt the build recipies for the packages to fit our new build system.
-Once this has setled and we have had sufficient feedback to continue doing future releases with the cmake build system
+* This release has __only__ the build system replaced and has no other features or bugfixes.
+* The purpose of this release is to give package maintainers the opportunity to test and adopt the build recipes for the packages to fit our new build system.
+* Once this has settled and we have had sufficient feedback to continue doing future releases with the  [CMake] build system we will move to a release candidate for 1.6.0.
 
-The motivation for this to be able to build getdns and stubby with a native Windows build toolchain, ideally via the Visual Studio project, with to goal to facilitate developing a User Interface for Stubby on Windows.
-This release has a [Stubby] version 0.2.6 included, also modified for the [CMake] build tools.
+The motivation for this change to have Windows be a first class build platform for getdns thereby increasing the ease of use of the getdns library in Windows applications.  getdns and stubby can now be built using a native Windows build toolchain, ideally via the Visual Studio project.  This work will also facilitate developing a User Interface for Stubby on Windows.
+
+For those unfamiliar with [CMake] we have put together a [CMake Quick Start Guide](https://lektor.getdnsapi.net/quick-start/cmake-quick-start/) on how to build getdns with the new build system.
+
+This release has a [Stubby] version 0.3.0 included, also modified for the [CMake] build tools.
 
 
 <p class="origin-reference"><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>: the Cmake team</p>
