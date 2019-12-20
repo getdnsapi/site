@@ -6,7 +6,7 @@ body:
 
 This page is a quick overview of how to use the [CMake](https://cmake.org) build system (used from version 1.6.0) for those not familiar with CMake.
 
-If you are interested in learning more details of CMake, the [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html) is a good place to start.
+If you are interested in learning more details of CMake, the [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html) is a good place to start. A quick overview of tools for running [CMake on different platforms is also available](https://cmake.org/runningcmake/).
 
 # Basic build 
 
@@ -19,6 +19,7 @@ If you like to use a separate build directory for build files, then to do a simp
 git clone https://github.com/getdnsapi/getdns.git
 cd getdns
 git checkout develop          #or desired branch
+git submodule update --init
 mkdir build
 cd build
 cmake ..
@@ -52,7 +53,7 @@ Each option can be set on the `cmake` line using the `-D` flag by setting a valu
 ```
 cmake -DENABLE_STUB_ONLY=ON -DCMAKE_INSTALL_PREFIX=/usr/local/opt/getdns ..
 ```
-Alternatively the `ccmake`  tool can be used to list and edit these values (note that paths and less used options are available in the 'advanced' options seen by toggling the `t` key). 
+On Unix the `ccmake`  tool can be used to list and edit these values (note that paths and less frequently used options are available in the 'advanced' options seen by toggling the `t` key).  
 
 Some common build options which are off by default but users may want to enable are:
 ```
