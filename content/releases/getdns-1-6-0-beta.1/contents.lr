@@ -16,7 +16,7 @@ The motivation for this change to have Windows be a first class build platform f
 
 For those unfamiliar with [CMake] we have put together a [CMake Quick Start Guide](https://lektor.getdnsapi.net/quick-start/cmake-quick-start/) on how to build getdns with the new build system.
 
-This release has a [Stubby] version 0.3.0 included, also modified for the [CMake] build tools.
+This release has a [Stubby] version 0.3.0-beta.1 included, also modified for the [CMake] build tools.
 
 
 <p class="origin-reference"><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>: the Cmake team</p>
@@ -55,12 +55,10 @@ changelog:
 ---
 stubbychangelog:
 
-* 2019-04-03: Version 0.2.6
- * Windows: use appropriate system and user configuration directories.
- * Windows: replace references to C:\Program Files with %PROGRAMFILES%.
- * Windows: use location of stubby.bat to find stubby.exe and stubby.yml.
+* 2019-12-20: Version 0.3.0-beta.1
+  * Migration of build system to cmake.
 ---
-sha256: 1af8fdfc87e96cd336ebac1a637dddab39f2ff1f3fd635ccce40826d007bc5e6
+sha256: d0b65193178bf902705b4dfc94780267fa3d14801da1b11a74f08422f9e324da
 ---
 tags: cmake, windows
 ---
