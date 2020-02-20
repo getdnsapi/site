@@ -520,6 +520,10 @@ getdns_return_t getdns_dict_set_int(getdns_dict *dict, const char *name, uint32_
 getdns_return_t getdns_dict_remove_name(getdns_dict *dict, const char *name);
 ```
 
+The `_create_with_context` functions will allocate the list or dict using the memory
+functions configured for the given `context`. See also [Context Use of Custom Memory Management Functions](#89-context-use-of-custom-memory-management-functions).  The `_destroy` functions
+will use the `free` function configured on data structure creation.
+
 Lists are extended with the `getdns_list_set_` calls with the `index` set to the
 size of the list (such as 0 for an empty list). Dicts are extended with the `getdns_dict_set_` calls
 with the `name` set to a name that does not yet exist. Name-value pairs are removed with
