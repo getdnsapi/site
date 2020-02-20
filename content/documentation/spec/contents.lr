@@ -143,9 +143,10 @@ getdns_hostname(
 );
 ```
 
-The address is given as a `getdns_dict` data structure (defined below). The list must
-have two names: `address_type` (whose value is a bindata; it is currently either "IPv4"
-or "IPv6" (which are case-sensitive)) and `address_data` (whose value is a bindata).
+The address is given as a `getdns_dict` data structure (defined below). Each
+list item is a dictionary that contains two names: `address_type` (whose value
+is a bindata; it is currently either "IPv4" or "IPv6" (which are
+case-sensitive)) and `address_data` (whose value is a bindata).
 
 ## 1·4 `getdns_service()`
 
@@ -732,7 +733,7 @@ defaults to 0
 to those from the DNS context
 
 * `options` (a list) contains dicts for each option to be specified.
-Each list time contains two names: `option_code` (an int) and `option_data`
+Each list item is a dictionary that contains two names: `option_code` (an int) and `option_data`
 (a bindata). The API marshalls the entire set of options into a properly-formatted RDATA
 for the resource record.
 
