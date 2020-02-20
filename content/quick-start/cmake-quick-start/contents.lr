@@ -60,7 +60,7 @@ Some common build options which are off by default but users may want to enable 
 BUILD_STUBBY
 ENABLE_DEBUG_* (ALL, ANCHOR, DAEMON, DNSSEC, REQ, SCHED, SERVER, STUB)
 ENABLE_STUB_ONLY
-USE_LIB* (EV, UV, EVENT2)
+BUILD_LIB* (EV, UV, EVENT2)
 ```
 
 Some paths that users may want to commonly set are:
