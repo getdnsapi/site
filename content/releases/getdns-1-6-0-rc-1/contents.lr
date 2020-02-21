@@ -1,0 +1,94 @@
+version: 1.6.0-rc.1
+---
+title: First cmake release candidate
+---
+announcement:
+
+Dear all,
+
+We have a first candidate for the 1.6.0 release of getdns.
+
+Mayor change from previous release is that the autotools based build system has been replaced with a [CMake] build system.
+
+The motivation for this change is to have Windows be a first class build platform for getdns thereby increasing the ease of use of the getdns library in Windows applications.  getdns and stubby can now be built using a native Windows build toolchain, ideally via the Visual Studio project.  This work will also facilitate developing a User Interface for Stubby on Windows.
+
+For those unfamiliar with [CMake] we have put together a [CMake Quick Start Guide](https://lektor.getdnsapi.net/quick-start/cmake-quick-start/) on how to build getdns with the new build system.
+
+Another change in the build system is that the eventloop support libraries (for `libevent2`, `libev` and `libuv`) will now automatically be build when those libraries are detected.
+
+Besides the build system changes, this release has also some bug fixes, amongst which:
+
+* Better TLS connection setup timeout handling, which makes getdns and stubby work better with DoT servers that are slow on initial connection (because they might be under attack).
+
+* Correct handling of UDP Payload size by getdns servers (i.e. [listeners](/functions/getdns_context_set_listen_addresses.html))
+
+This release has a [Stubby] version 0.3.0-rc.1 included, also modified for the [CMake] build tools and updated with a few fixes.
+
+Please review these release candidates carefully, if all is well, the actual release will follow Friday the 28th of February.
+
+<p class="origin-reference">Photo by 
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@randyfath?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Randy Fath"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Randy Fath</span></a>
+</p>
+
+[CMake]: https://cmake.org
+[context]: /documentation/spec/#16-setting-up-the-dns-context
+[Stubby]: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+[`stubby.yml`]: https://raw.githubusercontent.com/getdnsapi/stubby/release/0.2.3/stubby.yml.example
+[`getdns_context_set_tls_ciphersuites()`]: /functions/getdns_context_set_tls_ciphersuites.html
+[`getdns_context_set_tls_min_version()`]: /functions/getdns_context_set_tls_min_version.html
+[`getdns_context_set_tls_max_version()`]: /functions/getdns_context_set_tls_max_version.html
+[`getdns_context_set_trust_anchors_backoff_time()`]: /functions/getdns_context_set_trust_anchors_backoff_time.html
+[zero configuration DNSSEC]: /releases/getdns-1-2-0/#zero-configuration-dnssec
+[logging system]: /functions/getdns_context_set_logfunc.html
+---
+_discoverable: yes
+---
+date: 2020-02-21
+---
+teaser: cmake & low hanging fruit
+---
+image: randy-fath-ymf4_9Y9S_A-unsplash.jpg
+---
+changelog:
+
+* 2020-02-??: Version 1.6.0
+  * Issue #432: answer_ipv4_address and answer_ipv6_address in reply
+    and response dicts.
+  * Issue #430: Record and guard UDP max payload size with servers.
+  * Issue #407: Run only offline-tests option with:
+    src/test/tpkg/run-offline-only.sh (only with git checkouts).
+  * Issue #175: Include the packet the stub resolver sent to  the
+    upstream the call_reporting dict. Thanks Tom Pusateri
+  * Issue #169: Build eventloop support libraries if event libraries
+    are available. Thanks Tom Pusateri
+
+* 2019-12-20: Version 1.6.0-beta.1
+  * Migration of build system to cmake. Build now works on Ubuntu,
+    Windows 10 and macOS.
+    Some notes on minor differences in the new cmake build:
+      * OpenSSL 1.0.2 or higher is now required
+      * libunbound 1.5.9 is now required
+      * Only libidn2 2.0.0 and later is supported (not libidn)
+      * Windows uses ENABLE_STUB_ONLY=ON as the default
+      * Unit and regression tests work on Linux/macOS
+        (but not Windows yet)
+---
+stubbychangelog:
+
+* 2020-01-16: Version 0.3.0rc1
+  * Correct the applied-privacy.net details and remove ibksturm server in stubby.yml.example.
+  * Include AppArmor profile (thanks CameronNemo)
+  * Add `contrib` contributors to the README
+  * Let scheduled task run idefinately on Windows (thanks triatic)
+  * Add `Restart=on-failure` to the systemd.service file (thanks appliedprivacy)
+
+* 2019-12-20: Version 0.3.0-beta.1
+  * Migration of build system to cmake.
+---
+sha256: d6075515059289319ec269608badb9abc98ddce55520e54ea0bdd696f95d8883
+---
+tags: cmake, windows
+---
+_hidden: no
+---
+archive: no
