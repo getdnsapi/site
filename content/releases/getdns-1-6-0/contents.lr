@@ -6,7 +6,7 @@ announcement:
 
 Dear all,
 
-I am pleased to announce the new, "siwtch to cmake", bugfix and maintenance release, version 1.6.0 of getdns.
+I am pleased to announce the new [CMake], bugfix and maintenance release, version 1.6.0 of getdns.
 
 Mayor change from previous release is that the autotools based build system has been replaced with a [CMake] build system.
 
