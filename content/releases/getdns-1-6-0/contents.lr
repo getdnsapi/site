@@ -1,12 +1,12 @@
-version: 1.6.0-rc.1
+version: 1.6.0
 ---
-title: First cmake release candidate
+title: getdns-1.6.0 release
 ---
 announcement:
 
 Dear all,
 
-We have a first candidate for the 1.6.0 release of getdns.
+I am pleased to announce the new, "siwtch to cmake", bugfix and maintenance release, version 1.6.0 of getdns.
 
 Mayor change from previous release is that the autotools based build system has been replaced with a [CMake] build system.
 
@@ -22,12 +22,10 @@ Besides the build system changes, this release has also some bug fixes, amongst 
 
 * Correct handling of UDP Payload size by getdns servers (i.e. [listeners](/functions/getdns_context_set_listen_addresses.html))
 
-This release has a [Stubby] version 0.3.0-rc.1 included, also modified for the [CMake] build tools and updated with a few fixes.
-
-Please review these release candidates carefully, if all is well, the actual release will follow Friday the 28th of February.
+This release has a [Stubby] version 0.3.0included, also modified for the [CMake] build tools and updated with a few fixes.
 
 <p class="origin-reference">Photo by 
-<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@randyfath?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Randy Fath"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Randy Fath</span></a>
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@danist07?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from 贝莉儿 DANIST"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">贝莉儿 DANIST</span></a>
 </p>
 
 [CMake]: https://cmake.org
@@ -43,15 +41,17 @@ Please review these release candidates carefully, if all is well, the actual rel
 ---
 _discoverable: yes
 ---
-date: 2020-02-21
+date: 2020-02-28
 ---
 teaser: cmake & low hanging fruit
 ---
-image: randy-fath-ymf4_9Y9S_A-unsplash.jpg
+image: danist-8Gg2Ne_uTcM-unsplash.jpg
 ---
 changelog:
 
-* 2020-02-??: Version 1.6.0
+* 2020-02-28: Version 1.6.0
+  * Issues #457, #458, #461: New symbols with libnettle >= 3.4.
+    Thanks hanvinke & kometchtech for testing & reporting.
   * Issue #432: answer_ipv4_address and answer_ipv6_address in reply
     and response dicts.
   * Issue #430: Record and guard UDP max payload size with servers.
@@ -75,7 +75,7 @@ changelog:
 ---
 stubbychangelog:
 
-* 2020-01-16: Version 0.3.0rc1
+* 2020-02-28: Version 0.3.0
   * Correct the applied-privacy.net details and remove ibksturm server in stubby.yml.example.
   * Include AppArmor profile (thanks CameronNemo)
   * Add `contrib` contributors to the README
@@ -85,10 +85,10 @@ stubbychangelog:
 * 2019-12-20: Version 0.3.0-beta.1
   * Migration of build system to cmake.
 ---
-sha256: d6075515059289319ec269608badb9abc98ddce55520e54ea0bdd696f95d8883
+sha256: 40e5737471a3902ba8304b0fd63aa7c95802f66ebbc6eae53c487c8e8a380f4a
 ---
 tags: cmake, windows
 ---
-_hidden: yes
+_hidden: no
 ---
-archive: yes
+archive: no
