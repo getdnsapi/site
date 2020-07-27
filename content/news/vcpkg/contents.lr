@@ -1,0 +1,11 @@
+title: getdns (1.6.0) in Microsoft vcpkg
+---
+date: 2020-07-20
+---
+link: https://github.com/microsoft/vcpkg/tree/master/ports/getdns
+---
+teaser: Microsoft's open source library mechanism - with support in Visual Studio
+---
+image: ms.png
+---
+tags: windows, cmake, announcement
